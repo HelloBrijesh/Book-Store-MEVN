@@ -18,7 +18,7 @@
             <div class="col-md-12">
               <h2 class="h3 mb-3 text-black">Register</h2>
             </div>
-            <form @submit.prevent="handleFormSubmit">
+            <form @submit.prevent="handleSignUp">
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
                   <div class="col-md-6">
@@ -30,7 +30,7 @@
                       class="form-control"
                       id="fname"
                       name="fname"
-                      v-model="formData.firstName"
+                      v-model="signUpData.firstName"
                     />
                   </div>
                   <div class="col-md-6">
@@ -42,7 +42,7 @@
                       class="form-control"
                       id="lname"
                       name="lname"
-                      v-model="formData.lastName"
+                      v-model="signUpData.lastName"
                     />
                   </div>
                 </div>
@@ -57,7 +57,7 @@
                       id="email"
                       name="email"
                       placeholder=""
-                      v-model="formData.email"
+                      v-model="signUpData.email"
                     />
                   </div>
                 </div>
@@ -69,7 +69,7 @@
                       class="form-control"
                       id="password"
                       name="password"
-                      v-model="formData.password"
+                      v-model="signUpData.password"
                     />
                   </div>
                 </div>
@@ -83,7 +83,7 @@
                       class="form-control"
                       id="confirm_password"
                       name="confirm_password"
-                      v-model="formData.confirm_password"
+                      v-model="signUpData.confirm_password"
                     />
                   </div>
                 </div>
@@ -99,8 +99,6 @@
                 </div>
               </div>
             </form>
-            <button @click="test">Greet</button>
-            <button @click="test2">Cookie token</button>
             <div class="row justify-content-center my-5">
               Already have an account ? &nbsp;
               <a href="/login"> Click here</a> &nbsp; to Login
@@ -118,8 +116,14 @@ import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import { reactive, ref } from "vue";
 import axios from "axios";
+import { useUserStore } from "../stores/user";
+import { useRouter } from "vue-router";
 
-const formData = reactive({
+const router = useRouter();
+
+const userStore = useUserStore();
+
+const signUpData = reactive({
   firstName: "",
   lastName: "",
   email: "",
@@ -127,44 +131,19 @@ const formData = reactive({
   confirm_password: "",
 });
 
-function test(e) {
-  const token = "brijesh";
-
+function handleSignUp() {
   axios
-    .post(
-      "http://localhost:5000/api/test",
-      {},
-      {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      }
-    )
+    .post("http://localhost:5000/api/signup", signUpData)
     .then(function (response) {
-      console.log(response);
+      const token = response.data.access_token;
+      const userId = response.data.userId;
+      userStore.setisLoggedin(true);
+      userStore.setUserId(userId);
+      userStore.setAccessToken(token);
+      router.push("/");
     })
     .catch(function (error) {
-      console.log(error);
-    });
-}
-function test2(e) {
-  axios
-    .post("http://localhost:5000/api/test2", { withCredentials: true })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-}
-
-function handleFormSubmit() {
-  axios
-    .post("http://localhost:5000/api/signup", formData)
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
+      console.log("inside error");
       console.log(error);
     });
 }

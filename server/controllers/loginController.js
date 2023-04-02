@@ -20,9 +20,9 @@ const loginController = {
 
     let access_token;
     let refresh_token;
-
+    let user;
     try {
-      const user = await User.findOne({ email: req.body.email });
+      user = await User.findOne({ email: req.body.email });
       if (!user) {
         return next(CustomErrorHandler.wrongCredentials());
       }
@@ -49,7 +49,7 @@ const loginController = {
         httpOnly: true,
       });
 
-      res.json({ access_token, refresh_token });
+      res.json({ access_token, userId: user._id });
     } catch (err) {
       return next(err);
     }

@@ -51,16 +51,16 @@ const signupController = {
 
     let access_token;
     let refresh_token;
-
+    let result;
     try {
-      const result = await user.save();
+      result = await user.save();
 
       // Create Token
-      access_token = JwtService.sign({ _id: result._id, role: result.role });
+      access_token = JwtService.sign({ _id: result._id });
       refresh_token = JwtService.sign(
         { _id: result._id, role: result.role },
         JWT_REFRESH_SECRET,
-        "1y"
+        "30d"
       );
 
       // Access Token Added in database
@@ -75,7 +75,7 @@ const signupController = {
       expires: new Date(Date.now() + 900000),
       httpOnly: true,
     });
-    res.json({ access_token, refresh_token });
+    res.json({ access_token, userId: result._id });
   },
 };
 

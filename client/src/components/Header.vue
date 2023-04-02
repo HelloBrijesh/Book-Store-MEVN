@@ -28,7 +28,12 @@
             <div class="site-top-icons">
               <ul>
                 <li>
-                  <a href="/login"><span class="icon icon-person"></span></a>
+                  <RouterLink v-if="userStore.getisLoggedin" to="/user"
+                    ><span>Account</span></RouterLink
+                  >
+                  <RouterLink v-else to="/login"
+                    ><span class="icon icon-person"></span
+                  ></RouterLink>
                 </li>
                 <li>
                   <a href="#"><span class="icon icon-heart-o"></span></a>
@@ -75,6 +80,9 @@
 
 <script setup>
 import { RouterLink } from "vue-router";
+import { useUserStore } from "../stores/user";
+
+const userStore = useUserStore();
 </script>
 
 <style scoped></style>

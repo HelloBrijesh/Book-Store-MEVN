@@ -18,32 +18,34 @@
             <div class="col-md-12">
               <h2 class="h3 mb-3 text-black">Login</h2>
             </div>
-            <form action="#" method="post">
+            <form @submit.prevent="handleLogin">
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="c_email" class="text-black"
+                    <label for="email" class="text-black"
                       >Email <span class="text-danger">*</span></label
                     >
                     <input
                       type="email"
                       class="form-control"
-                      id="c_email"
-                      name="c_email"
+                      id="email"
+                      name="email"
                       placeholder=""
+                      v-model="logInData.email"
                     />
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="c_subject" class="text-black text-left"
+                    <label for="password" class="text-black text-left"
                       >Password
                     </label>
                     <input
                       type="text"
                       class="form-control"
-                      id="c_subject"
-                      name="c_subject"
+                      id="password"
+                      name="password"
+                      v-model="logInData.password"
                     />
                   </div>
                 </div>
@@ -77,6 +79,34 @@
 <script setup>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
+import { reactive } from "vue";
+import { useUserStore } from "../stores/user";
+import axios from "axios";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const userStore = useUserStore();
+const logInData = reactive({
+  email: "",
+  password: "",
+});
+
+function handleLogin() {
+  axios
+    .post("http://localhost:5000/api/login", logInData)
+    .then(function (response) {
+      const token = response.data.access_token;
+      const userId = response.data.userId;
+      userStore.setisLoggedin(true);
+      userStore.setUserId(userId);
+      userStore.setAccessToken(token);
+      router.push("/");
+    })
+    .catch(function (error) {
+      console.log("inside error");
+      console.log(error);
+    });
+}
 </script>
 
 <style scoped></style>

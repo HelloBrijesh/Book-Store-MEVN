@@ -15,14 +15,12 @@ const signupController = {
         .required(),
       confirm_password: Joi.ref("password"),
     });
-
     const { error } = signupSchema.validate(req.body);
     if (error) {
       return next(error);
     }
 
     const { firstName, lastName, email, password } = req.body;
-
     //check if the user is in database
 
     try {
@@ -69,7 +67,7 @@ const signupController = {
       return next(err);
     }
 
-    res.status(202).cookie("token", refresh_token, {
+    res.status(200).cookie("token", refresh_token, {
       sameSite: "lax",
       path: "/",
       expires: new Date(Date.now() + 900000),

@@ -15,10 +15,13 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-6">
+            <div>
+              <h5 v-if="error" class="text-danger text-center">{{ error }}</h5>
+            </div>
             <div class="col-md-12">
               <h2 class="h3 mb-3 text-black">Login</h2>
             </div>
-            <form @submit.prevent="handleLogin">
+            <form @submit.prevent="handleLogIn">
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
                   <div class="col-md-12">
@@ -41,7 +44,7 @@
                       >Password
                     </label>
                     <input
-                      type="text"
+                      type="password"
                       class="form-control"
                       id="password"
                       name="password"
@@ -80,33 +83,28 @@
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import { reactive } from "vue";
-import { useUserStore } from "../stores/user";
-import axios from "axios";
 import { useRouter } from "vue-router";
+import { useUserStore } from "../stores/userStore";
+import useLogInService from "../services/logInService";
 
 const router = useRouter();
 const userStore = useUserStore();
+
+const { logIn, error, userId } = useLogInService();
+
 const logInData = reactive({
   email: "",
   password: "",
 });
 
-function handleLogin() {
-  axios
-    .post("http://localhost:5000/api/login", logInData)
-    .then(function (response) {
-      const token = response.data.access_token;
-      const userId = response.data.userId;
-      userStore.setisLoggedin(true);
-      userStore.setUserId(userId);
-      userStore.setAccessToken(token);
-      router.push("/");
-    })
-    .catch(function (error) {
-      console.log("inside error");
-      console.log(error);
-    });
-}
+const handleLogIn = async () => {
+  await logIn(logInData);
+  if (userId.value) {
+    userStore.setUserId(userId.value);
+    userStore.setisLoggedin(true);
+    await router.push("/");
+  }
+};
 </script>
 
 <style scoped></style>

@@ -1,9 +1,9 @@
 import { defineStore } from "pinia";
-import { ref, computed, reactive } from "vue";
-export const useUserStore = defineStore("userData", () => {
+import { ref, computed } from "vue";
+export const useUserStore = defineStore("userStore", () => {
   const isLoggedin = ref(false);
-  const access_token = ref(" ");
   const userId = ref(" ");
+  const accessToken = ref("");
   const user = ref({
     firstName: " ",
     lastName: " ",
@@ -15,12 +15,11 @@ export const useUserStore = defineStore("userData", () => {
     return isLoggedin.value;
   });
 
-  const getAccessToken = computed(() => {
-    return access_token.value;
-  });
-
   const getUserId = computed(() => {
     return userId.value;
+  });
+  const getAccessToken = computed(() => {
+    return accessToken.value;
   });
 
   const getUser = computed(() => {
@@ -29,10 +28,6 @@ export const useUserStore = defineStore("userData", () => {
 
   function setisLoggedin(status) {
     isLoggedin.value = status;
-  }
-
-  function setAccessToken(token) {
-    access_token.value = token;
   }
 
   function setUserId(id) {
@@ -46,9 +41,12 @@ export const useUserStore = defineStore("userData", () => {
     user.value.role = data.role;
   }
 
+  function setAccessToken(token) {
+    accessToken.value = token;
+  }
+
   function $reset() {
     isLoggedin.value = false;
-    access_token.value = " ";
     userId.value = " ";
     user.value.firstName = " ";
     user.value.lastName = " ";
@@ -63,7 +61,7 @@ export const useUserStore = defineStore("userData", () => {
     user,
     getUser,
     setUser,
-    access_token,
+    accessToken,
     getAccessToken,
     setAccessToken,
     userId,

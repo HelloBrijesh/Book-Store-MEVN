@@ -157,7 +157,8 @@
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import BSBook from "../components/BSBook.vue";
-
+import { useUserStore } from "../stores/userStore";
+const userStore = useUserStore();
 const bsbooks = [
   {
     id: 1,

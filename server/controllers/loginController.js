@@ -13,7 +13,6 @@ const loginController = {
         .required(),
     });
     const { error } = loginSchema.validate(req.body);
-
     if (error) {
       return next(error);
     }
@@ -36,13 +35,13 @@ const loginController = {
       refresh_token = JwtService.sign(
         { _id: user._id, role: user.role },
         JWT_REFRESH_SECRET,
-        "1y"
+        "30d"
       );
 
       // Access Token Added in database
       await RefreshToken.create({ token: refresh_token });
 
-      res.status(202).cookie("token", refresh_token, {
+      res.status(200).cookie("token", refresh_token, {
         sameSite: "lax",
         path: "/",
         expires: new Date(Date.now() + 900000),

@@ -15,6 +15,9 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-6">
+            <div>
+              <h5 v-if="error" class="text-danger text-center">{{ error }}</h5>
+            </div>
             <div class="col-md-12">
               <h2 class="h3 mb-3 text-black">Register</h2>
             </div>
@@ -114,14 +117,14 @@
 <script setup>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
-import { reactive, ref } from "vue";
-import axios from "axios";
-import { useUserStore } from "../stores/user";
+import { reactive } from "vue";
 import { useRouter } from "vue-router";
+import { useUserStore } from "../stores/userStore";
+import useSignUpService from "../services/signUpService";
 
 const router = useRouter();
-
 const userStore = useUserStore();
+const { signUp, error, userId } = useSignUpService();
 
 const signUpData = reactive({
   firstName: "",
@@ -131,22 +134,14 @@ const signUpData = reactive({
   confirm_password: "",
 });
 
-function handleSignUp() {
-  axios
-    .post("http://localhost:5000/api/signup", signUpData)
-    .then(function (response) {
-      const token = response.data.access_token;
-      const userId = response.data.userId;
-      userStore.setisLoggedin(true);
-      userStore.setUserId(userId);
-      userStore.setAccessToken(token);
-      router.push("/");
-    })
-    .catch(function (error) {
-      console.log("inside error");
-      console.log(error);
-    });
-}
+const handleSignUp = async () => {
+  await signUp(signUpData);
+  if (userId.value) {
+    userStore.setUserId(userId.value);
+    userStore.setisLoggedin(true);
+    await router.push("/");
+  }
+};
 </script>
 
 <style scoped></style>

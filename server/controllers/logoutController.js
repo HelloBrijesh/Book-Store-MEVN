@@ -10,8 +10,7 @@ const logoutController = {
     } catch (err) {
       return next(new Error("Something went wrong in the database"));
     }
-
-    res.status(202).clearCookie("token");
+    res.status(200).clearCookie("token");
 
     res.json({ status: 1 });
   },

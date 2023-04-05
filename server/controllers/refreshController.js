@@ -5,9 +5,10 @@ import { CustomErrorHandler, JwtService } from "../services";
 const refreshController = {
   async refresh(req, res, next) {
     let authHeader = req.headers.cookie;
+    if (!authHeader) {
+      return next(CustomErrorHandler.unAuthorized("Invalid Refresh Token"));
+    }
     const token = authHeader.split("=")[1];
-    console.log(token);
-
     try {
       let refreshtoken = await RefreshToken.findOne({ token: token });
 
@@ -17,7 +18,7 @@ const refreshController = {
 
       let userId;
       try {
-        const { _id } = await JwtService.verify(
+        const { _id } = JwtService.verify(
           refreshtoken.token,
           JWT_REFRESH_SECRET
         );
@@ -41,14 +42,14 @@ const refreshController = {
       await RefreshToken.create({ token: refresh_token });
       await RefreshToken.deleteOne({ token: token });
 
-      res.status(202).cookie("token", refresh_token, {
+      res.status(200).cookie("token", refresh_token, {
         sameSite: "lax",
         path: "/",
         expires: new Date(Date.now() + 900000),
         httpOnly: true,
       });
 
-      res.json({ access_token, refresh_token });
+      res.json({ access_token });
     } catch (err) {
       return next(new Error("Something went wrong " + err.message));
     }

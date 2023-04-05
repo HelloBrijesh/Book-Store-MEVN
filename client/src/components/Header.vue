@@ -20,7 +20,7 @@
             class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center"
           >
             <div class="site-logo">
-              <a href="/" class="js-logo-clone">Book Store</a>
+              <RouterLink to="/" class="js-logo-clone">Book Store</RouterLink>
             </div>
           </div>
 
@@ -80,7 +80,7 @@
 
 <script setup>
 import { RouterLink } from "vue-router";
-import { useUserStore } from "../stores/user";
+import { useUserStore } from "../stores/userStore";
 
 const userStore = useUserStore();
 </script>

@@ -1,10 +1,12 @@
 import axios from "axios";
 
+axios.defaults.baseURL = "http://localhost:5000/api/";
+
 let accessToken;
 async function refreshAccessToken() {
   try {
     const response = await axios.post(
-      "http://localhost:5000/api/refresh",
+      "refresh",
       {},
       {
         withCredentials: true,
@@ -24,14 +26,11 @@ axios.interceptors.response.use(
     if (
       error.response.status === 401 &&
       !originalRequest._retry &&
-      (error.response.data.message === "jwt expired" ||
-        error.response.data.message === "accessToken Required")
+      (error.response.data.message === "jwt expired" || error.response.data.message === "accessToken Required")
     ) {
       originalRequest._retry = true;
       return refreshAccessToken().then(() => {
-        axios.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${accessToken}`;
+        axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
         originalRequest.headers.Authorization = `Bearer ${accessToken}`;
         return axios(originalRequest);
       });

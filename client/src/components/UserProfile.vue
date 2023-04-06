@@ -1,22 +1,22 @@
 <template>
-  <div>{{ firstName }}</div>
+  <div>User Profile</div>
+  <div>{{ user.firstName }}</div>
+  <div>User Profile</div>
+  <div v-if="error">{{ error }}</div>
 </template>
 
 <script setup>
-import axios from "axios";
 import { onMounted, ref } from "vue";
 import { useUserStore } from "../stores/userStore";
-import useUserService from "../services/userService";
-const name = ref("");
+import useAuthService from "../services/authService";
+
+const { getUser, error, userDetail } = useAuthService();
+
 const userStore = useUserStore();
-const { getUser, error, firstName } = useUserService();
+const user = userStore.getUser;
 
 onMounted(async () => {
   await getUser();
-  // console.log(error.value);
-  // if (error.value === "jwt expired") {
-  //   await getUser();
-  // }
 });
 </script>
 

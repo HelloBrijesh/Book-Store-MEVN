@@ -6,40 +6,37 @@ import { CustomErrorHandler, JwtService } from "../services";
 
 const signupController = {
   async signup(req, res, next) {
+    // Validating the user Input
+
     const signupSchema = Joi.object({
       firstName: Joi.string().min(3).max(30).required(),
       lastName: Joi.string().min(3).max(30).required(),
       email: Joi.string().email().required(),
-      password: Joi.string()
-        .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
-        .required(),
+      password: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")).required(),
       confirm_password: Joi.ref("password"),
     });
+
     const { error } = signupSchema.validate(req.body);
     if (error) {
       return next(error);
     }
 
     const { firstName, lastName, email, password } = req.body;
-    //check if the user is in database
-
+    //Check if the user is already registered
     try {
-      const exist = await User.exists({ email: email });
+      const userExist = await User.exists({ email: email });
 
-      if (exist) {
-        return next(
-          CustomErrorHandler.alreadyExists("this email is already exists")
-        );
+      if (userExist) {
+        return next(CustomErrorHandler.alreadyExists("This email is already exists"));
       }
     } catch (err) {
       return next(err);
     }
 
-    // Hash password
+    // Hashing the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Prepare the model
-
+    // Preparing the model
     const user = new User({
       firstName,
       lastName,
@@ -49,31 +46,41 @@ const signupController = {
 
     let access_token;
     let refresh_token;
-    let result;
+    let registeredUser;
     try {
-      result = await user.save();
+      registeredUser = await user.save();
 
-      // Create Token
-      access_token = JwtService.sign({ _id: result._id });
+      // Creating Tokens
+      access_token = JwtService.sign({ _id: registeredUser._id });
       refresh_token = JwtService.sign(
-        { _id: result._id, role: result.role },
+        { _id: registeredUser._id, role: registeredUser.role },
         JWT_REFRESH_SECRET,
         "30d"
       );
 
-      // Access Token Added in database
-      await RefreshToken.create({ token: refresh_token });
+      // Adding refresh_token in Database
+      await RefreshToken.create({ savedRefreshToken: refresh_token });
     } catch (err) {
       return next(err);
     }
 
+    const userDetail = {
+      userId: registeredUser._id,
+      firstName: registeredUser.firstName,
+      lastName: registeredUser.lastName,
+      email: registeredUser.email,
+      role: registeredUser.role,
+    };
+
+    // Setting up the cookies
     res.status(200).cookie("token", refresh_token, {
       sameSite: "lax",
       path: "/",
       expires: new Date(Date.now() + 900000),
       httpOnly: true,
     });
-    res.json({ access_token, userId: result._id });
+    // sending the user data and access_token
+    res.json({ access_token, userDetail });
   },
 };
 

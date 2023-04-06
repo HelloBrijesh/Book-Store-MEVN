@@ -62,11 +62,19 @@ import UserOrders from "../components/UserOrders.vue";
 import Settings from "../components/Settings.vue";
 import LogOut from "../components/LogOut.vue";
 import { onMounted, ref } from "vue";
+import { useUserStore } from "../stores/userStore";
+import { useRouter } from "vue-router";
 const activeTab = ref("profile");
-
+const userStore = useUserStore();
 function handleTab(v) {
   activeTab.value = v;
 }
+const router = useRouter();
+onMounted(async () => {
+  if (!userStore.getisLoggedin) {
+    await router.push("/login");
+  }
+});
 </script>
 
 <style lang="scss" scoped></style>

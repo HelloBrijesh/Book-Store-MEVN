@@ -25,42 +25,24 @@
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
                   <div class="col-md-6">
-                    <label for="fname" class="text-black"
-                      >First Name <span class="text-danger">*</span></label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="fname"
-                      name="fname"
-                      v-model="signUpData.firstName"
-                    />
+                    <label for="fname" class="text-black">First Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="fname" name="fname" v-model="signUpPayload.firstName" />
                   </div>
                   <div class="col-md-6">
-                    <label for="lname" class="text-black"
-                      >Last Name <span class="text-danger">*</span></label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="lname"
-                      name="lname"
-                      v-model="signUpData.lastName"
-                    />
+                    <label for="lname" class="text-black">Last Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="lname" name="lname" v-model="signUpPayload.lastName" />
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="email" class="text-black"
-                      >Email <span class="text-danger">*</span></label
-                    >
+                    <label for="email" class="text-black">Email <span class="text-danger">*</span></label>
                     <input
                       type="email"
                       class="form-control"
                       id="email"
                       name="email"
                       placeholder=""
-                      v-model="signUpData.email"
+                      v-model="signUpPayload.email"
                     />
                   </div>
                 </div>
@@ -72,32 +54,26 @@
                       class="form-control"
                       id="password"
                       name="password"
-                      v-model="signUpData.password"
+                      v-model="signUpPayload.password"
                     />
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="confirm_password" class="text-black"
-                      >Confirm Password</label
-                    >
+                    <label for="confirm_password" class="text-black">Confirm Password</label>
                     <input
                       type="password"
                       class="form-control"
                       id="confirm_password"
                       name="confirm_password"
-                      v-model="signUpData.confirm_password"
+                      v-model="signUpPayload.confirm_password"
                     />
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <div class="col-lg-12">
-                    <input
-                      type="submit"
-                      class="btn btn-primary btn-lg btn-block"
-                      value="Sign Up"
-                    />
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Sign Up" />
                   </div>
                 </div>
               </div>
@@ -117,16 +93,16 @@
 <script setup>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
-import { reactive } from "vue";
+import { onMounted, reactive } from "vue";
 import { useRouter } from "vue-router";
 import { useUserStore } from "../stores/userStore";
-import useSignUpService from "../services/signUpService";
+import useAuthService from "../services/authService";
 
 const router = useRouter();
 const userStore = useUserStore();
-const { signUp, error, userId } = useSignUpService();
+const { signUp, error, userDetail, statusCode } = useAuthService();
 
-const signUpData = reactive({
+const signUpPayload = reactive({
   firstName: "",
   lastName: "",
   email: "",
@@ -135,13 +111,19 @@ const signUpData = reactive({
 });
 
 const handleSignUp = async () => {
-  await signUp(signUpData);
-  if (userId.value) {
-    userStore.setUserId(userId.value);
+  await signUp(signUpPayload);
+  if (statusCode.value === 200) {
+    userStore.setUser(userDetail.value);
     userStore.setisLoggedin(true);
     await router.push("/");
   }
 };
+
+onMounted(async () => {
+  if (userStore.getisLoggedin) {
+    await router.push("/");
+  }
+});
 </script>
 
 <style scoped></style>

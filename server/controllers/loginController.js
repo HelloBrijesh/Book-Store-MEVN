@@ -6,16 +6,18 @@ import { CustomErrorHandler, JwtService } from "../services";
 
 const loginController = {
   async login(req, res, next) {
+    // Validating the user Input
+
     const loginSchema = Joi.object({
       email: Joi.string().email().required(),
-      password: Joi.string()
-        .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
-        .required(),
+      password: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")).required(),
     });
     const { error } = loginSchema.validate(req.body);
     if (error) {
       return next(error);
     }
+
+    // Finding the user from database
 
     let access_token;
     let refresh_token;
@@ -25,22 +27,28 @@ const loginController = {
       if (!user) {
         return next(CustomErrorHandler.wrongCredentials());
       }
-      //compare the password
-      const match = await bcrypt.compare(req.body.password, user.password);
-      if (!match) {
+      //comparing the password
+      const verifyPassword = await bcrypt.compare(req.body.password, user.password);
+      if (!verifyPassword) {
         return next(CustomErrorHandler.wrongCredentials());
       }
-      // Create Token
+
+      // Creating the Tokens
       access_token = JwtService.sign({ _id: user._id, role: user.role });
-      refresh_token = JwtService.sign(
-        { _id: user._id, role: user.role },
-        JWT_REFRESH_SECRET,
-        "30d"
-      );
+      refresh_token = JwtService.sign({ _id: user._id, role: user.role }, JWT_REFRESH_SECRET, "30d");
 
-      // Access Token Added in database
-      await RefreshToken.create({ token: refresh_token });
+      // Adding refresh token in database
+      await RefreshToken.create({ savedRefreshToken: refresh_token });
 
+      const userDetail = {
+        userId: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        role: user.role,
+      };
+
+      // Setting up the cookies
       res.status(200).cookie("token", refresh_token, {
         sameSite: "lax",
         path: "/",
@@ -48,7 +56,8 @@ const loginController = {
         httpOnly: true,
       });
 
-      res.json({ access_token, userId: user._id });
+      // Sending userDetail and access_token
+      res.json({ access_token, userDetail });
     } catch (err) {
       return next(err);
     }

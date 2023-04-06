@@ -3,21 +3,17 @@
 </template>
 
 <script setup>
-import { useRouter } from "vue-router";
 import { onMounted } from "vue";
 import { useUserStore } from "../stores/userStore";
-import useLogOutService from "../services/logOutServices";
+import useAuthService from "../services/authService";
 
-const router = useRouter();
 const userStore = useUserStore();
-const { logOut, status, error } = useLogOutService();
+const { logOut, error, statusCode } = useAuthService();
 
 onMounted(async () => {
   await logOut();
-  if (status.value === 1) {
-    userStore.$reset();
-    window.location.href = "/login";
-  }
+  userStore.$reset();
+  window.location.href = "/login";
 });
 </script>
 

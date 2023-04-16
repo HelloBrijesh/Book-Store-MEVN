@@ -1,8 +1,8 @@
 import Joi from "joi";
 import bcrypt from "bcrypt";
-import { JWT_REFRESH_SECRET } from "../config";
-import { User, RefreshToken } from "../models";
-import { CustomErrorHandler, JwtService } from "../services";
+import { JWT_REFRESH_SECRET } from "../../config";
+import { User, RefreshToken } from "../../models";
+import { CustomErrorHandler, JwtService } from "../../services";
 
 const loginController = {
   async login(req, res, next) {
@@ -29,7 +29,7 @@ const loginController = {
       }
       //comparing the password
       const verifyPassword = await bcrypt.compare(req.body.password, user.password);
-      if (!verifyPassword || user.role != "customer") {
+      if (!verifyPassword || user.role != "admin") {
         return next(CustomErrorHandler.wrongCredentials());
       }
 
@@ -40,7 +40,7 @@ const loginController = {
       // Adding refresh token in database
       await RefreshToken.create({ savedRefreshToken: refresh_token });
 
-      const userDetail = {
+      const adminDetail = {
         userId: user._id,
         firstName: user.firstName,
         lastName: user.lastName,
@@ -57,7 +57,7 @@ const loginController = {
       });
 
       // Sending userDetail and access_token
-      res.json({ access_token, userDetail });
+      res.json({ access_token, adminDetail });
     } catch (err) {
       return next(err);
     }

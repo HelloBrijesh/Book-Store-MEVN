@@ -18,16 +18,16 @@
           <div class="col-md-3 mb-5 mb-md-0">
             <div class="border p-4 rounded mb-4">
               <ul class="list-unstyled mb-0">
-                <li class="mb-1" @click="handleTab('profile')">
+                <li class="mb-1" @click="handleActiveTab('profile')">
                   <a href="#" class="d-flex"><span>Profile</span></a>
                 </li>
-                <li class="mb-1" @click="handleTab('orders')">
+                <li class="mb-1" @click="handleActiveTab('orders')">
                   <a href="#" class="d-flex"><span>Orders</span></a>
                 </li>
-                <li class="mb-1" @click="handleTab('settings')">
+                <li class="mb-1" @click="handleActiveTab('settings')">
                   <a href="#" class="d-flex"><span>Settings</span></a>
                 </li>
-                <li class="mb-1" @click="handleTab('logout')">
+                <li class="mb-1" @click="handleLogout()">
                   <a href="#" class="d-flex"><span>Log Out</span></a>
                 </li>
               </ul>
@@ -43,9 +43,6 @@
             <div v-else-if="activeTab === 'settings'">
               <Settings></Settings>
             </div>
-            <div v-else-if="activeTab === 'logout'">
-              <LogOut></LogOut>
-            </div>
           </div>
         </div>
       </div>
@@ -60,16 +57,26 @@ import Footer from "../components/Footer.vue";
 import UserProfile from "../components/UserProfile.vue";
 import UserOrders from "../components/UserOrders.vue";
 import Settings from "../components/Settings.vue";
-import LogOut from "../components/LogOut.vue";
 import { onMounted, ref } from "vue";
 import { useUserStore } from "../stores/userStore";
+import useAuthService from "../services/authService";
 import { useRouter } from "vue-router";
+const router = useRouter();
+
+const { logout, error, statusCode } = useAuthService();
 const activeTab = ref("profile");
 const userStore = useUserStore();
-function handleTab(v) {
-  activeTab.value = v;
+
+function handleActiveTab(currentTab) {
+  activeTab.value = currentTab;
 }
-const router = useRouter();
+
+const handleLogout = async () => {
+  await logout();
+  userStore.$reset();
+  window.location.href = "/login";
+};
+
 onMounted(async () => {
   if (!userStore.getisLoggedin) {
     await router.push("/login");

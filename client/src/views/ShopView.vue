@@ -19,10 +19,10 @@
             <div class="row mb-5">
               <Book
                 v-for="book in books"
-                :key="book.id"
-                :imgurl="book.imgurl"
-                :name="book.name"
-                :author="book.author"
+                :key="book._id"
+                :imgurl="book.imageUrl"
+                :name="book.bookName"
+                :author="book.authorName"
                 :price="book.price"
               />
             </div>
@@ -31,12 +31,13 @@
                 <div class="site-block-27">
                   <ul>
                     <li><a href="#">&lt;</a></li>
-                    <li class="active"><span>1</span></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
+                    <li v-for="page in totalPages">
+                      <a href="#">{{ page }}</a>
+                    </li>
                     <li><a href="#">&gt;</a></li>
+
+                    <!-- <li class="active"><span>1</span></li>
+                    <li><a href="#">5</a></li> -->
                   </ul>
                 </div>
               </div>
@@ -45,46 +46,82 @@
 
           <div class="col-md-3 order-1 mb-5 mb-md-0">
             <div class="border p-4 rounded mb-4">
-              <h3 class="mb-3 h6 text-uppercase text-black d-block">
-                Categories
-              </h3>
-              <ul class="list-unstyled mb-0">
-                <li class="mb-1">
-                  <a href="#" class="d-flex"
-                    ><span>Category 1</span>
-                    <span class="text-black ml-auto">(2,220)</span></a
-                  >
-                </li>
-                <li class="mb-1">
-                  <a href="#" class="d-flex"
-                    ><span>Category 2</span>
-                    <span class="text-black ml-auto">(2,550)</span></a
-                  >
-                </li>
-                <li class="mb-1">
-                  <a href="#" class="d-flex"
-                    ><span>Category 3</span>
-                    <span class="text-black ml-auto">(2,124)</span></a
-                  >
-                </li>
-              </ul>
-            </div>
+              <form @change="handleShop">
+                <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
 
-            <div class="border p-4 rounded mb-4">
-              <div class="mb-4">
-                <h3 class="mb-3 h6 text-uppercase text-black d-block">
-                  Filter by Price
-                </h3>
-                <div id="slider-range" class="border-primary"></div>
+                <div class="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    id="romance"
+                    name="category"
+                    class="custom-control-input"
+                    v-model="shopPayload.category"
+                    value="Romance"
+                  />
+                  <label class="custom-control-label text-black" for="romance">Romance</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    id="health"
+                    name="category"
+                    class="custom-control-input"
+                    v-model="shopPayload.category"
+                    value="Health"
+                  />
+                  <label class="custom-control-label text-black" for="health">Health</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    id="food"
+                    name="category"
+                    class="custom-control-input"
+                    v-model="shopPayload.category"
+                    value="Food"
+                  />
+                  <label class="custom-control-label text-black" for="food">Food</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    id="travel"
+                    name="category"
+                    class="custom-control-input"
+                    v-model="shopPayload.category"
+                    value="Travel"
+                  />
+                  <label class="custom-control-label text-black" for="travel">Travel</label>
+                </div>
+                <div class="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    id="history"
+                    name="category"
+                    class="custom-control-input"
+                    v-model="shopPayload.category"
+                    value="History"
+                  />
+                  <label class="custom-control-label text-black" for="history">History</label>
+                </div>
+
+                <div class="my-4 text-black">
+                  <h3 class="mb-3 h6 text-uppercase d-block">Filter by Price</h3>
+                  <input type="range" class="custom-range" min="0" max="500" v-model="shopPayload.price" />
+                  <p class="mt-3">0 $ - {{ shopPayload.price }} $</p>
+
+                  <!-- <input type="range" class="custom-range" :min="0" :max="500" id="price" v-model:price="count" /> -->
+                  <!-- <div id="slider-range" class="border-primary"></div>
                 <input
                   type="text"
                   name="text"
                   id="amount"
                   class="form-control border-0 pl-0 bg-white"
                   disabled=""
-                />
-              </div>
-
+                  v-model="price"
+                /> -->
+                </div>
+              </form>
               <div class="mb-4">
                 <h3 class="mb-3 h6 text-uppercase text-black d-block">Type</h3>
                 <label for="s_sm" class="d-flex">
@@ -113,6 +150,21 @@
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import Book from "../components/Book.vue";
+import useShopService from "../services/shopService";
+import { ref, onMounted } from "vue";
+
+// const { getBooks, error, statusCode, books, totalPages } = useShopService();
+
+const shopPayload = ref({
+  category: "Romance",
+  price: "50",
+});
+const handleShop = async () => {
+  // await getBooks(shopPayload.value);
+};
+onMounted(async () => {
+  // await getBooks(shopPayload.value);
+});
 const books = [
   {
     id: 1,
@@ -180,4 +232,4 @@ const books = [
 ];
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

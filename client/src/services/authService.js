@@ -31,7 +31,7 @@ export default function useAuthService() {
     }
   };
 
-  const logIn = async (logInPayload) => {
+  const login = async (logInPayload) => {
     url.value = "login";
     statusCode.value = null;
     error.value = null;
@@ -47,7 +47,7 @@ export default function useAuthService() {
       error.value = err.response.data.message;
     }
   };
-  const logOut = async () => {
+  const logout = async () => {
     url.value = "logout";
     statusCode.value = null;
     error.value = null;
@@ -78,8 +78,8 @@ export default function useAuthService() {
 
   return {
     signUp,
-    logIn,
-    logOut,
+    login,
+    logout,
     getUser,
     error,
     userDetail,

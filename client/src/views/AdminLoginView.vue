@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-md-12 mb-0">
             <a href="/">Home</a> <span class="mx-2 mb-0">/</span>
-            <strong class="text-black">Login</strong>
+            <strong class="text-black">Admin Login</strong>
           </div>
         </div>
       </div>
@@ -18,10 +18,10 @@
             <div>
               <h5 v-if="error" class="text-danger text-center">{{ error }}</h5>
             </div>
-            <div class="col-md-12">
-              <h2 class="h3 mb-3 text-black">Login</h2>
+            <div class="col-md-12 text-center">
+              <h2 class="h3 mb-3 text-black">Admin Login</h2>
             </div>
-            <form @submit.prevent="handleLogin">
+            <form @submit.prevent="handleAdminLogin">
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
                   <div class="col-md-12">
@@ -32,7 +32,7 @@
                       id="email"
                       name="email"
                       placeholder=""
-                      v-model="loginPayload.email"
+                      v-model="adminLoginPayload.email"
                     />
                   </div>
                 </div>
@@ -44,7 +44,7 @@
                       class="form-control"
                       id="password"
                       name="password"
-                      v-model="loginPayload.password"
+                      v-model="adminLoginPayload.password"
                     />
                   </div>
                 </div>
@@ -55,13 +55,6 @@
                 </div>
               </div>
             </form>
-            <div class="row justify-content-center mt-5 mb-3">
-              <a href="#"> Forgot Password ?</a>
-            </div>
-            <div class="row justify-content-center my-3">
-              New to Book store ? &nbsp;
-              <a href="/signup"> Click here</a> &nbsp; to Sign up
-            </div>
           </div>
         </div>
       </div>
@@ -76,31 +69,31 @@ import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import { onMounted, reactive } from "vue";
 import { useRouter } from "vue-router";
-import { useUserStore } from "../stores/userStore";
-import useAuthService from "../services/authService";
+import { useAdminStore } from "../stores/adminStore";
+import useAdminService from "../services/adminService";
 
 const router = useRouter();
-const userStore = useUserStore();
-const { login, error, userDetail, statusCode } = useAuthService();
+const adminStore = useAdminStore();
+const { adminLogin, error, adminDetail, statusCode } = useAdminService();
 
-const loginPayload = reactive({
+const adminLoginPayload = reactive({
   email: "",
   password: "",
 });
 
-const handleLogin = async () => {
-  await login(loginPayload);
+const handleAdminLogin = async () => {
+  await adminLogin(adminLoginPayload);
 
   if (statusCode.value === 200) {
-    userStore.setUser(userDetail.value);
-    userStore.setisLoggedin(true);
-    await router.push("/");
+    adminStore.setAdmin(adminDetail.value);
+    adminStore.setAdminLoggedin(true);
+    await router.push("/admin");
   }
 };
 
 onMounted(async () => {
-  if (userStore.getisLoggedin) {
-    await router.push("/");
+  if (adminStore.getAdminLoggedin) {
+    await router.push("/admin");
   }
 });
 </script>

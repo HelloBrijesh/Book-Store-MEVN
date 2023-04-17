@@ -25,7 +25,9 @@
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="email" class="text-black">Email <span class="text-danger">*</span></label>
+                    <label for="email" class="text-black"
+                      >Email <span class="text-danger">*</span></label
+                    >
                     <input
                       type="email"
                       class="form-control"
@@ -33,24 +35,32 @@
                       name="email"
                       placeholder=""
                       v-model="loginPayload.email"
+                      required
                     />
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="password" class="text-black text-left">Password </label>
+                    <label for="password" class="text-black text-left"
+                      >Password
+                    </label>
                     <input
                       type="password"
                       class="form-control"
                       id="password"
                       name="password"
                       v-model="loginPayload.password"
+                      required
                     />
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-lg-12">
-                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Log In" />
+                    <input
+                      type="submit"
+                      class="btn btn-primary btn-lg btn-block"
+                      value="Log In"
+                    />
                   </div>
                 </div>
               </div>
@@ -83,6 +93,12 @@ const router = useRouter();
 const userStore = useUserStore();
 const { login, error, userDetail, statusCode } = useAuthService();
 
+onMounted(async () => {
+  if (userStore.getisLoggedin) {
+    await router.push("/");
+  }
+});
+
 const loginPayload = reactive({
   email: "",
   password: "",
@@ -97,12 +113,6 @@ const handleLogin = async () => {
     await router.push("/");
   }
 };
-
-onMounted(async () => {
-  if (userStore.getisLoggedin) {
-    await router.push("/");
-  }
-});
 </script>
 
 <style scoped></style>

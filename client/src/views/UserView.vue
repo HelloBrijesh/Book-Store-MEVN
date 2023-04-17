@@ -58,14 +58,15 @@ import UserProfile from "../components/UserProfile.vue";
 import UserOrders from "../components/UserOrders.vue";
 import Settings from "../components/Settings.vue";
 import { onMounted, ref } from "vue";
+import { useRouter } from "vue-router";
 import { useUserStore } from "../stores/userStore";
 import useAuthService from "../services/authService";
-import { useRouter } from "vue-router";
-const router = useRouter();
 
-const { logout, error, statusCode } = useAuthService();
-const activeTab = ref("profile");
+const router = useRouter();
 const userStore = useUserStore();
+const { logout, error, statusCode } = useAuthService();
+
+const activeTab = ref("profile");
 
 function handleActiveTab(currentTab) {
   activeTab.value = currentTab;
@@ -84,4 +85,4 @@ onMounted(async () => {
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

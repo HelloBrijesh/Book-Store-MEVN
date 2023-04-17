@@ -8,8 +8,8 @@ export default function useShopService() {
   const books = ref(null);
   const totalPages = ref(null);
 
-  const getBooks = async (shopPayload) => {
-    url.value = "shop";
+  const getBooks = async (shopPayload, currentPage) => {
+    url.value = `shop/${currentPage}`;
     statusCode.value = null;
     error.value = null;
     books.value = null;

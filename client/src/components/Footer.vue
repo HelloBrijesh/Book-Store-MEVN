@@ -6,7 +6,9 @@
           <div class="block-5 mb-2">
             <h3 class="footer-heading mb-4">Contact Info</h3>
             <ul class="list-unstyled">
-              <li class="address">203 Fake St. Mountain View, San Francisco, California, USA</li>
+              <li class="address">
+                203 Fake St. Mountain View, San Francisco, California, USA
+              </li>
               <li class="phone">
                 <a href="tel://23923929210">+2 392 3929 210</a>
               </li>
@@ -26,19 +28,37 @@
         <div class="col-md-4 mb-2 mb-lg-0">
           <div class="block-7">
             <form action="#" method="post">
-              <label for="email_subscribe" class="footer-heading">Track Order</label>
+              <label for="trackOrder" class="footer-heading">Track Order</label>
               <div class="form-group">
-                <input type="text" class="form-control py-4" id="email_subscribe" placeholder="Order No" />
-                <input type="submit" class="btn btn-sm btn-primary" value="Send" />
+                <input
+                  type="text"
+                  class="form-control py-4"
+                  id="trackOrder"
+                  placeholder="Order No"
+                />
+                <input
+                  type="submit"
+                  class="btn btn-sm btn-primary"
+                  value="Send"
+                />
               </div>
             </form>
           </div>
           <div class="block-7">
             <form action="#" method="post">
-              <label for="email_subscribe" class="footer-heading">Subscribe</label>
+              <label for="subscribe" class="footer-heading">Subscribe</label>
               <div class="form-group">
-                <input type="text" class="form-control py-4" id="email_subscribe" placeholder="Email" />
-                <input type="submit" class="btn btn-sm btn-primary" value="Send" />
+                <input
+                  type="text"
+                  class="form-control py-4"
+                  id="subscribe"
+                  placeholder="Email"
+                />
+                <input
+                  type="submit"
+                  class="btn btn-sm btn-primary"
+                  value="Send"
+                />
               </div>
             </form>
           </div>
@@ -61,7 +81,9 @@
             All rights reserved | This template is made with
             <i class="icon-heart" aria-hidden="true"></i>
             by
-            <a href="https://colorlib.com" target="_blank" class="text-primary"> Colorlib </a>
+            <a href="https://colorlib.com" target="_blank" class="text-primary">
+              Colorlib
+            </a>
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
           </p>
         </div>

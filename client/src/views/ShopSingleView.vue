@@ -6,33 +6,26 @@
         <div class="row">
           <div class="col-md-12 mb-0">
             <a href="/">Home</a> <span class="mx-2 mb-0">/</span>
-            <strong class="text-black">Book 1</strong>
+            <strong class="text-black" v-if="book">{{ book.bookName }}</strong>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="site-section">
+    <div class="site-section" v-if="book">
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <img src="images/book_1.jpg" alt="Image" class="img-fluid" />
+            <img :src="book.imageUrl" alt="Image" class="img-fluid" />
           </div>
           <div class="col-md-6">
-            <h2 class="text-black">Book 1</h2>
+            <h2 class="text-black">{{ book.bookName }}</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores
-              iusto! Molestiae expedita veritatis nesciunt doloremque sint
-              asperiores fuga voluptas, distinctio, aperiam, ratione dolore.
+              {{ book.bookDescription }}
             </p>
-            <p class="mb-4">
-              Ex numquam veritatis debitis minima quo error quam eos dolorum
-              quidem perferendis. Quos repellat dignissimos minus, eveniet nam
-              voluptatibus molestias omnis reiciendis perspiciatis illum hic
-              magni iste, velit aperiam quis.
+            <p>
+              <strong class="text-primary h4">${{ book.price }}</strong>
             </p>
-            <p><strong class="text-primary h4">$50.00</strong></p>
             <div class="mb-1 d-flex">
               <label for="option-sm" class="d-flex mr-3 mb-3">
                 <span
@@ -65,6 +58,7 @@
                   <button
                     class="btn btn-outline-primary js-btn-minus"
                     type="button"
+                    @click="handleSubtract"
                   >
                     &minus;
                   </button>
@@ -72,8 +66,7 @@
                 <input
                   type="text"
                   class="form-control text-center"
-                  value="1"
-                  placeholder=""
+                  v-model="quantity"
                   aria-label="Example text with button addon"
                   aria-describedby="button-addon1"
                 />
@@ -81,6 +74,7 @@
                   <button
                     class="btn btn-outline-primary js-btn-plus"
                     type="button"
+                    @click="handleAdd"
                   >
                     &plus;
                   </button>
@@ -88,7 +82,10 @@
               </div>
             </div>
             <p>
-              <RouterLink to="/cart" class="buy-now btn btn-sm btn-primary"
+              <RouterLink
+                to="/cart"
+                @click="handleAddToCart"
+                class="buy-now btn btn-sm btn-primary"
                 >Add to Cart</RouterLink
               >
             </p>
@@ -97,7 +94,7 @@
       </div>
     </div>
 
-    <div class="site-section block-3 site-blocks-2 bg-light">
+    <!-- <div class="site-section block-3 site-blocks-2 bg-light">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-7 site-section-heading text-center pt-4">
@@ -115,7 +112,7 @@
           />
         </div>
       </div>
-    </div>
+    </div> -->
     <Footer></Footer>
   </div>
 </template>
@@ -124,38 +121,42 @@
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import BSBook from "../components/BSBook.vue";
-import { RouterLink } from "vue-router";
+import { onMounted, ref } from "vue";
+import { RouterLink, useRoute } from "vue-router";
+import { useCartStore } from "../stores/cartStore";
+import useBookService from "../services/bookService";
 
-const bsbooks = [
-  {
-    id: 1,
-    imgurl: "images/book_1.jpg",
-    name: "Book 1",
-    author: "Author 1",
-    price: "$100",
-  },
-  {
-    id: 2,
-    imgurl: "images/book_2.jpg",
-    name: "Book 2",
-    author: "Author 2",
-    price: "$200",
-  },
-  {
-    id: 3,
-    imgurl: "images/book_3.jpg",
-    name: "Book 3",
-    author: "Author 3",
-    price: "$300",
-  },
-  {
-    id: 4,
-    imgurl: "images/book_4.jpg",
-    name: "Book 4",
-    author: "Author 4",
-    price: "$400",
-  },
-];
+const route = useRoute();
+const cartStore = useCartStore();
+const { book, getBookDetails, error, statusCode } = useBookService();
+
+const bookid = route.params.bookid;
+const quantity = ref(1);
+const item = ref({});
+
+onMounted(async () => {
+  await getBookDetails(bookid);
+  item.value = {
+    bookId: book.value._id,
+    bookName: book.value.bookName,
+    imageUrl: book.value.imageUrl,
+    price: book.value.price,
+    quantity: quantity.value,
+  };
+});
+
+const handleSubtract = () => {
+  if (quantity.value >= 2) {
+    quantity.value--;
+  }
+};
+const handleAdd = () => {
+  if (quantity.value < book.value.quantity) {
+    quantity.value++;
+  }
+};
+const handleAddToCart = () => {
+  cartStore.setCartItems(item.value);
+};
 </script>
-
 <style scoped></style>

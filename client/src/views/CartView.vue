@@ -29,92 +29,26 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr v-for="item in cart">
                     <td class="product-thumbnail">
-                      <img
-                        src="images/book_1.jpg"
-                        alt="Image"
-                        class="img-fluid"
-                      />
+                      <img :src="item.imageUrl" alt="Image" class="img-fluid" />
                     </td>
                     <td class="product-name">
-                      <h2 class="h5 text-black">Book 1</h2>
+                      <h2 class="h5 text-black">{{ item.bookName }}</h2>
                     </td>
-                    <td>$49.00</td>
+                    <td>${{ item.price }}</td>
                     <td>
-                      <div class="input-group mb-3" style="max-width: 120px">
-                        <div class="input-group-prepend">
-                          <button
-                            class="btn btn-outline-primary js-btn-minus"
-                            type="button"
-                          >
-                            &minus;
-                          </button>
-                        </div>
-                        <input
-                          type="text"
-                          class="form-control text-center"
-                          value="1"
-                          placeholder=""
-                          aria-label="Example text with button addon"
-                          aria-describedby="button-addon1"
-                        />
-                        <div class="input-group-append">
-                          <button
-                            class="btn btn-outline-primary js-btn-plus"
-                            type="button"
-                          >
-                            &plus;
-                          </button>
-                        </div>
-                      </div>
+                      {{ item.quantity }}
                     </td>
-                    <td>$49.00</td>
-                    <td><a href="#" class="btn btn-primary btn-sm">X</a></td>
-                  </tr>
-
-                  <tr>
-                    <td class="product-thumbnail">
-                      <img
-                        src="images/book_2.jpg"
-                        alt="Image"
-                        class="img-fluid"
-                      />
-                    </td>
-                    <td class="product-name">
-                      <h2 class="h5 text-black">Book 2</h2>
-                    </td>
-                    <td>$49.00</td>
+                    <td>$ {{ item.price * item.quantity }}</td>
                     <td>
-                      <div class="input-group mb-3" style="max-width: 120px">
-                        <div class="input-group-prepend">
-                          <button
-                            class="btn btn-outline-primary js-btn-minus"
-                            type="button"
-                          >
-                            &minus;
-                          </button>
-                        </div>
-                        <input
-                          type="text"
-                          class="form-control text-center"
-                          value="1"
-                          placeholder=""
-                          aria-label="Example text with button addon"
-                          aria-describedby="button-addon1"
-                        />
-                        <div class="input-group-append">
-                          <button
-                            class="btn btn-outline-primary js-btn-plus"
-                            type="button"
-                          >
-                            &plus;
-                          </button>
-                        </div>
-                      </div>
+                      <a
+                        href="#"
+                        class="btn btn-primary btn-sm"
+                        @click="(e) => handleRemoveItem(item)"
+                        >X</a
+                      >
                     </td>
-                    <td>$49.00</td>
-                    <td><a href="#" class="btn btn-primary btn-sm">X</a></td>
                   </tr>
                 </tbody>
               </table>
@@ -155,7 +89,9 @@
                     <span class="text-black">Subtotal</span>
                   </div>
                   <div class="col-md-6 text-right">
-                    <strong class="text-black">$230.00</strong>
+                    <strong class="text-black"
+                      >${{ cartStore.getCartTotal }}</strong
+                    >
                   </div>
                 </div>
                 <div class="row mb-5">
@@ -163,7 +99,9 @@
                     <span class="text-black">Total</span>
                   </div>
                   <div class="col-md-6 text-right">
-                    <strong class="text-black">$230.00</strong>
+                    <strong class="text-black"
+                      >${{ cartStore.getCartTotal }}</strong
+                    >
                   </div>
                 </div>
 
@@ -191,6 +129,15 @@
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import { RouterLink } from "vue-router";
+import { useCartStore } from "../stores/cartStore";
+
+const cartStore = useCartStore();
+
+const cart = cartStore.getCartItems;
+
+const handleRemoveItem = (item) => {
+  console.log("ItemRemoved");
+};
 </script>
 
 <style scoped></style>

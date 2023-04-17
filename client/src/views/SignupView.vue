@@ -25,17 +25,37 @@
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
                   <div class="col-md-6">
-                    <label for="fname" class="text-black">First Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="fname" name="fname" v-model="signUpPayload.firstName" />
+                    <label for="firstName" class="text-black"
+                      >First Name <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="firstName"
+                      name="firstName"
+                      v-model="signUpPayload.firstName"
+                      required
+                    />
                   </div>
                   <div class="col-md-6">
-                    <label for="lname" class="text-black">Last Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="lname" name="lname" v-model="signUpPayload.lastName" />
+                    <label for="lastName" class="text-black"
+                      >Last Name <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="lastName"
+                      name="lastName"
+                      v-model="signUpPayload.lastName"
+                      required
+                    />
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="email" class="text-black">Email <span class="text-danger">*</span></label>
+                    <label for="email" class="text-black"
+                      >Email <span class="text-danger">*</span></label
+                    >
                     <input
                       type="email"
                       class="form-control"
@@ -43,6 +63,7 @@
                       name="email"
                       placeholder=""
                       v-model="signUpPayload.email"
+                      required
                     />
                   </div>
                 </div>
@@ -55,25 +76,33 @@
                       id="password"
                       name="password"
                       v-model="signUpPayload.password"
+                      required
                     />
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="confirm_password" class="text-black">Confirm Password</label>
+                    <label for="confirmPassword" class="text-black"
+                      >Confirm Password</label
+                    >
                     <input
                       type="password"
                       class="form-control"
-                      id="confirm_password"
-                      name="confirm_password"
-                      v-model="signUpPayload.confirm_password"
+                      id="confirmPassword"
+                      name="confirmPassword"
+                      v-model="signUpPayload.confirmPassword"
+                      required
                     />
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <div class="col-lg-12">
-                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Sign Up" />
+                    <input
+                      type="submit"
+                      class="btn btn-primary btn-lg btn-block"
+                      value="Sign Up"
+                    />
                   </div>
                 </div>
               </div>
@@ -102,12 +131,18 @@ const router = useRouter();
 const userStore = useUserStore();
 const { signUp, error, userDetail, statusCode } = useAuthService();
 
+onMounted(async () => {
+  if (userStore.getisLoggedin) {
+    await router.push("/");
+  }
+});
+
 const signUpPayload = reactive({
   firstName: "",
   lastName: "",
   email: "",
   password: "",
-  confirm_password: "",
+  confirmPassword: "",
 });
 
 const handleSignUp = async () => {
@@ -118,12 +153,6 @@ const handleSignUp = async () => {
     await router.push("/");
   }
 };
-
-onMounted(async () => {
-  if (userStore.getisLoggedin) {
-    await router.push("/");
-  }
-});
 </script>
 
 <style scoped></style>

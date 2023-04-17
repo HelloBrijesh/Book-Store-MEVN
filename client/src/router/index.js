@@ -47,7 +47,7 @@ const router = createRouter({
       component: ShopView,
     },
     {
-      path: "/shopsingle",
+      path: "/shopsingle/:bookid",
       name: "shopsingle",
       component: ShopSingleView,
     },

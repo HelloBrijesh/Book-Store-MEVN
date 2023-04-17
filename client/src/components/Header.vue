@@ -41,7 +41,7 @@
                 <li>
                   <a href="/cart" class="site-cart">
                     <span class="icon icon-shopping_cart"></span>
-                    <span class="count">2</span>
+                    <span class="count">{{ totalCartItems }}</span>
                   </a>
                 </li>
                 <li class="d-inline-block d-md-none ml-md-0">
@@ -81,8 +81,11 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import { useUserStore } from "../stores/userStore";
-
+import { useCartStore } from "../stores/cartStore";
+import { ref } from "vue";
 const userStore = useUserStore();
+const cartStore = useCartStore();
+const totalCartItems = ref(cartStore.getCartItems.length);
 </script>
 
 <style scoped></style>

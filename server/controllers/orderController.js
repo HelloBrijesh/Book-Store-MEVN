@@ -2,7 +2,7 @@ import { Order } from "../models";
 
 const orderController = {
   async placeOrder(req, res, next) {
-    const { billingDetails, cart, user } = req.body._value;
+    const { user, cart, billingDetails } = req.body._value;
 
     const order = new Order({
       userId: user.userId,
@@ -13,6 +13,9 @@ const orderController = {
         address: billingDetails.address,
         state: billingDetails.state,
         postalCode: billingDetails.postalCode,
+        email: billingDetails.email,
+        phone: billingDetails.phone,
+        orderNotes: billingDetails.orderNotes,
       },
     });
     let confirmedOrder;
@@ -22,9 +25,19 @@ const orderController = {
       next(error);
     }
 
-    console.log(confirmedOrder);
+    const orderId = confirmedOrder._id;
 
-    res.status(200).json({ confirmedOrder });
+    res.status(200).json({ orderId });
+  },
+
+  async getOrders(req, res, next) {
+    let orders;
+    try {
+      orders = await Order.find({ userId: req.user._id });
+    } catch (error) {
+      return next(error);
+    }
+    res.status(200).json({ orders });
   },
 };
 

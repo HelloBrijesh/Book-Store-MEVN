@@ -5,8 +5,10 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 mb-0">
-            <a href="/">Home</a> <span class="mx-2 mb-0">/</span>
-            <a href="/cart">Cart</a> <span class="mx-2 mb-0">/</span>
+            <RouterLink to="/">Home</RouterLink>
+            <span class="mx-2 mb-0">/</span>
+            <RouterLink to="/cart">Cart</RouterLink>
+            <span class="mx-2 mb-0">/</span>
             <strong class="text-black">Checkout</strong>
           </div>
         </div>
@@ -30,6 +32,7 @@
                       class="form-control"
                       id="firstName"
                       v-model="billingDetails.firstName"
+                      required
                     />
                   </div>
                   <div class="col-md-6">
@@ -41,6 +44,7 @@
                       class="form-control"
                       id="lastName"
                       v-model="billingDetails.lastName"
+                      required
                     />
                   </div>
                 </div>
@@ -55,18 +59,10 @@
                       class="form-control"
                       id="address"
                       v-model="billingDetails.address"
+                      required
                     />
                   </div>
                 </div>
-
-                <div class="form-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Apartment, suite, unit etc. (optional)"
-                  />
-                </div>
-
                 <div class="form-group row">
                   <div class="col-md-6">
                     <label for="state" class="text-black"
@@ -77,6 +73,7 @@
                       class="form-control"
                       id="state"
                       v-model="billingDetails.state"
+                      required
                     />
                   </div>
                   <div class="col-md-6">
@@ -88,6 +85,7 @@
                       class="form-control"
                       id="postalCode"
                       v-model="billingDetails.postalCode"
+                      required
                     />
                   </div>
                 </div>
@@ -102,6 +100,7 @@
                       class="form-control"
                       id="email"
                       v-model="billingDetails.email"
+                      required
                     />
                   </div>
                   <div class="col-md-6">
@@ -193,18 +192,18 @@
 <script setup>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
-import { useUserStore } from "../stores/userStore";
-import { useRouter } from "vue-router";
 import { onMounted, ref } from "vue";
+import { useRouter, RouterLink } from "vue-router";
+import { useAuthStore } from "../stores/authStore";
 import { useCartStore } from "../stores/cartStore";
-import useOrderService from "../services/orderService";
 import { useOrderStore } from "../stores/orderStore";
+import useOrderService from "../services/orderService";
 
 const router = useRouter();
-const userStore = useUserStore();
+const authStore = useAuthStore();
 const cartStore = useCartStore();
 const orderStore = useOrderStore();
-const { getOrders, error, statusCode, order } = useOrderService();
+const { placeOrder, error, statusCode, orders } = useOrderService();
 
 const cart = cartStore.getCartItems;
 
@@ -220,23 +219,23 @@ const billingDetails = ref({
 });
 console.log(cartStore.getCartItems[0]);
 const orderPayLoad = ref({
-  billingDetails: billingDetails.value,
+  user: authStore.getSessionDetails,
   cart: cartStore.getCartItems,
-  user: userStore.getUser,
+  billingDetails: billingDetails.value,
 });
 
 const handlePlaceOrder = async () => {
-  await getOrders(orderPayLoad);
-  console.log(order.value._id);
-  orderStore.setOrders(order.value._id);
+  await placeOrder(orderPayLoad);
+  orderStore.setOrders(orders.value);
+  cartStore.$reset();
   router.push("/thankyou");
 };
 
 onMounted(async () => {
-  if (!userStore.getisLoggedin) {
+  if (!authStore.getisLoggedin) {
     await router.push("/login");
   }
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>

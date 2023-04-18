@@ -5,7 +5,8 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 mb-0">
-            <a href="/">Home</a> <span class="mx-2 mb-0">/</span>
+            <RouterLink to="/">Home</RouterLink>
+            <span class="mx-2 mb-0">/</span>
             <strong class="text-black">Sign Up</strong>
           </div>
         </div>
@@ -109,7 +110,7 @@
             </form>
             <div class="row justify-content-center my-5">
               Already have an account ? &nbsp;
-              <a href="/login"> Click here</a> &nbsp; to Login
+              <RouterLink to="/login"> Click here</RouterLink> &nbsp; to Login
             </div>
           </div>
         </div>
@@ -123,16 +124,16 @@
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import { onMounted, reactive } from "vue";
-import { useRouter } from "vue-router";
-import { useUserStore } from "../stores/userStore";
+import { useRouter, RouterLink } from "vue-router";
+import { useAuthStore } from "../stores/authStore";
 import useAuthService from "../services/authService";
 
 const router = useRouter();
-const userStore = useUserStore();
-const { signUp, error, userDetail, statusCode } = useAuthService();
+const authStore = useAuthStore();
+const { signUp, error, authDetail, statusCode } = useAuthService();
 
 onMounted(async () => {
-  if (userStore.getisLoggedin) {
+  if (authStore.getisLoggedin) {
     await router.push("/");
   }
 });
@@ -148,8 +149,8 @@ const signUpPayload = reactive({
 const handleSignUp = async () => {
   await signUp(signUpPayload);
   if (statusCode.value === 200) {
-    userStore.setUser(userDetail.value);
-    userStore.setisLoggedin(true);
+    authStore.setSessionDetails(authDetail.value);
+    authStore.setisLoggedin(true);
     await router.push("/");
   }
 };

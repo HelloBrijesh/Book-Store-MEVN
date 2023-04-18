@@ -5,7 +5,8 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 mb-0">
-            <a href="/">Home</a> <span class="mx-2 mb-0">/</span>
+            <RouterLink to="/">Home</RouterLink>
+            <span class="mx-2 mb-0">/</span>
             <strong class="text-black">About</strong>
           </div>
         </div>
@@ -212,6 +213,7 @@
 <script setup>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
+import { RouterLink } from "vue-router";
 </script>
 
 <style></style>

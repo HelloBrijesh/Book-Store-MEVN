@@ -10,7 +10,9 @@ const loginController = {
 
     const loginSchema = Joi.object({
       email: Joi.string().email().required(),
-      password: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")).required(),
+      password: Joi.string()
+        .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
+        .required(),
     });
     const { error } = loginSchema.validate(req.body);
     if (error) {
@@ -28,23 +30,27 @@ const loginController = {
         return next(CustomErrorHandler.wrongCredentials());
       }
       //comparing the password
-      const verifyPassword = await bcrypt.compare(req.body.password, user.password);
-      if (!verifyPassword || user.role != "customer") {
+      const verifyPassword = await bcrypt.compare(
+        req.body.password,
+        user.password
+      );
+      if (!verifyPassword) {
         return next(CustomErrorHandler.wrongCredentials());
       }
 
       // Creating the Tokens
       access_token = JwtService.sign({ _id: user._id, role: user.role });
-      refresh_token = JwtService.sign({ _id: user._id, role: user.role }, JWT_REFRESH_SECRET, "30d");
+      refresh_token = JwtService.sign(
+        { _id: user._id, role: user.role },
+        JWT_REFRESH_SECRET,
+        "30d"
+      );
 
       // Adding refresh token in database
       await RefreshToken.create({ savedRefreshToken: refresh_token });
 
-      const userDetail = {
+      const authDetail = {
         userId: user._id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
         role: user.role,
       };
 
@@ -57,7 +63,7 @@ const loginController = {
       });
 
       // Sending userDetail and access_token
-      res.json({ access_token, userDetail });
+      res.json({ access_token, authDetail });
     } catch (err) {
       return next(err);
     }

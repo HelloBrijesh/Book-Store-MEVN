@@ -12,7 +12,7 @@ const shopController = {
         price: { $lte: price },
         quantity: { $gte: 1 },
       })
-        .select("-category -quantity -bookDescription -__v")
+        .select("-bookDescription -__v")
         .limit(limit * 1)
         .skip((page - 1) * limit)
         .exec();
@@ -25,7 +25,6 @@ const shopController = {
       return next(error);
     }
     const totalPages = Math.ceil(count / limit);
-    const currentPage = page;
 
     res.status(200).json({ searchedBooks, totalPages });
   },

@@ -8,7 +8,7 @@ const bookSchema = new mongoose.Schema(
     quantity: { type: Number, required: true },
     category: { type: String, required: true },
     imageUrl: { type: String, required: true },
-    bookDescription: { type: String },
+    bookDescription: { type: String, required: true },
   },
   { timestamp: true }
 );

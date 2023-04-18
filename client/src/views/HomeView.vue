@@ -15,7 +15,9 @@
             <div class="intro-text text-center">
               <!-- <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla. </p> -->
               <p>
-                <a href="/" class="btn btn-sm btn-primary mt-4">Shop Now</a>
+                <RouterLink to="/shop" class="btn btn-sm btn-primary mt-4"
+                  >Shop Now</RouterLink
+                >
               </p>
             </div>
           </div>
@@ -86,7 +88,7 @@
             data-aos="fade"
             data-aos-delay=""
           >
-            <a class="block-2-item" href="#">
+            <RouterLink to="#" class="block-2-item">
               <figure class="image">
                 <img src="images/paperback.jpg" alt="" class="img-fluid" />
               </figure>
@@ -94,14 +96,14 @@
                 <!-- <span class="text-uppercase">Collections</span> -->
                 <h3>Paperback</h3>
               </div>
-            </a>
+            </RouterLink>
           </div>
           <div
             class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0"
             data-aos="fade"
             data-aos-delay="100"
           >
-            <a class="block-2-item" href="#">
+            <RouterLink to="#" class="block-2-item">
               <figure class="image">
                 <img src="images/hardcover.jpg" alt="" class="img-fluid" />
               </figure>
@@ -109,14 +111,14 @@
                 <!-- <span class="text-uppercase">Collections</span> -->
                 <h3>E-Books</h3>
               </div>
-            </a>
+            </RouterLink>
           </div>
           <div
             class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0"
             data-aos="fade"
             data-aos-delay="200"
           >
-            <a class="block-2-item" href="#">
+            <RouterLink to="#" class="block-2-item">
               <figure class="image">
                 <img src="images/audiobook.jpg" alt="" class="img-fluid" />
               </figure>
@@ -124,7 +126,7 @@
                 <!-- <span class="text-uppercase"></span> -->
                 <h3>Audiobook</h3>
               </div>
-            </a>
+            </RouterLink>
           </div>
         </div>
       </div>
@@ -157,9 +159,7 @@
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import BSBook from "../components/BSBook.vue";
-import { useUserStore } from "../stores/userStore";
-import { onMounted } from "vue";
-const userStore = useUserStore();
+import { RouterLink } from "vue-router";
 
 const bsbooks = [
   {

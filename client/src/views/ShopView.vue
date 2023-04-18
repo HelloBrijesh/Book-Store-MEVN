@@ -5,7 +5,8 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 mb-0">
-            <a href="/">Home</a> <span class="mx-2 mb-0">/</span>
+            <RouterLink to="/">Home</RouterLink>
+            <span class="mx-2 mb-0">/</span>
             <strong class="text-black">Shop</strong>
           </div>
         </div>
@@ -146,13 +147,15 @@
               <div class="col-md-12 text-center">
                 <div class="site-block-27">
                   <ul>
-                    <li><a href="#">&lt;</a></li>
+                    <li><RouterLink to="#">&lt;</RouterLink></li>
                     <li v-for="page in totalPages">
-                      <a href="#" @click="(e) => handlePagination(page)">{{
-                        page
-                      }}</a>
+                      <RouterLink
+                        to="#"
+                        @click="(e) => handlePagination(page)"
+                        >{{ page }}</RouterLink
+                      >
                     </li>
-                    <li><a href="#">&gt;</a></li>
+                    <li><RouterLink to="#">&gt;</RouterLink></li>
 
                     <!-- <li class="active"><span>1</span></li>
                     <li><a href="#">5</a></li> -->
@@ -173,7 +176,7 @@ import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import Book from "../components/Book.vue";
 import { ref, onMounted } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { useRoute, useRouter, RouterLink } from "vue-router";
 import useShopService from "../services/shopService";
 
 const route = useRoute();

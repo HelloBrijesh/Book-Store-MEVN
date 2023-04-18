@@ -1,7 +1,6 @@
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
 export const useUserStore = defineStore("userStore", () => {
-  const isLoggedin = ref(false);
   const user = ref({
     userId: "",
     firstName: " ",
@@ -10,17 +9,9 @@ export const useUserStore = defineStore("userStore", () => {
     role: " ",
   });
 
-  const getisLoggedin = computed(() => {
-    return isLoggedin.value;
-  });
-
   const getUser = computed(() => {
     return user.value;
   });
-
-  function setisLoggedin(status) {
-    isLoggedin.value = status;
-  }
 
   function setUser(data) {
     user.value.userId = data.userId;
@@ -31,7 +22,6 @@ export const useUserStore = defineStore("userStore", () => {
   }
 
   function $reset() {
-    isLoggedin.value = false;
     user.value.userId = " ";
     user.value.firstName = " ";
     user.value.lastName = " ";
@@ -40,9 +30,6 @@ export const useUserStore = defineStore("userStore", () => {
   }
 
   return {
-    isLoggedin,
-    getisLoggedin,
-    setisLoggedin,
     user,
     getUser,
     setUser,

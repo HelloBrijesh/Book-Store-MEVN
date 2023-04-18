@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 mb-0">
-          <a href="/">Home</a> <span class="mx-2 mb-0">/</span>
+          <RouterLink to="/">Home</RouterLink> <span class="mx-2 mb-0">/</span>
           <strong class="text-black">Admin</strong>
         </div>
       </div>
@@ -20,13 +20,14 @@
           <div class="border p-4 rounded mb-4">
             <ul class="list-unstyled mb-0">
               <li class="mb-1" @click="handleActiveTab('Add Book')">
-                <a href="#" class="d-flex"><span>Add Book</span></a>
+                <RouterLink to="#" class="d-flex"
+                  ><span>Add Book</span></RouterLink
+                >
               </li>
               <li class="mb-1" @click="handleActiveTab('Delete Book')">
-                <a href="#" class="d-flex"><span>Delete Book</span></a>
-              </li>
-              <li class="mb-1" @click="handleLogout()">
-                <a href="#" class="d-flex"><span>Log Out</span></a>
+                <RouterLink to="#" class="d-flex"
+                  ><span>Delete Book</span></RouterLink
+                >
               </li>
             </ul>
           </div>
@@ -50,29 +51,22 @@ import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import AddBook from "../components/AddBook.vue";
 import DeleteBook from "../components/DeleteBook.vue";
-import { useAdminStore } from "../stores/adminStore";
-import { onMounted, reactive, ref } from "vue";
-import useAdminService from "../services/adminService";
-import { useRouter } from "vue-router";
-const router = useRouter();
-const adminStore = useAdminStore();
+import { onMounted, ref } from "vue";
+import { RouterLink, useRouter } from "vue-router";
+import { useAuthStore } from "../stores/authStore";
 
-const { adminLogout } = useAdminService();
+const router = useRouter();
+const authStore = useAuthStore();
 
 const activeTab = ref("Add Book");
 const handleActiveTab = (currentTab) => {
   activeTab.value = currentTab;
 };
 
-const handleLogout = async () => {
-  await adminLogout();
-  adminStore.$reset();
-  window.location.href = "/adminlogin";
-};
-
 onMounted(async () => {
-  if (!adminStore.getAdminLoggedin) {
-    await router.push("/adminlogin");
+  const session = authStore.getSessionDetails;
+  if (session.role != "admin") {
+    router.push("/");
   }
 });
 </script>

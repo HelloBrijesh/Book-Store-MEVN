@@ -5,7 +5,8 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 mb-0">
-            <a href="/">Home</a> <span class="mx-2 mb-0">/</span>
+            <RouterLink to="/">Home</RouterLink>
+            <span class="mx-2 mb-0">/</span>
             <strong class="text-black" v-if="book">{{ book.bookName }}</strong>
           </div>
         </div>
@@ -130,12 +131,11 @@ const route = useRoute();
 const cartStore = useCartStore();
 const { book, getBookDetails, error, statusCode } = useBookService();
 
-const bookid = route.params.bookid;
+const bookid = ref(route.params.bookid);
 const quantity = ref(1);
 const item = ref({});
-
 onMounted(async () => {
-  await getBookDetails(bookid);
+  await getBookDetails(bookid.value);
   item.value = {
     bookId: book.value._id,
     bookName: book.value.bookName,
@@ -148,14 +148,18 @@ onMounted(async () => {
 const handleSubtract = () => {
   if (quantity.value >= 2) {
     quantity.value--;
+    item.value.quantity--;
   }
 };
 const handleAdd = () => {
   if (quantity.value < book.value.quantity) {
     quantity.value++;
+    item.value.quantity++;
   }
 };
-const handleAddToCart = () => {
+const handleAddToCart = async () => {
+  console.log(item.value);
+
   cartStore.setCartItems(item.value);
 };
 </script>

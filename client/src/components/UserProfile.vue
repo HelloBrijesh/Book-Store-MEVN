@@ -1,6 +1,6 @@
 <template>
   <div>User Profile</div>
-  <div>{{ user.firstName }}</div>
+  <div>{{ userDetail.firstName }}</div>
   <div>User Profile</div>
   <div v-if="error">{{ error }}</div>
 </template>
@@ -8,15 +8,15 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import { useUserStore } from "../stores/userStore";
-import useAuthService from "../services/authService";
+import useUserService from "../services/userService";
 
-const { getUser, error, userDetail } = useAuthService();
+const { getUser, error, userDetail } = useUserService();
 
 const userStore = useUserStore();
-const user = userStore.getUser;
 
 onMounted(async () => {
   await getUser();
+  userStore.setUser(userDetail.value);
 });
 </script>
 

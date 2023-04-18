@@ -15,7 +15,7 @@ export const useCartStore = defineStore("cartStore", () => {
   const getTotal = (items) => {
     let total = 0;
     for (let i = 0; i < items.length; i++) {
-      total = total + items[i].price;
+      total = total + items[i].price * items[i].quantity;
     }
     return total;
   };
@@ -25,7 +25,6 @@ export const useCartStore = defineStore("cartStore", () => {
   }
   function $reset() {
     cartItems.value = [];
-    cartTotal = null;
   }
 
   return {

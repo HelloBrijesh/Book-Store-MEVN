@@ -68,11 +68,8 @@ const signupController = {
       return next(err);
     }
 
-    const userDetail = {
+    const authDetail = {
       userId: registeredUser._id,
-      firstName: registeredUser.firstName,
-      lastName: registeredUser.lastName,
-      email: registeredUser.email,
       role: registeredUser.role,
     };
 
@@ -84,7 +81,7 @@ const signupController = {
       httpOnly: true,
     });
     // sending the user data and access_token
-    res.json({ access_token, userDetail });
+    res.json({ access_token, authDetail });
   },
 };
 

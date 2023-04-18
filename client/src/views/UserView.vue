@@ -5,7 +5,8 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 mb-0">
-            <a href="/">Home</a> <span class="mx-2 mb-0">/</span>
+            <RouterLink to="/">Home</RouterLink>
+            <span class="mx-2 mb-0">/</span>
             <strong class="text-black">User</strong>
           </div>
         </div>
@@ -19,21 +20,29 @@
             <div class="border p-4 rounded mb-4">
               <ul class="list-unstyled mb-0">
                 <li class="mb-1" @click="handleActiveTab('profile')">
-                  <a href="#" class="d-flex"><span>Profile</span></a>
+                  <RouterLink to="#" class="d-flex"
+                    ><span>Profile</span></RouterLink
+                  >
                 </li>
                 <li class="mb-1" @click="handleActiveTab('orders')">
-                  <a href="#" class="d-flex"><span>Orders</span></a>
+                  <RouterLink to="#" class="d-flex"
+                    ><span>Orders</span></RouterLink
+                  >
                 </li>
                 <li class="mb-1" @click="handleActiveTab('settings')">
-                  <a href="#" class="d-flex"><span>Settings</span></a>
+                  <RouterLink to="#" class="d-flex"
+                    ><span>Settings</span></RouterLink
+                  >
                 </li>
                 <li class="mb-1" @click="handleLogout()">
-                  <a href="#" class="d-flex"><span>Log Out</span></a>
+                  <RouterLink to="#" class="d-flex"
+                    ><span>Log Out</span></RouterLink
+                  >
                 </li>
               </ul>
             </div>
           </div>
-          <div class="col-md-9">
+          <div class="col-md-9 text-black">
             <div v-if="activeTab === 'profile'">
               <UserProfile></UserProfile>
             </div>
@@ -58,12 +67,18 @@ import UserProfile from "../components/UserProfile.vue";
 import UserOrders from "../components/UserOrders.vue";
 import Settings from "../components/Settings.vue";
 import { onMounted, ref } from "vue";
-import { useRouter } from "vue-router";
+import { useRouter, RouterLink } from "vue-router";
 import { useUserStore } from "../stores/userStore";
+import { useAuthStore } from "../stores/authStore";
+import { useCartStore } from "../stores/cartStore";
+import { useOrderStore } from "../stores/orderStore";
 import useAuthService from "../services/authService";
 
 const router = useRouter();
 const userStore = useUserStore();
+const authStore = useAuthStore();
+const cartStore = useCartStore();
+const orderStore = useOrderStore();
 const { logout, error, statusCode } = useAuthService();
 
 const activeTab = ref("profile");
@@ -74,12 +89,15 @@ function handleActiveTab(currentTab) {
 
 const handleLogout = async () => {
   await logout();
+  authStore.$reset();
   userStore.$reset();
+  orderStore.$reset();
+  cartStore.$reset();
   window.location.href = "/login";
 };
 
 onMounted(async () => {
-  if (!userStore.getisLoggedin) {
+  if (!authStore.getisLoggedin) {
     await router.push("/login");
   }
 });

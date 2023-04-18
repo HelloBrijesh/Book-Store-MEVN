@@ -28,7 +28,7 @@
             <div class="site-top-icons">
               <ul>
                 <li>
-                  <RouterLink v-if="userStore.getisLoggedin" to="/user"
+                  <RouterLink v-if="authStore.getisLoggedin" to="/user"
                     ><span>Account</span></RouterLink
                   >
                   <RouterLink v-else to="/login"
@@ -36,13 +36,15 @@
                   ></RouterLink>
                 </li>
                 <li>
-                  <a href="#"><span class="icon icon-heart-o"></span></a>
+                  <RouterLink to="#"
+                    ><span class="icon icon-heart-o"></span
+                  ></RouterLink>
                 </li>
                 <li>
-                  <a href="/cart" class="site-cart">
+                  <RouterLink to="/cart" class="site-cart">
                     <span class="icon icon-shopping_cart"></span>
                     <span class="count">{{ totalCartItems }}</span>
-                  </a>
+                  </RouterLink>
                 </li>
                 <li class="d-inline-block d-md-none ml-md-0">
                   <a href="#" class="site-menu-toggle js-menu-toggle"
@@ -72,6 +74,11 @@
           <li>
             <RouterLink to="/contact">Contact</RouterLink>
           </li>
+          <li v-if="session">
+            <RouterLink to="/admin" v-if="session.role === 'admin'"
+              >Manage Store</RouterLink
+            >
+          </li>
         </ul>
       </div>
     </nav>
@@ -80,12 +87,13 @@
 
 <script setup>
 import { RouterLink } from "vue-router";
-import { useUserStore } from "../stores/userStore";
+import { useAuthStore } from "../stores/authStore";
 import { useCartStore } from "../stores/cartStore";
-import { ref } from "vue";
-const userStore = useUserStore();
+import { onMounted, ref } from "vue";
+const authStore = useAuthStore();
 const cartStore = useCartStore();
 const totalCartItems = ref(cartStore.getCartItems.length);
+const session = authStore.getSessionDetails;
 </script>
 
 <style scoped></style>

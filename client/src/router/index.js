@@ -10,7 +10,6 @@ import CartView from "../views/CartView.vue";
 import CheckoutView from "../views/CheckoutView.vue";
 import ThankYouView from "../views/ThankYouView.vue";
 import ContactView from "../views/ContactView.vue";
-import AdminLoginView from "../views/AdminLoginView.vue";
 import AdminView from "../views/AdminView.vue";
 
 const router = createRouter({
@@ -75,11 +74,6 @@ const router = createRouter({
       path: "/admin",
       name: "admin",
       component: AdminView,
-    },
-    {
-      path: "/adminlogin",
-      name: "adminlogin",
-      component: AdminLoginView,
     },
     {
       // path: '/about',

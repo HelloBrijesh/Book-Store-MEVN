@@ -5,7 +5,8 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 mb-0">
-            <a href="/">Home</a> <span class="mx-2 mb-0">/</span>
+            <RouterLink to="/">Home</RouterLink>
+            <span class="mx-2 mb-0">/</span>
             <strong class="text-black">Cart</strong>
           </div>
         </div>
@@ -42,11 +43,11 @@
                     </td>
                     <td>$ {{ item.price * item.quantity }}</td>
                     <td>
-                      <a
-                        href="#"
+                      <RouterLink
+                        to="#"
                         class="btn btn-primary btn-sm"
                         @click="(e) => handleRemoveItem(item)"
-                        >X</a
+                        >X</RouterLink
                       >
                     </td>
                   </tr>
@@ -109,7 +110,7 @@
                   <div class="col-md-12">
                     <button
                       class="btn btn-primary btn-lg py-3 btn-block"
-                      onclick="window.location='checkout'"
+                      @click.prevent="handleProceedToCheckout"
                     >
                       Proceed To Checkout
                     </button>
@@ -128,15 +129,29 @@
 <script setup>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
-import { RouterLink } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
 import { useCartStore } from "../stores/cartStore";
+import { ref } from "vue";
 
+const router = useRouter();
 const cartStore = useCartStore();
 
 const cart = cartStore.getCartItems;
 
 const handleRemoveItem = (item) => {
-  console.log("ItemRemoved");
+  const findIndex = (bookId) => {
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].bookId === bookId) {
+        return i;
+      }
+    }
+  };
+  const bookIndex = findIndex(item.bookId);
+  cart.splice(bookIndex, 1);
+};
+
+const handleProceedToCheckout = () => {
+  router.push("/checkout");
 };
 </script>
 

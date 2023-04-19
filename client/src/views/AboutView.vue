@@ -20,7 +20,7 @@
             <div class="block-16">
               <figure>
                 <img
-                  src="/src/assets/images/blog_1.jpg"
+                  src="/images/blog_1.jpg"
                   alt="Image placeholder"
                   class="img-fluid rounded"
                 />
@@ -62,7 +62,7 @@
               <div class="block-38-img">
                 <div class="block-38-header">
                   <img
-                    src="/src/assets/images/person_1.jpg"
+                    src="/images/person_1.jpg"
                     alt="Image placeholder"
                     class="mb-4"
                   />
@@ -84,7 +84,7 @@
               <div class="block-38-img">
                 <div class="block-38-header">
                   <img
-                    src="/src/assets/images/person_2.jpg"
+                    src="/images/person_2.jpg"
                     alt="Image placeholder"
                     class="mb-4"
                   />
@@ -106,7 +106,7 @@
               <div class="block-38-img">
                 <div class="block-38-header">
                   <img
-                    src="/src/assets/images/person_3.jpg"
+                    src="/images/person_3.jpg"
                     alt="Image placeholder"
                     class="mb-4"
                   />
@@ -128,7 +128,7 @@
               <div class="block-38-img">
                 <div class="block-38-header">
                   <img
-                    src="/src/assets/images/person_4.jpg"
+                    src="/images/person_4.jpg"
                     alt="Image placeholder"
                     class="mb-4"
                   />

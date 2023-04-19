@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { DEV_PORT, DB_URL } from "./config";
+import { DEV_PORT, DB_URL, CLIENT_URL } from "./config";
 import { errorHandler } from "./middlewares";
 import routes from "./routes";
 import mongoose from "mongoose";
@@ -8,7 +8,7 @@ import cookieParser from "cookie-parser";
 
 const app = express();
 // app.use(cors());
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(cors({ origin: CLIENT_URL, credentials: true }));
 app.use(cookieParser());
 // Database connection
 mongoose

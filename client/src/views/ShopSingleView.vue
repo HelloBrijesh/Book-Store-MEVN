@@ -134,6 +134,7 @@ const { book, getBookDetails, error, statusCode } = useBookService();
 const bookid = ref(route.params.bookid);
 const quantity = ref(1);
 const item = ref({});
+const cart = cartStore.getCartItems;
 onMounted(async () => {
   await getBookDetails(bookid.value);
   item.value = {
@@ -157,10 +158,31 @@ const handleAdd = () => {
     item.value.quantity++;
   }
 };
-const handleAddToCart = async () => {
-  console.log(item.value);
 
-  cartStore.setCartItems(item.value);
+const findBookInCart = (bookId) => {
+  for (let i = 0; i < cart.length; i++) {
+    if (cart[i].bookId === bookId) {
+      return true;
+    }
+  }
+  return false;
+};
+
+const findIndex = (bookId) => {
+  for (let i = 0; i < cart.length; i++) {
+    if (cart[i].bookId === bookId) {
+      return i;
+    }
+  }
+};
+const handleAddToCart = () => {
+  const foundBoook = findBookInCart(bookid.value);
+  if (foundBoook === true) {
+    const bookIndex = findIndex(bookid.value);
+    cart[bookIndex].quantity = cart[bookIndex].quantity + item.value.quantity;
+  } else {
+    cartStore.setCartItems(item.value);
+  }
 };
 </script>
 <style scoped></style>

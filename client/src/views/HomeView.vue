@@ -1,11 +1,7 @@
 <template>
   <div class="site-wrap">
     <Header></Header>
-    <div
-      class="site-blocks-cover"
-      style="background-image: url(images/hero_1.jpg)"
-      data-aos="fade"
-    >
+    <div class="site-blocks-cover banner" data-aos="fade">
       <div class="container">
         <div
           class="row align-items-start align-items-md-center justify-content-end"
@@ -90,7 +86,11 @@
           >
             <RouterLink to="#" class="block-2-item">
               <figure class="image">
-                <img src="images/paperback.jpg" alt="" class="img-fluid" />
+                <img
+                  src="/src/assets/images/paperback.jpg"
+                  alt=""
+                  class="img-fluid"
+                />
               </figure>
               <div class="text">
                 <!-- <span class="text-uppercase">Collections</span> -->
@@ -105,7 +105,11 @@
           >
             <RouterLink to="#" class="block-2-item">
               <figure class="image">
-                <img src="images/hardcover.jpg" alt="" class="img-fluid" />
+                <img
+                  src="/src/assets/images/hardcover.jpg"
+                  alt=""
+                  class="img-fluid"
+                />
               </figure>
               <div class="text">
                 <!-- <span class="text-uppercase">Collections</span> -->
@@ -120,7 +124,11 @@
           >
             <RouterLink to="#" class="block-2-item">
               <figure class="image">
-                <img src="images/audiobook.jpg" alt="" class="img-fluid" />
+                <img
+                  src="/src/assets/images/audiobook.jpg"
+                  alt=""
+                  class="img-fluid"
+                />
               </figure>
               <div class="text">
                 <!-- <span class="text-uppercase"></span> -->
@@ -164,28 +172,28 @@ import { RouterLink } from "vue-router";
 const bsbooks = [
   {
     id: 1,
-    imgurl: "images/book_1.jpg",
+    imgurl: "/src/assets/images/book_1.jpg",
     name: "Book 1",
     author: "Author 1",
     price: "$100",
   },
   {
     id: 2,
-    imgurl: "images/book_2.jpg",
+    imgurl: "/src/assets/images/book_2.jpg",
     name: "Book 2",
     author: "Author 2",
     price: "$200",
   },
   {
     id: 3,
-    imgurl: "images/book_3.jpg",
+    imgurl: "/src/assets/images/book_3.jpg",
     name: "Book 3",
     author: "Author 3",
     price: "$300",
   },
   {
     id: 4,
-    imgurl: "images/book_4.jpg",
+    imgurl: "/src/assets/images/book_4.jpg",
     name: "Book 4",
     author: "Author 4",
     price: "$300",
@@ -193,4 +201,8 @@ const bsbooks = [
 ];
 </script>
 
-<style scoped></style>
+<style scoped>
+.banner {
+  background-image: url(/src/assets/images/hero_1.jpg);
+}
+</style>

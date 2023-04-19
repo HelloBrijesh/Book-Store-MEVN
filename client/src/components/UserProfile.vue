@@ -1,8 +1,8 @@
 <template>
-  <div>User Profile</div>
-  <div>{{ userDetail.firstName }}</div>
-  <div>User Profile</div>
   <div v-if="error">{{ error }}</div>
+  <div>User Profile</div>
+  <div>Name : {{ userDetail.firstName }} {{ userDetail.firstName }}</div>
+  <div>Email : {{ userDetail.email }}</div>
 </template>
 
 <script setup>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
+axios.defaults.baseURL = import.meta.env.VITE_SERVER_URL;
 
 let accessToken;
 async function refreshAccessToken() {
@@ -26,11 +26,14 @@ axios.interceptors.response.use(
     if (
       error.response.status === 401 &&
       !originalRequest._retry &&
-      (error.response.data.message === "jwt expired" || error.response.data.message === "accessToken Required")
+      (error.response.data.message === "jwt expired" ||
+        error.response.data.message === "accessToken Required")
     ) {
       originalRequest._retry = true;
       return refreshAccessToken().then(() => {
-        axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${accessToken}`;
         originalRequest.headers.Authorization = `Bearer ${accessToken}`;
         return axios(originalRequest);
       });

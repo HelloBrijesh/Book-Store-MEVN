@@ -67,7 +67,7 @@ const loginController = {
         httpOnly: true, // backend only
         sameSite: "none", // set to none for cross-request
       });
-
+      console.log(cookie);
       // Sending userDetail and access_token
       res.json({ access_token, authDetail });
     } catch (err) {

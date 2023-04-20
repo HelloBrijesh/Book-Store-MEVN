@@ -98,7 +98,7 @@ const handleLogout = async () => {
 
 onMounted(async () => {
   if (!authStore.getisLoggedin) {
-    await router.push("/login");
+    router.push("/login");
   }
 });
 </script>

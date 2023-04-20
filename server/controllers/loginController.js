@@ -55,14 +55,15 @@ const loginController = {
       };
 
       // Setting up the cookies
-      res.status(200).cookie("token", refresh_token, {
-        sameSite: "none",
-        path: "/",
-        expires: new Date(Date.now() + 900000),
-        httpOnly: true,
-        secure: true,
-        domain: "book-store-client-qfmu.onrender.com",
-      });
+      // res.status(200).cookie("token", refresh_token, {
+      //   sameSite: "none",
+      //   path: "/",
+      //   expires: new Date(Date.now() + 900000),
+      //   httpOnly: true,
+      //   secure: true,
+      //   domain: "book-store-client-qfmu.onrender.com",
+      // });
+      res.cookie("name", "tutorialsPoint");
 
       // Sending userDetail and access_token
       res.json({ access_token, authDetail });

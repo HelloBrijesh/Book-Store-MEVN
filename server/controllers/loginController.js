@@ -61,7 +61,7 @@ const loginController = {
         expires: new Date(Date.now() + 900000),
         httpOnly: true,
         secure: true,
-        domain: "https://book-store-client-qfmu.onrender.com",
+        domain: "book-store-client-qfmu.onrender.com",
       });
 
       // Sending userDetail and access_token

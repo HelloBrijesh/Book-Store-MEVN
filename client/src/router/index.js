@@ -13,7 +13,7 @@ import ContactView from "../views/ContactView.vue";
 import AdminView from "../views/AdminView.vue";
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
     {
       path: "/",

@@ -57,7 +57,7 @@ const loginController = {
       // Setting up the cookies
       res.status(200).cookie("token", refresh_token, {
         sameSite: "strict",
-        path: "/",
+        path: "https://book-store-client-qfmu.onrender.com/",
         expires: new Date(Date.now() + 900000),
         httpOnly: true,
         secure: true,

@@ -56,11 +56,12 @@ const loginController = {
 
       // Setting up the cookies
       res.status(200).cookie("token", refresh_token, {
-        sameSite: "strict",
-        path: "https://book-store-client-qfmu.onrender.com/",
+        sameSite: "none",
+        path: "/",
         expires: new Date(Date.now() + 900000),
         httpOnly: true,
         secure: true,
+        domain: "https://book-store-client-qfmu.onrender.com",
       });
 
       // Sending userDetail and access_token

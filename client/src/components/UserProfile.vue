@@ -1,7 +1,7 @@
 <template>
   <div v-if="error">{{ error }}</div>
   <div>User Profile</div>
-  <div>Name : {{ userDetail.firstName }} {{ userDetail.firstName }}</div>
+  <div>Name : {{ userDetail.firstName }} {{ userDetail.lastName }}</div>
   <div>Email : {{ userDetail.email }}</div>
 </template>
 

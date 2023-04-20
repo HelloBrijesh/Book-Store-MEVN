@@ -217,7 +217,7 @@ const billingDetails = ref({
   phone: "",
   orderNotes: "",
 });
-console.log(cartStore.getCartItems[0]);
+
 const orderPayLoad = ref({
   user: authStore.getSessionDetails,
   cart: cartStore.getCartItems,

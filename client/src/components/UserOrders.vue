@@ -43,7 +43,6 @@ import useOrderService from "../services/orderService";
 const { getOrders, error, statusCode, orders } = useOrderService();
 onMounted(async () => {
   await getOrders();
-  console.log(orders.value);
   totalOrders = orders.value.length;
 });
 let totalOrders = ref(null);

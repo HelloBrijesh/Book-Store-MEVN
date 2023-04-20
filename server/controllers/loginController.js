@@ -57,8 +57,10 @@ const loginController = {
       // Setting up the cookies
       res.status(200).cookie("token", refresh_token, {
         sameSite: "strict",
+        path: "/",
         expires: new Date(Date.now() + 900000),
         httpOnly: true,
+        secure: true,
       });
 
       // Sending userDetail and access_token

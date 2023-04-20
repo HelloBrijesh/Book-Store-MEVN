@@ -8,16 +8,7 @@ import cookieParser from "cookie-parser";
 
 const app = express();
 // app.use(cors());
-app.use(
-  cors({
-    origin: CLIENT_URL,
-    methods: ["GET", "PUT", "POST"],
-    allowedHeaders: ["Content-Type", "Authorization", "x-csrf-token"],
-    credentials: true,
-    maxAge: 600,
-    exposedHeaders: ["*", "Authorization"],
-  })
-);
+app.use(cors({ origin: CLIENT_URL, credentials: true }));
 app.use(cookieParser());
 // Database connection
 mongoose

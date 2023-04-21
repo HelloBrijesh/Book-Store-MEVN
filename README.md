@@ -17,6 +17,13 @@ The website allow customers to:
 - Fully responsive website so that customers can also buy using their mobile devices.
 - Secure and encrypted data storage for customer information using MongoDB.
 
+## Features
+
+- Authentication
+- Refresh proof Pinia State Management
+- REST API
+- CRUD Operations
+
 ## Target Audience:
 
 The website targets individuals who are looking for an easy and convenient way to buy books online.

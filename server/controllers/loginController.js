@@ -66,7 +66,7 @@ const loginController = {
         secure: true, // set to true if your using https or samesite is none
         httpOnly: true, // backend only
         sameSite: "none", // set to none for cross-request
-        domain: "book-store-client-qfmu.onrender.com",
+        domain: "zippy-malabi-3062be.netlify.app",
       });
       // Sending userDetail and access_token
       res.json({ access_token, authDetail });

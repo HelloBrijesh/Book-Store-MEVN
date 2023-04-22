@@ -11,6 +11,7 @@ import CheckoutView from "../views/CheckoutView.vue";
 import ThankYouView from "../views/ThankYouView.vue";
 import ContactView from "../views/ContactView.vue";
 import AdminView from "../views/AdminView.vue";
+import NotFoundView from "../views/NotFoundView.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -74,6 +75,15 @@ const router = createRouter({
       path: "/admin",
       name: "admin",
       component: AdminView,
+    },
+    {
+      path: "/404",
+      name: "notFound",
+      component: NotFoundView,
+    },
+    {
+      path: "/:pathMatch(.*)*",
+      redirect: "/404",
     },
     {
       // path: '/about',

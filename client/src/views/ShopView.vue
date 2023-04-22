@@ -147,15 +147,19 @@
               <div class="col-md-12 text-center">
                 <div class="site-block-27">
                   <ul>
-                    <li><RouterLink to="#">&lt;</RouterLink></li>
-                    <li v-for="page in totalPages">
-                      <RouterLink
-                        to="#"
-                        @click="(e) => handlePagination(page)"
-                        >{{ page }}</RouterLink
-                      >
+                    <li @click.prevent="handlePrev">
+                      <RouterLink to="#">&lt;</RouterLink>
                     </li>
-                    <li><RouterLink to="#">&gt;</RouterLink></li>
+                    <li
+                      v-for="page in totalPages"
+                      @click="(e) => handlePagination(page)"
+                      :class="{ active: page === currentPage }"
+                    >
+                      <RouterLink to="#">{{ page }}</RouterLink>
+                    </li>
+                    <li @click.prevent="handleNext">
+                      <RouterLink to="#" disabled>&gt;</RouterLink>
+                    </li>
 
                     <!-- <li class="active"><span>1</span></li>
                     <li><a href="#">5</a></li> -->
@@ -187,9 +191,23 @@ const shopPayload = ref({
   category: "Romance",
   price: "50",
 });
+const currentPage = ref(1);
 
+const handlePrev = async () => {
+  if (currentPage.value > 1) {
+    currentPage.value--;
+    handlePagination(currentPage.value);
+  }
+};
+const handleNext = async () => {
+  if (currentPage.value < totalPages.value) {
+    currentPage.value++;
+    handlePagination(currentPage.value);
+  }
+};
 const handlePagination = async (page) => {
-  await getBooks(shopPayload.value, page);
+  currentPage.value = page;
+  await getBooks(shopPayload.value, currentPage.value);
 };
 
 const handleShop = async () => {

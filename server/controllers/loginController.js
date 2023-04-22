@@ -56,17 +56,13 @@ const loginController = {
 
       // Setting up the cookies
       res.status(200).cookie("token", refresh_token, {
-        // sameSite: "none",
-        // path: "/",
-        // httpOnly: true,
         // secure: true,
         // domain: "book-store-client-qfmu.onrender.com",
 
+        sameSite: "lax",
+        path: "/",
         expires: new Date(Date.now() + 900000),
-        secure: true, // set to true if your using https or samesite is none
         httpOnly: true, // backend only
-        sameSite: "none", // set to none for cross-request
-        domain: "https://book-store-server-uze2.onrender.com",
       });
       // Sending userDetail and access_token
       res.json({ access_token, authDetail });

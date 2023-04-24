@@ -3,7 +3,13 @@
     <RouterLink :to="`/shopsingle/${bookId}`">
       <div class="block-4 text-center border">
         <figure class="block-4-image">
-          <img :src="imgurl" alt="Image placeholder" class="img-fluid" />
+          <img
+            :src="imgurl"
+            alt="Image placeholder"
+            width="150"
+            height="200"
+            style="object-fit: contain"
+          />
         </figure>
         <div class="block-4-text p-4">
           <h3>

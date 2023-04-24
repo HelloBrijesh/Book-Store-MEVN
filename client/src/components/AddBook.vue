@@ -67,8 +67,8 @@
             >
               <option disabled value="">Please select one</option>
               <option>Romance</option>
-              <option>Health</option>
-              <option>Food</option>
+              <option>Literature</option>
+              <option>Science</option>
               <option>Travel</option>
               <option>History</option>
             </select>

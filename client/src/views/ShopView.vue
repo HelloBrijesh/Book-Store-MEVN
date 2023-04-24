@@ -43,10 +43,10 @@
                     name="category"
                     class="custom-control-input"
                     v-model="shopPayload.category"
-                    value="Health"
+                    value="Literature"
                   />
                   <label class="custom-control-label text-black" for="health"
-                    >Health</label
+                    >Literature</label
                   >
                 </div>
                 <div class="custom-control custom-radio">
@@ -56,10 +56,10 @@
                     name="category"
                     class="custom-control-input"
                     v-model="shopPayload.category"
-                    value="Food"
+                    value="Science"
                   />
                   <label class="custom-control-label text-black" for="food"
-                    >Food</label
+                    >Science</label
                   >
                 </div>
                 <div class="custom-control custom-radio">

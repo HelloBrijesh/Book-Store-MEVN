@@ -56,7 +56,7 @@ const loginController = {
 
       // Setting up the cookies
       res.status(200).cookie("token", refresh_token, {
-        // secure: true,
+        secure: true,
         domain: "book-store-client-1tjw.onrender.com",
         sameSite: "lax",
         path: "/",

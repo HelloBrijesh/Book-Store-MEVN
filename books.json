@@ -1,0 +1,577 @@
+[{
+  "_id": {
+    "$oid": "64446db7a94a8d1903eeed0f"
+  },
+  "bookName": "Encountering: A Bear Shifter Paranormal Romance",
+  "authorName": " Kelsey Carter ",
+  "price": 2,
+  "quantity": 10,
+  "category": "Romance",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682206000623-932596670?alt=media&token=dbfb653f-e891-48e5-b669-0ac8d83f8a5f",
+  "bookDescription": "Man, do I HATE being a shape-shifting bear. It's ended up costing me everything: My job, family, friends, any chance at true love....",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "64446e42a94a8d1903eeed19"
+  },
+  "bookName": "Every Summer After Paperback – May 2 2023",
+  "authorName": "Carley Fortune",
+  "price": 14,
+  "quantity": 5,
+  "category": "Romance",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682206200378-672855325?alt=media&token=e420f6a0-291f-4412-898c-2fadab445fa6",
+  "bookDescription": "Six summers to fall in love. One moment to fall apart. A weekend to get it right.",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445b94d52701411dda5a1b4"
+  },
+  "bookName": "One True Loves: A Novel",
+  "authorName": "Taylor Jenkins Reid",
+  "price": 40,
+  "quantity": 4,
+  "category": "Romance",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682290758344-990393072?alt=media&token=e4233057-15cc-40be-84b2-6ff465b38fe1",
+  "bookDescription": "From the New York Times bestselling author of The Seven Husbands of Evelyn Hugo\n\nNamed a Best Book of Summer by Cosmopolitan * InStyle * Redbook * Us Weekly *PopSugar * Buzzfeed * Bustle * Brit+Co * Parade\n\n“No one does life and love better.” –InStyle",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445b9b252701411dda5a1c0"
+  },
+  "bookName": "Book Lovers",
+  "authorName": "Emily Henry",
+  "price": 16,
+  "quantity": 25,
+  "category": "Romance",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682291025891-452105876?alt=media&token=81833676-8162-4e4c-b831-ef7dede0d10d",
+  "bookDescription": "“One of my favorite authors.”—Colleen Hoover\n\nAn insightful, delightful, instant #1 New York Times bestseller from the author of Beach Read and People We Meet on Vacation.\n\nNamed a Most Anticipated Book of 2022 by Oprah Daily ∙ Today ∙ Parade ∙ Marie Claire ∙ Bustle ∙ PopSugar ∙ Katie Couric Media ∙ Book Bub ∙ SheReads ∙ Medium ∙ The Washington Post ∙ and more!\n",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445ba7552701411dda5a1cc"
+  },
+  "bookName": "Beach Read",
+  "authorName": "Emily Henry",
+  "price": 17,
+  "quantity": 14,
+  "category": "Romance",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682291126064-739823199?alt=media&token=930ca268-42fd-4302-a53b-3312ea9700b1",
+  "bookDescription": "FROM THE #1 NEW YORK TIMES BESTSELLING AUTHOR OF PEOPLE WE MEET ON VACATION AND BOOK LOVERS!\n\nA romance writer who no longer believes in love and a literary writer stuck in a rut engage in a summer-long challenge that may just upend everything they believe about happily ever afters.",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445bada52701411dda5a1d6"
+  },
+  "bookName": "Love and Other Words",
+  "authorName": "Christina Lauren",
+  "price": 17,
+  "quantity": 5,
+  "category": "Romance",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682291323146-751462064?alt=media&token=d7989784-4d66-4efd-855a-6c82ecb9f351",
+  "bookDescription": "After a decade apart, childhood sweethearts reconnect by chance in New York Times bestselling author Christina Lauren’s touching, romantic novel Love and Other Words…how many words will it take for them to figure out where it all went wrong?\n\nThe story of the heart can never be unwritten.",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445bb3a52701411dda5a1e0"
+  },
+  "bookName": "The Fine Print",
+  "authorName": "Lauren Asher",
+  "price": 24,
+  "quantity": 7,
+  "category": "Romance",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682291424302-458864123?alt=media&token=5b6b941e-128d-4da3-9c20-098e15081746",
+  "bookDescription": "Rowan\nI’m in the business of creating fairy tales.\nTheme parks. Production companies. Five-star hotels.\nEverything could be all mine if I renovated Dreamland.\nMy initial idea of hiring Zahra was good in theory, but then I kissed her.\nThings spiraled out of control once I texted her using an alias.\nBy the time I realized where I went wrong, it was too late.\nPeople like me don’t get happy endings.\nNot when we’re destined to ruin them.",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445bb9252701411dda5a1ed"
+  },
+  "bookName": "The Love Hypothesis",
+  "authorName": "Ali Hazelwood",
+  "price": 15,
+  "quantity": 15,
+  "category": "Romance",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682291520654-325771107?alt=media&token=76fc8357-2319-4179-a900-3c0645da291d",
+  "bookDescription": "The Instant New York Times Bestseller and TikTok Sensation!\n\nAs seen on THE VIEW!\n\nA BuzzFeed Best Summer Read of 2021\n\nWhen a fake relationship between scientists meets the irresistible force of attraction, it throws one woman's carefully calculated theories on love into chaos.\n",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445bbf452701411dda5a1f7"
+  },
+  "bookName": "Yours Truly",
+  "authorName": "Abby Jimenez",
+  "price": 19,
+  "quantity": 8,
+  "category": "Romance",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682291606496-441515447?alt=media&token=3a21fdf9-ecd9-468c-90da-ebbb13f07098",
+  "bookDescription": "A novel of terrible first impressions, hilarious second chances, and the joy in finding your perfect match from \"a true talent\" (Emily Henry, #1 New York Times bestselling author).",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445bc4f52701411dda5a201"
+  },
+  "bookName": "It Happened One Summer",
+  "authorName": "Tessa Bailey",
+  "price": 20,
+  "quantity": 3,
+  "category": "Romance",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682291706691-220831319?alt=media&token=fb40e3f9-786b-429e-bd09-2144985f2a7c",
+  "bookDescription": "The first in a spicy and unforgettable rom-com duology from #1 New York Times bestseller and tik tok favorite Tessa Bailey, in which a Hollywood “It Girl” is cut off from her wealthy family and exiled to a small Pacific Northwest beach town... where she butts heads with a surly, sexy local who thinks she doesn’t belong. ",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445bcea52701411dda5a217"
+  },
+  "bookName": "Boomerang Bride:",
+  "authorName": "Fiona Lowe",
+  "price": 45,
+  "quantity": 8,
+  "category": "Romance",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682291794763-677111719?alt=media&token=f1fdf1c2-45bd-4768-ba4f-9d6a68992477",
+  "bookDescription": "A fun romance romp from Australian author, Fiona Lowe.\n\nOne bride, One cake, No groom. Let the chaos begin!",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445bd5f52701411dda5a223"
+  },
+  "bookName": "Love 2 Jingle U",
+  "authorName": "Alexandra Silva",
+  "price": 86,
+  "quantity": 9,
+  "category": "Romance",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682291950832-989400333?alt=media&token=8077bf2b-9a42-4e93-bc6b-a8b1e44c5498",
+  "bookDescription": "AMELIA\nIt's going to be a white Christmas! I'd be over the moon if it didn't mean I'm stranded in England for the holidays. Away from my friends and family.\n\nThe only icing on my Christmas cake is my surprise housemate...he may claim to be a bit of a Grinch, but I'm sure I can help him find his festive spirit.\n\nAfter all, he does seem like a bit of a filthy animal...",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445bf2052701411dda5a235"
+  },
+  "bookName": "The Shifting Current",
+  "authorName": "Dani Pettrey",
+  "price": 20,
+  "quantity": 7,
+  "category": "Literature",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682292066057-385897388?alt=media&token=d05bf046-3150-4b76-a42c-2fb7fb0a3d0c",
+  "bookDescription": "When Coast Guard Investigative Service Special Agent LOGAN PERRY’s beloved grandfather is murdered, Logan races to his hometown of Cauldron Creek, New Mexico to investigate the murder. His teammate and friend, EMMY THORTON, insists on joining him. Not a good idea—not when he loves her, but carries a secret that he knows will tear them apart.",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445bfae52701411dda5a247"
+  },
+  "bookName": "The Asterisk War",
+  "authorName": "Yuu Miyazaki",
+  "price": 150,
+  "quantity": 4,
+  "category": "Literature",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682292515891-981551174?alt=media&token=d80a5dfa-b412-4588-9166-320844a332df",
+  "bookDescription": "Ayato's weakness--the time limit on his power--has been discovered. As he and Julis concoct a new strategy, they make contact with the Tyrant, Dirk, who has information about his sister Haruka. There, Ayato learns the shocking truth, just in time for the semifinals...!\n",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445c06552701411dda5a269"
+  },
+  "bookName": "The Rage Colony",
+  "authorName": "Shanon Hunt",
+  "price": 20,
+  "quantity": 15,
+  "category": "Literature",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682292657850-892303845?alt=media&token=8a8fa57f-53d5-4496-a941-430768c4d77b",
+  "bookDescription": "In a secret society where human medical experimentation is conducted at any cost...\n\nThere are bound to be mistakes.",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445c0c652701411dda5a277"
+  },
+  "bookName": "Mechanicum",
+  "authorName": "Graham McNeill",
+  "price": 75,
+  "quantity": 4,
+  "category": "Literature",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682292841679-989064765?alt=media&token=cf2e18eb-11d0-4367-b2d2-8ce83fa01fd1",
+  "bookDescription": "1.  The Horus Heresy is the Black Library's best-selling SF series, with each new titles eagerly snapped up by fans.\n\n2.  Graham Hours is one of the Black Library's most popular SF writers, and already has two Horus Heresy titles to his credit.",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445c12052701411dda5a285"
+  },
+  "bookName": "The Camp of the Saints ",
+  "authorName": "Jean Raspail",
+  "price": 40,
+  "quantity": 6,
+  "category": "Literature",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682292937134-623659340?alt=media&token=092e700a-c65c-4145-ae75-e566b3112729",
+  "bookDescription": "Used - Very Good: Pages and dust cover are intact and not marred by notes or highlighting. The spine is undamaged.",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445c18a52701411dda5a28d"
+  },
+  "bookName": "The Flight of the Eisenstein",
+  "authorName": "James Swallow",
+  "price": 82,
+  "quantity": 4,
+  "category": "Literature",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682293027419-393223162?alt=media&token=f859ae73-e42d-4215-bdab-713672cd42cf",
+  "bookDescription": "Having witnessed the events on Istvaan III, Deathguard Captain Garro seizes a ship and heads to Terra to warn the Emperor of Horus' treachery. But the fleeing Eisenstein is damaged by enemy fire, and becomes stranded in the warp. Can Garro and his men survive the depredations of Chaos and get his warning to Terra in time",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445c24e52701411dda5a2b1"
+  },
+  "bookName": "The Saint",
+  "authorName": "Dan Abnett",
+  "price": 25,
+  "quantity": 7,
+  "category": "Literature",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682293134234-555404227?alt=media&token=8ec0fe28-9f0e-4196-b83b-0c891efb9987",
+  "bookDescription": "New omnibus edition containing the complete second Gaunt's Ghosts story arc, including the novels Honour Guard, The Guns of Tanith, Straight Silver and Sabbat Martyr.",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445c2fd52701411dda5a2c1"
+  },
+  "bookName": "Blood Angels",
+  "authorName": "James Swallow",
+  "price": 47,
+  "quantity": 8,
+  "category": "Literature",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682293330214-832955759?alt=media&token=4222a9b9-7f64-4b24-a0f2-0a21831b7c3e",
+  "bookDescription": "This omnibus edition collects together for the first time the four Blood Angels novels of author James Swallow and includes several bonus short stories. The full story of Blood Angels Brother Rafen. From humble battle-brother to war-hardened sergeant, Rafen survives civil war, Chaos plots and the calling of destiny in four novels by James Swallow.",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445c3c852701411dda5a2d0"
+  },
+  "bookName": "Warhammer 40k",
+  "authorName": "Chris Wraight",
+  "price": 170,
+  "quantity": 4,
+  "category": "Literature",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682293624197-625347825?alt=media&token=19a09352-b34e-4992-9026-a278254b07ad",
+  "bookDescription": "The secretive minions of Malcador the Sigillite take centre stage in an anthology of thrilling tales of subterfuge and treachery.",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445c43452701411dda5a2e0"
+  },
+  "bookName": "Book of Lies",
+  "authorName": "Richard Metzger",
+  "price": 110,
+  "quantity": 3,
+  "category": "Literature",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682293708039-572790258?alt=media&token=b1e41b8e-91c8-4dda-b0b8-bbe7bbc70b62",
+  "bookDescription": "Disinformation's \"wicked warlock\" Richard Metzger gathers an unprecedented cabal of modern occultists, magicians, and forward thinkers in this large format Disinformation Guide. Just as Russ Kick's Guides focusing on secrets and lies from the mainstream media, government, and other establishment institutions rethought what a political science book could look like and whom it would appeal to, Book of Lies redefines occult anthologies, packaging and presenting a huge array of magical essays for a pop culture audience. Just some of the contents:",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445c4af52701411dda5a2f2"
+  },
+  "bookName": "The Whiskers of Hope",
+  "authorName": "Laura Napoli",
+  "price": 35,
+  "quantity": 10,
+  "category": "Science",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682293815869-288148292?alt=media&token=cfe33714-d7ee-489b-9cb8-4174b839a427",
+  "bookDescription": "Book three in the Tails of Little Flower series follows the Chenzira family after the unexpected and surprising results of Little Flower's sentience and rape trial as they build a new home for the survivors from Earth.",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445c52052701411dda5a2fa"
+  },
+  "bookName": "Silmarillion",
+  "authorName": "J.R.R. Tolkien",
+  "price": 29,
+  "quantity": 44,
+  "category": "Science",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682293937943-211560842?alt=media&token=6ee51b37-36a8-4515-8888-d0a6fea7d12d",
+  "bookDescription": "J R R Tolkien's SILMARILLION is the core work of the Middle-earth canon. It is in this dense and often neglected masterpiece that the entire cosmology for the background for THE HOBBIT and, particularly, THE LORD OF THE RINGS is documented.This new paperback volume contains fabulous tales of heroes and monsters, and the history of the Elves and of the Silmarils - the magical jewels produced by the Children of Iluvatar, or Elves (humans being the Younger Children of Iluvatar); it tells of the creation of Middle-earth, and the coming of Men into the world",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445c62852701411dda5a306"
+  },
+  "bookName": "Night Below",
+  "authorName": "Carl Sargent",
+  "price": 33,
+  "quantity": 10,
+  "category": "Science",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682294196232-417633693?alt=media&token=9fb35c6f-9ba7-4f95-81ba-917e40fc6f4d",
+  "bookDescription": "Night Below, the first epic campaign adventure for the AD&D game, is designed to take the player characters from 1st level to 10th level and beyond. The PCs start as beginning adventurers on a routine courier mission who soon become drawn into combating a sinister plot that menaces the pleasant land of Haranshire.",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445c6c952701411dda5a314"
+  },
+  "bookName": "Elric Swords and Roses",
+  "authorName": "Michael Moorcock",
+  "price": 76,
+  "quantity": 10,
+  "category": "Science",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682294314698-287236575?alt=media&token=3341e7e4-815c-4469-8a49-785cb84a4c35",
+  "bookDescription": "Feared by enemies and friends alike, Elric of Melniboné walks a lonely path among the worlds of the Multiverse. The destroyer of his cruel and ancient race, as well as its final ruler, Elric is the bearer of a destiny as dark and cursed as the vampiric sword he carries—the sentient black blade known as Stormbringer.",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445c73a52701411dda5a322"
+  },
+  "bookName": "Warriors of the Chaos Wastes",
+  "authorName": "C L Werner",
+  "price": 40,
+  "quantity": 22,
+  "category": "Science",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682294475260-352662609?alt=media&token=a4c26bc6-d58e-46fc-8629-5154d3fca183",
+  "bookDescription": "Latest installment in the Warhammer Chronicles series. Focusing on the forces of Choas in the old world.",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445c79d52701411dda5a330"
+  },
+  "bookName": "War for Armageddon",
+  "authorName": "Various",
+  "price": 52,
+  "quantity": 6,
+  "category": "Science",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682294589799-604682779?alt=media&token=0ef237af-d233-40e1-b73c-14dc4c6673f4",
+  "bookDescription": "In the bleak 41st millennium, the planet Armageddon is on the cusp of annihilation. The strategically vital hive world\nhas captured the attention of infamous ork warlord Ghazghkull Thraka, and when the Astra Militarum and whole Titan",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445c7f452701411dda5a33e"
+  },
+  "bookName": "Recruitment",
+  "authorName": "K. A. Riley",
+  "price": 18,
+  "quantity": 8,
+  "category": "Science",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682294688606-158240541?alt=media&token=bbeb4020-5c25-43fe-8a77-aefb702ddbac",
+  "bookDescription": "In the Valta, no matter what month you were born, everyone is assigned the same birthday. November 1st. It's the anniversary of the day when the government declared war on the Eastern Order. The day you turn seventeen, the Recruiters come to take you away.",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445c86152701411dda5a34e"
+  },
+  "bookName": "Knights of Caliban",
+  "authorName": "Gav Thorpe",
+  "price": 56,
+  "quantity": 7,
+  "category": "Science",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682294791321-916566782?alt=media&token=986b9c21-ab8b-4305-a91d-83d7700725a4",
+  "bookDescription": "The Dark Angels' eternal hunt for the Fallen embroils them in a dangerous conspiracy to change the past and destroy the future, bringing the entire Imperium under the dominion of Chaos.",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445c8d052701411dda5a35c"
+  },
+  "bookName": "Black Gods Kiss",
+  "authorName": "C. L. Moore",
+  "price": 46,
+  "quantity": 10,
+  "category": "Science",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682294884191-177864116?alt=media&token=f307c9d2-5890-4918-90b0-6f81bc6e8be5",
+  "bookDescription": "First published in the pages of Weird Tales in 1934, C.L. Moore's Jirel of Joiry is the first significant female sword and sorcery protagonist and one of the most exciting and evocative characters the genre has ever known. Published alongside seminal works by H.P. Lovecraft and Robert E. Howard, the five classic fantasy tales included in this volume easily stand the test of time and often overshadow the storytelling power and emotional impact of stories by Moore's more famous contemporaries.",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445c9e852701411dda5a380"
+  },
+  "bookName": "First & Only",
+  "authorName": "Dan Abnett",
+  "price": 44,
+  "quantity": 7,
+  "category": "Science",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682295099569-350605157?alt=media&token=37118078-c104-448e-b6d8-0b6f9740c1c1",
+  "bookDescription": "First published in the pages of Weird Tales in 1934",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445ca6352701411dda5a392"
+  },
+  "bookName": "Paris Travel Guide",
+  "authorName": "Stuart Hartley",
+  "price": 24,
+  "quantity": 15,
+  "category": "Travel",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682295293541-895670482?alt=media&token=7b3ee626-3366-4ab9-8a05-d424f6543e8d",
+  "bookDescription": "Get ready to immerse yourself in the charm and romance of Paris with this comprehensive tourist pocket guide. This book will be your essential companion on your travels through the heart of Paris, providing you with all the information you need to fully appreciate the City's iconic landmarks, cultural hotspots and hidden gems.\n\n",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445caaa52701411dda5a39e"
+  },
+  "bookName": "Mexico - Culture Smart!",
+  "authorName": "Russell Maddicks",
+  "price": 18,
+  "quantity": 7,
+  "category": "Travel",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682295419820-564870018?alt=media&token=02d0253c-bc18-490e-929b-a234dbd85cea",
+  "bookDescription": "Culture Smart! Mexico takes you to the heart of Mexican society. It describes how people socialize and meet members of the opposite sex, the dynamics of daily life, the central importance of family, and the annual cycle of Catholic feasts and fiestas. For business travelers there are key sections on the economy and vital insights into the general business culture. ",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445cb0652701411dda5a3aa"
+  },
+  "bookName": "Japan Travel Guide",
+  "authorName": "Stuart Hartley",
+  "price": 28,
+  "quantity": 9,
+  "category": "Travel",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682295468300-720687942?alt=media&token=75daff58-88e7-48f8-9b81-380220ba5b28",
+  "bookDescription": "Japanese Expert Guide reveals the best way to visit Japan and get the most out of the country!",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445cb8a52701411dda5a3b6"
+  },
+  "bookName": "Lonely Planet Algeria",
+  "authorName": "Anthony Ham",
+  "price": 47,
+  "quantity": 10,
+  "category": "Travel",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682295561289-150354240?alt=media&token=b5d0133b-86f0-44a3-866e-46179e8f82be",
+  "bookDescription": "Discover Algeria. Shiver as the sun rises over Assekrem, the mountains at the 'End of the World. Rock the Casbah in Algiers, one of the finest coastal sites on the Mediterranean. Explore the best Roman ruins in Africa, and the oldest rock art in the world. Tie your turban like a Yuareg and be swept up in the magic of the world's greatest desert. ",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445cc7752701411dda5a3d0"
+  },
+  "bookName": "Venice",
+  "authorName": "Macadam Alta",
+  "price": 28,
+  "quantity": 6,
+  "category": "Travel",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682295852724-738451947?alt=media&token=f4785644-8e35-4e06-aedc-91e0542d3e86",
+  "bookDescription": "This guidebook to Venice provides descriptions of all the main monuments and museums, and illustrates the best ways of exploring the city. In this edition, important restorations, including Palazzo Ducale and the Hellenistic winged lion on the column of the Piazzetta, are described. The information on hotels and restaurants, opening times and transport have also been brought up to date. There are also details of planned walks around the city.\n",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445cd2552701411dda5a3d8"
+  },
+  "bookName": "Germany - Culture Smart",
+  "authorName": "Culture Smart!",
+  "price": 22,
+  "quantity": 7,
+  "category": "Travel",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682295929223-598942760?alt=media&token=869bbf96-add3-4540-999c-b69f692996ca",
+  "bookDescription": "Germany powerhouse of Europe and pillar of the Eurozone feels reassuringly familiar. However, despite superficial appearances, this is a country that operates very differently from the USA and Britain. German history is more than a thousand years old and the relatively new German nation-state encompasses an astonishing variety of cultural and regional differences. German society is also in a state of flux, as people respond to immigration and a tough economic climate, and traditional attitudes such as formality and rigid protocol are softening as German business globalizes.",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445cf6052701411dda5a3ee"
+  },
+  "bookName": "Norse Mythology Legends",
+  "authorName": "History Brought Alive",
+  "price": 50,
+  "quantity": 232,
+  "category": "History",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682296104499-750773292?alt=media&token=27400dd7-d739-486a-bb56-08f8879d69fe",
+  "bookDescription": "Discover The Legendary Characters of Norse Mythology & Their Epic Stories\n\nThe Norse God Odin went to great lengths in his quest for knowledge…and as long as there is breath in your lungs, your quest for knowledge should never stop…",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445cfae52701411dda5a3fa"
+  },
+  "bookName": "The Art of War",
+  "authorName": "Sun Tzu",
+  "price": 30,
+  "quantity": 12,
+  "category": "History",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682296675416-721254036?alt=media&token=1a62cafb-698e-4106-a743-c927e33f718a",
+  "bookDescription": "The Art of War by Sun Tzu is a timeless classic that has been used for centuries to guide military leaders, business executives, and political strategists in their decision-making and planning. Composed of 13 chapters, each focusing on a different aspect of warfare, such as strategy, tactics, and leadership, this book's key concepts are still applicable today.",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445d00c52701411dda5a410"
+  },
+  "bookName": "Canadian Coin Digest",
+  "authorName": "George S. Cuhaj",
+  "price": 125,
+  "quantity": 15,
+  "category": "History",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682296752717-174726963?alt=media&token=c08d3f22-4e14-47f6-92dd-814af0f2c096",
+  "bookDescription": "Coins of Canada Featuring more than 150 years of coins, pricing in up to six grades, and the authoritative voice of the most trusted name in numismatics, the second edition of Canadian Coin Digest offers a grand overview of the coins of Canada while providing the greatest value of any guide on the market. ",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445d0a452701411dda5a41e"
+  },
+  "bookName": "So You Think You Know CANADA, Eh?",
+  "authorName": "Marianne Jennings",
+  "price": 17,
+  "quantity": 4,
+  "category": "History",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682296848666-353319737?alt=media&token=d3b929c1-2899-4c2f-a56c-8123a6ea1555",
+  "bookDescription": "How well do you REALLY know Canada? \nDid you know:\nSanta Claus is a Canadian citizen? \nThat hockey is NOT the official national sport of Canada? \nThe Canadian passport contains hidden images?\nCanada could have been named Britannia or Borealia? \nParts of Canada are as cold as Mars? \nA Canadian pharmacist invented peanut butter?\nIf you're Canadian, know any Canadians, or have ever wanted to know more about Canada, this fun little fact book will help.",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445d11852701411dda5a42c"
+  },
+  "bookName": "Hollow Land",
+  "authorName": "Eyal Weizman",
+  "price": 85,
+  "quantity": 3,
+  "category": "History",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682296998269-9512787?alt=media&token=a2dda8a2-00a0-4120-942d-0fbdaece56f1",
+  "bookDescription": "From the tunnels of Gaza to the militarized airspace of the Occupied Territories, Eyal Weizman unravels Israel’s mechanisms of control and its transformation of Palestinian towns, villages and roads into an artifice where all natural and built features serve military ends.",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445d16552701411dda5a434"
+  },
+  "bookName": "Soldier's Study Guide",
+  "authorName": "Walter J. Jackson",
+  "price": 29,
+  "quantity": 11,
+  "category": "History",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682297115397-674934632?alt=media&token=fd988b03-ac13-41ee-b057-c5e71c3456a0",
+  "bookDescription": "Revised and expanded, with more than 1,440 questions in 48 subject areas\nFor soldiers who want to increase their professional knowledge of the Army and prepare themselves for promotion boards\nCovers army programs, basic combat skills, combat stress, leadership, maintenance of equipment, customs and courtesies, justice, physical training, NBC warfare, uniforms and insignia, weapons, and more",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445d1b452701411dda5a43e"
+  },
+  "bookName": "Goodbye Cobber, God Bless You",
+  "authorName": "John-c-m-hamilton",
+  "price": 124,
+  "quantity": 18,
+  "category": "History",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682297192209-672551427?alt=media&token=bde86346-f131-4b77-9c1d-fb974d62aefe",
+  "bookDescription": "No Description",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445d22052701411dda5a44f"
+  },
+  "bookName": "The Jewish Alchemists",
+  "authorName": "Raphael Patai",
+  "price": 110,
+  "quantity": 6,
+  "category": "History",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682297271329-658632506?alt=media&token=ca48ff2b-01ef-45ef-8f49-704d4fda7025",
+  "bookDescription": "In this monumental work, Raphael Patai opens up an entirely new field of cultural history by tracing Jewish alchemy from antiquity to the nineteenth century. Until now there has been little attention given to the significant role that Jews played in the field of alchemy. Here, drawing on an enormous range of previously unexplored sources, Patai reveals that Jews were major players in what was for centuries one of humanity's most compelling intellectual obsessions.",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445d27752701411dda5a45b"
+  },
+  "bookName": "A History of the English-Speaking Peoples",
+  "authorName": " Sir Winston S. Churchill ",
+  "price": 185,
+  "quantity": 17,
+  "category": "History",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682297378608-980983145?alt=media&token=79d5bb30-920f-4b2a-a972-69133aa73ed8",
+  "bookDescription": "\"This history will endure; not only because Sir Winston has written it, but also because of its own inherent virtues ― its narrative power, its fine judgment of war and politics, of soldiers and statesmen, and even more because it reflects a tradition of what Englishmen in the hey-day of their empire thought and felt about their country's past.\" The Daily Telegraph",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6445d2ce52701411dda5a469"
+  },
+  "bookName": "The American Intellectual Tradition",
+  "authorName": " David A. Hollinger",
+  "price": 154,
+  "quantity": 20,
+  "category": "History",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682297466015-839476724?alt=media&token=e21468d6-4043-43dc-8c16-54dd7db40300",
+  "bookDescription": "The third edition of this uniquely comprehensive two-volume anthology contains many of the most significant documents in American intellectual history. It includes new selections from a diverse group of authors that cover Puritan theology, communitarian thought, racial ideology, gender theory, cultural criticism, multiculturalism, and postmodernism.",
+  "__v": 0
+}]

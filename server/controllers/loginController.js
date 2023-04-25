@@ -55,14 +55,19 @@ const loginController = {
       };
 
       // Setting up the cookies
-      res.status(200).cookie("token", refresh_token, {
-        secure: true,
-        domain: "book-store-client-1tjw.onrender.com",
-        sameSite: "lax",
-        path: "/",
-        expires: new Date(Date.now() + 900000),
-        httpOnly: true, // backend only
-      });
+      // res.status(200).cookie("token", refresh_token, {
+      //   secure: true,
+      //   domain: "book-store-client-1tjw.onrender.com",
+      //   sameSite: "none",
+      //   path: "/",
+      //   expires: new Date(Date.now() + 900000),
+      //   httpOnly: true, // backend only
+      // });
+
+
+      res.setHeader('Access-Control-Allow-Origin', 'https://book-store-client-1tjw.onrender.com');
+      res.setHeader('Access-Control-Allow-Credentials', 'true');
+      res.setHeader('Set-Cookie', 'where=book-store-server-uze2;domain=onrender.com;Secure;expires='+ getUtcTimeInSecondsFromNow(60));
       // Sending userDetail and access_token
       res.json({ access_token, authDetail });
     } catch (err) {

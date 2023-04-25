@@ -65,9 +65,9 @@ const loginController = {
       // });
 
 
-      res.setHeader('Access-Control-Allow-Origin', 'https://book-store-client-1tjw.onrender.com');
-      res.setHeader('Access-Control-Allow-Credentials', 'true');
-      res.setHeader('Set-Cookie', 'where=book-store-server-uze2;domain=onrender.com;Secure;expires='+ getUtcTimeInSecondsFromNow(60));
+      res.header('Access-Control-Allow-Origin', 'https://book-store-client-1tjw.onrender.com');
+      res.header('Access-Control-Allow-Credentials', 'true');
+      res.header('Set-Cookie', 'where=book-store-server-uze2;domain=onrender.com;Secure;expires='+ getUtcTimeInSecondsFromNow(60));
       // Sending userDetail and access_token
       res.json({ access_token, authDetail });
     } catch (err) {

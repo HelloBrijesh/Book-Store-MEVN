@@ -53,6 +53,7 @@
                 <span class="d-inline-block text-black">Audiobook</span>
               </label>
             </div>
+            <p class="font-weight-bold">Available : {{ book.quantity }}</p>
             <div class="mb-5">
               <div class="input-group mb-3" style="max-width: 120px">
                 <div class="input-group-prepend">
@@ -95,7 +96,7 @@
       </div>
     </div>
 
-    <!-- <div class="site-section block-3 site-blocks-2 bg-light">
+    <div class="site-section block-3 site-blocks-2 bg-light">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-7 site-section-heading text-center pt-4">
@@ -104,16 +105,18 @@
         </div>
         <div class="row pt-5">
           <BSBook
-            v-for="book in bsbooks"
-            :key="book.id"
-            :imgurl="book.imgurl"
-            :name="book.name"
-            :author="book.author"
+            v-for="book in relatedBooks"
+            :key="book._id"
+            :bookId="book._id"
+            :imgurl="book.imageUrl"
+            :name="book.bookName"
+            :author="book.authorName"
             :price="book.price"
-          />
+            @click.prevent="handleRelatedBooks"
+            />
         </div>
       </div>
-    </div> -->
+    </div>
     <Footer></Footer>
   </div>
 </template>
@@ -123,13 +126,14 @@ import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import BSBook from "../components/BSBook.vue";
 import { onMounted, ref } from "vue";
-import { RouterLink, useRoute } from "vue-router";
+import { RouterLink, useRouter, useRoute } from "vue-router";
 import { useCartStore } from "../stores/cartStore";
 import useBookService from "../services/bookService";
 
 const route = useRoute();
+const router = useRouter();
 const cartStore = useCartStore();
-const { book, getBookDetails, error, statusCode } = useBookService();
+const { book, relatedBooks, getBookDetails, error, statusCode } = useBookService();
 
 const bookid = ref(route.params.bookid);
 const quantity = ref(1);
@@ -145,6 +149,10 @@ onMounted(async () => {
     quantity: quantity.value,
   };
 });
+
+const handleRelatedBooks =()=>{
+  router.go();
+}
 
 const handleSubtract = () => {
   if (quantity.value >= 2) {

@@ -32,7 +32,12 @@
                 <tbody>
                   <tr v-for="item in cart">
                     <td class="product-thumbnail">
-                      <img :src="item.imageUrl" alt="Image" class="img-fluid" />
+                      <img
+                        :src="item.imageUrl"
+                        alt="Image"
+                        height="100"
+                        style="object-fit: contain"
+                      />
                     </td>
                     <td class="product-name">
                       <h2 class="h5 text-black">{{ item.bookName }}</h2>
@@ -59,7 +64,7 @@
 
         <div class="row">
           <div class="col-md-6">
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-md-12">
                 <label class="text-black h4" for="coupon">Coupon</label>
                 <p>Enter your coupon code if you have one.</p>
@@ -75,7 +80,7 @@
               <div class="col-md-4">
                 <button class="btn btn-primary btn-sm">Apply Coupon</button>
               </div>
-            </div>
+            </div> -->
           </div>
           <div class="col-md-6 pl-5">
             <div class="row justify-content-end">
@@ -148,6 +153,7 @@ const handleRemoveItem = (item) => {
   };
   const bookIndex = findIndex(item.bookId);
   cart.splice(bookIndex, 1);
+  router.go();
 };
 
 const handleProceedToCheckout = () => {

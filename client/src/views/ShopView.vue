@@ -212,6 +212,7 @@ const handlePagination = async (page) => {
 
 const handleShop = async () => {
   await getBooks(shopPayload.value, 1);
+  currentPage.value = 1;
 };
 onMounted(async () => {
   await getBooks(shopPayload.value, 1);

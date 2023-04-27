@@ -7,7 +7,7 @@
           class="row align-items-start align-items-md-center justify-content-end"
         >
           <div class="col-12 text-center pt-5">
-            <h1 class="mb-2">Find Your Next Book</h1>
+            <h1 class="mb-2 text-white">Find Your Next Book</h1>
             <div class="intro-text text-center">
               <!-- <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla. </p> -->
               <p>
@@ -84,7 +84,7 @@
             data-aos="fade"
             data-aos-delay=""
           >
-            <RouterLink to="#" class="block-2-item">
+            <RouterLink to="/shop" class="block-2-item">
               <figure class="image">
                 <img src="/images/paperback.jpg" alt="" class="img-fluid" />
               </figure>
@@ -99,7 +99,7 @@
             data-aos="fade"
             data-aos-delay="100"
           >
-            <RouterLink to="#" class="block-2-item">
+            <RouterLink to="/shop" class="block-2-item">
               <figure class="image">
                 <img src="/images/hardcover.jpg" alt="" class="img-fluid" />
               </figure>
@@ -114,7 +114,7 @@
             data-aos="fade"
             data-aos-delay="200"
           >
-            <RouterLink to="#" class="block-2-item">
+            <RouterLink to="/shop" class="block-2-item">
               <figure class="image">
                 <img src="/images/audiobook.jpg" alt="" class="img-fluid" />
               </figure>

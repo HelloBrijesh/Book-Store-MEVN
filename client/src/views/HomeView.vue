@@ -163,28 +163,28 @@ const bsbooks = [
     imgurl: "/images/book_1.jpg",
     name: "Book 1",
     author: "Author 1",
-    price: "$100",
+    price: "100",
   },
   {
     id: 2,
     imgurl: "/images/book_2.jpg",
     name: "Book 2",
     author: "Author 2",
-    price: "$200",
+    price: "200",
   },
   {
     id: 3,
     imgurl: "/images/book_3.jpg",
     name: "Book 3",
     author: "Author 3",
-    price: "$300",
+    price: "300",
   },
   {
     id: 4,
     imgurl: "/images/book_4.jpg",
     name: "Book 4",
     author: "Author 4",
-    price: "$300",
+    price: "300",
   },
 ];
 </script>

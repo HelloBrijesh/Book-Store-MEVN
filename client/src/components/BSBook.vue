@@ -1,27 +1,33 @@
 <template>
   <div class="col-md-3 mb-4" data-aos="fade-up">
     <RouterLink :to="`/shopsingle/${bookId}`">
-    <div class="item">
-      <div class="block-4 text-center">
-        <figure class="block-4-image">
-            <img :src="imgurl" alt="Image placeholder"  width="150"
-            height="200"
-            style="object-fit: contain" />
-        </figure>        
-        <div class="block-4-text p-4">
-          <h3>{{ name }}</h3>
+      <div class="card">
+        <figure class="block-4-image" style="height: 250px">
+          <img :src="imgurl" class="card-img-top h-100" alt="BookImage" />
+        </figure>
+
+        <div class="card-body pt-0">
+          <h5
+            style="
+              text-overflow: ellipsis;
+              overflow: hidden;
+              white-space: nowrap;
+            "
+          >
+            {{ name }}
+          </h5>
+
           <p class="mb-0">{{ author }}</p>
-          <p class="text-primary font-weight-bold">$ {{ price }}</p>
+          <p class="text-primary font-weight-bold mb-0">$ {{ price }}</p>
         </div>
       </div>
-    </div>
-  </RouterLink>
+    </RouterLink>
   </div>
 </template>
 
 <script setup>
 import { RouterLink } from "vue-router";
-const book = defineProps(["bookId","imgurl", "name", "author", "price"]);
+const book = defineProps(["bookId", "imgurl", "name", "author", "price"]);
 </script>
 
 <style scoped></style>

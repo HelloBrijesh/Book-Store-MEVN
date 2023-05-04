@@ -7,11 +7,10 @@ import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 
 const app = express();
-// app.use(cors());
-// app.set("trust proxy", 1);
 app.use(cors({ origin: CLIENT_URL, credentials: true }));
 app.use(cookieParser());
 // Database connection
+
 mongoose
   .connect(DB_URL)
   .then(() => {

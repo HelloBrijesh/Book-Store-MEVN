@@ -191,6 +191,6 @@ const bsbooks = [
 
 <style scoped>
 .banner {
-  background-image: url(/images/hero_1.jpg);
+  background-image: url(/images/hero_1.png);
 }
 </style>

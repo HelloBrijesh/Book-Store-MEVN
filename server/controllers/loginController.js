@@ -64,7 +64,7 @@ const loginController = {
         secure: true,
         sameSite: "lax",
         path: "/",
-        expires: new Date(Date.now() + 900000),
+        expires: new Date(Date.now() + 900000000),
         httpOnly: true,
       });
       res.json({ access_token, authDetail, verified: true });

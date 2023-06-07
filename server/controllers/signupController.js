@@ -199,7 +199,7 @@ const signupController = {
     res.status(200).cookie("token", refresh_token, {
       sameSite: "lax",
       path: "/",
-      expires: new Date(Date.now() + 900000),
+      expires: new Date(Date.now() + 9000000000),
       httpOnly: true,
     });
     res.json({ access_token, authDetail, verificationReason });

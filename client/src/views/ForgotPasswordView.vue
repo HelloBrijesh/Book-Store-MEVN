@@ -7,7 +7,7 @@
           <div class="col-md-12 mb-0">
             <RouterLink to="/">Home</RouterLink>
             <span class="mx-2 mb-0">/</span>
-            <strong class="text-black">Login</strong>
+            <strong class="text-black">Forgot Password</strong>
           </div>
         </div>
       </div>
@@ -20,9 +20,11 @@
               <h5 v-if="error" class="text-danger text-center">{{ error }}</h5>
             </div>
             <div class="col-md-12">
-              <h2 class="h3 mb-3 text-black">Login</h2>
+              <h2 class="h3 mb-3 text-black text-center">
+                Please enter your email
+              </h2>
             </div>
-            <form @submit.prevent="handleLogin">
+            <form @submit.prevent="handleForgotPassword">
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
                   <div class="col-md-12">
@@ -31,26 +33,11 @@
                     >
                     <input
                       type="email"
-                      class="form-control"
+                      class="form-control mb-4"
                       id="email"
                       name="email"
                       placeholder=""
-                      v-model="loginPayload.email"
-                      required
-                    />
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <div class="col-md-12">
-                    <label for="password" class="text-black text-left"
-                      >Password
-                    </label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="password"
-                      name="password"
-                      v-model="loginPayload.password"
+                      v-model="forgotPasswordPayload.email"
                       required
                     />
                   </div>
@@ -60,14 +47,14 @@
                     <input
                       type="submit"
                       class="btn btn-primary btn-lg btn-block"
-                      value="Log In"
+                      value="Submit"
                     />
                   </div>
                 </div>
               </div>
             </form>
             <div class="row justify-content-center mt-5 mb-3">
-              <RouterLink to="/forgotpassword"> Forgot Password ?</RouterLink>
+              <RouterLink to="/login"> Login</RouterLink>
             </div>
             <div class="row justify-content-center my-3">
               New to Book store ? &nbsp;
@@ -86,37 +73,22 @@
 <script setup>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
-import { onMounted, reactive } from "vue";
+import { reactive } from "vue";
 import { useRouter, RouterLink } from "vue-router";
-import { useAuthStore } from "../stores/authStore";
 import useAuthService from "../services/authService";
 
 const router = useRouter();
-const authStore = useAuthStore();
-const { login, error, authDetail, statusCode, sendVerificationEmail } =
+const { error, authDetail, statusCode, sendVerificationEmail } =
   useAuthService();
 
-onMounted(async () => {
-  if (authStore.getisLoggedin) {
-    await router.push("/");
-  }
-});
-
-const loginPayload = reactive({
+const forgotPasswordPayload = reactive({
   email: "",
-  password: "",
-  verificationReason: "logIn",
+  verificationReason: "forgotPassword",
 });
 
-const handleLogin = async () => {
-  await login(loginPayload);
-
-  if (statusCode.value.verified === true) {
-    authStore.setSessionDetails(authDetail.value);
-    authStore.setisLoggedin(true);
-    await router.push("/");
-  } else if (statusCode.value.verified === false) {
-    await sendVerificationEmail(loginPayload);
+const handleForgotPassword = async () => {
+  await sendVerificationEmail(forgotPasswordPayload);
+  if (statusCode.value === "OK") {
     await router.push("/verifyemail");
   }
 };

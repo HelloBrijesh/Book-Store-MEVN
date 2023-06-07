@@ -7,7 +7,7 @@
           <div class="col-md-12 mb-0">
             <RouterLink to="/">Home</RouterLink>
             <span class="mx-2 mb-0">/</span>
-            <strong class="text-black">Login</strong>
+            <strong class="text-black">Change Password</strong>
           </div>
         </div>
       </div>
@@ -20,22 +20,22 @@
               <h5 v-if="error" class="text-danger text-center">{{ error }}</h5>
             </div>
             <div class="col-md-12">
-              <h2 class="h3 mb-3 text-black">Login</h2>
+              <h2 class="h3 mb-3 text-black">Change Password</h2>
             </div>
-            <form @submit.prevent="handleLogin">
+            <form @submit.prevent="handleChangePassword">
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="email" class="text-black"
-                      >Email <span class="text-danger">*</span></label
+                    <label for="password" class="text-black"
+                      >Password<span class="text-danger">*</span></label
                     >
                     <input
-                      type="email"
+                      type="password"
                       class="form-control"
-                      id="email"
-                      name="email"
+                      id="password"
+                      name="password"
                       placeholder=""
-                      v-model="loginPayload.email"
+                      v-model="changePasswordPayload.password"
                       required
                     />
                   </div>
@@ -43,14 +43,14 @@
                 <div class="form-group row">
                   <div class="col-md-12">
                     <label for="password" class="text-black text-left"
-                      >Password
+                      >Re-type Password
                     </label>
                     <input
                       type="password"
                       class="form-control"
-                      id="password"
-                      name="password"
-                      v-model="loginPayload.password"
+                      id="confirmPassword"
+                      name="confirmPassword"
+                      v-model="changePasswordPayload.confirmPassword"
                       required
                     />
                   </div>
@@ -60,7 +60,7 @@
                     <input
                       type="submit"
                       class="btn btn-primary btn-lg btn-block"
-                      value="Log In"
+                      value="Change Password"
                     />
                   </div>
                 </div>
@@ -93,31 +93,23 @@ import useAuthService from "../services/authService";
 
 const router = useRouter();
 const authStore = useAuthStore();
-const { login, error, authDetail, statusCode, sendVerificationEmail } =
-  useAuthService();
+const { error, authDetail, statusCode, changePassword } = useAuthService();
 
 onMounted(async () => {
-  if (authStore.getisLoggedin) {
+  if (!authStore.getisLoggedin) {
     await router.push("/");
   }
 });
 
-const loginPayload = reactive({
-  email: "",
+const changePasswordPayload = reactive({
   password: "",
-  verificationReason: "logIn",
+  confirmPassword: "",
 });
 
-const handleLogin = async () => {
-  await login(loginPayload);
-
-  if (statusCode.value.verified === true) {
-    authStore.setSessionDetails(authDetail.value);
-    authStore.setisLoggedin(true);
+const handleChangePassword = async () => {
+  await changePassword(changePasswordPayload);
+  if (statusCode.value === "ok") {
     await router.push("/");
-  } else if (statusCode.value.verified === false) {
-    await sendVerificationEmail(loginPayload);
-    await router.push("/verifyemail");
   }
 };
 </script>

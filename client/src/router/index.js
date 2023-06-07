@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
+import ForgotPasswordView from "../views/ForgotPasswordView.vue";
+import ChangePasswordView from "../views/ChangePasswordView.vue";
 import SignupView from "../views/SignupView.vue";
 import UserView from "../views/UserView.vue";
 import AboutView from "../views/AboutView.vue";
@@ -12,6 +14,8 @@ import ThankYouView from "../views/ThankYouView.vue";
 import ContactView from "../views/ContactView.vue";
 import AdminView from "../views/AdminView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
+import VerifyEmailView from "../views/VerifyEmailView.vue";
+import VerifyEmailTokenView from "../views/VerifyEmailTokenView.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -25,6 +29,16 @@ const router = createRouter({
       path: "/login",
       name: "login",
       component: LoginView,
+    },
+    {
+      path: "/forgotpassword",
+      name: "forgotpassword",
+      component: ForgotPasswordView,
+    },
+    {
+      path: "/changepassword",
+      name: "changepassword",
+      component: ChangePasswordView,
     },
     {
       path: "/signup",
@@ -75,6 +89,16 @@ const router = createRouter({
       path: "/admin",
       name: "admin",
       component: AdminView,
+    },
+    {
+      path: "/verifyemail",
+      name: "verifyemail",
+      component: VerifyEmailView,
+    },
+    {
+      path: "/verifyemail/:emailVerificationtoken",
+      name: "verifyemailToken",
+      component: VerifyEmailTokenView,
     },
     {
       path: "/404",

@@ -7,4 +7,9 @@ export const {
   CLIENT_URL,
   JWT_ACCESS_SECRET,
   JWT_REFRESH_SECRET,
+  SERVICE,
+  EMAIL_PORT,
+  SECURE,
+  USER,
+  PASS,
 } = process.env;

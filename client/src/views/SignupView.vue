@@ -125,12 +125,12 @@ import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import { onMounted, reactive } from "vue";
 import { useRouter, RouterLink } from "vue-router";
-import { useAuthStore } from "../stores/authStore";
 import useAuthService from "../services/authService";
+import { useAuthStore } from "../stores/authStore";
 
-const router = useRouter();
 const authStore = useAuthStore();
-const { signUp, error, authDetail, statusCode } = useAuthService();
+const router = useRouter();
+const { signUp, error, statusCode } = useAuthService();
 
 onMounted(async () => {
   if (authStore.getisLoggedin) {
@@ -144,14 +144,13 @@ const signUpPayload = reactive({
   email: "",
   password: "",
   confirmPassword: "",
+  verificationReason: "signUp",
 });
 
 const handleSignUp = async () => {
   await signUp(signUpPayload);
-  if (statusCode.value === 200) {
-    authStore.setSessionDetails(authDetail.value);
-    authStore.setisLoggedin(true);
-    await router.push("/");
+  if (statusCode.value === "ok") {
+    await router.push("/verifyemail");
   }
 };
 </script>

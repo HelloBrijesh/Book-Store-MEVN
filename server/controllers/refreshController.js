@@ -22,10 +22,12 @@ const refreshController = {
         return next(CustomErrorHandler.unAuthorised("Invalid Refresh Token"));
       }
 
-      // Verifying the refresh_token
       let userId;
       try {
-        const { _id } = JwtService.verify(cookieRefreshtoken, JWT_REFRESH_SECRET);
+        const { _id } = JwtService.verify(
+          cookieRefreshtoken,
+          JWT_REFRESH_SECRET
+        );
         userId = _id;
       } catch (err) {
         return next(CustomErrorHandler.unAuthorised("Invalid Refresh Token"));
@@ -39,7 +41,11 @@ const refreshController = {
 
       // Creating new Tokens
       const access_token = JwtService.sign({ _id: user._id, role: user.role });
-      const refresh_token = JwtService.sign({ _id: user._id, role: user.role }, JWT_REFRESH_SECRET, "1y");
+      const refresh_token = JwtService.sign(
+        { _id: user._id, role: user.role },
+        JWT_REFRESH_SECRET,
+        "30d"
+      );
 
       // Adding new refresh_token in database
       await RefreshToken.create({ savedRefreshToken: refresh_token });

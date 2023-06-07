@@ -25,9 +25,11 @@
               {{ book.bookDescription }}
             </p>
             <p>
-              <strong class="text-primary h4">${{ book.price }}</strong>
+              <strong class="text-primary h4"
+                >Price : $ {{ book.price }}</strong
+              >
             </p>
-            <div class="mb-1 d-flex">
+            <!-- <div class="mb-1 d-flex">
               <label for="option-sm" class="d-flex mr-3 mb-3">
                 <span
                   class="d-inline-block mr-2"
@@ -52,7 +54,7 @@
                 /></span>
                 <span class="d-inline-block text-black">Audiobook</span>
               </label>
-            </div>
+            </div> -->
             <p class="font-weight-bold">Available : {{ book.quantity }}</p>
             <div class="mb-5">
               <div class="input-group mb-3" style="max-width: 120px">
@@ -113,7 +115,7 @@
             :author="book.authorName"
             :price="book.price"
             @click.prevent="handleRelatedBooks"
-            />
+          />
         </div>
       </div>
     </div>
@@ -133,7 +135,8 @@ import useBookService from "../services/bookService";
 const route = useRoute();
 const router = useRouter();
 const cartStore = useCartStore();
-const { book, relatedBooks, getBookDetails, error, statusCode } = useBookService();
+const { book, relatedBooks, getBookDetails, error, statusCode } =
+  useBookService();
 
 const bookid = ref(route.params.bookid);
 const quantity = ref(1);
@@ -150,9 +153,9 @@ onMounted(async () => {
   };
 });
 
-const handleRelatedBooks =()=>{
+const handleRelatedBooks = () => {
   router.go();
-}
+};
 
 const handleSubtract = () => {
   if (quantity.value >= 2) {

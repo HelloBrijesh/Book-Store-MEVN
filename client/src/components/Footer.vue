@@ -36,11 +36,9 @@
                   id="trackOrder"
                   placeholder="Order No"
                 />
-                <input
-                  type="submit"
-                  class="btn btn-sm btn-primary"
-                  value="Send"
-                />
+                <button type="submit" class="btn btn-sm btn-primary">
+                  Track
+                </button>
               </div>
             </form>
           </div>
@@ -56,8 +54,8 @@
                 />
                 <input
                   type="submit"
-                  class="btn btn-sm btn-primary"
-                  value="Send"
+                  class="btn btn-md btn-primary"
+                  value="Submit"
                 />
               </div>
             </form>
@@ -97,4 +95,8 @@ import { RouterLink } from "vue-router";
 const date = new Date().getFullYear();
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.block-7 .btn {
+  width: 95px;
+}
+</style>

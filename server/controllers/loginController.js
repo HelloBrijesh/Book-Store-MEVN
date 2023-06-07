@@ -13,6 +13,7 @@ const loginController = {
       password: Joi.string()
         .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
         .required(),
+      verificationReason: Joi.string().required(),
     });
     const { error } = loginSchema.validate(req.body);
     if (error) {
@@ -34,10 +35,14 @@ const loginController = {
         req.body.password,
         user.password
       );
+      console.log(verifyPassword);
       if (!verifyPassword) {
         return next(CustomErrorHandler.wrongCredentials());
       }
 
+      if (!user.verified) {
+        return res.json({ verified: false });
+      }
       // Creating the Tokens
       access_token = JwtService.sign({ _id: user._id, role: user.role });
       refresh_token = JwtService.sign(
@@ -62,10 +67,46 @@ const loginController = {
         expires: new Date(Date.now() + 900000),
         httpOnly: true,
       });
-      res.json({ access_token, authDetail });
+      res.json({ access_token, authDetail, verified: true });
     } catch (err) {
       return next(err);
     }
+  },
+
+  async changePassword(req, res, next) {
+    // Validating the user Input
+
+    const changePasswordSchema = Joi.object({
+      password: Joi.string()
+        .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
+        .required(),
+      confirmPassword: Joi.ref("password"),
+    });
+
+    const { error } = changePasswordSchema.validate(req.body);
+    if (error) {
+      return next(error);
+    }
+    const { password } = req.body;
+    const COST_FACTOR = 10;
+    const newPassword = await bcrypt.hash(password, COST_FACTOR);
+
+    const userId = req.user._id;
+    let existingUser;
+    try {
+      existingUser = await User.findOne({ _id: userId });
+
+      if (!existingUser) {
+        return next(CustomErrorHandler.wrongCredentials());
+      }
+
+      await User.findByIdAndUpdate(userId, {
+        password: newPassword,
+      });
+    } catch (error) {
+      next(error);
+    }
+    res.json({ status: "ok" });
   },
 };
 

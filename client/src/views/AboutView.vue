@@ -33,16 +33,23 @@
               <h2 class="text-black">How We Started</h2>
             </div>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius
-              repellat, dicta at laboriosam, nemo exercitationem itaque eveniet
-              architecto cumque, deleniti commodi molestias repellendus quos
-              sequi hic fugiat asperiores illum. Atque, in, fuga excepturi
-              corrupti error corporis aliquam unde nostrum quas.
+              Our journey at Bookstore began with a simple love for books and a
+              vision to create a platform that connects readers with their
+              literary passions. It all started with a small team of book
+              enthusiasts who shared a common belief in the transformative power
+              of literature. With a commitment to curating a diverse collection
+              and providing exceptional customer service, we embarked on a
+              mission to bring the joy of reading to bookworms worldwide.
             </p>
             <p>
-              Accusantium dolor ratione maiores est deleniti nihil? Dignissimos
-              est, sunt nulla illum autem in, quibusdam cumque recusandae,
-              laudantium minima repellendus.
+              Through countless hours of dedication, research, and
+              collaboration, we built an online bookstore that offers an
+              extensive selection of titles, personalized recommendations,
+              competitive prices, and a seamless shopping experience. We've
+              grown from humble beginnings to become a thriving community of
+              book lovers, united by our shared passion for the written word. As
+              we continue to evolve and expand, our commitment to spreading the
+              love of reading remains at the core of everything we do.
             </p>
           </div>
         </div>
@@ -71,9 +78,8 @@
                 </div>
                 <div class="block-38-body">
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Vitae aut minima nihil sit distinctio recusandae doloribus
-                    ut fugit officia voluptate soluta.
+                    As the CEO, my goal has always been to provide an
+                    exceptional reading experience for our customers
                   </p>
                 </div>
               </div>
@@ -93,9 +99,9 @@
                 </div>
                 <div class="block-38-body">
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Vitae aut minima nihil sit distinctio recusandae doloribus
-                    ut fugit officia voluptate soluta.
+                    As co-founders, our vision was to create a platform that
+                    celebrates the magic of books and connects readers with
+                    their literary passions.
                   </p>
                 </div>
               </div>
@@ -115,9 +121,9 @@
                 </div>
                 <div class="block-38-body">
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Vitae aut minima nihil sit distinctio recusandae doloribus
-                    ut fugit officia voluptate soluta.
+                    As part of the marketing team, our mission is to share the
+                    love of reading and showcase the incredible literary
+                    offerings we have.
                   </p>
                 </div>
               </div>
@@ -137,9 +143,8 @@
                 </div>
                 <div class="block-38-body">
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Vitae aut minima nihil sit distinctio recusandae doloribus
-                    ut fugit officia voluptate soluta.
+                    As the sales manager, my focus is on delivering a seamless
+                    and enjoyable shopping experience for our customers.
                   </p>
                 </div>
               </div>
@@ -166,8 +171,8 @@
             <div class="text">
               <h2 class="text-uppercase">Free Shipping</h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.
+                Shop with us and enjoy free shipping on all orders, no matter
+                the size or destination.
               </p>
             </div>
           </div>
@@ -182,8 +187,8 @@
             <div class="text">
               <h2 class="text-uppercase">Free Returns</h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.
+                We offer free returns for your convenience. If you're not
+                completely satisfied with your purchase.
               </p>
             </div>
           </div>
@@ -198,8 +203,8 @@
             <div class="text">
               <h2 class="text-uppercase">Customer Support</h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.
+                We're committed to providing you with excellent service and
+                ensuring your shopping experience is smooth and enjoyable.
               </p>
             </div>
           </div>

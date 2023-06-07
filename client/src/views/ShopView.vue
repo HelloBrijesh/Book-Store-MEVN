@@ -101,33 +101,46 @@
                     v-model="shopPayload.price"
                   />
                   <p class="mt-3">0 $ - {{ shopPayload.price }} $</p>
-
-                  <!-- <input type="range" class="custom-range" :min="0" :max="500" id="price" v-model:price="count" /> -->
-                  <!-- <div id="slider-range" class="border-primary"></div>
-                <input
-                  type="text"
-                  name="text"
-                  id="amount"
-                  class="form-control border-0 pl-0 bg-white"
-                  disabled=""
-                  v-model="price"
-                /> -->
                 </div>
               </form>
               <div class="mb-4">
                 <h3 class="mb-3 h6 text-uppercase text-black d-block">Type</h3>
-                <label for="s_sm" class="d-flex">
-                  <input type="checkbox" id="s_sm" class="mr-2 mt-1" />
-                  <span class="text-black">Paperback</span>
-                </label>
-                <label for="s_md" class="d-flex">
-                  <input type="checkbox" id="s_md" class="mr-2 mt-1" />
-                  <span class="text-black">E-Book</span>
-                </label>
-                <label for="s_lg" class="d-flex">
-                  <input type="checkbox" id="s_lg" class="mr-2 mt-1" />
-                  <span class="text-black">Audiobook</span>
-                </label>
+                <div class="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    id="paperback"
+                    name="type"
+                    class="custom-control-input"
+                    value="Paperback"
+                  />
+                  <label class="custom-control-label text-black" for="paperback"
+                    >Paperback</label
+                  >
+                </div>
+                <div class="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    id="ebook"
+                    name="type"
+                    class="custom-control-input"
+                    value="Ebook"
+                  />
+                  <label class="custom-control-label text-black" for="ebook"
+                    >E-book</label
+                  >
+                </div>
+                <div class="custom-control custom-radio">
+                  <input
+                    type="radio"
+                    id="audiobook"
+                    name="type"
+                    class="custom-control-input"
+                    value="Audiobook"
+                  />
+                  <label class="custom-control-label text-black" for="audiobook"
+                    >Audiobook</label
+                  >
+                </div>
               </div>
             </div>
           </div>

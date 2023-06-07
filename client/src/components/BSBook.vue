@@ -1,7 +1,7 @@
 <template>
   <div class="col-md-3 mb-4" data-aos="fade-up">
     <RouterLink :to="`/shopsingle/${bookId}`">
-      <div class="card">
+      <div class="card shadow">
         <figure class="block-4-image" style="height: 250px">
           <img :src="imgurl" class="card-img-top h-100" alt="BookImage" />
         </figure>

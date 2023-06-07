@@ -35,8 +35,8 @@
             <div class="text">
               <h2 class="text-uppercase">Free Shipping</h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.
+                Shop with us and enjoy free shipping on all orders, no matter
+                the size or destination.
               </p>
             </div>
           </div>
@@ -51,8 +51,8 @@
             <div class="text">
               <h2 class="text-uppercase">Free Returns</h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.
+                We offer free returns for your convenience. If you're not
+                completely satisfied with your purchase.
               </p>
             </div>
           </div>
@@ -67,8 +67,8 @@
             <div class="text">
               <h2 class="text-uppercase">Customer Support</h2>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Phasellus at iaculis quam. Integer accumsan tincidunt fringilla.
+                We're committed to providing you with excellent service and
+                ensuring your shopping experience is smooth and enjoyable.
               </p>
             </div>
           </div>

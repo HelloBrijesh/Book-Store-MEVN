@@ -1,29 +1,41 @@
-# Book Store
 
-The website is developed using the MEVN stack, which includes:
+# Online Bookstore Project (MEVN Stack)
 
-- Vue.js
-- Express
-- Node.js
-- MongoDB
+This is an online bookstore project built using the MEVN stack, which stands for MongoDB (database), Express.js (back-end framework), Vue.js (front-end framework), and Node.js (runtime environment).
 
-The website allow customers to:
+The project aims to provide a platform for users to browse and purchase books online. It includes features such as user authentication, book search, book details, shopping cart, and order management.
 
-- Buy Books
-- Create user accounts
-- Filter out books based on category and price.
+## Table of Contents
 
-- A user-friendly interface that allows customers to easily buy books.
-- Fully responsive website so that customers can also buy using their mobile devices.
-- Secure and encrypted data storage for customer information using MongoDB.
+- Features
+- Installation
+- Usage
+- Technologies
+- Contributing
+- License
+
 
 ## Features
 
-- Authentication
-- Refresh proof Pinia State Management
-- REST API
-- CRUD Operations
+    1. User Authentication:
+        - Sign up and login functionality.
+        - Secure password hashing and storage.
+        - JWT-based authentication for protected routes.
 
-## Target Audience:
+    2. Book Search:
+        - Search books by title, author, or category.
+        - Pagination for large book collections.
 
-The website targets individuals who are looking for an easy and convenient way to buy books online.
+    3. Book Details:
+        - View detailed information about a book, including - title, author, description, price, and availability.
+        - Add books to the shopping cart.
+
+    4. Shopping Cart:
+        - Add/remove books from the cart.
+        - Update the quantity of books in the cart.
+        - Calculate the total price of items in the cart.
+
+    5. Order Management:
+        - Place orders for the books in the cart.
+        - View order history.
+        - Track order status

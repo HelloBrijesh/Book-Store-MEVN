@@ -107,7 +107,7 @@
         </div>
         <div class="row pt-5">
           <BSBook
-            v-for="book in relatedBooks"
+            v-for="book in listOfBooks"
             :key="book._id"
             :bookId="book._id"
             :imgurl="book.imageUrl"
@@ -135,7 +135,7 @@ import useBookService from "../services/bookService";
 const route = useRoute();
 const router = useRouter();
 const cartStore = useCartStore();
-const { book, relatedBooks, getBookDetails, error, statusCode } =
+const { book, listOfBooks, getBookDetails, error, statusCode } =
   useBookService();
 
 const bookid = ref(route.params.bookid);

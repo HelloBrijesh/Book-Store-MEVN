@@ -70,7 +70,9 @@
                 </div>
                 <div class="form-group row">
                   <div class="col-md-12">
-                    <label for="password" class="text-black">Password </label>
+                    <label for="password" class="text-black"
+                      >Password <span class="text-danger">*</span></label
+                    >
                     <input
                       type="password"
                       class="form-control"
@@ -84,7 +86,8 @@
                 <div class="form-group row">
                   <div class="col-md-12">
                     <label for="confirmPassword" class="text-black"
-                      >Confirm Password</label
+                      >Confirm Password
+                      <span class="text-danger">*</span></label
                     >
                     <input
                       type="password"

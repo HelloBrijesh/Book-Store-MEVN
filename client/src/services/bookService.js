@@ -6,21 +6,34 @@ export default function useBookService() {
   const statusCode = ref(null);
   const error = ref(null);
   const book = ref(null);
-  const relatedBooks = ref(null);
+  const listOfBooks = ref(null);
 
   const getBookDetails = async (bookid) => {
     url.value = `bookdetails/${bookid}`;
     statusCode.value = null;
     error.value = null;
     book.value = null;
-    relatedBooks.value=null;
+    listOfBooks.value = null;
 
     try {
       const response = await axios.get(url.value);
       statusCode.value = response.status;
       book.value = response.data.searchedBook[0];
-      relatedBooks.value = response.data.relatedBooks;
-      
+      listOfBooks.value = response.data.relatedBooks;
+    } catch (err) {
+      error.value = err.response.data.message;
+    }
+  };
+  const bestSellingBooks = async () => {
+    url.value = "bestsellingbooks";
+    statusCode.value = null;
+    error.value = null;
+    listOfBooks.value = null;
+
+    try {
+      const response = await axios.get(url.value);
+      statusCode.value = response.status;
+      listOfBooks.value = response.data.listOfBooks;
     } catch (err) {
       error.value = err.response.data.message;
     }
@@ -29,7 +42,8 @@ export default function useBookService() {
     statusCode,
     error,
     book,
-    relatedBooks,
+    listOfBooks,
     getBookDetails,
+    bestSellingBooks,
   };
 }

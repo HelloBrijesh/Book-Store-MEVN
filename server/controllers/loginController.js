@@ -77,6 +77,7 @@ const loginController = {
 
     const changePasswordSchema = Joi.object({
       password: Joi.string()
+        .min(8)
         .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
         .required(),
       confirmPassword: Joi.ref("password"),

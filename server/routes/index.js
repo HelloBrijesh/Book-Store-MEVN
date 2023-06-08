@@ -35,6 +35,7 @@ router.post("/updateemail", auth, userController.updateEmail);
 router.get("/deleteuser", auth, userController.deleteUser);
 router.get("/getorders", auth, orderController.getOrders);
 
+router.get("/bestsellingbooks", shopController.bestSellingBooks);
 router.post("/shop/:currentPage", shopController.shop);
 router.get("/bookdetails/:bookid", bookDetailsController.getbook);
 router.post("/placeorder", auth, orderController.placeOrder);

@@ -137,11 +137,12 @@
         </div>
         <div class="row pt-5">
           <BSBook
-            v-for="book in bsbooks"
-            :key="book.id"
-            :imgurl="book.imgurl"
-            :name="book.name"
-            :author="book.author"
+            v-for="book in listOfBooks"
+            :key="book._id"
+            :bookId="book._id"
+            :imgurl="book.imageUrl"
+            :name="book.bookName"
+            :author="book.authorName"
             :price="book.price"
           />
         </div>
@@ -156,37 +157,14 @@ import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import BSBook from "../components/BSBook.vue";
 import { RouterLink } from "vue-router";
+import { onMounted } from "vue";
+import useBookService from "../services/bookService";
 
-const bsbooks = [
-  {
-    id: 1,
-    imgurl: "/images/book_1.jpg",
-    name: "Book 1",
-    author: "Author 1",
-    price: "100",
-  },
-  {
-    id: 2,
-    imgurl: "/images/book_2.jpg",
-    name: "Book 2",
-    author: "Author 2",
-    price: "200",
-  },
-  {
-    id: 3,
-    imgurl: "/images/book_3.jpg",
-    name: "Book 3",
-    author: "Author 3",
-    price: "300",
-  },
-  {
-    id: 4,
-    imgurl: "/images/book_4.jpg",
-    name: "Book 4",
-    author: "Author 4",
-    price: "300",
-  },
-];
+const { bestSellingBooks, statusCode, error, listOfBooks } = useBookService();
+
+onMounted(async () => {
+  await bestSellingBooks();
+});
 </script>
 
 <style scoped>

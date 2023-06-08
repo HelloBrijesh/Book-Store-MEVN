@@ -43,7 +43,7 @@
                 <div class="form-group row">
                   <div class="col-md-12">
                     <label for="password" class="text-black text-left"
-                      >Password
+                      >Password <span class="text-danger">*</span>
                     </label>
                     <input
                       type="password"

@@ -6,7 +6,11 @@ const bookDetailsController = {
     try {
       searchedBook = await Book.find({ _id: req.params.bookid });
 
-      relatedBooks = await Book.find({category:searchedBook[0].category}).limit(4);
+      relatedBooks = await Book.find({
+        category: searchedBook[0].category,
+      })
+        .sort({ sold: -1 })
+        .limit(4);
     } catch (error) {
       return next(error);
     }

@@ -28,5 +28,16 @@ const shopController = {
 
     res.status(200).json({ searchedBooks, totalPages });
   },
+  async bestSellingBooks(req, res, next) {
+    let listOfBooks;
+
+    try {
+      listOfBooks = await Book.find({}).sort({ sold: -1 }).limit(4);
+    } catch (error) {
+      return next(error);
+    }
+
+    res.status(200).json({ listOfBooks });
+  },
 };
 export default shopController;

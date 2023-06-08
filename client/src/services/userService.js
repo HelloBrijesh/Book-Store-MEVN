@@ -51,10 +51,26 @@ export default function useUserService() {
     }
   };
 
+  const contactUs = async (contactUsPayload) => {
+    url.value = "contactus";
+    statusCode.value = null;
+    error.value = null;
+    userDetail.value = {};
+    try {
+      const response = await axios.post(url.value, contactUsPayload, {
+        withCredentials: true,
+      });
+      statusCode.value = response.data.status;
+    } catch (err) {
+      error.value = err.response.data.message;
+    }
+  };
+
   return {
     getUser,
     updateEmail,
     deleteUser,
+    contactUs,
     error,
     userDetail,
     statusCode,

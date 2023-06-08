@@ -1,9 +1,11 @@
 <template>
-  <div>Total Orders : {{ totalOrders }}</div>
-
-  <div v-for="order in orders" class="border p-3 mb-3">
-    <div>
-      <h5>List of Items</h5>
+  <h3>No of Orders : {{ totalOrders }}</h3>
+  <hr />
+  <div class="pt-0 p-3 mb-3">
+    <div v-for="order in orders">
+      <div class="font-weight-bold text-right">
+        <span>OrderNo : {{ order._id }}</span>
+      </div>
       <table class="table site-block-order-table mb-5">
         <thead>
           <th>Product</th>
@@ -21,7 +23,12 @@
         </tbody>
       </table>
     </div>
-    <div>
+
+    <!-- <div>
+      <h5>List of Items</h5>
+      
+    </div> -->
+    <!-- <div>
       <h5>Shipping Address</h5>
       <p class="mb-0">
         {{ order.billingDetail.firstName }} {{ order.billingDetail.lastName }}
@@ -32,7 +39,7 @@
       </p>
       <p class="mb-0">E mail : {{ order.billingDetail.email }}</p>
       <p class="mb-0">Phone : {{ order.billingDetail.phone }}</p>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -41,11 +48,11 @@ import { onMounted, ref } from "vue";
 import useOrderService from "../services/orderService";
 
 const { getOrders, error, statusCode, orders } = useOrderService();
+let totalOrders = ref(null);
 onMounted(async () => {
   await getOrders();
-  totalOrders = orders.value.length;
+  totalOrders.value = orders.value.length;
 });
-let totalOrders = ref(null);
 </script>
 
 <style scoped></style>

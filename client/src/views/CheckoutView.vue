@@ -221,6 +221,7 @@ const billingDetails = ref({
 const orderPayLoad = ref({
   user: authStore.getSessionDetails,
   cart: cartStore.getCartItems,
+  cartTotal: cartStore.getCartTotal,
   billingDetails: billingDetails.value,
 });
 

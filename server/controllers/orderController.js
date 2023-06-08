@@ -2,10 +2,11 @@ import { Order } from "../models";
 
 const orderController = {
   async placeOrder(req, res, next) {
-    const { user, cart, billingDetails } = req.body._value;
+    const { user, cart, cartTotal, billingDetails } = req.body._value;
 
     const order = new Order({
       userId: user.userId,
+      orderTotal: cartTotal,
       orderedItems: cart,
       billingDetail: {
         firstName: billingDetails.firstName,

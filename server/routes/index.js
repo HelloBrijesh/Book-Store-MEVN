@@ -10,6 +10,7 @@ import {
   shopController,
   bookDetailsController,
   orderController,
+  contactUsController,
 } from "../controllers";
 
 const router = express.Router();
@@ -37,6 +38,7 @@ router.get("/getorders", auth, orderController.getOrders);
 router.post("/shop/:currentPage", shopController.shop);
 router.get("/bookdetails/:bookid", bookDetailsController.getbook);
 router.post("/placeorder", auth, orderController.placeOrder);
+router.post("/contactus", contactUsController.contactUs);
 
 router.post("/admin", [auth, admin], adminController.addBook);
 

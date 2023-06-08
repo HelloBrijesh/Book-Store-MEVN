@@ -1,7 +1,7 @@
 import Joi from "joi";
 import bcrypt from "bcrypt";
 import { JWT_REFRESH_SECRET } from "../config";
-import { User, RefreshToken } from "../models";
+import { User, RefreshToken, Book } from "../models";
 import { CustomErrorHandler, JwtService } from "../services";
 
 const loginController = {
@@ -35,7 +35,6 @@ const loginController = {
         req.body.password,
         user.password
       );
-      console.log(verifyPassword);
       if (!verifyPassword) {
         return next(CustomErrorHandler.wrongCredentials());
       }

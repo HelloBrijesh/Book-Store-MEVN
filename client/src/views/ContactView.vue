@@ -20,7 +20,7 @@
             <h2 class="h3 mb-3 text-black">Get In Touch</h2>
           </div>
           <div class="col-md-7">
-            <form>
+            <form @submit.prevent="handleContactUs">
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
                   <div class="col-md-6">
@@ -32,6 +32,7 @@
                       class="form-control"
                       id="firstName"
                       name="firstName"
+                      v-model="contactUsPayload.firstName"
                       required
                     />
                   </div>
@@ -44,6 +45,7 @@
                       class="form-control"
                       id="lastName"
                       name="lastName"
+                      v-model="contactUsPayload.lastName"
                       required
                     />
                   </div>
@@ -59,6 +61,7 @@
                       id="email"
                       name="email"
                       placeholder=""
+                      v-model="contactUsPayload.email"
                       required
                     />
                   </div>
@@ -71,6 +74,7 @@
                       class="form-control"
                       id="subject"
                       name="subject"
+                      v-model="contactUsPayload.subject"
                       required
                     />
                   </div>
@@ -85,6 +89,7 @@
                       cols="30"
                       rows="7"
                       class="form-control"
+                      v-model="contactUsPayload.message"
                       required
                     ></textarea>
                   </div>
@@ -100,6 +105,12 @@
                 </div>
               </div>
             </form>
+            <div
+              v-if="error"
+              class="text-danger text-center mt-3 font-weight-bold"
+            >
+              {{ error }}
+            </div>
           </div>
           <div class="col-md-5 ml-auto">
             <div class="p-4 border mb-3">
@@ -133,7 +144,28 @@
 <script setup>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
-import { RouterLink } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
+import { ref } from "vue";
+import useUserService from "../services/userService";
+
+const { contactUs, error, statusCode } = useUserService();
+
+const router = useRouter();
+const contactUsPayload = ref({
+  firstName: "",
+  lastName: "",
+  email: "",
+  subject: "",
+  message: "",
+});
+
+const handleContactUs = async () => {
+  await contactUs(contactUsPayload.value);
+  if (statusCode.value === "ok") {
+    alert("Thank You contacting us");
+    window.location.reload();
+  }
+};
 </script>
 
 <style scoped></style>

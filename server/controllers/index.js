@@ -7,3 +7,4 @@ export { default as adminController } from "./admin/adminController";
 export { default as shopController } from "./shopController";
 export { default as bookDetailsController } from "./bookDetailsController";
 export { default as orderController } from "./orderController";
+export { default as contactUsController } from "./contactUsController";

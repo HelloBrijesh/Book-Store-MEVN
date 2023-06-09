@@ -17,15 +17,25 @@
           <h2 class="h3 mb-5 text-black">{{ activeTab }}</h2>
         </div>
         <div class="col-md-3 mb-5 mb-md-0">
-          <div class="border p-4 rounded mb-4">
-            <ul class="list-unstyled mb-0">
-              <li class="mb-1" @click="handleActiveTab('Add Book')">
-                <RouterLink to="#" class="d-flex"
-                  ><span>Add Book</span></RouterLink
+          <div class="border rounded mb-4">
+            <ul class="list-unstyled mb-0 admin-menu">
+              <li class="" @click="handleActiveTab('Add New Book')">
+                <RouterLink to="#" class="d-block py-3 px-4"
+                  ><span>Add New Book</span></RouterLink
                 >
               </li>
-              <li class="mb-1" @click="handleActiveTab('Delete Book')">
-                <RouterLink to="#" class="d-flex"
+              <li class="" @click="handleActiveTab('Add Existing Book')">
+                <RouterLink to="#" class="d-block py-3 px-4"
+                  ><span>Add Existing Book</span></RouterLink
+                >
+              </li>
+              <li class="" @click="handleActiveTab('Update Book')">
+                <RouterLink to="#" class="d-block py-3 px-4"
+                  ><span>Update Book</span></RouterLink
+                >
+              </li>
+              <li class="" @click="handleActiveTab('Delete Book')">
+                <RouterLink to="#" class="d-block py-3 px-4"
                   ><span>Delete Book</span></RouterLink
                 >
               </li>
@@ -33,8 +43,14 @@
           </div>
         </div>
         <div class="col-md-9">
-          <div v-if="activeTab === 'Add Book'">
-            <AddBook></AddBook>
+          <div v-if="activeTab === 'Add New Book'">
+            <AddNewBook></AddNewBook>
+          </div>
+          <div v-else-if="activeTab === 'Add Existing Book'">
+            <AddExistingBook></AddExistingBook>
+          </div>
+          <div v-else-if="activeTab === 'Update Book'">
+            <UpdateBook></UpdateBook>
           </div>
           <div v-else-if="activeTab === 'Delete Book'">
             <DeleteBook></DeleteBook>
@@ -49,7 +65,9 @@
 <script setup>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
-import AddBook from "../components/AddBook.vue";
+import AddNewBook from "../components/AddNewBook.vue";
+import AddExistingBook from "../components/AddExistingBook.vue";
+import UpdateBook from "../components/UpdateBook.vue";
 import DeleteBook from "../components/DeleteBook.vue";
 import { onMounted, ref } from "vue";
 import { RouterLink, useRouter } from "vue-router";
@@ -71,4 +89,20 @@ onMounted(async () => {
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.admin-menu {
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+}
+.admin-menu li a {
+  color: black;
+}
+.admin-menu li:hover {
+  background-color: #f8f9fa;
+  color: #7971ea;
+}
+.admin-menu li:hover a {
+  color: #7971ea;
+}
+</style>

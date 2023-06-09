@@ -148,7 +148,7 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { onMounted, reactive, ref } from "vue";
-import useAdminService from "../services/adminService";
+import useAdminService from "../services/adminService.js";
 
 const { addBook, statusCode, error } = useAdminService();
 

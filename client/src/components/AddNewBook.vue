@@ -149,6 +149,9 @@ import {
 } from "firebase/storage";
 import { onMounted, reactive, ref } from "vue";
 import useAdminService from "../services/adminService.js";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const { addBook, statusCode, error } = useAdminService();
 
@@ -163,7 +166,7 @@ const addBookPayload = reactive({
   bookDescription: "",
 });
 const handleImageUpload = (e) => {
-  const storageRef = firebaseRef(storage, `folder/${imageName}`);
+  const storageRef = firebaseRef(storage, `BooksImages/${imageName}`);
   uploadBytes(storageRef, e.target.files[0]).then((snapshot) => {
     getDownloadURL(storageRef).then((download_url) => {
       addBookPayload.imageUrl = download_url;
@@ -181,6 +184,7 @@ const handleAddBook = async (e) => {
   setTimeout(() => {
     added.value = false;
   }, 2000);
+  router.go();
 };
 
 onMounted(() => {

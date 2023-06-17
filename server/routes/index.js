@@ -42,5 +42,6 @@ router.post("/placeorder", auth, orderController.placeOrder);
 router.post("/contactus", contactUsController.contactUs);
 
 router.post("/admin", [auth, admin], adminController.addBook);
+router.delete("/deletebook/:bookid", [auth, admin], adminController.deleteBook);
 
 export default router;

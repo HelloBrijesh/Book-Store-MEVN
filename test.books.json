@@ -1,672 +1,756 @@
 [{
   "_id": {
-    "$oid": "64446db7a94a8d1903eeed0f"
+    "$oid": "648cf0c3e421fbc7c707e569"
   },
-  "bookName": "Encountering: A Bear Shifter Paranormal Romance",
-  "authorName": " Kelsey Carter ",
-  "price": 2,
-  "quantity": 0,
+  "bookName": "Never Never: A romantic suspense novel of love and fate",
+  "authorName": "Colleen Hoover",
+  "price": 20,
+  "quantity": 4,
+  "sold": 0,
   "category": "Romance",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682206000623-932596670?alt=media&token=dbfb653f-e891-48e5-b669-0ac8d83f8a5f",
-  "bookDescription": "Man, do I HATE being a shape-shifting bear. It's ended up costing me everything: My job, family, friends, any chance at true love....",
-  "__v": 0,
-  "sold": 15
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686958153199-8005807?alt=media&token=89962449-032f-47eb-8e74-a534148e9ade",
+  "bookDescription": "Colleen Hoover, the #1 New York Times bestselling author of It Starts with Us joins forces with Tarryn Fisher, the New York Times bestselling author of The Wives. Together, they have created a gripping, twisty, romantic mystery unlike any other.\n\nCharlie Wynwood and Silas Nash have been best friends since they could walk. They've been in love since the age of fourteen. But as of this morning...they are complete strangers. Their first kiss, their first fight, the moment they fell in love...every memory has vanished. Now Charlie and Silas must work together to uncover the truth about what happened to them and why.\n\nBut the more they learn about the couple they used to be...the more they question why they were ever together to begin with. Forgetting is terrifying, but remembering may be worse.\n\nHeart-stopping and utterly captivating, the complete Never Never series, now available in one volume, will leave readers breathless and believing in the power of love.",
+  "__v": 0
 },
 {
   "_id": {
-    "$oid": "64446e42a94a8d1903eeed19"
+    "$oid": "648cf120e421fbc7c707e576"
   },
-  "bookName": "Every Summer After Paperback – May 2 2023",
+  "bookName": "Meet Me at the Lake",
   "authorName": "Carley Fortune",
-  "price": 14,
-  "quantity": 1,
-  "category": "Romance",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682206200378-672855325?alt=media&token=e420f6a0-291f-4412-898c-2fadab445fa6",
-  "bookDescription": "Six summers to fall in love. One moment to fall apart. A weekend to get it right.",
-  "__v": 0,
-  "sold": 4
-},
-{
-  "_id": {
-    "$oid": "6445b94d52701411dda5a1b4"
-  },
-  "bookName": "One True Loves: A Novel",
-  "authorName": "Taylor Jenkins Reid",
-  "price": 40,
-  "quantity": 4,
-  "category": "Romance",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682290758344-990393072?alt=media&token=e4233057-15cc-40be-84b2-6ff465b38fe1",
-  "bookDescription": "From the New York Times bestselling author of The Seven Husbands of Evelyn Hugo\n\nNamed a Best Book of Summer by Cosmopolitan * InStyle * Redbook * Us Weekly *PopSugar * Buzzfeed * Bustle * Brit+Co * Parade\n\n“No one does life and love better.” –InStyle",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445b9b252701411dda5a1c0"
-  },
-  "bookName": "Book Lovers",
-  "authorName": "Emily Henry",
-  "price": 16,
-  "quantity": 25,
-  "category": "Romance",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682291025891-452105876?alt=media&token=81833676-8162-4e4c-b831-ef7dede0d10d",
-  "bookDescription": "“One of my favorite authors.”—Colleen Hoover\n\nAn insightful, delightful, instant #1 New York Times bestseller from the author of Beach Read and People We Meet on Vacation.\n\nNamed a Most Anticipated Book of 2022 by Oprah Daily ∙ Today ∙ Parade ∙ Marie Claire ∙ Bustle ∙ PopSugar ∙ Katie Couric Media ∙ Book Bub ∙ SheReads ∙ Medium ∙ The Washington Post ∙ and more!\n",
-  "__v": 0,
-  "sold": 1
-},
-{
-  "_id": {
-    "$oid": "6445ba7552701411dda5a1cc"
-  },
-  "bookName": "Beach Read",
-  "authorName": "Emily Henry",
-  "price": 17,
-  "quantity": 14,
-  "category": "Romance",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682291126064-739823199?alt=media&token=930ca268-42fd-4302-a53b-3312ea9700b1",
-  "bookDescription": "FROM THE #1 NEW YORK TIMES BESTSELLING AUTHOR OF PEOPLE WE MEET ON VACATION AND BOOK LOVERS!\n\nA romance writer who no longer believes in love and a literary writer stuck in a rut engage in a summer-long challenge that may just upend everything they believe about happily ever afters.",
-  "__v": 0,
-  "sold": 1
-},
-{
-  "_id": {
-    "$oid": "6445bada52701411dda5a1d6"
-  },
-  "bookName": "Love and Other Words",
-  "authorName": "Christina Lauren",
-  "price": 17,
+  "price": 22,
   "quantity": 5,
+  "sold": 0,
   "category": "Romance",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682291323146-751462064?alt=media&token=d7989784-4d66-4efd-855a-6c82ecb9f351",
-  "bookDescription": "After a decade apart, childhood sweethearts reconnect by chance in New York Times bestselling author Christina Lauren’s touching, romantic novel Love and Other Words…how many words will it take for them to figure out where it all went wrong?\n\nThe story of the heart can never be unwritten.",
-  "__v": 0,
-  "sold": 0
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686958275990-595045946?alt=media&token=4dd3f568-f0fe-4104-beb6-fd690a671b6c",
+  "bookDescription": "Fern Brookbanks has wasted far too much of her adult life thinking about Will Baxter. She spent just twenty-four hours in her early twenties with the aggravatingly attractive, idealistic artist, a chance encounter that spiraled into a daylong adventure in Toronto. The timing was wrong, but their connection was undeniable: they shared every secret, every dream, and made a pact to meet one year later. Fern showed up. Will didn’t.\n\nAt thirty-two, Fern’s life doesn’t look at all how she once imagined it would. Instead of living in the city, Fern’s back home, running her mother’s Muskoka lakeside resort—something she vowed never to do. The place is in disarray, her ex-boyfriend’s the manager, and Fern doesn’t know where to begin.\n\nShe needs a plan—a lifeline. To her surprise, it comes in the form of Will, who arrives nine years too late, with a suitcase in tow and an offer to help on his lips. Will may be the only person who understands what Fern’s going through. But how could she possibly trust this expensive-suit wearing mirage who seems nothing like the young man she met all those years ago. Will is hiding something, and Fern’s not sure she wants to know what it is. \n\nBut ten years ago, Will Baxter rescued Fern. Can she do the same for him?",
+  "__v": 0
 },
 {
   "_id": {
-    "$oid": "6445bb3a52701411dda5a1e0"
+    "$oid": "648cf16de421fbc7c707e580"
   },
-  "bookName": "The Fine Print",
-  "authorName": "Lauren Asher",
-  "price": 24,
-  "quantity": 7,
-  "category": "Romance",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682291424302-458864123?alt=media&token=5b6b941e-128d-4da3-9c20-098e15081746",
-  "bookDescription": "Rowan\nI’m in the business of creating fairy tales.\nTheme parks. Production companies. Five-star hotels.\nEverything could be all mine if I renovated Dreamland.\nMy initial idea of hiring Zahra was good in theory, but then I kissed her.\nThings spiraled out of control once I texted her using an alias.\nBy the time I realized where I went wrong, it was too late.\nPeople like me don’t get happy endings.\nNot when we’re destined to ruin them.",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445bb9252701411dda5a1ed"
-  },
-  "bookName": "The Love Hypothesis",
-  "authorName": "Ali Hazelwood",
+  "bookName": "It Ends with Us: A Novel (Volume 1)",
+  "authorName": "Colleen Hoover",
   "price": 15,
-  "quantity": 15,
-  "category": "Romance",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682291520654-325771107?alt=media&token=76fc8357-2319-4179-a900-3c0645da291d",
-  "bookDescription": "The Instant New York Times Bestseller and TikTok Sensation!\n\nAs seen on THE VIEW!\n\nA BuzzFeed Best Summer Read of 2021\n\nWhen a fake relationship between scientists meets the irresistible force of attraction, it throws one woman's carefully calculated theories on love into chaos.\n",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445bbf452701411dda5a1f7"
-  },
-  "bookName": "Yours Truly",
-  "authorName": "Abby Jimenez",
-  "price": 19,
   "quantity": 8,
+  "sold": 0,
   "category": "Romance",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682291606496-441515447?alt=media&token=3a21fdf9-ecd9-468c-90da-ebbb13f07098",
-  "bookDescription": "A novel of terrible first impressions, hilarious second chances, and the joy in finding your perfect match from \"a true talent\" (Emily Henry, #1 New York Times bestselling author).",
-  "__v": 0,
-  "sold": 0
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686958369408-788068396?alt=media&token=65cbd28c-1ada-40bb-ab68-0d60181691b3",
+  "bookDescription": "Lily hasn’t always had it easy, but that’s never stopped her from working hard for the life she wants. She’s come a long way from the small town where she grew up—she graduated from college, moved to Boston, and started her own business. And when she feels a spark with a gorgeous neurosurgeon named Ryle Kincaid, everything in Lily’s life seems too good to be true.\n\nRyle is assertive, stubborn, maybe even a little arrogant. He’s also sensitive, brilliant, and has a total soft spot for Lily. And the way he looks in scrubs certainly doesn’t hurt. Lily can’t get him out of her head. But Ryle’s complete aversion to relationships is disturbing. Even as Lily finds herself becoming the exception to his “no dating” rule, she can’t help but wonder what made him that way in the first place.\n\nAs questions about her new relationship overwhelm her, so do thoughts of Atlas Corrigan—her first love and a link to the past she left behind. He was her kindred spirit, her protector. When Atlas suddenly reappears, everything Lily has built with Ryle is threatened.\n\nAn honest, evocative, and tender novel, It Ends with Us is “a glorious and touching read, a forever keeper. The kind of book that gets handed down” (USA TODAY).",
+  "__v": 0
 },
 {
   "_id": {
-    "$oid": "6445bc4f52701411dda5a201"
+    "$oid": "648cf1c2e421fbc7c707e58a"
   },
-  "bookName": "It Happened One Summer",
-  "authorName": "Tessa Bailey",
-  "price": 20,
-  "quantity": 3,
-  "category": "Romance",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682291706691-220831319?alt=media&token=fb40e3f9-786b-429e-bd09-2144985f2a7c",
-  "bookDescription": "The first in a spicy and unforgettable rom-com duology from #1 New York Times bestseller and tik tok favorite Tessa Bailey, in which a Hollywood “It Girl” is cut off from her wealthy family and exiled to a small Pacific Northwest beach town... where she butts heads with a surly, sexy local who thinks she doesn’t belong. ",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445bcea52701411dda5a217"
-  },
-  "bookName": "Boomerang Bride:",
-  "authorName": "Fiona Lowe",
-  "price": 45,
-  "quantity": 8,
-  "category": "Romance",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682291794763-677111719?alt=media&token=f1fdf1c2-45bd-4768-ba4f-9d6a68992477",
-  "bookDescription": "A fun romance romp from Australian author, Fiona Lowe.\n\nOne bride, One cake, No groom. Let the chaos begin!",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445bd5f52701411dda5a223"
-  },
-  "bookName": "Love 2 Jingle U",
-  "authorName": "Alexandra Silva",
-  "price": 86,
-  "quantity": 9,
-  "category": "Romance",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682291950832-989400333?alt=media&token=8077bf2b-9a42-4e93-bc6b-a8b1e44c5498",
-  "bookDescription": "AMELIA\nIt's going to be a white Christmas! I'd be over the moon if it didn't mean I'm stranded in England for the holidays. Away from my friends and family.\n\nThe only icing on my Christmas cake is my surprise housemate...he may claim to be a bit of a Grinch, but I'm sure I can help him find his festive spirit.\n\nAfter all, he does seem like a bit of a filthy animal...",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445bf2052701411dda5a235"
-  },
-  "bookName": "The Shifting Current",
-  "authorName": "Dani Pettrey",
-  "price": 20,
-  "quantity": 7,
-  "category": "Literature",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682292066057-385897388?alt=media&token=d05bf046-3150-4b76-a42c-2fb7fb0a3d0c",
-  "bookDescription": "When Coast Guard Investigative Service Special Agent LOGAN PERRY’s beloved grandfather is murdered, Logan races to his hometown of Cauldron Creek, New Mexico to investigate the murder. His teammate and friend, EMMY THORTON, insists on joining him. Not a good idea—not when he loves her, but carries a secret that he knows will tear them apart.",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445bfae52701411dda5a247"
-  },
-  "bookName": "The Asterisk War",
-  "authorName": "Yuu Miyazaki",
-  "price": 150,
-  "quantity": 4,
-  "category": "Literature",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682292515891-981551174?alt=media&token=d80a5dfa-b412-4588-9166-320844a332df",
-  "bookDescription": "Ayato's weakness--the time limit on his power--has been discovered. As he and Julis concoct a new strategy, they make contact with the Tyrant, Dirk, who has information about his sister Haruka. There, Ayato learns the shocking truth, just in time for the semifinals...!\n",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445c06552701411dda5a269"
-  },
-  "bookName": "The Rage Colony",
-  "authorName": "Shanon Hunt",
-  "price": 20,
-  "quantity": 15,
-  "category": "Literature",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682292657850-892303845?alt=media&token=8a8fa57f-53d5-4496-a941-430768c4d77b",
-  "bookDescription": "In a secret society where human medical experimentation is conducted at any cost...\n\nThere are bound to be mistakes.",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445c0c652701411dda5a277"
-  },
-  "bookName": "Mechanicum",
-  "authorName": "Graham McNeill",
-  "price": 75,
-  "quantity": 4,
-  "category": "Literature",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682292841679-989064765?alt=media&token=cf2e18eb-11d0-4367-b2d2-8ce83fa01fd1",
-  "bookDescription": "1.  The Horus Heresy is the Black Library's best-selling SF series, with each new titles eagerly snapped up by fans.\n\n2.  Graham Hours is one of the Black Library's most popular SF writers, and already has two Horus Heresy titles to his credit.",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445c12052701411dda5a285"
-  },
-  "bookName": "The Camp of the Saints ",
-  "authorName": "Jean Raspail",
-  "price": 40,
-  "quantity": 6,
-  "category": "Literature",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682292937134-623659340?alt=media&token=092e700a-c65c-4145-ae75-e566b3112729",
-  "bookDescription": "Used - Very Good: Pages and dust cover are intact and not marred by notes or highlighting. The spine is undamaged.",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445c18a52701411dda5a28d"
-  },
-  "bookName": "The Flight of the Eisenstein",
-  "authorName": "James Swallow",
-  "price": 82,
-  "quantity": 4,
-  "category": "Literature",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682293027419-393223162?alt=media&token=f859ae73-e42d-4215-bdab-713672cd42cf",
-  "bookDescription": "Having witnessed the events on Istvaan III, Deathguard Captain Garro seizes a ship and heads to Terra to warn the Emperor of Horus' treachery. But the fleeing Eisenstein is damaged by enemy fire, and becomes stranded in the warp. Can Garro and his men survive the depredations of Chaos and get his warning to Terra in time",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445c24e52701411dda5a2b1"
-  },
-  "bookName": "The Saint",
-  "authorName": "Dan Abnett",
+  "bookName": "Unfortunately Yours: A Novel",
+  "authorName": "Tessa Bailey ",
   "price": 25,
-  "quantity": 7,
-  "category": "Literature",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682293134234-555404227?alt=media&token=8ec0fe28-9f0e-4196-b83b-0c891efb9987",
-  "bookDescription": "New omnibus edition containing the complete second Gaunt's Ghosts story arc, including the novels Honour Guard, The Guns of Tanith, Straight Silver and Sabbat Martyr.",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445c2fd52701411dda5a2c1"
-  },
-  "bookName": "Blood Angels",
-  "authorName": "James Swallow",
-  "price": 47,
-  "quantity": 8,
-  "category": "Literature",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682293330214-832955759?alt=media&token=4222a9b9-7f64-4b24-a0f2-0a21831b7c3e",
-  "bookDescription": "This omnibus edition collects together for the first time the four Blood Angels novels of author James Swallow and includes several bonus short stories. The full story of Blood Angels Brother Rafen. From humble battle-brother to war-hardened sergeant, Rafen survives civil war, Chaos plots and the calling of destiny in four novels by James Swallow.",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445c3c852701411dda5a2d0"
-  },
-  "bookName": "Warhammer 40k",
-  "authorName": "Chris Wraight",
-  "price": 170,
-  "quantity": 4,
-  "category": "Literature",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682293624197-625347825?alt=media&token=19a09352-b34e-4992-9026-a278254b07ad",
-  "bookDescription": "The secretive minions of Malcador the Sigillite take centre stage in an anthology of thrilling tales of subterfuge and treachery.",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445c43452701411dda5a2e0"
-  },
-  "bookName": "Book of Lies",
-  "authorName": "Richard Metzger",
-  "price": 110,
-  "quantity": 3,
-  "category": "Literature",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682293708039-572790258?alt=media&token=b1e41b8e-91c8-4dda-b0b8-bbe7bbc70b62",
-  "bookDescription": "Disinformation's \"wicked warlock\" Richard Metzger gathers an unprecedented cabal of modern occultists, magicians, and forward thinkers in this large format Disinformation Guide. Just as Russ Kick's Guides focusing on secrets and lies from the mainstream media, government, and other establishment institutions rethought what a political science book could look like and whom it would appeal to, Book of Lies redefines occult anthologies, packaging and presenting a huge array of magical essays for a pop culture audience. Just some of the contents:",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445c4af52701411dda5a2f2"
-  },
-  "bookName": "The Whiskers of Hope",
-  "authorName": "Laura Napoli",
-  "price": 35,
-  "quantity": 10,
-  "category": "Science",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682293815869-288148292?alt=media&token=cfe33714-d7ee-489b-9cb8-4174b839a427",
-  "bookDescription": "Book three in the Tails of Little Flower series follows the Chenzira family after the unexpected and surprising results of Little Flower's sentience and rape trial as they build a new home for the survivors from Earth.",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445c52052701411dda5a2fa"
-  },
-  "bookName": "Silmarillion",
-  "authorName": "J.R.R. Tolkien",
-  "price": 29,
-  "quantity": 44,
-  "category": "Science",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682293937943-211560842?alt=media&token=6ee51b37-36a8-4515-8888-d0a6fea7d12d",
-  "bookDescription": "J R R Tolkien's SILMARILLION is the core work of the Middle-earth canon. It is in this dense and often neglected masterpiece that the entire cosmology for the background for THE HOBBIT and, particularly, THE LORD OF THE RINGS is documented.This new paperback volume contains fabulous tales of heroes and monsters, and the history of the Elves and of the Silmarils - the magical jewels produced by the Children of Iluvatar, or Elves (humans being the Younger Children of Iluvatar); it tells of the creation of Middle-earth, and the coming of Men into the world",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445c62852701411dda5a306"
-  },
-  "bookName": "Night Below",
-  "authorName": "Carl Sargent",
-  "price": 33,
-  "quantity": 10,
-  "category": "Science",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682294196232-417633693?alt=media&token=9fb35c6f-9ba7-4f95-81ba-917e40fc6f4d",
-  "bookDescription": "Night Below, the first epic campaign adventure for the AD&D game, is designed to take the player characters from 1st level to 10th level and beyond. The PCs start as beginning adventurers on a routine courier mission who soon become drawn into combating a sinister plot that menaces the pleasant land of Haranshire.",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445c6c952701411dda5a314"
-  },
-  "bookName": "Elric Swords and Roses",
-  "authorName": "Michael Moorcock",
-  "price": 76,
-  "quantity": 10,
-  "category": "Science",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682294314698-287236575?alt=media&token=3341e7e4-815c-4469-8a49-785cb84a4c35",
-  "bookDescription": "Feared by enemies and friends alike, Elric of Melniboné walks a lonely path among the worlds of the Multiverse. The destroyer of his cruel and ancient race, as well as its final ruler, Elric is the bearer of a destiny as dark and cursed as the vampiric sword he carries—the sentient black blade known as Stormbringer.",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445c73a52701411dda5a322"
-  },
-  "bookName": "Warriors of the Chaos Wastes",
-  "authorName": "C L Werner",
-  "price": 40,
-  "quantity": 22,
-  "category": "Science",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682294475260-352662609?alt=media&token=a4c26bc6-d58e-46fc-8629-5154d3fca183",
-  "bookDescription": "Latest installment in the Warhammer Chronicles series. Focusing on the forces of Choas in the old world.",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445c79d52701411dda5a330"
-  },
-  "bookName": "War for Armageddon",
-  "authorName": "Various",
-  "price": 52,
-  "quantity": 6,
-  "category": "Science",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682294589799-604682779?alt=media&token=0ef237af-d233-40e1-b73c-14dc4c6673f4",
-  "bookDescription": "In the bleak 41st millennium, the planet Armageddon is on the cusp of annihilation. The strategically vital hive world\nhas captured the attention of infamous ork warlord Ghazghkull Thraka, and when the Astra Militarum and whole Titan",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445c7f452701411dda5a33e"
-  },
-  "bookName": "Recruitment",
-  "authorName": "K. A. Riley",
-  "price": 18,
-  "quantity": 8,
-  "category": "Science",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682294688606-158240541?alt=media&token=bbeb4020-5c25-43fe-8a77-aefb702ddbac",
-  "bookDescription": "In the Valta, no matter what month you were born, everyone is assigned the same birthday. November 1st. It's the anniversary of the day when the government declared war on the Eastern Order. The day you turn seventeen, the Recruiters come to take you away.",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445c86152701411dda5a34e"
-  },
-  "bookName": "Knights of Caliban",
-  "authorName": "Gav Thorpe",
-  "price": 56,
-  "quantity": 7,
-  "category": "Science",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682294791321-916566782?alt=media&token=986b9c21-ab8b-4305-a91d-83d7700725a4",
-  "bookDescription": "The Dark Angels' eternal hunt for the Fallen embroils them in a dangerous conspiracy to change the past and destroy the future, bringing the entire Imperium under the dominion of Chaos.",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445c8d052701411dda5a35c"
-  },
-  "bookName": "Black Gods Kiss",
-  "authorName": "C. L. Moore",
-  "price": 46,
-  "quantity": 10,
-  "category": "Science",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682294884191-177864116?alt=media&token=f307c9d2-5890-4918-90b0-6f81bc6e8be5",
-  "bookDescription": "First published in the pages of Weird Tales in 1934, C.L. Moore's Jirel of Joiry is the first significant female sword and sorcery protagonist and one of the most exciting and evocative characters the genre has ever known. Published alongside seminal works by H.P. Lovecraft and Robert E. Howard, the five classic fantasy tales included in this volume easily stand the test of time and often overshadow the storytelling power and emotional impact of stories by Moore's more famous contemporaries.",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445c9e852701411dda5a380"
-  },
-  "bookName": "First & Only",
-  "authorName": "Dan Abnett",
-  "price": 44,
-  "quantity": 7,
-  "category": "Science",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682295099569-350605157?alt=media&token=37118078-c104-448e-b6d8-0b6f9740c1c1",
-  "bookDescription": "First published in the pages of Weird Tales in 1934",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445ca6352701411dda5a392"
-  },
-  "bookName": "Paris Travel Guide",
-  "authorName": "Stuart Hartley",
-  "price": 24,
   "quantity": 15,
-  "category": "Travel",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682295293541-895670482?alt=media&token=7b3ee626-3366-4ab9-8a05-d424f6543e8d",
-  "bookDescription": "Get ready to immerse yourself in the charm and romance of Paris with this comprehensive tourist pocket guide. This book will be your essential companion on your travels through the heart of Paris, providing you with all the information you need to fully appreciate the City's iconic landmarks, cultural hotspots and hidden gems.\n\n",
-  "__v": 0,
-  "sold": 0
+  "sold": 0,
+  "category": "Romance",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686958446258-561621205?alt=media&token=d21eb9e1-a2c1-4563-8f27-fc42cf4727fc",
+  "bookDescription": "After losing her job and her fiancé in one fell swoop, Natalie Vos returned home to lick her wounds. A few months later, she’s sufficiently drowned her sorrows in cabernet and she’s ready to get back on her feet. She just needs her trust fund to finance her new business venture. Unfortunately, the terms require she marry before she can have the money. And well, dumped, remember?\n\nBut Natalie is desperate enough to propose to a man who makes her want to kill him—and kiss him, in equal measure. \n\nAugust Cates may own a vineyard, but he doesn’t know jack about making wine. He’s determined to do his late best friend proud, no matter what it takes. Except his tasting room is empty, his wine is disgusting (seriously, he once saw someone gag), and his buddy’s legacy is circling the drain. No bank will give him the loan he needs to turn the business around... and then the gorgeous, feisty heiress knocks on his door.\n\nNatalie has haunted August's dreams since the moment they met, but their sizzling chemistry immediately morphed into simmering insults. Now, a quickie marriage could help them both. A sham wedding, a few weeks living under the same roof, and then they can go their separate ways—assuming they make it out alive. How hard could it be?\n\nThere’s just one thing they didn’t account for: their unfortunate, unbearable, undeniable attraction.",
+  "__v": 0
 },
 {
   "_id": {
-    "$oid": "6445caaa52701411dda5a39e"
+    "$oid": "648cf288e421fbc7c707e592"
   },
-  "bookName": "Mexico - Culture Smart!",
-  "authorName": "Russell Maddicks",
-  "price": 18,
-  "quantity": 7,
-  "category": "Travel",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682295419820-564870018?alt=media&token=02d0253c-bc18-490e-929b-a234dbd85cea",
-  "bookDescription": "Culture Smart! Mexico takes you to the heart of Mexican society. It describes how people socialize and meet members of the opposite sex, the dynamics of daily life, the central importance of family, and the annual cycle of Catholic feasts and fiestas. For business travelers there are key sections on the economy and vital insights into the general business culture. ",
-  "__v": 0,
-  "sold": 0
+  "bookName": "Strangers in the Night",
+  "authorName": "Linda Howard",
+  "price": 145,
+  "quantity": 5,
+  "sold": 0,
+  "category": "Romance",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686958530901-14212944?alt=media&token=e0d1ca8b-c588-41f0-a548-4d584179e7dd",
+  "bookDescription": "Thea Marlow had encountered her soul mate in the depths of her overpowering, frightening dreams. Now, on the shores of a country lake, the stranger comes to her in the flesh—and lures her into a timeless love.\n\nBlue Moon\n\nSheriff Jackson Brody knows folks get a little crazy under a full bayou moon. But on the trail of a scorching murder mystery, it’s the lawman himself who succumbs to the spell of a beautiful, mysterious stranger.\n\nWhite Out\n\nIn the midst of an Idaho blizzard, Hope Bradshaw offers shelter to a stranger—and an instant, hungry passion flares between them. When a radio bulletin warns of a dangerous escaped convict, her blood runs cold: has desire blinded her to the risks of trusting a man who is an expert at covering his tracks?",
+  "__v": 0
 },
 {
   "_id": {
-    "$oid": "6445cb0652701411dda5a3aa"
+    "$oid": "648cf31fe421fbc7c707e59e"
   },
-  "bookName": "Japan Travel Guide",
-  "authorName": "Stuart Hartley",
-  "price": 28,
+  "bookName": "Love, Theoretically",
+  "authorName": "Ali Hazelwood",
+  "price": 25,
   "quantity": 9,
-  "category": "Travel",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682295468300-720687942?alt=media&token=75daff58-88e7-48f8-9b81-380220ba5b28",
-  "bookDescription": "Japanese Expert Guide reveals the best way to visit Japan and get the most out of the country!",
-  "__v": 0,
-  "sold": 0
+  "sold": 0,
+  "category": "Romance",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686958728768-101335703?alt=media&token=d72d2aec-bc99-4e84-a7aa-fe98fb30d500",
+  "bookDescription": "\"The reigning queen of STEM romance.\"—The Washington Post\n\nAn Indie Next and Library Reads Pick!\n\nRival physicists collide in a vortex of academic feuds and fake dating shenanigans in this delightfully STEMinist romcom from the New York Times bestselling author of The Love Hypothesis and Love on the Brain.\n \nThe many lives of theoretical physicist Elsie Hannaway have finally caught up with her. By day, she’s an adjunct professor, toiling away at grading labs and teaching thermodynamics in the hopes of landing tenure. By other day, Elsie makes up for her non-existent paycheck by offering her services as a fake girlfriend, tapping into her expertly honed people-pleasing skills to embody whichever version of herself the client needs.\n \nHonestly, it’s a pretty sweet gig—until her carefully constructed Elsie-verse comes crashing down. Because Jack Smith, the annoyingly attractive and arrogant older brother of her favorite client, turns out to be the cold-hearted experimental physicist who ruined her mentor’s career and undermined the reputation of theorists everywhere. And he’s the same Jack Smith who rules over the physics department at MIT, standing right between Elsie and her dream job.\n \nElsie is prepared for an all-out war of scholarly sabotage but…those long, penetrating looks? Not having to be anything other than her true self when she’s with him? Will falling into an experimentalist’s orbit finally tempt her to put her most guarded theories on love into practice?",
+  "__v": 0
 },
 {
   "_id": {
-    "$oid": "6445cb8a52701411dda5a3b6"
+    "$oid": "648cf36de421fbc7c707e5a6"
   },
-  "bookName": "Lonely Planet Algeria",
-  "authorName": "Anthony Ham",
-  "price": 47,
-  "quantity": 10,
-  "category": "Travel",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682295561289-150354240?alt=media&token=b5d0133b-86f0-44a3-866e-46179e8f82be",
-  "bookDescription": "Discover Algeria. Shiver as the sun rises over Assekrem, the mountains at the 'End of the World. Rock the Casbah in Algiers, one of the finest coastal sites on the Mediterranean. Explore the best Roman ruins in Africa, and the oldest rock art in the world. Tie your turban like a Yuareg and be swept up in the magic of the world's greatest desert. ",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445cc7752701411dda5a3d0"
-  },
-  "bookName": "Venice",
-  "authorName": "Macadam Alta",
-  "price": 28,
+  "bookName": "Pucking Around: A Why Choose Hockey Romance",
+  "authorName": "Emily Rath",
+  "price": 35,
   "quantity": 6,
-  "category": "Travel",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682295852724-738451947?alt=media&token=f4785644-8e35-4e06-aedc-91e0542d3e86",
-  "bookDescription": "This guidebook to Venice provides descriptions of all the main monuments and museums, and illustrates the best ways of exploring the city. In this edition, important restorations, including Palazzo Ducale and the Hellenistic winged lion on the column of the Piazzetta, are described. The information on hotels and restaurants, opening times and transport have also been brought up to date. There are also details of planned walks around the city.\n",
-  "__v": 0,
-  "sold": 0
+  "sold": 0,
+  "category": "Romance",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686958880447-634655243?alt=media&token=486405fd-70d0-445a-9a13-c92b97b37836",
+  "bookDescription": "My name is Rachel Price, and two months ago, I walked away from the perfect man. Sweet and funny, and so hot it should be illegal—we shared one magical night. No names. No strings. I never thought I’d see him again.\n\nI was wrong. It turns out Mr. Perfect is the playboy grinder for the Jacksonville Rays, the NHL’s hottest new hockey team…and I’m his new physical therapist. Oh, and the jerk doesn’t even recognize me!\n\nThis fellowship is going to be the longest ten months of my life. Mr. Perfect Mistake will do anything to get back on my good side. Meanwhile, his best friend is the surly new equipment manager always riding my case. Worst of all, I’ve got an uncooperative goalie who thinks I can’t tell he’s hiding an injury!\n\nThis is my chance to prove myself, and I’m not risking it for anything. But with one unexpected night, one secret revealed, these men are ready to test all my limits. I can’t fall for a player…let alone three. But if love is a game, these guys are playing to win.\n\nPUCKING AROUND is a spicy ‘why choose’ hockey romance. This book stands alone as the first in a brand new hockey romance series. For a full list of tropes, tags, and CWs, see the author’s website.",
+  "__v": 0
 },
 {
   "_id": {
-    "$oid": "6445cd2552701411dda5a3d8"
+    "$oid": "648cf3eae421fbc7c707e5ae"
   },
-  "bookName": "Germany - Culture Smart",
-  "authorName": "Culture Smart!",
+  "bookName": "Innocence: a Dark Mafia Romance",
+  "authorName": "Stasia Black",
+  "price": 45,
+  "quantity": 6,
+  "sold": 0,
+  "category": "Romance",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686958957592-200917002?alt=media&token=7837094e-fb5d-4010-b9ed-3cb46ec7f8aa",
+  "bookDescription": "I’m king of the criminal underworld.\nI always get what I want.\nAnd she’s my obsession.\nCora is new to the city of sin.\nHer innocent blue eyes beg for me to claim her.\nBut I’m not the billionaire she thinks I am.\nThere’s a darkness within me.\nAnd Cora is a shining light.\nShe’s beautiful. A virgin.\nI’m ruthless. A beast.\nShe found me for a reason.\nShe’ll be my queen.\nI’ll give her everything that her heart desires.\nExcept for one thing.\nHer freedom.\nShe’s mine to keep, and I’m never letting her go.\n",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648cf442e421fbc7c707e5b6"
+  },
+  "bookName": "The Stars are Dying: Nytefall Book 1",
+  "authorName": "Chloe C Peñaranda ",
+  "price": 60,
+  "quantity": 7,
+  "sold": 0,
+  "category": "Romance",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686959083196-834836569?alt=media&token=93a5a903-24cb-48ed-9576-1b81a80a9aea",
+  "bookDescription": "An emotional, page-turning beginning to a new epic world with a romance that is both heart-warming and wrenching. A dark romantic fantasy loosely inspired by the Greek myths of Astraea\n\n\n\n\"The brightest star needs the darkest night.\"\n\n\n\nIn a world abandoned by the celestial guardians and left to suffer a tyrant king's reign, all Astraea knows is safety in seclusion. With fragmented memories of only five years of her life, she's determined to discover more about her past, even if that means fleeing the cruel arms that hold her safe from the wicked vampires rumored to roam the land.\n\n\n\nBut when Astraea stumbles upon the mysterious Nyte, she soon realizes determination alone isn't enough to guard her heart. He lingers like the darkness that expands between the stars, and soon she discovers her captor's wicked means of control weren't based on a lie to keep her under locks after all. In her desperation, Astraea accepts Nyte's help before she can decide if she might have sold her allegiance to one of the bloodthirsty beings the people of her world fear.\n\n\n\nOnce their bargain is struck, Astraea's chance to escape comes in the form of accompanying her best friend Cassia to the King's Central. There on royal territory it's the centenary of the Libertatem, a succession of trials hosted by the king in which five human lands compete for a cycle of safety from the vampires seeking blood, claiming souls, and savaging after dark. So when tragedy strikes, Astraea must decide if taking the place of a murdered participant for the safety of her kingdom is a ruse is worth dying for, or if protection-and the answers to her past-really are her strongest desires.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648cf4a8e421fbc7c707e5c3"
+  },
+  "bookName": "One Italian Summer: A Novel",
+  "authorName": "Rebecca Serle",
+  "price": 21,
+  "quantity": 15,
+  "sold": 0,
+  "category": "Romance",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686959214423-347344707?alt=media&token=f326cb35-a508-45c8-97bf-645673c193fa",
+  "bookDescription": "In this “magical trip worth taking” (Associated Press), the New York Times bestselling author of In Five Years returns with a powerful novel about the transformational love between mothers and daughters set on the breathtaking Amalfi Coast.\n\nWhen Katy’s mother dies, she is left reeling. Carol wasn’t just Katy’s mom, but her best friend and first phone call. She had all the answers and now, when Katy needs her the most, she is gone. To make matters worse, their planned mother-daughter trip of a lifetime looms: to Positano, the magical town where Carol spent the summer right before she met Katy’s father. Katy has been waiting years for Carol to take her, and now she is faced with embarking on the adventure alone.\n\nBut as soon as she steps foot on the Amalfi Coast, Katy begins to feel her mother’s spirit. Buoyed by the stunning waters, beautiful cliffsides, delightful residents, and, of course, delectable food, Katy feels herself coming back to life.\n\nAnd then Carol appears—in the flesh, healthy, sun-tanned, and thirty years old. Katy doesn’t understand what is happening, or how—all she can focus on is that she has somehow, impossibly, gotten her mother back. Over the course of one Italian summer, Katy gets to know Carol, not as her mother, but as the young woman before her. She is not exactly who Katy imagined she might be, however, and soon Katy must reconcile the mother who knew everything with the young woman who does not yet have a clue.\n\n“Rebecca Serle is known for her powerful stories that tug at the heartstrings—and her latest is just as unforgettable” (Woman’s World) as it effortlessly shows us how to move on after loss, and how the people we love never truly leave us.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648cf52fe421fbc7c707e5d1"
+  },
+  "bookName": "The Wedding Planner: A Novel",
+  "authorName": "Danielle Steel ",
+  "price": 25,
+  "quantity": 20,
+  "sold": 0,
+  "category": "Romance",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686959273468-538055928?alt=media&token=f5e90b5b-2f41-4a7a-a50c-98dfebe031cc",
+  "bookDescription": "Faith Ferguson is New York’s most in-demand wedding planner, an arbiter of taste for elegant affairs, lavish ceremonies, and exclusive fêtes. She appreciates a simple celebration as much as a dazzling event, for she knows that a dream wedding is not necessarily the most expensive one.\n\nAs much as Faith enjoys her work, her two failed engagements leave her with no desire to get married herself. She finds fulfillment in her close relationship with her twin sister, Hope, her role as a mentor for her assistant, Violet, and her career. \n\nThis year, new clients have flocked to her, and she signs up an extravagant reception, a mid-sized gathering, and an intimate soirée, in addition to her mother’s next marriage and Violet’s modest ceremony. Faith finds herself forming bonds with her new clients and their loved ones—most notably the handsome brother of one of her grooms.\n\nBut weddings are not always all champagne and roses, and in no time, Faith is grappling with private quarrels, unplanned pregnancies, family scandals, dark secrets, and the possibility of cancelled ceremonies. Through her own journey, Faith will prove once and for all that there is not just one path to happily ever after.\n\nIn The Wedding Planner, Danielle Steel presents an enchanting story about the winding road to love and the many ways to find joy while staying true to oneself.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648cf5a4e421fbc7c707e5db"
+  },
+  "bookName": "Rule Number Five: A College Hockey Romance",
+  "authorName": " J. Wilder ",
+  "price": 28,
+  "quantity": 17,
+  "sold": 0,
+  "category": "Romance",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686959408150-799227115?alt=media&token=40f6720e-1049-4420-ab2d-ef299e1ed2db",
+  "bookDescription": "My 5 simple rules for hooking up keep me from being distracted. And now I’m so close to landing my dream internship. Nothing is going to make me break them.\n\nEven a protective hockey player with clear grey eyes, a sharp jaw, and a body that makes my breath catch.\n\nUntil Jax wins a bet and one kiss has me breaking them all.\nTROPES:\n\nSlowburn\nHe Falls First\nFriends with benefits\nJealousy\nMutual pinning\n",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648cf642e421fbc7c707e5eb"
+  },
+  "bookName": "The Decameron",
+  "authorName": "Giovanni Boccaccio",
+  "price": 20,
+  "quantity": 12,
+  "sold": 0,
+  "category": "Literature",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686959597166-621043424?alt=media&token=cf1a7c65-7db8-4621-96e5-6d991d9fee12",
+  "bookDescription": "A complete edition of the hilarious, bawdy, irreverent masterpiece of medieval Italy—and the inspiration for the film The Little Hours—in an acclaimed translation\n\nIn the summer of 1348, as the Black Death ravages their city, ten young Florentines take refuge in the countryside. They amuse themselves by each telling a story a day for the ten days they are destined to remain there—a hundred stories of love, adventure and surprising twists of fate. Less preoccupied with abstract concepts of morality or religion than with earthly values, the tales range from the bawdy Peronella hiding her lover in a tub to Ser Cepperello, who, despite his unholy effrontery, becomes a Saint. The result is a towering monument of European literature and a masterpiece of imaginative narrative.\n\nThis is the second edition of G. H. McWilliam’s acclaimed translation of The Decameron. His introduction illuminates the worlds of Boccaccio and of his storytellers, showing Boccaccio as a master of vivid and exciting prose fiction. ",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648cf67be421fbc7c707e5f3"
+  },
+  "bookName": "Black Beauty (Illustrated & Annotated): Classic Children's Literature",
+  "authorName": "Anna Sewell",
+  "price": 26,
+  "quantity": 8,
+  "sold": 0,
+  "category": "Literature",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686959594412-353990309?alt=media&token=ec9c5d70-fbad-488f-978d-44987efeaf2b",
+  "bookDescription": "A gentle, stunning creature thrust into a harsh world. When a horse gains masters both kind and cruel, can he survive to find green pastures again?\nBeauty begins life as a foal on an idyllic, loving farm. And when he's sold to a local nobleman, he easily makes friends and does himself proud by rescuing his kindhearted owner and the coachman from drowning. But the night he races to the doctor to save his mistress, he's tended to by untrained hands and falls gravely ill.\n\nAfter a tense recovery, Beauty is sad to learn the people he trusts are moving abroad and anxiously awaits purchase by a third family. And as his uncertain journey takes him from one home to another, he's caught in a downward spiral towards negligent treatment and backbreaking work.\n\nDespite the hardships, can this once beautiful thoroughbred recapture peace within his majestic heart?\n\nIn this lovely updated edition of a cherished children's novel, Leonora Teale has thoughtfully adapted author Anna Sewell's story for a modern audience. Featuring all-new exquisite artwork by Maria Grishkevich, this remarkable classic pairs perfectly with its companion coloring book as a treasured gift set.\n\nIn Black Beauty, you'll discover:\n33 unique illustrations true to the Victorian style to bring the story and era to life\nA fresh introduction to give young readers insight into the author, the book's impact, and the themes contained in its pages\nOriginal text with sensitive adaptations to make antiquated or difficult words understandable for today's youngsters\nFascinating historical facts related to the literature so they capture your child's imagination\nReal-world horses around the globe, the important work of the World Horse Welfare international charity, and much, much more!\n\nBlack Beauty is a timeless and moral tale told through the eyes of its big-hearted animal hero. If you or your child like stories of bravery, learning about empathy, and the power of perseverance, then you'll adore Anna Sewell's heartwarming adventure, as annotated by Leonora Teale.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648cf6cfe421fbc7c707e5ff"
+  },
+  "bookName": "Mr. President ",
+  "authorName": "Miguel Ángel Asturias",
+  "price": 32,
+  "quantity": 11,
+  "sold": 0,
+  "category": "Literature",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686959682880-746667937?alt=media&token=c8c14e1e-8a56-42a5-a371-cc80adf67908",
+  "bookDescription": "Nobel Prize–winning Guatemalan author Miguel Ángel Asturias’s masterpiece—the original Latin American dictator novel and pioneering work of magical realism—in its first new English translation in more than half a century, featuring a foreword by Nobel laureate Mario Vargas Llosa\n\nA Penguin Classic\n\nIn an unnamed country, an egomaniacal dictator schemes to dispose of a political adversary and maintain his grip on power. As tyranny takes hold, everyone is forced to choose between compromise and death. Inspired by life under the regime of President Manuel Estrada Cabrera of Guatemala, where it was banned for many years, and infused with exuberant lyricism, Mayan symbolism, and Guatemalan vernacular, Nobel Prize winner Miguel Ángel Asturias’s magnum opus is at once a surrealist masterpiece, a blade-sharp satire of totalitarianism, and a gripping portrait of psychological terror.\n\nFor more than seventy-five years, Penguin has been the leading publisher of classic literature in the English-speaking world. With more than 2,000 titles, Penguin Classics represents a global bookshelf of the best works throughout history and across genres and disciplines. Readers trust the series to provide authoritative texts enhanced by introductions and notes by distinguished scholars and contemporary authors, as well as up-to-date translations by award-winning translators.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648cf785e421fbc7c707e617"
+  },
+  "bookName": "The Picture of Dorian Gray",
+  "authorName": "Oscar Wilde",
+  "price": 14,
+  "quantity": 20,
+  "sold": 0,
+  "category": "Literature",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686959824389-60023528?alt=media&token=99f524ed-d931-4941-ae5d-08654b4fb12c",
+  "bookDescription": "Explore Wilde’s lavish world of Gothic fiction, and his study of lost innocence, full of captivating characters with this gorgeous, jacketed hardcover edition.\n\nArtist Basil Hallward has sent a gift. A portrait that perfectly captures young Dorian Gray’s handsome features. When Lord Henry tempts Dorian with a new lifestyle of hedonism and pleasure, he realizes that he would sell his soul for an eternity of debauchery. Oscar Wilde’s only published novel, The Picture of Dorian Gray is a dark and sinful story of excess and vice.\n\nComplete and unabridged, this elegant edition of The Portrait of Dorian Gray is an essential collectible.\n\nEssential volumes for the shelves of every classic literature lover, the Chartwell Classics series includes beautifully presented works and collections from some of the most important authors in literary history. Chartwell Classics are the editions of choice for the most discerning literature buffs.\n \nOther titles in the Chartwell Classics Series include: Complete Fiction of H.P. Lovecraft; Complete Grimm’s Fairy Tales; Complete Novels of Jane Austen; Complete Sherlock Holme; Complete Tales & Poems of Edgar Allen Poe; Complete Works of William Shakespeare; Divine Comedy; Alice's Adventures in Wonderland and Other Tales; The Essential Tales of H.P. Lovecraft; The Federalist Papers; The Inferno; The Call of the Wild and White Fang; Moby Dick; The Odyssey; Pride and Prejudice; The Essential Grimm’s Fairy Tales; Emma; The Great Gatsby; The Secret Garden; Anne of Green Gables; The Essential Tales and Poems of Edgar Allan Poe; The Phantom of the Opera; The Communist Manifesto and Das Kapital; Republic; Frankenstein; Twenty Thousand Leagues Under the Sea; Meditations; Wuthering Heights; Alice’s Adventures in Wonderland and Through the Looking-Glass; A Tales of Two Cities; Beowulf; The Strange Case of Dr. Jekyll and Mr. Hyde and Other Stories; Adventures of Huckleberry Finn; Little Women",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648cf7e3e421fbc7c707e623"
+  },
+  "bookName": "H. P. Lovecraft Tales of Horror",
+  "authorName": "H. P. Lovecraft",
+  "price": 34,
+  "quantity": 4,
+  "sold": 0,
+  "category": "Literature",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686960006262-321757916?alt=media&token=11fcc378-83e5-447f-98e6-641b7cec24df",
+  "bookDescription": "Let your imagination sink deep into more than a dozen classic tales of dark horror by an early master of the genre.BRBRThe stories of H. P. Lovecraft have been a source of fascination for readers since they were published in the early twentieth century, and legions of fans continue to reinvent his dark and fantastical world to this day. This collection of short stories by the master of the macabre contains more than twenty of his most popular works, including \"The Call of Cthulhu,\" \"The Shadow Over Innsmouth,\" and \"The Dunwich Horror.\" Each story will leave the reader feeling unsettled and uncertain, but also appreciative of the unique elements that Lovecraft introduced to the literary world.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648cf848e421fbc7c707e62b"
+  },
+  "bookName": "The Great Gatsby",
+  "authorName": "F. Scott Fitzgerald",
+  "price": 17,
+  "quantity": 10,
+  "sold": 0,
+  "category": "Literature",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686960100225-796109243?alt=media&token=9c39f46c-c824-4ca7-96ba-f65c3c1f354f",
+  "bookDescription": "F. Scott Fitzgerald’s best-known novel is set in hedonistic Jazz Age Long Island and tells the story of millionaire Jay Gatsby and his pursuit of his former lover, Daisy Buchanan. A novel that touches on the topics of materialism, class, desire, and the American Dream, this enduring classic continues to capture imaginations nearly a century after its first publication. This edition includes a biographical timeline for Fitzgerald, as well as a further reading section if you'd like to learn more about the impact of this novel.\n\nOne hundred years after this novel is set, this highly collectible edition of this American masterpiece is the perfect addition to any personal library.\n\nEssential volumes for the shelves of every classic literature lover, the Chartwell Classics series includes beautifully presented works and collections from some of the most important authors in literary history. Chartwell Classics are the editions of choice for the most discerning literature buffs.\n \nOther titles in the Chartwell Classics Series include: The Essential Tales & Poems of Edgar Allen Poe; The Essential Tales of H.P. Lovecraft; The Federalist Papers; The Inferno; The Call of the Wild and White Fang; Moby Dick; The Odyssey; Pride and Prejudice; Grimm’s Fairy Tales; The Alchemist; Emma; The Secret Garden; Anne of Green Gables; The Phantom of the Opera; The Communist Manifesto and Das Kapital; The Republic; Frankenstein; Twenty Thousand Leagues Under the Sea; The Picture of Dorian Gray; Meditations; Alice’s Adventures in Wonderland and Through the Looking-Glass; A Tales of Two Cities; Beowulf; The Strange Case of Dr. Jekyll and Mr. Hyde; Adventures of Huckleberry Finn; Little Women; Wuthering Heights; Peter Pan; Persuasion; Aesop’s Fables; The Constitution of the United States and Selected Writings; Crime and Punishment; Dracula; Great Expectations; The Iliad; Irish and Fairy Folk Tales; The Legend of Sleepy Hollow; The War of the Worlds; and The Time Machine and The Invisible Man.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648cf890e421fbc7c707e633"
+  },
+  "bookName": "Anna Karenina (Signet Classics edition)",
+  "authorName": "Leo Tolstoy ",
+  "price": 12,
+  "quantity": 8,
+  "sold": 0,
+  "category": "Literature",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686960201372-91184997?alt=media&token=70b345d9-3cbb-424c-8126-97746558e06c",
+  "bookDescription": "Leo Tolstoy's evocative tale of doomed love—one of the greatest novels of the nineteenth century.\n\nAnna Karenina startled the world with its powerful portrayal of the human need for love and purpose. In a story that brings to vivid life nineteenth century Russia across various social classes, Anna renounces a respectable yet stifling marriage for a passionate affair that weighs her happiness against her love for her son, her family’s status and the rigid demands of society. Her story contrasts with that of Levin, a young self-doubting agnostic who takes a different journey to fulfillment and finds faith and satisfaction in an age of repression.\n \nConsidered one of the greatest novels of the nineteenth century, Anna Karenina has been called Tolstoy’s spiritual autobiography. Anna and Levin personify Tolstoy’s lifelong struggle to reconcile his physical desires and intellectual ideals in order to create a more meaningful existence.\n",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648cf8dce421fbc7c707e63f"
+  },
+  "bookName": "Jane Eyre",
+  "authorName": "Charlotte Bronte ",
+  "price": 18,
+  "quantity": 10,
+  "sold": 0,
+  "category": "Literature",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686960272394-943188209?alt=media&token=95dc54a1-d0c7-4e91-a1c8-fab4035043b0",
+  "bookDescription": "A novel of intense power and intrigue, Jane Eyre has dazzled generations of readers with its depiction of a woman's quest for freedom. Having grown up an orphan in the home of her cruel aunt and at a harsh charity school, Jane Eyre becomes an independent and spirited survivor-qualities that serve her well as governess at Thornfield Hall. But when she finds love with her sardonic employer, Rochester, the discovery of his terrible secret forces her to make a choice. Should she stay with him whatever the consequences or follow her convictions, even if it means leaving her beloved? This updated Penguin Classics edition features a new introduction by Brontë scholar and award-winning novelist Stevie Davies, as well as comprehensive notes, a chronology, further reading, and an appendix.\n\nFor more than seventy years, Penguin has been the leading publisher of classic literature in the English-speaking world. With more than 1,700 titles, Penguin Classics represents a global bookshelf of the best works throughout history and across genres and disciplines. Readers trust the series to provide authoritative texts enhanced by introductions and notes by distinguished scholars and contemporary authors, as well as up-to-date translations by award-winning translators.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648cf922e421fbc7c707e64b"
+  },
+  "bookName": "Twelve Angry Men",
+  "authorName": "Reginald Rose",
+  "price": 58,
+  "quantity": 10,
+  "sold": 0,
+  "category": "Literature",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686960348747-725228389?alt=media&token=8eda9e20-2db5-4e85-8a85-d471b43967e9",
+  "bookDescription": "A landmark American drama that inspired a classic film and a Broadway revival—featuring an introduction by David Mamet\n\nA blistering character study and an examination of the American melting pot and the judicial system that keeps it in check, Twelve Angry Men holds at its core a deeply patriotic faith in the U.S. legal system. The play centers on Juror Eight, who is at first the sole holdout in an 11-1 guilty vote. Eight sets his sights not on proving the other jurors wrong but rather on getting them to look at the situation in a clear-eyed way not affected by their personal prejudices or biases. Reginald Rose deliberately and carefully peels away the layers of artifice from the men and allows a fuller picture to form of them—and of America, at its best and worst.\n \nAfter the critically acclaimed teleplay aired in 1954, this landmark American drama went on to become a cinematic masterpiece in 1957 starring Henry Fonda, for which Rose wrote the adaptation. More recently, Twelve Angry Men had a successful, and award-winning, run on Broadway.\n\nFor more than seventy years, Penguin has been the leading publisher of classic literature in the English-speaking world. With more than 1,700 titles, Penguin Classics represents a global bookshelf of the best works throughout history and across genres and disciplines. Readers trust the series to provide authoritative texts enhanced by introductions and notes by distinguished scholars and contemporary authors, as well as up-to-date translations by award-winning translators.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648cf96ee421fbc7c707e653"
+  },
+  "bookName": "Anna Karenina (Oprah's Book Club)",
+  "authorName": "Leo Tolstoy",
+  "price": 29,
+  "quantity": 5,
+  "sold": 0,
+  "category": "Literature",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686960418596-464480713?alt=media&token=3d43dfa2-52e8-460c-81e8-a62f7e7a7a72",
+  "bookDescription": "The must-have Pevear and Volokhonsky translation of one of the greatest Russian novels ever written\n\nDescribed by William Faulkner as the best novel ever written and by Fyodor Dostoevsky as “flawless,” Anna Karenina tells of the doomed love affair between the sensuous and rebellious Anna and the dashing officer, Count Vronsky. Tragedy unfolds as Anna rejects her passionless marriage and thereby exposes herself to the hypocrisies of society. Set against a vast and richly textured canvas of nineteenth-century Russia, the novel's seven major characters create a dynamic imbalance, playing out the contrasts of city and country life and all the variations on love and family happiness.\n\nWhile previous versions have softened the robust and sometimes shocking qualities of Tolstoy's writing, Pevear and Volokhonsky have produced a translation true to his powerful voice. This authoritative edition, which received the PEN Translation Prize and was an Oprah Book Club™ selection, also includes an illuminating introduction and explanatory notes. Beautiful, vigorous, and eminently readable, this Anna Karenina will be the definitive text for fans of the film and generations to come. This Penguin Classics Deluxe Edition also features French flaps and deckle-edged paper.\n\nFor more than seventy years, Penguin has been the leading publisher of classic literature in the English-speaking world. With more than 1,700 titles, Penguin Classics represents a global bookshelf of the best works throughout history and across genres and disciplines. Readers trust the series to provide authoritative texts enhanced by introductions and notes by distinguished scholars and contemporary authors, as well as up-to-date translations by award-winning translators.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648cf9cae421fbc7c707e663"
+  },
+  "bookName": "Piano Literature - Book 4: Developing Artist Original Keyboard",
+  "authorName": "Randall Faber ",
+  "price": 34,
+  "quantity": 6,
+  "sold": 0,
+  "category": "Literature",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686960494684-724098318?alt=media&token=867f0c1f-a92f-4164-a091-082b7a3dfbce",
+  "bookDescription": "(Faber Piano Adventures ). The Developing Artist Piano Literature Book 4 is a collection of authentic keyboard literature, complete with demonstration audio, for the late-intermediate pianist. The book consists of carefully selected repertoire from the Baroque, Classical, Romantic, and Contemporary periods. Historical text on the major periods of music history is presented at the beginning of the book. This series complements The Developing Artist Piano Sonatinas Books 1 - 4. Contents: BACH: Bourree in E minor * Little Prelude in C Major, BWV 939 * Little Prelude in F Major, BWV 927 * Musett in G Major (Gavotte II from English Suite No. 3, BWV 808) * Prelude in C Major * BUTTSTEDT: Minuet in D minor * GRAUPNER: Intrada * PESCETTI: Presto * SCARLATTI: Folia * C.P.E. BACH: Solfeggietto * W.F. BACH: Allegro in A Major * BEETHOVEN: Fur Elise * Minuet in G Major, WoO 10, No. 2 * BENDA: Sonatina in A minor * CLEMENTI: Sonatina in G Major, OP. 36, No. 2 * HAYDN: Concerto in C * KUHLAU: Sonatina in C Major, OP. 55, No. 1 * BEACH: Canoeing, Op. 119, No. 3 * BURGMULLER: L'Orage, Op. 109, No. 13 * CHOPIN: Mazurka in F Major, OP. 68, No. 3 * Prelude in B minor, OP. 28, No. 6 * Prelude in E minor, Op. 38, No. 4 * Waltz in A minor * FIBICH: Adagio and Furiant * GRIEG: Sailor's Song, Op. 68, No. 1 * Watchman's Song, Op. 12, No. 3 * GURLITT: Miniature * Scherzo in D Minor * TCHAIKOVSKY: Sweet Dream, Op. 39, No. 21 * FABER: Ride of Pegasus * Winter Painting * MCKAY: Bronco Bill * Distant Sierras * REBIKOV: Dance with a Bell * In the Forest, OP. 51, No. 4 * ROSSI: Giant Purple Butterflies",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648cfa53e421fbc7c707e681"
+  },
+  "bookName": "Science Book, The: Everything You Need to Know About the World and How It Works",
+  "authorName": "National Geographic ",
+  "price": 30,
+  "quantity": 5,
+  "sold": 0,
+  "category": "Science",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686960633351-478936687?alt=media&token=a69584d3-fe13-4b56-b070-f02d19de7fda",
+  "bookDescription": "The Science Book: Everything You Need to Know About the World and How It Works encapsulates centuries of scientific thought in one volume. Natural phenomena, revolutionary inventions, scientific facts, and the most up-to-date questions are all explained in detailed text that is complemented by visually arresting graphics.\n \nSix major sections ranging from the universe and the planet Earth to biology, chemistry, physics, and mathematics are further broken down into subsections that encompass everything from microscopic life to nuclear power.\n \nThe Science Book covers a wide range of scientific areas, providing both a general overview of topics for the browsing reader, and more specific information for those who wish to obtain in-depth insight into a particular subject area. Natural phenomena, revolutionary inventions, scientific facts, and up-to-date questions are explained in detailed texts. The vivid illustrations, pictures, and graphics throughout the book make the information even more accessible and comprehensible.\n \nWithin the book, the theory of the universe and the character of the earth are detailed, along with an overview of the diverse living organisms that can be found on Earth. The technical developments and achievements of humankind are discussed and we pay particular attention to subjects of current interest, like climate change and genetic engineering.\n \nThe well-structured organization of this book with its numerous sections and chapters offers the reader an entertaining introduction into the large field of natural sciences and allows just as well for quick reference. Events and issues of special significance are discussed in greater detail in side bars of 3 different kinds. Numerous cross-references within the chapters and to other sections of the book emphasize the many links between the individual scientific fields. Illustrative elements, such as 3-D-graphics and pictograms and the great variety of photographic material make even the most complex information easy",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648cfac6e421fbc7c707e698"
+  },
+  "bookName": "Everything You Need to Ace Science in One Big Fat Notebook: The Complete Middle School Study Guide",
+  "authorName": "Workman Publishing",
+  "price": 18,
+  "quantity": 5,
+  "sold": 0,
+  "category": "Science",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686960724032-30157152?alt=media&token=809f138b-f6e6-4d3d-ae06-61662f001d98",
+  "bookDescription": "It’s the revolutionary science study guide just for middle school students from the brains behind Brain Quest.\n    \nEverything You Need to Ace Science . . . takes readers from scientific investigation and the engineering design process to the Periodic Table; forces and motion; forms of energy; outer space and the solar system; to earth sciences, biology, body systems, ecology, and more.\n\nThe BIG FAT NOTEBOOK™ series is built on a simple and irresistible conceit—borrowing the notes from the smartest kid in class. There are five books in all, and each is the only book you need for each main subject taught in middle school: Math, Science, American History, English Language Arts, and World History. Inside the reader will find every subject’s key concepts, easily digested and summarized: Critical ideas highlighted in neon colors. Definitions explained. Doodles that illuminate tricky concepts in marker. Mnemonics for memorable shortcuts. And quizzes to recap it all.\n\nThe BIG FAT NOTEBOOKS meet Common Core State Standards, Next Generation Science Standards, and state history standards, and are vetted by National and State Teacher of the Year Award–winning teachers. They make learning fun, and are the perfect next step for every kid who grew up on Brain Quest.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648cff77e421fbc7c707e6bc"
+  },
+  "bookName": "Quantum Physics for Beginners: From Wave Theory to Quantum Computing. Understanding How Everything Works by a Simplified Explanation of Quantum Physics and Mechanics",
+  "authorName": "Carl J. Pratt ",
   "price": 22,
   "quantity": 7,
-  "category": "Travel",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682295929223-598942760?alt=media&token=869bbf96-add3-4540-999c-b69f692996ca",
-  "bookDescription": "Germany powerhouse of Europe and pillar of the Eurozone feels reassuringly familiar. However, despite superficial appearances, this is a country that operates very differently from the USA and Britain. German history is more than a thousand years old and the relatively new German nation-state encompasses an astonishing variety of cultural and regional differences. German society is also in a state of flux, as people respond to immigration and a tough economic climate, and traditional attitudes such as formality and rigid protocol are softening as German business globalizes.",
-  "__v": 0,
-  "sold": 0
+  "sold": 0,
+  "category": "Science",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686960838997-476129297?alt=media&token=02b0252d-51de-4056-93ac-4bf0ed77d1cf",
+  "bookDescription": "2023 bonuses included:\n🎁 Bonus 1 - Quantum Tunnelling: Discover everything you need to know about quantum tunneling, including how particles can pass through barriers, in this brand-new chapter.\n🎁 Bonus 2 - Physics and Superheroes: In this fully illustrated digital article, Carl J. Pratt explores the superpowers of some of the most famous heroes from the Marvel and DC universes using the laws of classical and quantum physics\n\nHave you always been curious about quantum physics and its mysteries but don’t know where to begin?\n\nYou have found the right place, your journey to learn quantum physics starts now!\n\nAward-winner scientist, Carl J. Pratt, presents the most exhaustive and clear introduction to the topic. “Quantum Physics for Beginners” peels away layers of mystery to reveal what is behind most modern technological innovations.\n\n\nIn this book you will find:\n\n⚛ What quantum physics is: History, experiments, and achievements in quantum mechanics\n⚛ Quantum Physics VS Classical Physics\n⚛ What Light is: Wave theory, electromagnetic theory, and Wave-particle duality dilemma.\n⚛ Einstein’s theory that changed Physics: The Photoelectric effect explained\n⚛ Quantum theories: including String Theory, Quantum Gravity, Quantum entanglement, and Quantum Fields Theory\n⚛ Schrodinger’s equation: is the 🐈 dead or alive?\n⚛ The Heisenberg uncertainty principle\n⚛ Three real-world applications: Quantum computing, Quantum key distribution, and ultra-precise clocks\n⚛ BONUS 1: Physics and Superheroes to download\n⚛ BONUS 2: New quantum tunneling chapter\n⚛ AND MORE...\n\n\nEven if this is the first time you hear these terms, don't be discouraged by these big words. This book is written specifically for people approaching this topic for the first time.\n\nProfessor Pratt will take you by the hand on a two-century journey to discover the principles that govern the universe.\n\nQuantum physics can be easy, accessible, and interesting for everyone.\n\nAre you ready? Let’s deep dive into quantum physics today!",
+  "__v": 0
 },
 {
   "_id": {
-    "$oid": "6445cf6052701411dda5a3ee"
+    "$oid": "648cffc5e421fbc7c707e6ca"
   },
-  "bookName": "Norse Mythology Legends",
-  "authorName": "History Brought Alive",
-  "price": 50,
-  "quantity": 232,
-  "category": "History",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682296104499-750773292?alt=media&token=27400dd7-d739-486a-bb56-08f8879d69fe",
-  "bookDescription": "Discover The Legendary Characters of Norse Mythology & Their Epic Stories\n\nThe Norse God Odin went to great lengths in his quest for knowledge…and as long as there is breath in your lungs, your quest for knowledge should never stop…",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445cfae52701411dda5a3fa"
-  },
-  "bookName": "The Art of War",
-  "authorName": "Sun Tzu",
-  "price": 30,
-  "quantity": 12,
-  "category": "History",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682296675416-721254036?alt=media&token=1a62cafb-698e-4106-a743-c927e33f718a",
-  "bookDescription": "The Art of War by Sun Tzu is a timeless classic that has been used for centuries to guide military leaders, business executives, and political strategists in their decision-making and planning. Composed of 13 chapters, each focusing on a different aspect of warfare, such as strategy, tactics, and leadership, this book's key concepts are still applicable today.",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445d00c52701411dda5a410"
-  },
-  "bookName": "Canadian Coin Digest",
-  "authorName": "George S. Cuhaj",
-  "price": 125,
-  "quantity": 15,
-  "category": "History",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682296752717-174726963?alt=media&token=c08d3f22-4e14-47f6-92dd-814af0f2c096",
-  "bookDescription": "Coins of Canada Featuring more than 150 years of coins, pricing in up to six grades, and the authoritative voice of the most trusted name in numismatics, the second edition of Canadian Coin Digest offers a grand overview of the coins of Canada while providing the greatest value of any guide on the market. ",
-  "__v": 0,
-  "sold": 0
-},
-{
-  "_id": {
-    "$oid": "6445d0a452701411dda5a41e"
-  },
-  "bookName": "So You Think You Know CANADA, Eh?",
-  "authorName": "Marianne Jennings",
-  "price": 17,
+  "bookName": "National Geographic Kids Why?: Over 1,111 Answers to Everything",
+  "authorName": "Crispin Boyer",
+  "price": 25,
   "quantity": 4,
-  "category": "History",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682296848666-353319737?alt=media&token=d3b929c1-2899-4c2f-a56c-8123a6ea1555",
-  "bookDescription": "How well do you REALLY know Canada? \nDid you know:\nSanta Claus is a Canadian citizen? \nThat hockey is NOT the official national sport of Canada? \nThe Canadian passport contains hidden images?\nCanada could have been named Britannia or Borealia? \nParts of Canada are as cold as Mars? \nA Canadian pharmacist invented peanut butter?\nIf you're Canadian, know any Canadians, or have ever wanted to know more about Canada, this fun little fact book will help.",
-  "__v": 0,
-  "sold": 0
+  "sold": 0,
+  "category": "Science",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686962039916-239807092?alt=media&token=3206f290-7927-46e5-9a26-b1b75216959f",
+  "bookDescription": "The concept is simple. Got a question? Well now you have an answer! 1,111 of them, in fact. Want to know why your snot is yellow? Flip to the human body chapter. What's on the inside of a turtle shell? The animal section's got you covered. What's in the deepest part of the ocean? Why doesn't Earth just float off into space? Check, check, and check. With hundreds of topics ranging from silly to serious, we've got the expert information you need in a fun and entertaining format that will keep kids digging for answers. Answers include all kinds of fascinating extra info like top ten lists, weird-but-true facts, explorer profiles, and cool activities. Now, go stump your parents!",
+  "__v": 0
 },
 {
   "_id": {
-    "$oid": "6445d11852701411dda5a42c"
+    "$oid": "648d000ce421fbc7c707e6d6"
   },
-  "bookName": "Hollow Land",
-  "authorName": "Eyal Weizman",
-  "price": 85,
-  "quantity": 3,
-  "category": "History",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682296998269-9512787?alt=media&token=a2dda8a2-00a0-4120-942d-0fbdaece56f1",
-  "bookDescription": "From the tunnels of Gaza to the militarized airspace of the Occupied Territories, Eyal Weizman unravels Israel’s mechanisms of control and its transformation of Palestinian towns, villages and roads into an artifice where all natural and built features serve military ends.",
-  "__v": 0,
-  "sold": 0
+  "bookName": "Science Encyclopedia: Atom Smashing, Food Chemistry, Animals, Space, and More!",
+  "authorName": "National Geographic Kids",
+  "price": 34,
+  "quantity": 5,
+  "sold": 0,
+  "category": "Science",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686962118275-241829750?alt=media&token=63a23ec8-d8d3-4eab-94d4-a74f7c759ed1",
+  "bookDescription": "Food chemistry, atom crashing, wave power, food chemistry, and robots! These are just a few of the topics covered in this fantastic new science encyclopedia, which presents a comprehensive overview of physical and life sciences from A to Z. Super smart and kid-friendly, it’s packed with full-color photographs, weird but true facts, amazing statistics, do-it-yourself experiments, plus profiles of scientists and National Geographic's explorers who rock the world of science. Keep up with the changes happening all around us with this stellar science reference book.",
+  "__v": 0
 },
 {
   "_id": {
-    "$oid": "6445d16552701411dda5a434"
+    "$oid": "648d0041e421fbc7c707e6de"
   },
-  "bookName": "Soldier's Study Guide",
-  "authorName": "Walter J. Jackson",
+  "bookName": "Big History - A Journey From The Big Bang To The Modern World And Into The Future",
+  "authorName": "Mr Giuseppe Ferrone",
+  "price": 42,
+  "quantity": 9,
+  "sold": 0,
+  "category": "Science",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686962188733-942394297?alt=media&token=ba4c5ffa-5400-4b4d-8204-ab3732d25fcc",
+  "bookDescription": "At 826 pages and over 470 images, this book will take the reader on a monumental journey of human knowledge and discovery. Big History is our modern scientific and historical creation story which unfolds in eight increasing thresholds of complexity. Our story begins with the creation of the Universe in the Big Bang 13.8 billion years ago. Then we proceed to the formation of the first stars and galaxies, 200 million years after the Big Bang. The third threshold is the creation of all the chemical elements in the Universe, either within the core of stars, or for those elements heavier than iron, from exploding supernovas. This diversity of chemical elements allowed for greater complexity, the formation of gas, ice, and rocky planets, including our Earth and solar system, which was formed 4.5 billion years ago. The fifth threshold examines the appearance of life on Earth 3.8 billion years ago, and the incredible explosion of species on the planet through the process of natural selection and evolution. This evolution ultimately leads to the sixth threshold, humans, who first appeared in the Rift Valley of East Africa around 300,000 years ago. We then explore the history of humanity; from leaving Africa, migrating around the world as hunters and gatherers, to the advent of agriculture alongside major river systems around 12,000 years ago during the end of the last Ice Age; directly leading to the rise of great civilizations, the modern world, and our technological revolution, which we are just on the cusp of experiencing now. We examine the future of humanity, the Earth, the solar system, our Milky Way galaxy, and ultimately, the Universe. In this book, I argue that humanity is close to approaching a ninth level of increasing complexity, the singularity, when artificial intelligence will exceed human intelligence.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648d0145e421fbc7c707e6fc"
+  },
+  "bookName": "Awesome Science Experiments for Kids: 100+ Fun STEM / STEAM Projects and Why They Work",
+  "authorName": "Crystal Chatterton",
+  "price": 25,
+  "quantity": 9,
+  "sold": 0,
+  "category": "Science",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686962436416-519017441?alt=media&token=48527592-98a4-4500-afee-721d2088f53a",
+  "bookDescription": "As kids grow older, they become more curious about the world around them, often asking, “How does this work?” Awesome Science Experiments for Kids teaches young brains the nuts and bolts of the scientific method using fun, hands-on experiments designed to show kids how to hypothesize, experiment, and then record their findings.\n\nWith awesome projects like a Fizzy Rocket, Magnet-Powered Car, and Pencil Sundial, kids will have a blast learning to build, design, and think critically―while getting inspired to interact with the world around them and make their own discoveries.\n\nAwesome Science Experiments for Kids includes:\n100+ STEAM EXPERIMENTS: With interactive activities for science, technology, engineering, art, and math, kids can learn how and why each project works.\nEASY-TO-FOLLOW INSTRUCTIONS: Step-by-step experiments simplify engineering to guide kids and make the STEM experiments and art projects clear and simple to do.\nCOLORFUL PHOTOS: Refer to real-life photos that show experiments and many of the common household materials they use, as well as some of the final results!\n",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648d017ce421fbc7c707e704"
+  },
+  "bookName": "A Short History of Nearly Everything ",
+  "authorName": "Bill Bryson",
   "price": 29,
+  "quantity": 4,
+  "sold": 0,
+  "category": "Science",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686962502119-659202663?alt=media&token=cce9e86a-1c10-44fe-80e8-00cb7d1d568e",
+  "bookDescription": "The ultimate eye-opening journey through time and space, A Short History of Nearly Everything is the biggest-selling popular science book of the 21st century, and reveals the world in a way most of us have never seen it before.\n\nBill Bryson describes himself as a reluctant traveller, but even when he stays safely at home he can't contain his curiosity about the world around him. A Short History of Nearly Everything is his quest to understand everything that has happened from the Big Bang to the rise of civilization - how we got from there, being nothing at all, to here, being us. Bill Bryson's challenge is to take subjects that normally bore the pants off most of us, like geology, chemistry and particle physics, and see if there isn't some way to render them comprehensible to people who have never thought they could be interested in science.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648d01fee421fbc7c707e70c"
+  },
+  "bookName": "Behave: The Biology of Humans at Our Best and Worst",
+  "authorName": "Robert M. Sapolsky ",
+  "price": 30,
   "quantity": 11,
-  "category": "History",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682297115397-674934632?alt=media&token=fd988b03-ac13-41ee-b057-c5e71c3456a0",
-  "bookDescription": "Revised and expanded, with more than 1,440 questions in 48 subject areas\nFor soldiers who want to increase their professional knowledge of the Army and prepare themselves for promotion boards\nCovers army programs, basic combat skills, combat stress, leadership, maintenance of equipment, customs and courtesies, justice, physical training, NBC warfare, uniforms and insignia, weapons, and more",
-  "__v": 0,
-  "sold": 0
+  "sold": 0,
+  "category": "Science",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686962627402-467262898?alt=media&token=a231e189-f1a2-4903-9ce8-0742fa1e4bee",
+  "bookDescription": "From the celebrated neurobiologist and primatologist, a landmark, genre-defining examination of human behavior, both good and bad, and an answer to the question: Why do we do the things we do?\n\nSapolsky's storytelling concept is delightful but it also has a powerful intrinsic logic: he starts by looking at the factors that bear on a person's reaction in the precise moment a behavior occurs, and then hops back in time from there, in stages, ultimately ending up at the deep history of our species and its evolutionary legacy.\n \nAnd so the first category of explanation is the neurobiological one. A behavior occurs--whether an example of humans at our best, worst, or somewhere in between. What went on in a person's brain a second before the behavior happened? Then Sapolsky pulls out to a slightly larger field of vision, a little earlier in time: What sight, sound, or smell caused the nervous system to produce that behavior? And then, what hormones acted hours to days earlier to change how responsive that individual is to the stimuli that triggered the nervous system? By now he has increased our field of vision so that we are thinking about neurobiology and the sensory world of our environment and endocrinology in trying to explain what happened.\n\nSapolsky keeps going: How was that behavior influenced by structural changes in the nervous system over the preceding months, by that person's adolescence, childhood, fetal life, and then back to his or her genetic makeup? Finally, he expands the view to encompass factors larger than one individual. How did culture shape that individual's group, what ecological factors millennia old formed that culture? And on and on, back to evolutionary factors millions of years old. \n\nThe result is one of the most dazzling tours d'horizon of the science of human behavior ever attempted, a majestic synthesis that harvests cutting-edge research across a range of disciplines to provide a subtle and nuanced perspective on why we ultimately do the things we do...for good and for ill. Sapolsky builds on this understanding to wrestle with some of our deepest and thorniest questions relating to tribalism and xenophobia, hierarchy and competition, morality and free will, and war and peace. Wise, humane, often very funny, Behave is a towering achievement, powerfully humanizing, and downright heroic in its own right.",
+  "__v": 0
 },
 {
   "_id": {
-    "$oid": "6445d1b452701411dda5a43e"
+    "$oid": "648d0258e421fbc7c707e71e"
   },
-  "bookName": "Goodbye Cobber, God Bless You",
-  "authorName": "John-c-m-hamilton",
-  "price": 124,
-  "quantity": 18,
-  "category": "History",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682297192209-672551427?alt=media&token=bde86346-f131-4b77-9c1d-fb974d62aefe",
-  "bookDescription": "No Description",
-  "__v": 0,
-  "sold": 0
+  "bookName": "The Mysteries of the Universe: Discover the best-kept secrets of space",
+  "authorName": "Will Gater",
+  "price": 55,
+  "quantity": 12,
+  "sold": 0,
+  "category": "Science",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686962687322-223060797?alt=media&token=e7c15953-2cf1-406e-afba-10570f2865eb",
+  "bookDescription": "Space is so much bigger than young minds can fathom and there is always more to learn. The Mysteries of the Universe is a stunning space encyclopedia for young readers to explore, with reference pages packed with fascinating information, little learners will be captivated as they journey through the vastness of the Universe. From planets and asteroids to black holes and galaxies, every page of this enthralling space book reveals the secrets behind more than 100 celestial objects, and will inspire  youngsters as they journey through the vastness of the Universe. Each celestial body is shown both photographically and illustrated, and children will love poring over the detailed close-up images.\n\nGet ready to explore fun facts and exciting new scientific discoveries as this best-selling picture book will illuminate imaginations and spark curious minds to explore the vastness of space. The engaging storybook-style descriptions and simple text shed a light on facts, myths, and key discoveries about the universe, perfect for children aged 6-8 to explore the wonders of our solar system and beyond.\n\nCelebrate your child’s curiosity as they:\n\n- Explore Beautiful illustrations and incredible photography that showcase the mysteries of space.\n- Reveal Engaging storybook-style descriptions that explain key discoveries about the universe\n- Uncover 100 remarkable objects in the cosmos.\n\nThis space encyclopedia for children is the perfect blend of storybook style text with out of this world illustrations which makes it a fantastic space book for children who can't get enough of the solar system. Encourage early learners to go on a journey to explore a world of information, making this the ideal first reference book for kids aged 6-8 to enjoy for hours on end, whether reading with the family or reading alone, this fun fact book also doubles up as the perfect gift for curious kids who love to learn. \n\nExplore the vastness of space whilst uncovering:\n\n-Stunning Jacket Detail: gold foil, holographic foil & metallic gold edges\n-Striking photography & illustrations inside\n-A beautiful book for the whole family to treasure \n-A quality gift to be passed down through the generations",
+  "__v": 0
 },
 {
   "_id": {
-    "$oid": "6445d22052701411dda5a44f"
+    "$oid": "648d02abe421fbc7c707e730"
   },
-  "bookName": "The Jewish Alchemists",
-  "authorName": "Raphael Patai",
-  "price": 110,
+  "bookName": "Destinations of a Lifetime: 225 of the World's Most Amazing Places",
+  "authorName": "National Geographic",
+  "price": 40,
+  "quantity": 5,
+  "sold": 0,
+  "category": "Travel",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686962776983-385771475?alt=media&token=62078837-9f3b-4c0c-b4de-31b47341e0b7",
+  "bookDescription": "National Geographic takes you on a photographic tour of the world’s most spectacular destinations, inspiring tangible ideas for your next trip. Hundreds of the most breathtaking locales—both natural and man-made—are illustrated with vivid images taken by the organization's world-class photographers. These images, coupled with evocative text, feature a plethora of visual wonders: ancient monoliths, scenic islands, stunning artwork, electric cityscapes, white-sand seashores, rain forests, ancient cobbled streets, and both classic and innovative architecture. Loaded with hard service information for each location, Destinations of a Lifetime has it all: when to go, where to eat, where to stay, and what to do to ensure the most enriching and authentic experience.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648d02e7e421fbc7c707e738"
+  },
+  "bookName": "Lonely Planet The Travel Book 3 3rd Ed.: A Journey Through Every Country in the World ",
+  "authorName": "Lonely Planet",
+  "price": 45,
+  "quantity": 11,
+  "sold": 0,
+  "category": "Travel",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686962860166-315709689?alt=media&token=70ba9c7e-d365-4932-8185-a7602bd5f4af",
+  "bookDescription": "Lonely Planet: The world's leading travel guide publisher\n\nTake a journey through every country in the world. 850 images. 230 countries. One complete picture.\n\nWith details of every United Nations-approved country in the world, and a few more principalities and dependencies besides, Lonely Planet's Travel Book is the ultimate introduction to a world of travel and the essential travel reference book for every household!\n\nEach country is profiled by Lonely Planet's expert authors and features details of when to visit, what to see and do, and how to learn more about the country's culture from its film, music, food and drink. Every entry has a map and statistics about the country.\n\nAll brand new, incredible photography illustrates each country, depicting what life is like in each nation from photographic portraits of people, beautiful landscape photographs and vibrant street photography.\n\nAbout Lonely Planet: Started in 1973, Lonely Planet has become the world's leading travel guide publisher with guidebooks to every destination on the planet, gift and lifestyle books and stationery, as well as an award-winning website, magazines, a suite of mobile and digital travel products, and a dedicated traveller community. Lonely Planet's mission is to enable curious travellers to experience the world and to truly get to the heart of the places they find themselves in.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648d0330e421fbc7c707e746"
+  },
+  "bookName": "Wanderlust: A Traveler's Guide to the Globe",
+  "authorName": "Moon Travel Guides",
+  "price": 57,
+  "quantity": 15,
+  "sold": 0,
+  "category": "Travel",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686962920035-579160673?alt=media&token=c09daa17-05e9-4027-bad8-420d97e65cbc",
+  "bookDescription": "Dream, discover, and uncover your next great adventure. Moon Travel Guides takes you on a journey around the world with Wanderlust: A Traveler's Guide to the Globe.\nGet inspired with lists of mythic locations, epic trails, ancient cities, and more that span the four corners. This stunning, hardcover book is packed with full-color photos, charming illustrations, and fascinating overviews of each destination, making it the perfect gift for dreamers and adventurers alike.\nWalk along the Great Wall of China, climb the Atlas Mountains, or trek through Patagonia. Visit stunning national parks from Yellowstone in the US to Tongariro in New Zealand, explore the Gobi Desert, or set sail to the Greek Islands.\nEat your way through the best street food cities in the world, follow wine trails from Spain to Australia, and shop famous markets from the Grand Bazaar to the Marrakech souks.\nFind the best places to stargaze from Chile to France, or witness jaw-dropping phenomena from reversing rivers and blooming deserts to fluorescent blue haze and the Aurora Boreales.\nFilled with natural wonders, dazzling celebrations, quirky festivals, road trips, bucket-list sites, epic outdoor adventures, and cultural treasures, Wanderlust is the definitive book for the curious traveler.\nWhere will you go?",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648d036fe421fbc7c707e74e"
+  },
+  "bookName": "The Bucket List: 1000 Adventures Big & Small",
+  "authorName": "Kath Stathers",
+  "price": 45,
+  "quantity": 7,
+  "sold": 0,
+  "category": "Travel",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686962992996-44435500?alt=media&token=fed427e4-0b04-4d4a-a124-2196c34661a3",
+  "bookDescription": "Build your dream vacation with this eclectic and tantalizing collection of 1,000 life-affirming adventures spanning the 7 continents\n \nA travel book like no other, this unique guide will inspire both seasoned trekkers and arm-chair globetrotters alike to build experiences you will treasure forever. You'll find memorable, once-in-a-lifetime activities organized by longitude and latitude (country-by-country index also included) so you can max out your itinerary with the best things to do and the best places to visit around the world. \n \nDiscover recommendations that fit every traveler's must-do list, whether you go for museums and cultural experiences, sports & adventure travel, natural wonders and monuments, or culinary delights.\n \nPacked with over 300 remarkable photos and info on the best beaches, museums, monuments, islands, inns, restaurants, and mountains at every longitude, each chapter includes not only geographically unique ideas, but also activities you can fit in to any itinerary, for travelers of all ages:\n \nGlobetrotting: Hitchhike across a border, or stand on the International Date Line\nWildlife Encounters: Watch sea turtles lay eggs on a beach, or fish with a cormorant on the Yangtze\nExtreme Sports: Rafting on the Yukon, or zipline down the Alps\nMusic & Dance: Learn the guitar in 7 days and perform in a public square, or find a tango partner in the street in Buenos Aires\nLegacy: Volunteer at an Orangutan sanctuary in Borneo, or research your family history and visit an ancestral site\nFood & Drink: Eat a beignet at Café Du Monde in New Orleans, or forage your own dinner in Central Park ",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648d03b4e421fbc7c707e75c"
+  },
+  "bookName": "Top 170 Unusual Things to See in Ontario",
+  "authorName": "Ron Brown ",
+  "price": 29,
+  "quantity": 4,
+  "sold": 0,
+  "category": "Travel",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686963055922-653631576?alt=media&token=5ca7a699-a93b-4663-8f8a-69a755c8772d",
+  "bookDescription": "This revised and expanded edition of the classic guide to Ontario's most fascinating things offers local travelers and out-of-province visitors alike even more interesting, quirky and odd places to visit. Here are train rides, ferry trips, scenic roads and unusual natural and manmade attractions. The previous editions of this book have sold more than 100,000 copies.\n\nAuthor Ron Brown is an expert on the unusual. In his relentless quest to discover yet more of Ontario's rarities, Brown has traveled nearly everywhere in the province, and since this book's previous edition, he has been on the road again exploring. From the many places he's visited, he has selected 12 new unusual spots for this edition of Top 170 Unusual Things to See in Ontario:\n\nThe Domes of Kingston; Ontario's Grandest City Hall\nNorth America's Dry Stone Wall Capital; The Irish Fences of Amherst Island\nSurprising Sarnia; an environmental success story\nTribute to a Fallen Chief; The Tecumseh Monument\nThe Tragedy of Jumbo\nLighting up the Night; Niagara Falls' Newest Attraction\nFrom on High; the Basilica of Our Lady Immaculate, Guelph\nFrom Bricks to Broccoli; Toronto's Evergreen Brickworks\nCanada's Midway; Clifton Hill in Niagara Falls\nOntario's Tiniest Schoolhouse\nOshawa's \"Tank Museum\"\nHigh Park's Rare Black Oak Savannahs.\nAll destinations are updated with detailed maps that pinpoint every location, and the entries are grouped by general location.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648d0417e421fbc7c707e787"
+  },
+  "bookName": "Greece Travel Guide: The Ultimate Pocket Guide to the Land of Gods and Heroes: Discover Ancient History, Breathtaking Scenery, and Culture. Everything You Need to Know Before Plan a Trip to Greece",
+  "authorName": "Stuart Hartley",
+  "price": 25,
   "quantity": 6,
-  "category": "History",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682297271329-658632506?alt=media&token=ca48ff2b-01ef-45ef-8f49-704d4fda7025",
-  "bookDescription": "In this monumental work, Raphael Patai opens up an entirely new field of cultural history by tracing Jewish alchemy from antiquity to the nineteenth century. Until now there has been little attention given to the significant role that Jews played in the field of alchemy. Here, drawing on an enormous range of previously unexplored sources, Patai reveals that Jews were major players in what was for centuries one of humanity's most compelling intellectual obsessions.",
-  "__v": 0,
-  "sold": 0
+  "sold": 0,
+  "category": "Travel",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686963125321-11260154?alt=media&token=ed188f92-908f-49f0-a855-c2771b2b2956",
+  "bookDescription": "Get ready to immerse yourself in Greece's stunning beauty and rich history with this comprehensive tourist pocket guide. This book will be your essential companion on your travels through the heart of Greece, providing you with all the information you need to fully appreciate the Country's historic landmarks, ancient ruins, and hidden gems.\n\n\nPlease check what’s inside:\nDetailed information on the top attractions in Greece, including the Acropolis in Athens, the stunning beaches of Santorini, and the monasteries of Meteora.\nA wealth of practical information, including advice on getting around, top tips for eating out and shopping, and recommendations for tours and activities.\nAn in-depth look at the Country's rich cultural heritage, including its art, architecture, and music scenes\nExpert recommendations on the best places to stay, from budget-friendly options to luxury hotels.\nInsider tips on off-the-beaten-path experiences and hidden gems, to help you make the most of your time in Greece.\nBeautiful photography places that bring the Country to life, showcasing its stunning architecture, picturesque streets, and breathtaking landscapes.\nAnd more…",
+  "__v": 0
 },
 {
   "_id": {
-    "$oid": "6445d27752701411dda5a45b"
+    "$oid": "648d045ae421fbc7c707e78f"
   },
-  "bookName": "A History of the English-Speaking Peoples",
-  "authorName": " Sir Winston S. Churchill ",
-  "price": 185,
-  "quantity": 17,
-  "category": "History",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682297378608-980983145?alt=media&token=79d5bb30-920f-4b2a-a972-69133aa73ed8",
-  "bookDescription": "\"This history will endure; not only because Sir Winston has written it, but also because of its own inherent virtues ― its narrative power, its fine judgment of war and politics, of soldiers and statesmen, and even more because it reflects a tradition of what Englishmen in the hey-day of their empire thought and felt about their country's past.\" The Daily Telegraph",
-  "__v": 0,
-  "sold": 0
+  "bookName": "Switzerland Travel Guide",
+  "authorName": "Adam Neal ",
+  "price": 21,
+  "quantity": 3,
+  "sold": 0,
+  "category": "Travel",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686963223937-307412775?alt=media&token=03b53f87-603f-40a0-b585-b6cf65b3ff9d",
+  "bookDescription": "Please check what’s inside:\nDetailed insights into the top attractions in Switzerland, from the majestic peaks of the Swiss Alps to the pristine lakes of Lucerne and Geneva.\nA wealth of practical advice, including transportation tips, dining recommendations, and suggestions for unforgettable tours and activities.\nAn in-depth exploration of Switzerland's vibrant cultural heritage, spanning art, architecture, music, and dance.\nExpert recommendations for a range of accommodations, from boutique hotels to charming guesthouses, ensuring a comfortable and memorable stay.\nInsider tips on off-the-beaten-path experiences, allowing you to uncover hidden gems and create lasting memories.\nBreathtaking photography spots that brings Switzerland's architectural wonders, picturesque streets, and awe-inspiring landscapes to life.\nAnd more…",
+  "__v": 0
 },
 {
   "_id": {
-    "$oid": "6445d2ce52701411dda5a469"
+    "$oid": "648d04a2e421fbc7c707e799"
   },
-  "bookName": "The American Intellectual Tradition",
-  "authorName": " David A. Hollinger",
-  "price": 154,
-  "quantity": 20,
+  "bookName": "Fodor's Essential Japan",
+  "authorName": "Fodor’s Travel Guides",
+  "price": 35,
+  "quantity": 9,
+  "sold": 0,
+  "category": "Travel",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686963290579-888749949?alt=media&token=e98b7399-356f-4ec4-9c2e-b96fd9be8e56",
+  "bookDescription": "Fodor’s Essential Japan travel guide includes:\n\nAN ILLUSTRATED ULTIMATE EXPERIENCES GUIDE to the top things to see and do\nMULTIPLE ITINERARIES to effectively organize your days and maximize your time\nMORE THAN 50 DETAILED MAPS to help you navigate confidently\nCOLOR PHOTOS throughout to spark your wanderlust!\nHONEST RECOMMENDATIONS FROM LOCALS on the best sights, restaurants, hotels, nightlife, shopping, performing arts, activities, side-trips, and more\nPHOTO-FILLED “BEST OF” FEATURES on “Tokyo's Best Quirky Souvenir Stores,” “Best Temples and Shrines,” “Best Things to Buy,” “Best Things to Eat and Drink,” and more\nTRIP-PLANNING TOOLS AND PRACTICAL TIPS including when to go, getting around, beating the crowds, and saving time and money\nHISTORICAL AND CULTURAL INSIGHTS providing rich context on the local people, politics, art, architecture, cuisine, music, geography and more\nSPECIAL FEATURES on “Japanese Culture Primer,” “Peerless Fuji,” and “Kyoto's Philosopher's Path”\nLOCAL WRITERS to help you find the under-the-radar gems\nJapanese LANGUAGE PRIMER with useful words and essential phrases\nUP-TO-DATE COVERAGE ON: Tokyo, Kyoto, Nara, Osaka, Sapporo, Nikko, Hiroshima, Kobe, Okinawa, Mt. Fuji, Fukuoka, Hakone, Kamakura, Nagoya, and more.\nPlanning on visiting other destinations in Asia? Check out Fodor’s Essential Vietnam, Fodor's Essential Thailand, and Fodor's Seoul.\n\n*Important note for digital editions: The digital edition of this guide does not contain all the images or text included in the physical edition.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648d04f6e421fbc7c707e7a1"
+  },
+  "bookName": "Portugal Travel Guide",
+  "authorName": "Larry Lopez",
+  "price": 26,
+  "quantity": 4,
+  "sold": 0,
+  "category": "Travel",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686963363122-223528578?alt=media&token=fa871a3e-bd15-4d60-9a69-e13fd99d5082",
+  "bookDescription": "Are you planning a trip to Portugal and looking for the best travel advice to make the most of your experience? Do you want to discover the hidden gems of this beautiful country and experience its rich culture and history like a local?\n\n\n\nIf you answered yes, then you are in the right place!\n\n\n\nFrom the vibrant cities of Lisbon and Porto to the stunning beaches of the Algarve, Portugal is a destination that offers something for everyone.\n\n\n\nYou'll be able to explore the country with confidence, knowing that you're getting the best advice from local experts.\n\n\n\nWritten by experienced tour guides with over 25 years of experience in the tourism industry, this guidebook is the ultimate resource for anyone looking to explore Portugal, tasting its foods, visiting the most striking places and getting in touch with the local culture.\n\n\n\nHere's what you can expect from the Portugal Travel Guide:\n\n\n\n3 expert travel advice to help you plan your trip, including the best time to visit, how to get around, and how to avoid tourist traps.\nThe 7 top sights and attractions, from iconic landmarks like the Belem Tower to hidden gems like the Alentejo wine region.\nInsider tips on local cuisine and restaurants, with recommendations on the best places to try traditional dishes like bacalhau and pastel de nata.\n5 off-the-beaten-path destinations and activities, including hiking trails, cultural events, and lesser-known sights that most tourists miss.\nPractical advice for traveling with kids, including family-friendly activities and tips for keeping little ones entertained on long journeys.\nMore than 50 useful phrases and translations, so you can communicate with locals and immerse yourself in the local culture.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648d052fe421fbc7c707e7a9"
+  },
+  "bookName": "London Travel Guide 2023",
+  "authorName": "Mike J. Darcey",
+  "price": 20,
+  "quantity": 4,
+  "sold": 0,
+  "category": "Travel",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686963447335-157747366?alt=media&token=35f0740e-1da2-4fdd-b5b6-9d8dcf5fcf43",
+  "bookDescription": "If you answered yes, keep reading...\n\nNavigating the vast metropolis of London can be a daunting task for even the most experienced travelers, but with this guide, you will have everything you need to explore the city with ease!\n\nIn this indispensable guide to a real British experience, you will find:\n\nA complete list of London's top attractions and hidden gems, so you can experience the city like a local;\nExperts' strategic advices on the best places to stay, best restaurants and bars to enjoy London safely;\n9 tips on how to avoid overwhelming crowds, skip the lines and discover hidden sights and sounds;\nLots of smart itineraries to effectively organize your days, with stunning photographs and maps of London\nTips on how to get in touch with the local culture, from enjoying a pint in a traditional pub to attending local and cultural events\nThe 5 suggestions you absolutely must know about currency exchange and foreign ATMs to avoid excessive fees and criminal activities;\nBONUS: A checklist of everything you need to pack before your trip!",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648d0572e421fbc7c707e7b5"
+  },
+  "bookName": "Lonely Planet Italy 16 16th Ed.",
+  "authorName": "Duncan Garwood ",
+  "price": 40,
+  "quantity": 5,
+  "sold": 0,
+  "category": "Travel",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686963503549-139826673?alt=media&token=7f12977e-6250-41a6-8cb5-c771b461d83f",
+  "bookDescription": "Lonely Planet's Top Picks - a visually inspiring collection of the destination's best experiences and where to have them\n\nItineraries help you build the ultimate trip based on your personal needs and interests\nLocal insights give you a richer, more rewarding travel experience - whether it's history, people, music, landscapes, wildlife, politics\n\nEating and drinking - get the most out of your gastronomic experience as we reveal the regional dishes and drinks you have to try\n\nToolkit - all of the planning tools for solo travellers, LGBTQIA+ travellers, family travellers and accessible travel\n\nColour maps and images throughout\nLanguage - essential phrases and language tips\n\nInsider tips to save time and money and get around like a local, avoiding crowds and trouble spots\n\nCovers Rome, Turin, the Cinque Terre, Genoa, Milan, Venice, Verona, Bologna, Parma, Florence, Pisa, Naples, Bari, Sicily, Sardinia and more!",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648d05f5e421fbc7c707e7c1"
+  },
+  "bookName": "History: From the Dawn of Civilization to the Present Day",
+  "authorName": "Smithsonian Institution ",
+  "price": 65,
+  "quantity": 5,
+  "sold": 0,
   "category": "History",
-  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/book-store-21f7b.appspot.com/o/folder%2F1682297466015-839476724?alt=media&token=e21468d6-4043-43dc-8c16-54dd7db40300",
-  "bookDescription": "The third edition of this uniquely comprehensive two-volume anthology contains many of the most significant documents in American intellectual history. It includes new selections from a diverse group of authors that cover Puritan theology, communitarian thought, racial ideology, gender theory, cultural criticism, multiculturalism, and postmodernism.",
-  "__v": 0,
-  "sold": 0
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686963640169-711305677?alt=media&token=15a06aca-9874-4392-a31c-61b6cdb02328",
+  "bookDescription": "Human endeavor and achievement are charted and celebrated from every angle, alongside key events, groundbreaking ideas, political forces, and technological advances that have shaped our planet’s progress.  \n\nMore than 600 pages chronicle global history in the most informative, illuminating, and inspiring way. Stunning images and illustrations bring the authoritative text to life, so each historical episode is explored and explained for easy reference and understanding. Important points in history, from the Battle of Hastings and the storming of the Bastille to D-day and 9/11, are given clear but concise coverage, together with profiles of influential figures, such as Rameses II, Julius Caesar, and Nelson Mandela. As each moment in history is defined and detailed, the causes and consequences are provided in supporting panels to provide a wider context and broaden our horizons. Contemporary issues, including climate change and the rise of social media, bring us out of the past and firmly into the present",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648d0636e421fbc7c707e7c9"
+  },
+  "bookName": "The Company: The Rise and Fall of the Hudson's Bay Empire",
+  "authorName": "Stephen Bown ",
+  "price": 25,
+  "quantity": 10,
+  "sold": 0,
+  "category": "History",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686963701561-463428193?alt=media&token=00272b3b-518d-474b-ac51-8f62ba20927f",
+  "bookDescription": "The story of the Hudson's Bay Company, dramatic and adventurous and complex, is the story of modern Canada's creation. And yet it hasn't been told in a book for over thirty years, and never in such depth and vivid detail as in Stephen R. Bown's exciting new telling.\n\nThe Company started out small in 1670, trading practical manufactured goods for furs with the Indigenous inhabitants of inland subarctic Canada. Controlled by a handful of English aristocrats, it expanded into a powerful political force that ruled the lives of many thousands of people--from the lowlands south and west of Hudson Bay, to the tundra, the great plains, the Rocky Mountains and the Pacific northwest. It transformed the culture and economy of many Indigenous groups and ended up as the most important political and economic force in northern and western North America.\n\nWhen the Company was faced with competition from French traders in the 1780s, the result was a bloody corporate battle, the coming of Governor George Simpson--one of the greatest villains in Canadian history--and the Company assuming political control and ruthless dominance. By the time its monopoly was rescinded after two hundred years, the Hudson's Bay Company had reworked the entire northern North American world.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648d066be421fbc7c707e7d1"
+  },
+  "bookName": "The Silk Roads: A New History of the World",
+  "authorName": "Peter Frankopan",
+  "price": 22,
+  "quantity": 7,
+  "sold": 0,
+  "category": "History",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686963766969-519778951?alt=media&token=8baaa669-16df-43c7-9da0-c9009e654b6c",
+  "bookDescription": "Far more than a history of the Silk Roads, this book is truly a revelatory new history of the world, promising to destabilize notions of where we come from and where we are headed next. From the Middle East and its political instability to China and its economic rise, the vast region stretching eastward from the Balkans across the steppe and South Asia has been thrust into the global spotlight in recent years. Frankopan teaches us that to understand what is at stake for the cities and nations built on these intricate trade routes, we must first understand their astounding pasts.\n \nFrankopan realigns our understanding of the world, pointing us eastward. It was on the Silk Roads that East and West first encountered each other through trade and conquest, leading to the spread of ideas, cultures and religions. From the rise and fall of empires to the spread of Buddhism and the advent of Christianity and Islam, right up to the great wars of the twentieth century—this book shows how the fate of the West has always been inextricably linked to the East.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648d06b4e421fbc7c707e7db"
+  },
+  "bookName": "A Brief History of Time",
+  "authorName": "Stephen Hawking",
+  "price": 27,
+  "quantity": 7,
+  "sold": 0,
+  "category": "History",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686963819864-245761362?alt=media&token=d99efda4-748d-462d-9ab2-76fa6106b9e7",
+  "bookDescription": "A landmark volume in science writing by one of the great minds of our time, Stephen Hawking’s book explores such profound questions as: How did the universe begin—and what made its start possible? Does time always flow forward? Is the universe unending—or are there boundaries? Are there other dimensions in space? What will happen when it all ends?\n\nTold in language we all can understand, A Brief History of Time plunges into the exotic realms of black holes and quarks, of antimatter and “arrows of time,” of the big bang and a bigger God—where the possibilities are wondrous and unexpected. With exciting images and profound imagination, Stephen Hawking brings us closer to the ultimate secrets at the very heart of creation.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648d06eee421fbc7c707e7e3"
+  },
+  "bookName": "Children of Ash and Elm: A History of the Vikings",
+  "authorName": "Neil Price ",
+  "price": 26,
+  "quantity": 8,
+  "sold": 0,
+  "category": "History",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686963893225-388298944?alt=media&token=78013a62-dcdf-4fff-89fd-9426234f68de",
+  "bookDescription": "The Viking Age saw an unprecedented expansion of the Scandinavian peoples into the world. As traders and raiders, explorers and colonists, they ranged from eastern North America to the Asian steppe. But for centuries, the Vikings have been seen through the eyes of others, distorted to suit the tastes of medieval writers, Victorian imperialists, Nazis, and more.\nBased on the latest archaeological and textual evidence, Children of Ash and Elm tells the story of the Vikings on their own terms: their politics, their cosmology and religion, their material world. Known today for a stereotype of maritime violence, the Vikings exported new ideas, technologies, and beliefs to the lands and peoples they encountered. From Eirík Bloodaxe, who fought his way to a kingdom, to Gudríd Thorbjarnardóttir, the most traveled woman in the world, Children of Ash and Elm is a remarkable history of the Vikings and their time.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648d0753e421fbc7c707e7eb"
+  },
+  "bookName": "The Dawn of Everything: A New History of Humanity",
+  "authorName": "David Graeber ",
+  "price": 40,
+  "quantity": 3,
+  "sold": 0,
+  "category": "History",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686963996566-124619309?alt=media&token=4713fe79-a587-4917-8eda-2cd53dc940f5",
+  "bookDescription": "Renowned activist and public intellectual David Graeber teams up with professor of comparative archaeology David Wengrow to deliver a trailblazing account of human history, challenging our most fundamental assumptions about social evolution--from the development of agriculture and cities to the emergence of \"the state,\" political violence, and social inequality--and revealing new possibilities for human emancipation.\n\nFor generations, our remote ancestors have been cast as primitive and childlike--either free and equal innocents, or thuggish and warlike. Civilization, we are told, could only be achieved by sacrificing those original freedoms, or alternatively, by taming our baser instincts. Graeber and Wengrow show how such theories first emerged in the eighteenth century as a conservative reaction to powerful critiques of European society posed by Indigenous observers and intellectuals. Revisiting this encounter has startling implications for how we make sense of human history today, including the origins of farming, property, cities, democracy, slavery, and civilization itself.\n\nDrawing on path-breaking research in archaeology and anthropology, the authors show how history becomes a far more interesting place once we learn to throw off our conceptual shackles and perceive what's really there. If humans did not spend 95% of their evolutionary past in tiny bands of hunter-gatherers, what were they doing all that time? If agriculture, and cities, did not mean a plunge into hierarchy and domination, then what kinds of social and economic organization did they lead to? What was really happening during the periods that we usually describe as the emergence of \"the state\"? The answers are often unexpected, and suggest that the course of human history may be less set in stone, and more full of playful, hopeful possibilities, than we tend to assume.\n\nThe Dawn of Everything fundamentally transforms our understanding of the human past and offers a path toward imagining new forms of freedom, new ways of organizing society. This is a monumental book of formidable intellectual range, animated by curiosity, moral vision, and a faith in the power of direct action.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648d079be421fbc7c707e7fd"
+  },
+  "bookName": "Everything You Need to Ace World History in One Big Fat Notebook: The Complete Middle School Study Guide",
+  "authorName": "Workman Publishing",
+  "price": 19,
+  "quantity": 12,
+  "sold": 0,
+  "category": "History",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686964052217-864945723?alt=media&token=2df1a9f3-35ef-4bb0-a159-5e222c8c481b",
+  "bookDescription": "It’s the revolutionary world history study guide just for middle school students from the brains behind Brain Quest.\n    \nEverything You Need to Ace World History . . . kicks off with the Paleolithic Era and transports the reader to ancient civilizations—from Africa and beyond; the middle ages across the world; the Renaissance; the age of exploration and colonialism, revolutions, and the modern world and the wars and movements that shaped it.\n\nThe BIG FAT NOTEBOOK™ series is built on a simple and irresistible conceit—borrowing the notes from the smartest kid in class. There are five books in all, and each is the only one book you need for each main subject taught in middle school: Math, Science, American History, English, and World History. Inside the reader will find every subject’s key concepts, easily digested and summarized: Critical ideas highlighted in marker colors. Definitions explained. Doodles that illuminate tricky concepts. Mnemonics for a memorable shortcut. And quizzes to recap it all.\n\nThe BIG FAT NOTEBOOKS meet Common Core State Standards, Next Generation Science Standards, and state history standards, and are vetted by National and State Teacher of the Year Award–winning teachers. They make learning fun, and are the perfect next step for every kid who grew up on Brain Quest.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648d0811e421fbc7c707e809"
+  },
+  "bookName": "The World: A Family History of Humanity",
+  "authorName": "Simon Sebag Montefiore ",
+  "price": 48,
+  "quantity": 10,
+  "sold": 0,
+  "category": "History",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686964159500-694777617?alt=media&token=aa78b630-cd01-4ac5-9793-f4ee5a2931d3",
+  "bookDescription": "“Succession meets Game of Thrones.” —The Spectator • “The author brings his cast of dynastic titans, rogues and psychopaths to life...An epic that both entertains and informs.” —The Economist, Best Books of the Year\n\nAround 950,000 years ago, a family of five walked along the beach and left behind the oldest family footprints ever discovered. For award-winning historian Simon Sebag Montefiore, these poignant, familiar fossils serve as an inspiration for a new kind of world history, one that is genuinely global, spans all eras and all continents, and focuses on the family ties that connect every one of us.\n\nIn this epic, ever-surprising book, Montefiore chronicles the world’s great dynasties across human history through palace intrigues, love affairs, and family lives, linking grand themes of war, migration, plague, religion, and technology to the people at the heart of the human drama.\n\nIt features a cast of extraordinary diversity: in addition to rulers and conquerors, there are priests, charlatans, artists, scientists, tycoons, gangsters, lovers, husbands, wives, and children. There is Hongwu, the beggar who founded the Ming dynasty; Ewuare, the Leopard-King of Benin; Henry Christophe, King of Haiti; Kamehameha, the conqueror of Hawaii; Zenobia, the Arab empress who defied Rome; Lady Murasaki, the first female novelist; Sayyida al-Hurra, the Moroccan pirate-queen. Here too are moderns such as Indira Gandhi, Margaret Thatcher, Barack Obama, Vladimir Putin, and Volodymyr Zelensky. Here are the Caesars, Medicis and Incas, Ottomans and Mughals, Bonapartes, Habsburgs and Zulus, Rothschilds, Rockefellers and Krupps, Churchills, Kennedys, Castros, Nehrus, Pahlavis and Kenyattas, Saudis, Kims and Assads.\n\nThese powerful families represent the breadth of human endeavor, with bloody succession battles, treacherous conspiracies, and shocking megalomania alongside flourishing culture, moving romances, and enlightened benevolence. A dazzling achievement as spellbinding as fiction, The World captures the whole human story in a single, masterful narrative.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648d0873e421fbc7c707e811"
+  },
+  "bookName": "Roman Empire: Rise & The Fall",
+  "authorName": "History Brought Alive ",
+  "price": 22,
+  "quantity": 7,
+  "sold": 0,
+  "category": "History",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686964241630-127253321?alt=media&token=ed11739d-ed2a-46d2-ac62-1f66878d9062",
+  "bookDescription": "The Roman Empire may have fallen thousands of years ago, but the lessons and the legacy left behind lives on to this day\n\nFrom a tiny settlement on the banks of the Tiber River, Rome grew into a colossal, unstoppable force. At its peak, The Empire dominated the world from Europe, West Asia, North Africa, and many more territories. \n\nNever again would the world see such an influential power.\n\nIn this epic narrative, History Brought Alive presents an intriguing dive into Roman History, Legends, Facts, Myths and much more. Covering thousands of years the study of Roman history is vast and complex. Much like the Ancient Romans themselves, in order to study them, we need to follow structure and have an open mind. \n\nBy doing so, we can begin to unlock the secrets of The Roman Empire\n\nIn the first part of this book you will find;\n\nThe timeline of Roman history - How did it all begin? And how did it end? \nCharacters - Any serious study of Rome has to begin with a look at the Emperor's, Gladiators and the Characters that shaped it’s destiny.  \nLife in Ancient Rome - What was it like? \nThen, in part two and onwards you will find; \n\nMilitary - The Roman military was amongst the most powerful in the world. How did they get that way? The victory and defeat.\nMythology - Delve into the fascinating world of Roman mythology.\nThe fall of The Empire \nAll of this, and much, much more in an enjoyable to read format!",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648d08f5e421fbc7c707e81d"
+  },
+  "bookName": "The Cold War: A World History ",
+  "authorName": "Odd Arne Westad",
+  "price": 32,
+  "quantity": 5,
+  "sold": 0,
+  "category": "History",
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/bookstore-873e4.appspot.com/o/BooksImages%2F1686964389210-301322122?alt=media&token=6444377a-fe00-4f4d-9471-8a721e932ac1",
+  "bookDescription": "We tend to think of the Cold War as a bounded conflict: a clash of two superpowers, the United States and the Soviet Union, born out of the ashes of World War II and coming to a dramatic end with the collapse of the Soviet Union. But in this major new work, Bancroft Prize-winning scholar Odd Arne Westad argues that the Cold War must be understood as a global ideological confrontation, with early roots in the Industrial Revolution and ongoing repercussions around the world.\n\nIn The Cold War, Westad offers a new perspective on a century when great power rivalry and ideological battle transformed every corner of our globe. From Soweto to Hollywood, Hanoi, and Hamburg, young men and women felt they were fighting for the future of the world. The Cold War may have begun on the perimeters of Europe, but it had its deepest reverberations in Asia, Africa, and the Middle East, where nearly every community had to choose sides. And these choices continue to define economies and regimes across the world.\n\nToday, many regions are plagued with environmental threats, social divides, and ethnic conflicts that stem from this era. Its ideologies influence China, Russia, and the United States; Iraq and Afghanistan have been destroyed by the faith in purely military solutions that emerged from the Cold War.\n\nStunning in its breadth and revelatory in its perspective, this book expands our understanding of the Cold War both geographically and chronologically and offers an engaging new history of how today's world was created.",
+  "__v": 0
 }]

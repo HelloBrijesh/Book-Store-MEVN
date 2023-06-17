@@ -1,0 +1,12 @@
+[{
+  "_id": {
+    "$oid": "64824279c8a819cb1b166d24"
+  },
+  "lastName": "admin",
+  "firstName": "admin",
+  "email": "admin@bookstore.com",
+  "password": "$2b$10$HjcNoZEJhrSDfIF4.GcJOeo/hTVP2NoGFSzA3L98ixU0SE/x9A1ZK",
+  "role": "admin",
+  "verified": true,
+  "__v": 0
+}]

@@ -19,9 +19,25 @@ const adminController = {
       return next(error);
     }
 
-    const { bookName, authorName, price, quantity, category, imageUrl, bookDescription } = req.body;
+    const {
+      bookName,
+      authorName,
+      price,
+      quantity,
+      category,
+      imageUrl,
+      bookDescription,
+    } = req.body;
 
-    const newBook = new Book({ bookName, authorName, price, quantity, category, imageUrl, bookDescription });
+    const newBook = new Book({
+      bookName,
+      authorName,
+      price,
+      quantity,
+      category,
+      imageUrl,
+      bookDescription,
+    });
 
     try {
       const savedBook = await newBook.save();
@@ -29,6 +45,16 @@ const adminController = {
       return next(error);
     }
 
+    res.status(200).json({ status: "ok" });
+  },
+  async deleteBook(req, res, next) {
+    // Validating the book input
+    const bookId = req.params.bookid;
+    try {
+      await Book.deleteOne({ _id: bookId });
+    } catch (error) {
+      return next(error);
+    }
     res.status(200).json({ status: "ok" });
   },
 };

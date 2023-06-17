@@ -24,6 +24,19 @@ export default function useBookService() {
       error.value = err.response.data.message;
     }
   };
+  const deleteBook = async (bookid) => {
+    url.value = `deletebook/${bookid}`;
+    statusCode.value = null;
+    error.value = null;
+    book.value = null;
+    listOfBooks.value = null;
+    try {
+      const response = await axios.delete(url.value);
+      statusCode.value = response.data.status;
+    } catch (err) {
+      error.value = err.response.data.message;
+    }
+  };
   const bestSellingBooks = async () => {
     url.value = "bestsellingbooks";
     statusCode.value = null;
@@ -43,6 +56,7 @@ export default function useBookService() {
     error,
     book,
     listOfBooks,
+    deleteBook,
     getBookDetails,
     bestSellingBooks,
   };

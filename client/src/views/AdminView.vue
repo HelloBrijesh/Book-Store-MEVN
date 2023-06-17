@@ -24,19 +24,9 @@
                   ><span>Add New Book</span></RouterLink
                 >
               </li>
-              <li class="" @click="handleActiveTab('Add Existing Book')">
-                <RouterLink to="#" class="d-block py-3 px-4"
-                  ><span>Add Existing Book</span></RouterLink
-                >
-              </li>
               <li class="" @click="handleActiveTab('Update Book')">
                 <RouterLink to="#" class="d-block py-3 px-4"
                   ><span>Update Book</span></RouterLink
-                >
-              </li>
-              <li class="" @click="handleActiveTab('Delete Book')">
-                <RouterLink to="#" class="d-block py-3 px-4"
-                  ><span>Delete Book</span></RouterLink
                 >
               </li>
             </ul>
@@ -46,14 +36,8 @@
           <div v-if="activeTab === 'Add New Book'">
             <AddNewBook></AddNewBook>
           </div>
-          <div v-else-if="activeTab === 'Add Existing Book'">
-            <AddExistingBook></AddExistingBook>
-          </div>
           <div v-else-if="activeTab === 'Update Book'">
             <UpdateBook></UpdateBook>
-          </div>
-          <div v-else-if="activeTab === 'Delete Book'">
-            <DeleteBook></DeleteBook>
           </div>
         </div>
       </div>
@@ -66,9 +50,7 @@
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import AddNewBook from "../components/AddNewBook.vue";
-import AddExistingBook from "../components/AddExistingBook.vue";
 import UpdateBook from "../components/UpdateBook.vue";
-import DeleteBook from "../components/DeleteBook.vue";
 import { onMounted, ref } from "vue";
 import { RouterLink, useRouter } from "vue-router";
 import { useAuthStore } from "../stores/authStore";
@@ -76,7 +58,7 @@ import { useAuthStore } from "../stores/authStore";
 const router = useRouter();
 const authStore = useAuthStore();
 
-const activeTab = ref("Add Book");
+const activeTab = ref("Add New Book");
 const handleActiveTab = (currentTab) => {
   activeTab.value = currentTab;
 };

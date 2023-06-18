@@ -130,7 +130,7 @@ const handleDeleteBook = async (bookId) => {
   console.log(bookId);
   await bookService.value.deleteBook(bookId);
   if (bookService.value.statusCode === "ok") {
-    router.go("/admin#");
+    router.go("/admin");
   }
 };
 

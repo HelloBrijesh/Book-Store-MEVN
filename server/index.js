@@ -7,7 +7,7 @@ import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 
 const app = express();
-app.use(cors({ origin: CLIENT_URL, credentials: true }));
+app.use(cors());
 app.use(cookieParser());
 
 // Database connection

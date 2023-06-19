@@ -74,7 +74,7 @@ cd ../server && npm install
 5. Setup the mongodb in the local machine
 
    - https://www.mongodb.com/try/download/community
-   - Add books data from the test.books.json file in mongodb
+   - Add books and users data from the test.books.json and test.users.json file in mongodb
 
 6. Start the development server:
 

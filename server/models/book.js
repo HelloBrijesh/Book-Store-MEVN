@@ -14,4 +14,16 @@ const bookSchema = new mongoose.Schema(
   { timestamp: true }
 );
 
-export default mongoose.model("Book", bookSchema, "books");
+const virtual = bookSchema.virtual("id");
+virtual.get(function () {
+  return this._id;
+});
+bookSchema.set("toJSON", {
+  virtuals: true,
+  versionKey: false,
+  transform: function (doc, ret) {
+    delete ret._id;
+  },
+});
+
+export const Book = mongoose.model("Book", bookSchema, "books");

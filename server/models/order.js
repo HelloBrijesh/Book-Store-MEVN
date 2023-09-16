@@ -19,4 +19,16 @@ const orderSchema = new mongoose.Schema(
   { timestamp: true }
 );
 
-export default mongoose.model("Order", orderSchema, "orders");
+const virtual = orderSchema.virtual("id");
+virtual.get(function () {
+  return this._id;
+});
+orderSchema.set("toJSON", {
+  virtuals: true,
+  versionKey: false,
+  transform: function (doc, ret) {
+    delete ret._id;
+  },
+});
+
+export const Order = mongoose.model("Order", orderSchema, "orders");

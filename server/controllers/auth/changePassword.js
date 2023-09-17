@@ -22,7 +22,7 @@ export const changePassword = async (req, res, next) => {
   const COST_FACTOR = 10;
   const newPassword = await bcrypt.hash(password, COST_FACTOR);
 
-  const userId = req.user.id;
+  const userId = req.user.userId;
   let existingUser;
   try {
     existingUser = await User.findById(userId);

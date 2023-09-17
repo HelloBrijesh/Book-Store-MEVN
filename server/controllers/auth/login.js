@@ -48,12 +48,12 @@ export const login = async (req, res, next) => {
     access_token = jwt.sign(
       { userId: existingUser.id, role: existingUser.role },
       ACCESS_TOKEN_SECRET,
-      ACCESS_TOKEN_EXPIRY
+      { expiresIn: ACCESS_TOKEN_EXPIRY }
     );
     refresh_token = jwt.sign(
       { userId: existingUser.id, role: existingUser.role },
       REFRESH_TOKEN_SECRET,
-      REFRESH_TOKEN_EXPIRY
+      { expiresIn: REFRESH_TOKEN_EXPIRY }
     );
 
     // Adding refresh token in database

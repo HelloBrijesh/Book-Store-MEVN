@@ -12,16 +12,8 @@ export const getUserById = async (req, res, next) => {
       return next(customErrorHandler.notFound("User Not Found"));
     }
 
-    const userDetail = {
-      userId: user.id,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      email: user.email,
-      role: user.role,
-    };
-
     // sending user Datails
-    res.json({ userDetail });
+    res.json({ user });
   } catch (err) {
     return next(err);
   }

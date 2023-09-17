@@ -13,17 +13,18 @@ import {
   getBookById,
   getAllBooks,
   getBestSellingBooks,
+  addBook,
+  deleteBook,
 } from "../controllers/book";
-import { addBook, deleteBook } from "../controllers/admin";
 
 const router = express.Router();
 
 router.post("/signup", signup, sendEmail);
 router.get("/verify/:emailtoken", verifyEmail);
-router.post("/login", login);
-router.post("/forgotpassword", sendEmail);
-router.post("/changepassword", auth, changePassword);
 router.post("/refresh", tokenRefresh);
+router.post("/forgotpassword", sendEmail);
+router.post("/login", login);
+router.post("/changepassword", auth, changePassword);
 router.post("/logout", logout);
 router.post("/contactus", contactUs);
 
@@ -31,13 +32,15 @@ router.get("/user", auth, getUserById);
 router.post("/updateemail", auth, editUser);
 router.get("/deleteuser", auth, deleteUser);
 
-router.get("/bookdetails/:bookid", getBookById);
+router.get("/book/:bookid", getBookById);
 router.get("/bestsellingbooks", getBestSellingBooks);
+
+router.post("/addbook", [auth, admin], addBook);
+router.delete("/deletebook/:bookid", [auth, admin], deleteBook);
+
+// Not Tested
 router.post("/shop/:currentPage", getAllBooks);
 router.get("/getorders", auth, getAllOrders);
 router.post("/placeorder", auth, placeOrder);
-
-router.post("/admin", [auth, admin], addBook);
-router.delete("/deletebook/:bookid", [auth, admin], deleteBook);
 
 export default router;

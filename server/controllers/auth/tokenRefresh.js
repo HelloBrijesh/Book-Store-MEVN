@@ -37,7 +37,7 @@ export const tokenRefresh = async (req, res, next) => {
     }
 
     // Finding the user from database
-    const existingUser = await User.findOne({ id: userId });
+    const existingUser = await User.findById(userId);
     if (!existingUser) {
       return next(customErrorHandler.unAuthorized("No user found!"));
     }
@@ -46,12 +46,12 @@ export const tokenRefresh = async (req, res, next) => {
     const access_token = jwt.sign(
       { userId: existingUser.id, role: existingUser.role },
       ACCESS_TOKEN_SECRET,
-      ACCESS_TOKEN_EXPIRY
+      { expiresIn: ACCESS_TOKEN_EXPIRY }
     );
-    const refresh_token = JwtService.sign(
+    const refresh_token = jwt.sign(
       { userId: existingUser.id, role: existingUser.role },
       REFRESH_TOKEN_SECRET,
-      REFRESH_TOKEN_EXPIRY
+      { expiresIn: REFRESH_TOKEN_EXPIRY }
     );
 
     // Adding new refresh_token in database

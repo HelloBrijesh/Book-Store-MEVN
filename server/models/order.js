@@ -3,8 +3,12 @@ import mongoose from "mongoose";
 const orderSchema = new mongoose.Schema(
   {
     userId: { type: String, required: true },
-    orderTotal: { type: Number, required: true },
-    orderedItems: [],
+    totalAmount: { type: Number, required: true },
+    orderedItems: {
+      bookId: { type: String },
+      price: { type: Number },
+      quantity: { type: Number },
+    },
     billingDetail: {
       firstName: { type: String, required: true },
       lastName: { type: String, required: true },

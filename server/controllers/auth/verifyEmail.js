@@ -34,9 +34,9 @@ export const sendEmail = async (req, res, next) => {
   let emailVerificationToken;
   try {
     const verificationToken = jwt.sign(
-      { id: existingUser.id, role: existingUser.role },
+      { userId: existingUser.id },
       REFRESH_TOKEN_SECRET,
-      REFRESH_TOKEN_EXPIRY
+      { expiresIn: REFRESH_TOKEN_EXPIRY }
     );
 
     const COST_FACTOR = 10;
@@ -95,6 +95,7 @@ export const sendEmail = async (req, res, next) => {
 export const verifyEmail = async (req, res, next) => {
   const emailToken = req.params.emailtoken;
   let verificationDetail;
+
   try {
     verificationDetail = await EmailToken.findOne({
       emailToken: emailToken,
@@ -114,19 +115,17 @@ export const verifyEmail = async (req, res, next) => {
   let access_token;
   let refresh_token;
   try {
-    const existingUser = await User.findOne({
-      id: verificationDetail.userId,
-    });
+    const existingUser = await User.findById(verificationDetail.userId);
     // Creating Tokens
     access_token = jwt.sign(
       { userId: existingUser.id, role: existingUser.role },
       ACCESS_TOKEN_SECRET,
-      ACCESS_TOKEN_EXPIRY
+      { expiresIn: ACCESS_TOKEN_EXPIRY }
     );
     refresh_token = jwt.sign(
       { userId: existingUser.id, role: existingUser.role },
       REFRESH_TOKEN_SECRET,
-      REFRESH_TOKEN_EXPIRY
+      { expiresIn: REFRESH_TOKEN_EXPIRY }
     );
 
     // Adding refresh_token in Database

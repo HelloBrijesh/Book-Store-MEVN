@@ -2,14 +2,19 @@ import mongoose from "mongoose";
 
 const bookSchema = new mongoose.Schema(
   {
-    bookName: { type: String, required: true },
-    authorName: { type: String, required: true },
-    price: { type: Number, required: true },
-    quantity: { type: Number, required: true },
+    title: { type: String, required: true },
+    author: { type: String, required: true },
+    description: { type: String, required: true },
+    price: {
+      type: Number,
+      min: [1, "wrong min price"],
+      max: [10000, "wrong max price"],
+      required: true,
+    },
+    stock: { type: Number, default: 0 },
     sold: { type: Number, required: true, default: 0 },
     category: { type: String, required: true },
-    imageUrl: { type: String, required: true },
-    bookDescription: { type: String, required: true },
+    image: { type: String, required: true },
   },
   { timestamp: true }
 );

@@ -41,8 +41,7 @@ export const contactUs = async (req, res, next) => {
       to: "techpradhyapak@gmail.com",
       subject: `Contact Us - ${subject}`,
       text: `
-          firstName : ${firstName}
-          lastName: ${lastName}
+          Name : ${firstName} ${lastName}
           email: ${email}
           message :${message}
       `,

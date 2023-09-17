@@ -11,7 +11,7 @@ const auth = async (req, res, next) => {
 
   //Verifying the access token
   try {
-    const { userId, role } = jwt.verify(ACCESS_TOKEN_SECRET);
+    const { userId, role } = jwt.verify(authAccessToken, ACCESS_TOKEN_SECRET);
     const user = {
       userId,
       role,

@@ -11,10 +11,13 @@ const bookSchema = new mongoose.Schema(
       max: [10000, "wrong max price"],
       required: true,
     },
+    year: { type: Number },
+    pages: { type: Number },
     stock: { type: Number, default: 0 },
     sold: { type: Number, required: true, default: 0 },
     category: { type: String, required: true },
     image: { type: String, required: true },
+    language: { type: String, required: true },
   },
   { timestamp: true }
 );

@@ -1,4 +1,4 @@
-class CustomErrorHandler extends Error {
+class customErrorHandler extends Error {
   constructor(statusCode, message) {
     super();
     this.status = statusCode;
@@ -6,24 +6,24 @@ class CustomErrorHandler extends Error {
   }
 
   static alreadyExists(message = "Already Exists") {
-    return new CustomErrorHandler(409, message);
+    return new customErrorHandler(409, message);
   }
 
   static wrongCredentials(message = "Username or Password is wrong") {
-    return new CustomErrorHandler(401, message);
+    return new customErrorHandler(401, message);
   }
 
   static unAuthorized(message = "unAuthorized") {
-    return new CustomErrorHandler(401, message);
+    return new customErrorHandler(401, message);
   }
 
   static notFound(message = "Not Found") {
-    return new CustomErrorHandler(404, message);
+    return new customErrorHandler(404, message);
   }
 
   static serverError(message = "Internal server Error") {
-    return new CustomErrorHandler(500, message);
+    return new customErrorHandler(500, message);
   }
 }
 
-export default CustomErrorHandler;
+export default customErrorHandler;

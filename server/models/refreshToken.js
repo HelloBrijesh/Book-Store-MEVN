@@ -8,4 +8,20 @@ const refreshTokenSchema = new Schema(
   { timestamps: false }
 );
 
-export default mongoose.model("RefreshToken", refreshTokenSchema, "refreshTokens");
+const virtual = refreshTokenSchema.virtual("id");
+virtual.get(function () {
+  return this._id;
+});
+refreshTokenSchema.set("toJSON", {
+  virtuals: true,
+  versionKey: false,
+  transform: function (doc, ret) {
+    delete ret._id;
+  },
+});
+
+export const RefreshToken = mongoose.model(
+  "RefreshToken",
+  refreshTokenSchema,
+  "refreshTokens"
+);

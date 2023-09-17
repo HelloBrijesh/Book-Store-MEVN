@@ -1,2 +1,1 @@
-export { default as CustomErrorHandler } from "./CustomErrorHandler";
-export { default as JwtService } from "./jwtService";
+export { default as customErrorHandler } from "./customErrorHandler";

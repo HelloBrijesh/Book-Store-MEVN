@@ -10,6 +10,11 @@ import { contactUs } from "../controllers/contactUs";
 import { getUserById, editUser, deleteUser } from "../controllers/user";
 import { getAllOrders, placeOrder } from "../controllers/order";
 import {
+  getCartItems,
+  addItemInCart,
+  removeItemFromCart,
+} from "../controllers/cart";
+import {
   getBookById,
   getAllBooks,
   getBestSellingBooks,
@@ -37,9 +42,13 @@ router.get("/bestsellingbooks", getBestSellingBooks);
 
 router.post("/addbook", [auth, admin], addBook);
 router.delete("/deletebook/:bookid", [auth, admin], deleteBook);
+router.get("/shop", getAllBooks);
+
+router.get("/getcart", auth, getCartItems);
+router.post("/addcartitem", auth, addItemInCart);
+router.post("/removecartitem", auth, removeItemFromCart);
 
 // Not Tested
-router.post("/shop/:currentPage", getAllBooks);
 router.get("/getorders", auth, getAllOrders);
 router.post("/placeorder", auth, placeOrder);
 

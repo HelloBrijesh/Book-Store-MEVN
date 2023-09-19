@@ -4,9 +4,8 @@ import { Book } from "../models/book";
 export const getBookById = async (req, res, next) => {
   let bookById;
   let relatedBooks;
-
   try {
-    bookById = await Book.findById(req.params.bookid);
+    bookById = await Book.findById(req.params["bookid"]);
 
     relatedBooks = await Book.find({
       category: bookById.category,
@@ -17,41 +16,42 @@ export const getBookById = async (req, res, next) => {
     return next(error);
   }
 
-  res.status(200).json({ bookById, relatedBooks });
+  res.status(200).json({ bookById, relatedBooks, status: "ok" });
 };
 
 export const getAllBooks = async (req, res, next) => {
-  const { category, price } = req.body;
-  const limit = 9;
-  const page = req.params.currentPage;
-  let searchedBooks;
+  const limit = 12;
+  let books;
   let count;
+
+  const category = req.query.category;
+  const price = Number(req.query.price);
+  const page = Number(req.query.page);
+
   try {
-    searchedBooks = await Book.find({
+    books = await Book.find({
       category: category,
       price: { $lte: price },
-      quantity: { $gte: 1 },
+      stock: { $gte: 1 },
     })
-      .select("-bookDescription -__v")
       .limit(limit * 1)
       .skip((page - 1) * limit)
       .exec();
     count = await Book.count({
       category: category,
       price: { $lte: price },
-      quantity: { $gte: 1 },
+      stock: { $gte: 1 },
     });
   } catch (error) {
     return next(error);
   }
-  const totalPages = Math.ceil(count / limit);
 
-  res.status(200).json({ searchedBooks, totalPages });
+  const totalPages = Math.ceil(count / limit);
+  res.status(200).json({ status: "ok", books, totalPages });
 };
 
 export const getBestSellingBooks = async (req, res, next) => {
   let bestSellingBooks;
-
   try {
     bestSellingBooks = await Book.find({}).sort({ sold: -1 }).limit(4);
   } catch (error) {

@@ -1,4 +1,14 @@
-<script setup></script>
+<script setup>
+import { onMounted } from "vue";
+import useCartService from "../services/cartService";
+
+const { getCart, cart, error, status } = useCartService();
+
+onMounted(async () => {
+  await getCart();
+  console.log(cart.value);
+});
+</script>
 <template>
   <div class="mx-auto max-w-7xl px-2 lg:px-0">
     <div class="mx-auto max-w-2xl py-8 lg:max-w-7xl">
@@ -14,11 +24,11 @@
         >
           <h2 id="cart-heading" class="sr-only">Items in your shopping cart</h2>
           <ul role="list" class="divide-y divide-gray-200">
-            <div class="">
+            <div v-for="item in cart" class="">
               <li class="flex py-6 sm:py-6">
                 <div class="flex-shrink-0">
                   <img
-                    src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/54a510de-a406-41b2-8d62-7f8c587c9a7e/air-force-1-07-lv8-shoes-9KwrSk.png"
+                    :src="item.image"
                     alt="Nike Air Force 1 07 LV8"
                     class="sm:h-38 sm:w-38 h-24 w-24 rounded-md object-contain object-center"
                   />
@@ -31,17 +41,12 @@
                       <div class="flex justify-between">
                         <h3 class="text-sm">
                           <a href="#" class="font-semibold text-black">
-                            Nike Air Force 1 07 LV8
+                            {{ item.title }}
                           </a>
                         </h3>
                       </div>
                       <div class="mt-1 flex text-sm">
-                        <p class="text-sm text-gray-500">Orange</p>
-                        <p
-                          class="ml-4 border-l border-gray-200 pl-4 text-sm text-gray-500"
-                        >
-                          8 UK
-                        </p>
+                        <p class="text-sm text-gray-500">{{ item.author }}</p>
                       </div>
                       <div class="mt-1 flex items-end">
                         <p

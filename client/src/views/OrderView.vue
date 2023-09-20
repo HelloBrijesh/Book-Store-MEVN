@@ -1,4 +1,19 @@
-<script setup></script>
+<script setup>
+import { onMounted } from "vue";
+import useOrderService from "../services/orderService";
+import { useCartStore } from "../stores/cartStore";
+
+const cartStore = useCartStore();
+
+const { placeOrder, orders, error, status } = useOrderService();
+
+onMounted(async () => {
+  await placeOrder();
+  if (status.value === "ok") {
+    cartStore.$reset();
+  }
+});
+</script>
 <template>
   <div class="mx-auto my-4 max-w-7xl md:my-6">
     <div class="overflow-hidden rounded-xl border border-gray-100 shadow">
@@ -59,11 +74,11 @@
             <ul class="mt-6 space-y-3">
               <li class="flex items-center justify-between">
                 <p class="text-sm font-medium">Sub total</p>
-                <p class="text-sm font-medium">₹1,14,399</p>
+                <p class="text-sm font-medium"></p>
               </li>
               <li class="flex items-center justify-between">
                 <p class="text-sm font-medium">Total</p>
-                <p class="text-sm font-bold">₹1,14,399</p>
+                <p class="text-sm font-bold">{{ orders.orderTotal }}</p>
               </li>
             </ul>
           </div>
@@ -76,7 +91,7 @@
                   Contact Information
                 </h2>
                 <p class="fontmedium mt-3 text-xs text-gray-700">
-                  Order Number: #9876567890
+                  Order Number: {{ orders.id }}
                 </p>
                 <p class="text-xs font-medium text-gray-700">
                   Date: March 03, 2023

@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+import { RouterLink } from "vue-router";
+</script>
 <template>
   <div class="mx-auto max-w-7xl px-20 my-20 md:my-20">
     <div class="overflow-hidden rounded-xl shadow">
@@ -279,12 +281,12 @@
                     <div
                       class="mt-10 flex justify-end border-t border-gray-200 pt-6"
                     >
-                      <button
-                        type="button"
+                      <RouterLink
+                        to="/order"
                         class="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                       >
                         Make payment
-                      </button>
+                      </RouterLink>
                     </div>
                   </div>
                 </form>

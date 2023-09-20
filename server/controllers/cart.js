@@ -20,8 +20,7 @@ export const getCartItems = async (req, res, next) => {
   } catch (err) {
     return next(err);
   }
-  let cartItems = cart.books;
-  res.json({ cartItems, status: "ok" });
+  res.json({ cart, status: "ok" });
 };
 
 export const addItemInCart = async (req, res, next) => {
@@ -39,6 +38,8 @@ export const addItemInCart = async (req, res, next) => {
       quantity: quantity,
       title: book.title,
       author: book.author,
+      image: book.image,
+      price: book.price,
     };
 
     let itemExists = false;
@@ -48,16 +49,23 @@ export const addItemInCart = async (req, res, next) => {
         break;
       }
     }
-
+    let total = book.price * quantity;
     if (itemExists === false) {
       await Cart.findByIdAndUpdate(cart.id, {
         $push: { books: [bookForCart] },
+        $inc: { totalItems: quantity },
+      });
+      await Cart.findByIdAndUpdate(cart.id, {
+        $inc: { cartTotal: total },
       });
     } else if (itemExists === true) {
       await Cart.updateOne(
         { _id: cart.id, "books.bookId": bookId },
-        { $inc: { "books.$.quantity": quantity } }
+        { $inc: { totalItems: quantity, "books.$.quantity": quantity } }
       );
+      await Cart.findByIdAndUpdate(cart.id, {
+        $inc: { cartTotal: total },
+      });
     }
   } catch (err) {
     return next(err);
@@ -67,12 +75,18 @@ export const addItemInCart = async (req, res, next) => {
 export const removeItemFromCart = async (req, res, next) => {
   const userId = req.user.userId;
   const bookId = req.query.bookid;
-
+  const quantity = req.query.quantity;
+  const price = req.query.price;
+  let total = quantity * price;
   let cart;
+
   try {
     cart = await Cart.findOne({ userId: userId });
     await Cart.findByIdAndUpdate(cart.id, {
       $pull: { books: { bookId: bookId } },
+    });
+    await Cart.findByIdAndUpdate(cart.id, {
+      $inc: { cartTotal: -total, totalItems: -quantity },
     });
   } catch (err) {
     return next(err);

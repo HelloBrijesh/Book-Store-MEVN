@@ -1,24 +1,29 @@
 import mongoose from "mongoose";
 
+const bookSchema = new mongoose.Schema({
+  bookId: { type: String, required: true },
+  title: { type: String, required: true },
+  author: { type: String, required: true },
+  image: { type: String, required: true },
+  quantity: { type: Number, default: 1 },
+  price: { type: Number, required: true },
+});
+
 const orderSchema = new mongoose.Schema(
   {
     userId: { type: String, required: true },
-    totalAmount: { type: Number, required: true },
-    orderedItems: {
-      bookId: { type: String },
-      price: { type: Number },
-      quantity: { type: Number },
-    },
-    billingDetail: {
-      firstName: { type: String, required: true },
-      lastName: { type: String, required: true },
-      address: { type: String, required: true },
-      state: { type: String, required: true },
-      postalCode: { type: String, required: true },
-      email: { type: String, required: true },
-      phone: { type: String, required: true },
-      orderNotes: { type: String },
-    },
+    orderTotal: { type: Number, required: true },
+    orderedItems: [bookSchema],
+    // billingDetail: {
+    //   firstName: { type: String, required: true },
+    //   lastName: { type: String, required: true },
+    //   address: { type: String, required: true },
+    //   state: { type: String, required: true },
+    //   postalCode: { type: String, required: true },
+    //   email: { type: String, required: true },
+    //   phone: { type: String, required: true },
+    //   orderNotes: { type: String },
+    // },
   },
   { timestamp: true }
 );

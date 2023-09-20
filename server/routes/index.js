@@ -48,7 +48,6 @@ router.get("/getcart", auth, getCartItems);
 router.post("/addcartitem", auth, addItemInCart);
 router.post("/removecartitem", auth, removeItemFromCart);
 
-// Not Tested
 router.get("/getorders", auth, getAllOrders);
 router.post("/placeorder", auth, placeOrder);
 

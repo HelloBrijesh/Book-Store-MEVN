@@ -1,35 +1,50 @@
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import useCartService from "../services/cartService";
+import { useCartStore } from "../stores/cartStore";
+import { useRouter } from "vue-router";
 
-const { getCart, cart, error, status } = useCartService();
+let items = ref(null);
+let cartTotal = ref(null);
+const cartStore = useCartStore();
+const { getCart, removeCartItems, cart, cartItems, error, status } =
+  useCartService();
+const router = useRouter();
+
+const handleRemoveCartItems = async (bookid, quantity, price) => {
+  console.log(bookid);
+  await removeCartItems(bookid, quantity, price);
+  if (status.value === "ok") {
+    router.go();
+  }
+};
 
 onMounted(async () => {
   await getCart();
-  console.log(cart.value);
+  cartStore.setCartItems(cartItems.value);
+  items.value = cartStore.getCartItems;
+  cartStore.setCartTotal(cart.value.cartTotal);
+  cartTotal.value = cartStore.getCartTotal;
 });
 </script>
 <template>
-  <div class="mx-auto max-w-7xl px-2 lg:px-0">
-    <div class="mx-auto max-w-2xl py-8 lg:max-w-7xl">
-      <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-        Shopping Cart
-      </h1>
-      <form
-        class="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12 xl:gap-x-16"
-      >
-        <section
-          aria-labelledby="cart-heading"
-          class="rounded-lg bg-white lg:col-span-8"
-        >
+  <div v-if="cart" class="w-full py-16">
+    <div class="container mx-auto">
+      <div class="flex gap-20">
+        <div class="w-2/4">
+          <h1
+            class="mb-10 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+          >
+            Shopping Cart
+          </h1>
           <h2 id="cart-heading" class="sr-only">Items in your shopping cart</h2>
-          <ul role="list" class="divide-y divide-gray-200">
-            <div v-for="item in cart" class="">
+          <ul role="list" class="divide-y divide-gray-200 border">
+            <div v-for="item in items" class="">
               <li class="flex py-6 sm:py-6">
                 <div class="flex-shrink-0">
                   <img
                     :src="item.image"
-                    alt="Nike Air Force 1 07 LV8"
+                    :alt="item.title"
                     class="sm:h-38 sm:w-38 h-24 w-24 rounded-md object-contain object-center"
                   />
                 </div>
@@ -48,41 +63,27 @@ onMounted(async () => {
                       <div class="mt-1 flex text-sm">
                         <p class="text-sm text-gray-500">{{ item.author }}</p>
                       </div>
-                      <div class="mt-1 flex items-end">
-                        <p
-                          class="text-xs font-medium text-gray-500 line-through"
-                        >
-                          ₹48,900
-                        </p>
+                      <div class="mt-3 flex items-end">
                         <p class="text-sm font-medium text-gray-900">
-                            ₹47,199
+                          <span class="me-5"> {{ item.quantity }} </span> X
+                          <span class="ms-5"> {{ item.price }}</span>
                         </p>
-                          
-                        <p class="text-sm font-medium text-green-500">5% Off</p>
                       </div>
                     </div>
                   </div>
                 </div>
-              </li>
-              <div class="mb-2 flex">
-                <div class="min-w-24 flex">
-                  <button type="button" class="h-7 w-7">-</button>
-                  <input
-                    type="text"
-                    class="mx-1 h-7 w-9 rounded-md border text-center"
-                    value="1"
-                  />
-                  <button
-                    type="button"
-                    class="flex h-7 w-7 items-center justify-center"
-                  >
-                    +
-                  </button>
-                </div>
-                <div class="ml-6 flex text-sm">
+                <div class="me-5">
                   <button
                     type="button"
                     class="flex items-center space-x-1 px-2 py-1 pl-0"
+                    @click="
+                      () =>
+                        handleRemoveCartItems(
+                          item.bookId,
+                          item.quantity,
+                          item.price
+                        )
+                    "
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -103,31 +104,32 @@ onMounted(async () => {
                     <span class="text-xs font-medium text-red-500">Remove</span>
                   </button>
                 </div>
-              </div>
+              </li>
             </div>
           </ul>
-        </section>
-        <section
-          aria-labelledby="summary-heading"
-          class="mt-16 rounded-md bg-white lg:col-span-4 lg:mt-0 lg:p-0"
-        >
+        </div>
+        <div class="w-1/4">
           <h2
             id="summary-heading"
-            class="border-b border-gray-200 px-4 py-3 text-lg font-medium text-gray-900 sm:p-4"
+            class="text-center mt-5 pb-8 border-b border-gray-200 text-lg font-medium text-gray-900"
           >
             Price Details
           </h2>
           <div>
             <dl class="space-y-1 px-2 py-4">
               <div class="flex items-center justify-between">
-                <dt class="text-sm text-gray-800">Price (3 item)</dt>
-                <dd class="text-sm font-medium text-gray-900">₹ 52,398</dd>
+                <dt class="text-sm text-gray-800">
+                  Price - {{ cart.totalItems }} Items
+                </dt>
+                <dd class="text-sm font-medium text-gray-900">
+                  $ {{ cartTotal }}
+                </dd>
               </div>
               <div class="flex items-center justify-between pt-4">
                 <dt class="flex items-center text-sm text-gray-800">
                   <span>Discount</span>
                 </dt>
-                <dd class="text-sm font-medium text-green-700">- ₹ 3,431</dd>
+                <dd class="text-sm font-medium text-green-700">0</dd>
               </div>
               <div class="flex items-center justify-between py-4">
                 <dt class="flex text-sm text-gray-800">
@@ -141,15 +143,22 @@ onMounted(async () => {
                 <dt class="text-base font-medium text-gray-900">
                   Total Amount
                 </dt>
-                <dd class="text-base font-medium text-gray-900">₹ 48,967</dd>
+                <dd class="text-base font-medium text-gray-900">
+                  ₹ {{ cartTotal }}
+                </dd>
+              </div>
+              <div class="pt-10 text-center">
+                <RouterLink
+                  to="/checkout"
+                  class="rounded-md bg-black px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                >
+                  Checkout
+                </RouterLink>
               </div>
             </dl>
-            <div class="px-2 pb-4 font-medium text-green-700">
-              You will save ₹ 3,431 on this order
-            </div>
           </div>
-        </section>
-      </form>
+        </div>
+      </div>
     </div>
   </div>
 </template>

@@ -1,43 +1,47 @@
 <script setup>
+import { onMounted, ref } from "vue";
+import { useCartStore } from "../stores/cartStore";
 import { RouterLink } from "vue-router";
+
+let items = ref(null);
+let cartTotal = ref(null);
+const cartStore = useCartStore();
+
+onMounted(async () => {
+  items.value = cartStore.getCartItems;
+  cartTotal.value = cartStore.getCartTotal;
+});
 </script>
 <template>
-  <div class="mx-auto max-w-7xl px-20 my-20 md:my-20">
-    <div class="overflow-hidden rounded-xl shadow">
-      <div class="grid grid-cols-1 md:grid-cols-2">
-        <div class="bg-gray-100 px-5 py-6 md:px-8">
-          <div class="flow-root">
-            <ul class="-my-7 divide-y divide-gray-200">
-              <li class="flex items-stretch justify-between space-x-5 py-7">
-                <div class="flex flex-1 items-stretch">
-                  <div class="flex-shrink-0">
-                    <img
-                      class="h-20 w-20 rounded-lg border border-gray-200 bg-white object-contain"
-                      src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/54a510de-a406-41b2-8d62-7f8c587c9a7e/air-force-1-07-lv8-shoes-9KwrSk.png"
-                      alt="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/54a510de-a406-41b2-8d62-7f8c587c9a7e/air-force-1-07-lv8-shoes-9KwrSk.png"
-                    />
-                  </div>
-                  <div class="ml-5 flex flex-col justify-between">
-                    <div class="flex-1">
-                      <p class="text-sm font-bold">Nike Air Force 1 07 LV8</p>
-                      <p class="mt-1.5 text-sm font-medium text-gray-500">
-                        Orange
-                      </p>
-                    </div>
-                    <p class="mt-4 text-xs font-medium">x 1</p>
-                  </div>
+  <div class="w-full my-20">
+    <div class="container mx-auto">
+      <div class="flex mx-20 border rounded-lg">
+        <div class="w-2/4 bg-gray-100 p-7">
+          <div v-for="item in items" class="">
+            <div class="flex justify-between">
+              <div class="flex justify-between w-3/4">
+                <div class="h-20 w-20">
+                  <img
+                    class="h-full w-full object-contain"
+                    :src="item.image"
+                    :alt="item.title"
+                  />
                 </div>
-                <div class="ml-auto flex flex-col items-end justify-between">
-                  <p class="text-right text-sm font-bold text-gray-900">
-                    ₹47,199
-                  </p>
+                <div class="ms-5 w-full">
+                  <p class="font-semibold">{{ item.title }}</p>
+                  <p class="">{{ item.author }}</p>
+                  <p class="">x {{ item.quantity }}</p>
+                </div>
+              </div>
+              <div class="flex flex-col items-end justify-between w-1/4 me-5">
+                <p>$ {{ item.price }}</p>
+                <p>
                   <button
                     type="button"
                     class="-m-2 inline-flex rounded p-2 text-gray-400 transition-all duration-200 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
                   >
                     <span class="sr-only">Remove</span>
                     <svg
-                      xmlns="http://www.w3.org/2000/svg"
                       width="24"
                       height="24"
                       viewBox="0 0 24 24"
@@ -52,245 +56,200 @@ import { RouterLink } from "vue-router";
                       <line x1="6" y1="6" x2="18" y2="18"></line>
                     </svg>
                   </button>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <hr class="mt-6 border-gray-200" />
-          <form action="#" class="mt-6">
-            <div
-              class="sm:flex sm:space-x-2.5 md:flex-col md:space-x-0 lg:flex-row lg:space-x-2.5"
-            >
-              <div class="flex-grow">
-                <input
-                  class="flex w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                  type="text"
-                  placeholder="Enter coupon code"
-                />
-              </div>
-              <div class="mt-4 sm:mt-0 md:mt-4 lg:mt-0">
-                <button
-                  type="button"
-                  class="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                >
-                  Apply Coupon
-                </button>
+                </p>
               </div>
             </div>
-          </form>
+            <hr class="my-5" />
+          </div>
+          <div
+            class="sm:flex sm:space-x-2.5 md:flex-col md:space-x-0 lg:flex-row lg:space-x-2.5"
+          >
+            <div class="flex-grow">
+              <input
+                class="flex w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                type="text"
+                placeholder="Enter coupon code"
+              />
+            </div>
+            <div class="mt-4 sm:mt-0 md:mt-4 lg:mt-0">
+              <button
+                type="button"
+                class="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              >
+                Apply Coupon
+              </button>
+            </div>
+          </div>
           <ul class="mt-6 space-y-3">
             <li class="flex items-center justify-between text-gray-600">
               <p class="text-sm font-medium">Sub total</p>
-              <p class="text-sm font-medium">₹1,14,399</p>
+              <p class="text-sm font-medium">$ 0</p>
             </li>
             <li class="flex items-center justify-between text-gray-900">
               <p class="text-sm font-medium">Total</p>
-              <p class="text-sm font-bold">₹1,14,399</p>
+              <p class="text-sm font-bold">$ {{ cartTotal }}</p>
             </li>
           </ul>
         </div>
-        <div class="px-5 py-6 text-gray-900 md:px-8">
-          <div class="flow-root">
-            <div class="-my-6 divide-y divide-gray-200">
-              <div class="py-6">
-                <form>
-                  <div class="mx-auto max-w-2xl px-4 lg:max-w-none lg:px-0">
-                    <div>
-                      <h3
-                        id="contact-info-heading"
-                        class="text-lg font-semibold text-gray-900"
-                      >
-                        Contact information
-                      </h3>
-                      <div class="mt-4 w-full">
-                        <label
-                          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                          for="name"
-                        >
-                          Full Name
-                        </label>
-                        <input
-                          class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                          type="text"
-                          placeholder="Enter your name"
-                          id="name"
-                        />
-                      </div>
-                    </div>
-                    <hr class="my-8" />
-                    <div class="mt-10">
-                      <h3 class="text-lg font-semibold text-gray-900">
-                        Payment details
-                      </h3>
-                      <div
-                        class="mt-6 grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4"
-                      >
-                        <div class="col-span-3 sm:col-span-4">
-                          <label
-                            for="cardNum"
-                            class="block text-sm font-medium text-gray-700"
-                          >
-                            Card number
-                          </label>
-                          <div class="mt-1">
-                            <input
-                              class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                              type="text"
-                              placeholder="4242 4242 4242 4242"
-                              id="cardNum"
-                            />
-                          </div>
-                        </div>
-                        <div class="col-span-2 sm:col-span-3">
-                          <label
-                            for="expiration-date"
-                            class="block text-sm font-medium text-gray-700"
-                          >
-                            Expiration date (MM/YY)
-                          </label>
-                          <div class="mt-1">
-                            <input
-                              type="date"
-                              name="expiration-date"
-                              id="expiration-date"
-                              autoComplete="cc-exp"
-                              class="block h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                            />
-                          </div>
-                        </div>
-                        <div>
-                          <label
-                            for="cvc"
-                            class="block text-sm font-medium text-gray-700"
-                          >
-                            CVC
-                          </label>
-                          <div class="mt-1">
-                            <input
-                              type="text"
-                              name="cvc"
-                              id="cvc"
-                              autoComplete="csc"
-                              class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <hr class="my-8" />
-                    <div class="mt-10">
-                      <h3 class="text-lg font-semibold text-gray-900">
-                        Shipping address
-                      </h3>
-                      <div
-                        class="mt-6 grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-3"
-                      >
-                        <div class="sm:col-span-3">
-                          <label
-                            for="address"
-                            class="block text-sm font-medium text-gray-700"
-                          >
-                            Address
-                          </label>
-                          <div class="mt-1">
-                            <input
-                              type="text"
-                              id="address"
-                              name="address"
-                              autoComplete="street-address"
-                              class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                            />
-                          </div>
-                        </div>
-                        <div>
-                          <label
-                            for="city"
-                            class="block text-sm font-medium text-gray-700"
-                          >
-                            City
-                          </label>
-                          <div class="mt-1">
-                            <input
-                              type="text"
-                              id="city"
-                              name="city"
-                              autoComplete="address-level2"
-                              class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                            />
-                          </div>
-                        </div>
-                        <div>
-                          <label
-                            for="region"
-                            class="block text-sm font-medium text-gray-700"
-                          >
-                            State / Province
-                          </label>
-                          <div class="mt-1">
-                            <input
-                              type="text"
-                              id="region"
-                              name="region"
-                              autoComplete="address-level1"
-                              class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                            />
-                          </div>
-                        </div>
-                        <div>
-                          <label
-                            for="postal-code"
-                            class="block text-sm font-medium text-gray-700"
-                          >
-                            Postal code
-                          </label>
-                          <div class="mt-1">
-                            <input
-                              type="text"
-                              id="postal-code"
-                              name="postal-code"
-                              autoComplete="postal-code"
-                              class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <hr class="my-8" />
-                    <div class="mt-10">
-                      <h3 class="text-lg font-semibold text-gray-900">
-                        Billing information
-                      </h3>
-                      <div class="mt-6 flex items-center">
-                        <input
-                          id="same-as-shipping"
-                          name="same-as-shipping"
-                          type="checkbox"
-                          class="h-4 w-4 rounded border-gray-300 text-black focus:ring-black"
-                          checked=""
-                        />
-                        <div class="ml-2">
-                          <label
-                            for="same-as-shipping"
-                            class="text-sm font-medium text-gray-900"
-                          >
-                            Same as shipping information
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="mt-10 flex justify-end border-t border-gray-200 pt-6"
-                    >
-                      <RouterLink
-                        to="/order"
-                        class="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                      >
-                        Make payment
-                      </RouterLink>
-                    </div>
-                  </div>
-                </form>
+        <div class="w-2/4 p-7">
+          <div>
+            <h1 class="font-semibold text-lg">Contact Information</h1>
+            <div class="py-5">
+              <label
+                class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                for="name"
+              >
+                Full Name
+              </label>
+              <input
+                class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                type="text"
+                placeholder="Enter your name"
+                id="name"
+              />
+            </div>
+          </div>
+          <hr class="my-5" />
+          <div class="">
+            <h1 class="font-semibold text-lg">Payment Details</h1>
+
+            <div class="mt-6 grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4">
+              <div class="col-span-3 sm:col-span-4">
+                <label
+                  for="cardNum"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  Card number
+                </label>
+                <div class="mt-1">
+                  <input
+                    class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                    type="text"
+                    placeholder="4242 4242 4242 4242"
+                    id="cardNum"
+                  />
+                </div>
               </div>
+              <div class="col-span-2 sm:col-span-3">
+                <label
+                  for="expiration-date"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  Expiration date (MM/YY)
+                </label>
+                <div class="mt-1">
+                  <input
+                    type="date"
+                    name="expiration-date"
+                    id="expiration-date"
+                    autoComplete="cc-exp"
+                    class="block h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  for="cvc"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  CVC
+                </label>
+                <div class="mt-1">
+                  <input
+                    type="text"
+                    name="cvc"
+                    id="cvc"
+                    autoComplete="csc"
+                    class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-7" />
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900">
+              Shipping address
+            </h3>
+            <div class="mt-6 grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-3">
+              <div class="sm:col-span-3">
+                <label
+                  for="address"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  Address
+                </label>
+                <div class="mt-1">
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    autoComplete="street-address"
+                    class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  for="city"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  City
+                </label>
+                <div class="mt-1">
+                  <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    autoComplete="address-level2"
+                    class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  for="region"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  State / Province
+                </label>
+                <div class="mt-1">
+                  <input
+                    type="text"
+                    id="region"
+                    name="region"
+                    autoComplete="address-level1"
+                    class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  for="postal-code"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  Postal code
+                </label>
+                <div class="mt-1">
+                  <input
+                    type="text"
+                    id="postal-code"
+                    name="postal-code"
+                    autoComplete="postal-code"
+                    class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                  />
+                </div>
+              </div>
+            </div>
+            <hr class="my-8" />
+            <div class="flex justify-end border-gray-200">
+              <RouterLink
+                to="/order"
+                class="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              >
+                Make payment
+              </RouterLink>
             </div>
           </div>
         </div>

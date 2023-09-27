@@ -3,16 +3,17 @@ import { onMounted, ref } from "vue";
 import useCartService from "../services/cartService";
 import { useCartStore } from "../stores/cartStore";
 import { useRouter } from "vue-router";
+import { useAuthStore } from "../stores/authStore";
 
 let items = ref(null);
 let cartTotal = ref(null);
-const cartStore = useCartStore();
+const router = useRouter();
 const { getCart, removeCartItems, cart, cartItems, error, status } =
   useCartService();
-const router = useRouter();
+const authStore = useAuthStore();
+const cartStore = useCartStore();
 
 const handleRemoveCartItems = async (bookid, quantity, price) => {
-  console.log(bookid);
   await removeCartItems(bookid, quantity, price);
   if (status.value === "ok") {
     router.go();
@@ -20,6 +21,9 @@ const handleRemoveCartItems = async (bookid, quantity, price) => {
 };
 
 onMounted(async () => {
+  if (!authStore.getisLoggedin) {
+    await router.push("/login");
+  }
   await getCart();
   cartStore.setCartItems(cartItems.value);
   items.value = cartStore.getCartItems;
@@ -29,9 +33,9 @@ onMounted(async () => {
 </script>
 <template>
   <div v-if="cart" class="w-full py-16">
-    <div class="container mx-auto">
-      <div class="flex gap-20">
-        <div class="w-2/4">
+    <div class="sm:container sm:mx-auto mx-5">
+      <div class="flex flex-col sm:flex-row gap-20">
+        <div class="sm:w-2/4">
           <h1
             class="mb-10 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
           >
@@ -108,10 +112,10 @@ onMounted(async () => {
             </div>
           </ul>
         </div>
-        <div class="w-1/4">
+        <div class="sm:w-1/4">
           <h2
             id="summary-heading"
-            class="text-center mt-5 pb-8 border-b border-gray-200 text-lg font-medium text-gray-900"
+            class="text-center sm:mt-5 pb-8 border-b border-gray-200 text-lg font-medium text-gray-900"
           >
             Price Details
           </h2>

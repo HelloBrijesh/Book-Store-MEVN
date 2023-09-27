@@ -41,7 +41,7 @@ onMounted(async () => {
 </script>
 <template>
   <div class="w-full">
-    <div class="container mx-auto">
+    <div class="mx-5 sm:container sm:mx-auto">
       <div class="flex justify-between border-b-2 py-6 mb-10 mt-5">
         <div class="">
           <h1 class="text-3xl font-semibold">Shop</h1>
@@ -64,8 +64,8 @@ onMounted(async () => {
           </svg>
         </div>
       </div>
-      <div class="flex">
-        <div class="w-[250px] pt-10 ps-6">
+      <div class="sm:flex">
+        <div class="w-[250px] sm:pt-10 ps-6 mb-10 sm:mb-0">
           <div class="">
             <h3 class="mb-3 text-lg font-semibold text-gray-900">Category</h3>
             <form @change="handleShop">
@@ -140,7 +140,7 @@ onMounted(async () => {
           </div>
         </div>
         <div class="w-full px-5">
-          <div class="grid grid-cols-4 gap-6 mb-20">
+          <div class="grid sm:grid-cols-4 gap-6 mb-20">
             <div
               v-for="book in listOfBooks"
               class="grow border rounded-lg overflow-hidden"

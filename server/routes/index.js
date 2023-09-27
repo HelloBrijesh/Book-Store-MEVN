@@ -9,6 +9,7 @@ import { logout } from "../controllers/auth/logout";
 import { contactUs } from "../controllers/contactUs";
 import { getUserById, editUser, deleteUser } from "../controllers/user";
 import { getAllOrders, placeOrder } from "../controllers/order";
+import { addSubscriber, removeSubscriber } from "../controllers/subscription";
 import {
   getCartItems,
   addItemInCart,
@@ -50,5 +51,8 @@ router.post("/removecartitem", auth, removeItemFromCart);
 
 router.get("/getorders", auth, getAllOrders);
 router.post("/placeorder", auth, placeOrder);
+
+router.post("/addsubscriber", addSubscriber);
+router.delete("/removesubscriber", removeSubscriber);
 
 export default router;

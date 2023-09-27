@@ -1,22 +1,28 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import { useCartStore } from "../stores/cartStore";
-import { RouterLink } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
+import { useAuthStore } from "../stores/authStore";
 
 let items = ref(null);
 let cartTotal = ref(null);
 const cartStore = useCartStore();
+const authStore = useAuthStore();
+const router = useRouter();
 
 onMounted(async () => {
+  if (!authStore.getisLoggedin) {
+    await router.push("/login");
+  }
   items.value = cartStore.getCartItems;
   cartTotal.value = cartStore.getCartTotal;
 });
 </script>
 <template>
   <div class="w-full my-20">
-    <div class="container mx-auto">
-      <div class="flex mx-20 border rounded-lg">
-        <div class="w-2/4 bg-gray-100 p-7">
+    <div class="sm:container sm:mx-auto mx-5">
+      <div class="flex flex-col sm:flex-row sm:mx-20 border rounded-lg">
+        <div class="sm:w-2/4 bg-gray-100 p-7">
           <div v-for="item in items" class="">
             <div class="flex justify-between">
               <div class="flex justify-between w-3/4">
@@ -91,7 +97,7 @@ onMounted(async () => {
             </li>
           </ul>
         </div>
-        <div class="w-2/4 p-7">
+        <div class="sm:w-2/4 p-7">
           <div>
             <h1 class="font-semibold text-lg">Contact Information</h1>
             <div class="py-5">

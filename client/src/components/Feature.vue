@@ -1,11 +1,11 @@
 <script setup></script>
 <template>
-  <div class="w-full mb-28">
-    <div class="container mx-auto">
+  <div class="w-full mb-14 sm:mb-28">
+    <div class="sm:container mx-5 sm:mx-auto">
       <div class="mb-16">
-        <h2 class="text-3xl font-bold text-black">Categories</h2>
+        <h2 class="text-3xl font-bold text-black">Feature</h2>
       </div>
-      <div class="flex justify-around">
+      <div class="mx-auto flex flex-col justify-around sm:flex-row">
         <div class="">
           <div
             class="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gray-100"
@@ -28,7 +28,7 @@
               ></path>
             </svg>
           </div>
-          <h3 class="mt-8 text-lg font-semibold text-black">
+          <h3 class="mt-8 mb-8 text-lg font-semibold text-black text-center">
             Secured Payments
           </h3>
         </div>
@@ -53,7 +53,7 @@
               ></polygon>
             </svg>
           </div>
-          <h3 class="mt-8 text-lg font-semibold text-black">
+          <h3 class="mt-8 mb-8 text-lg font-semibold text-black text-center">
             Fast &amp; Easy to Load
           </h3>
         </div>
@@ -78,7 +78,9 @@
               ></polygon>
             </svg>
           </div>
-          <h3 class="mt-8 text-lg font-semibold text-black">Filter Blocks</h3>
+          <h3 class="mt-8 mb-8 text-lg font-semibold text-black text-center">
+            Filter Blocks
+          </h3>
         </div>
         <div>
           <div
@@ -99,25 +101,11 @@
               <path d="M12 3a6.364 6.364 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
             </svg>
           </div>
-          <h3 class="mt-8 text-lg font-semibold text-black">
+          <h3 class="mt-8 text-lg font-semibold text-black text-center">
             Light &amp; Dark Version
           </h3>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- <div class="mx-auto container pb-32">
-    <div class="max-w-xl pb-20">
-      
-    </div>
-    <div
-      class="grid grid-cols-1 gap-y-8 text-center sm:grid-cols-2 sm:gap-12 lg:grid-cols-4"
-    >
-
-      
-      
-
-    </div>
-  </div> -->
 </template>

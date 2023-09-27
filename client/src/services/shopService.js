@@ -3,14 +3,14 @@ import axios from "axios";
 
 export default function useShopService() {
   const url = ref(null);
-  const statusCode = ref(null);
+  const status = ref(null);
   const error = ref(null);
   const books = ref(null);
   const totalPages = ref(null);
 
   const getBooks = async (shopPayload, currentPage) => {
     url.value = `shop/${currentPage}`;
-    statusCode.value = null;
+    status.value = null;
     error.value = null;
     books.value = null;
     totalPages.value = null;
@@ -18,7 +18,7 @@ export default function useShopService() {
       const response = await axios.post(url.value, shopPayload, {
         withCredentials: true,
       });
-      statusCode.value = response.status;
+      status.value = response.data.status;
       books.value = response.data.searchedBooks;
       totalPages.value = response.data.totalPages;
     } catch (err) {

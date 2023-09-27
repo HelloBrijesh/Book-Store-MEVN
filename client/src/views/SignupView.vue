@@ -17,7 +17,9 @@ const handleSignup = async () => {
 <template>
   <section v-if="status === 'ok'">
     <h1 class="h-screen flex justify-center items-center">
-      Please Verify email
+      Verification link has been sent to
+      <i>{{ signupPayload.email }}</i
+      >. Please verify your email
     </h1>
   </section>
   <section v-else="status === 'null'">
@@ -30,13 +32,13 @@ const handleSignup = async () => {
         </h2>
         <p class="mt-2 text-center text-base text-gray-600">
           Already have an account?
-          <a
-            href="#"
+          <RouterLink
+            to="/login"
             title=""
             class="font-medium text-black transition-all duration-200 hover:underline"
           >
             Sign In
-          </a>
+          </RouterLink>
         </p>
 
         <div>

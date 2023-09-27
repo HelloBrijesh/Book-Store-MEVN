@@ -10,13 +10,13 @@ onMounted(async () => {
 });
 </script>
 <template>
-  <div class="w-full">
-    <div class="container mx-auto">
+  <div class="w-full mb-16 sm:mb-28">
+    <div class="mx-5 sm:container sm:mx-auto">
       <div class="pb-20">
         <h2 class="text-3xl font-bold text-black">Bestselling Books</h2>
       </div>
 
-      <div class="grid grid-cols-4 gap-6 mb-40">
+      <div class="grid sm:grid-cols-4 grid-flow-row gap-6">
         <div
           v-for="book in listOfBooks"
           class="grow border rounded-lg overflow-hidden"

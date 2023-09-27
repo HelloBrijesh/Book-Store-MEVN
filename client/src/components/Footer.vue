@@ -3,10 +3,10 @@ import { RouterLink } from "vue-router";
 </script>
 <template>
   <div class="w-full border-t-2 pt-5">
-    <div class="container mx-auto">
-      <div class="flex justify-between">
+    <div class="sm:container sm:mx-auto mx-5">
+      <div class="flex justify-between flex-col sm:flex-row">
         <div>
-          <ul class="-m-5 flex flex-wrap items-center">
+          <ul class="-m-5 flex flex-wrap items-center justify-center">
             <li class="p-5">
               <RouterLink
                 class="font-medium text-gray-600 hover:text-gray-700"
@@ -25,7 +25,7 @@ import { RouterLink } from "vue-router";
             </li>
           </ul>
         </div>
-        <div class="flex gap-5">
+        <div class="flex gap-5 mt-5 sm:mt-0 justify-center">
           <RouterLink to="#">
             <div
               class="flex h-8 w-8 items-center justify-center rounded-full border border-gray-300 hover:border-gray-400"
@@ -66,26 +66,4 @@ import { RouterLink } from "vue-router";
       </div>
     </div>
   </div>
-  <!-- <section class="relative border-t overflow-hidden bg-white py-8">
-    <div class="container relative z-10 mx-auto">
-      <div class="-m-8 flex flex-wrap items-center justify-between">
-        <div class="w-auto p-8">
-          
-        </div>
-        <div class="w-auto p-8">
-          <div class="-m-1.5 flex flex-wrap">
-            <div class="w-auto p-1.5">
-              
-            </div>
-            <div class="w-auto p-1.5">
-              
-            </div>
-            <div class="w-auto p-1.5">
-              
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
 </template>

@@ -1,5 +1,5 @@
 <script setup>
-import { useRouter } from "vue-router";
+import { RouterLink, useRouter } from "vue-router";
 import { onMounted, reactive } from "vue";
 import { useAuthStore } from "../stores/authStore";
 import useAuthService from "../services/authService";
@@ -61,13 +61,13 @@ const handleLogin = async () => {
                 <label for="" class="text-base font-medium text-gray-900">
                   Password
                 </label>
-                <a
-                  href="#"
+                <RouterLink
+                  to="/forgotpassword"
                   title=""
                   class="text-sm font-semibold text-black hover:underline"
                 >
                   Forgot password?
-                </a>
+                </RouterLink>
               </div>
               <div class="mt-2">
                 <input
@@ -143,13 +143,13 @@ const handleLogin = async () => {
         </div>
         <p class="mt-5 text-center text-sm text-gray-600">
           Don&#x27;t have an account?
-          <a
-            href="#"
+          <RouterLink
+            to="/signup"
             title=""
             class="font-semibold text-black transition-all duration-200 hover:underline"
           >
             Create a free account
-          </a>
+          </RouterLink>
         </p>
       </div>
     </div>

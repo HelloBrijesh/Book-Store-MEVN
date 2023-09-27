@@ -2,14 +2,19 @@
 import { onMounted } from "vue";
 import useOrderService from "../services/orderService";
 import { useCartStore } from "../stores/cartStore";
-
-const cartStore = useCartStore();
+import { useAuthStore } from "../stores/authStore";
+import { useRouter } from "vue-router";
 
 const { placeOrder, orders, error, status } = useOrderService();
+const authStore = useAuthStore();
+const cartStore = useCartStore();
+const router = useRouter();
 
 onMounted(async () => {
+  if (!authStore.getisLoggedin) {
+    await router.push("/login");
+  }
   await placeOrder();
-  console.log();
   if (status.value === "ok") {
     cartStore.$reset();
   }
@@ -17,9 +22,9 @@ onMounted(async () => {
 </script>
 <template>
   <div v-if="orders" class="w-full my-20">
-    <div class="container mx-auto">
-      <div class="flex border rounded-lg">
-        <div class="w-2/4 p-7 border-r-2">
+    <div class="sm:container sm:mx-auto mx-5">
+      <div class="flex flex-col sm:flex-row border rounded-lg">
+        <div class="sm:w-2/4 p-7 border-b-2 border-r-0 sm:border-r-2">
           <div v-for="item in orders.orderedItems" class="">
             <div class="flex justify-between">
               <div class="flex justify-between w-3/4">
@@ -53,7 +58,7 @@ onMounted(async () => {
             </li>
           </ul>
         </div>
-        <div class="w-2/4 p-7">
+        <div class="sm:w-2/4 p-7">
           <div class="py-6">
             <h2 class="text-base font-bold text-black">Contact Information</h2>
             <p class="fontmedium mt-3 text-xs text-gray-700">

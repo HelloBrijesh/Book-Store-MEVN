@@ -9,8 +9,8 @@ import CheckoutView from "../views/CheckoutView.vue";
 import OrderView from "../views/OrderView.vue";
 import ContactView from "../views/ContactView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
-// import ForgotPasswordView from "../views/ForgotPasswordView.vue";
-// import VerifyEmailView from "../views/VerifyEmailView.vue";
+import ForgotPasswordView from "../views/ForgotPasswordView.vue";
+import VerifyEmailView from "../views/VerifyEmailView.vue";
 // import VerifyEmailTokenView from "../views/VerifyEmailTokenView.vue";
 // import ChangePasswordView from "../views/ChangePasswordView.vue";
 // import UserView from "../views/UserView.vue";
@@ -73,11 +73,16 @@ const router = createRouter({
       path: "/:pathMatch(.*)*",
       redirect: "/404",
     },
-    // {
-    //   path: "/forgotpassword",
-    //   name: "forgotpassword",
-    //   component: ForgotPasswordView,
-    // },
+    {
+      path: "/forgotpassword",
+      name: "forgotpassword",
+      component: ForgotPasswordView,
+    },
+    {
+      path: "/verifyemail/:token",
+      name: "verifyemail",
+      component: VerifyEmailView,
+    },
     // {
     //   path: "/changepassword",
     //   name: "changepassword",
@@ -94,11 +99,6 @@ const router = createRouter({
     //   path: "/admin",
     //   name: "admin",
     //   component: AdminView,
-    // },
-    // {
-    //   path: "/verifyemail",
-    //   name: "verifyemail",
-    //   component: VerifyEmailView,
     // },
     // {
     //   path: "/verifyemail/:emailVerificationtoken",

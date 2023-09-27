@@ -20,7 +20,33 @@ export default function useAuthService() {
       error.value = err.response.data.message;
     }
   };
+  const verifyEmail = async (payload) => {
+    url.value = `verify/${payload}`;
+    status.value = null;
+    error.value = null;
 
+    try {
+      const response = await axios.get(url.value);
+      status.value = response.data.status;
+    } catch (err) {
+      error.value = err.response.data.message;
+    }
+  };
+
+  const forgotPassword = async (payload) => {
+    url.value = "forgotpassword";
+    status.value = null;
+    error.value = null;
+    try {
+      const response = await axios.post(url.value, payload, {
+        withCredentials: true,
+      });
+      status.value = response.data.status;
+      console.log(status.value);
+    } catch (err) {
+      error.value = err.response.data.message;
+    }
+  };
   const login = async (logInPayload) => {
     url.value = "login";
     status.value = null;
@@ -71,7 +97,8 @@ export default function useAuthService() {
   return {
     signup,
     login,
-    // logout,
+    forgotPassword,
+    verifyEmail,
     // changePassword,
     error,
     status,

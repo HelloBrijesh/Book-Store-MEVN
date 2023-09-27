@@ -38,16 +38,16 @@ const handleAddtoCart = async (bookid) => {
 <template>
   <div v-if="status === 'ok'">
     <div class="w-full my-20">
-      <div class="container mx-auto">
-        <div class="flex justify-center mb-28">
-          <div class="w-1/3">
+      <div class="sm:container sm:mx-auto mx-5">
+        <div class="flex flex-col sm:flex-row justify-center mb-28">
+          <div class="sm:w-1/3 mb-10 sm:mb-0">
             <img
               alt="Nike Air Max 21A"
               class="h-64 w-full rounded object-cover lg:h-96"
               :src="`/${book.image}`"
             />
           </div>
-          <div class="w-2/4 ps-10">
+          <div class="sm:w-2/4 sm:ps-10">
             <h1 class="mb-4 text-3xl font-semibold text-black">
               {{ book.title }}
             </h1>
@@ -95,11 +95,11 @@ const handleAddtoCart = async (bookid) => {
             </div>
           </div>
         </div>
-        <div>
-          <div class="pb-20">
+        <div class="mb-20 sm:mb-40">
+          <div class="pb-10 sm:pb-20">
             <h2 class="text-3xl font-bold text-black">Related Books</h2>
           </div>
-          <div class="grid grid-cols-4 gap-6 mb-40">
+          <div class="grid sm:grid-cols-4 gap-6">
             <div
               v-for="book in listOfBooks"
               class="grow border rounded-lg overflow-hidden"
@@ -145,57 +145,4 @@ const handleAddtoCart = async (bookid) => {
   <div v-else>
     <h1>{{ error }}</h1>
   </div>
-  <!-- <div v-if="status === 'ok'">
-    <div class="container mx-auto py-24">
-      <div class="mx-auto flex flex-wrap items-start">
-        
-        <div class="mt-6 w-full lg:mt-0 lg:w-1/2 lg:pl-10">
-          <h1 class="mb-4 text-3xl font-semibold text-black">
-            {{ book.title }}
-          </h1>
-          <h2 class="my-4 text-xl font-semibold text-black">
-            {{ book.author }}
-          </h2>
-
-          <p class="">
-            
-          </p>
-          
-          
-        </div>
-      </div>
-    </div>
-    <div class="container mx-auto pb-32">
-      
-      <div
-        @click.prevent="handleRelatedBooks"
-        class="flex justify-between gap-2"
-      >
-        <RouterLink
-          :to="`/book/${book.id}`"
-          v-for="book in listOfBooks"
-          :key="book.id"
-          class="rounded-md border basis-1/3"
-        >
-          <img
-            :src="`/${book.image}`"
-            alt="Book"
-            class="h-[300px] w-full rounded-t-md object-cover"
-          />
-          <div class="p-4">
-            <h1 class="inline-flex items-center text-lg font-semibold">
-              {{ book.title }}
-            </h1>
-            <p class="mt-3 text-sm text-gray-600">{{ book.author }}</p>
-            <button
-              type="button"
-              class="mt-4 w-full rounded-sm bg-black px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-            >
-              Add to Cart
-            </button>
-          </div>
-        </RouterLink>
-      </div>
-    </div>
-  </div> -->
 </template>

@@ -2,9 +2,9 @@
 import { RouterLink } from "vue-router";
 </script>
 <template>
-  <div class="w-full mb-20">
-    <div class="container mx-auto">
-      <div class="text-center max-w-2xl mx-auto py-20">
+  <div class="w-full mb-10 sm:mb-20">
+    <div class="container sm:mx-auto">
+      <div class="text-center mx-5 sm:max-w-2xl sm:mx-auto py-10 sm:py-20">
         <h1 class="text-4xl font-bold text-gray-900 sm:text-6xl">
           Lorem ipsum dolor sit amet consectetur dicta.
         </h1>

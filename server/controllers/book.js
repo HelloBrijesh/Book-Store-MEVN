@@ -106,5 +106,10 @@ export const deleteBook = async (req, res, next) => {
   } catch (error) {
     return next(error);
   }
+
   res.status(200).json({ status: "ok" });
+};
+
+const getRandomInteger = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 };

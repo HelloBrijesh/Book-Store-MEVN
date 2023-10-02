@@ -1,8 +1,12 @@
 <script setup>
 import { reactive } from "vue";
 import useAuthService from "../services/authService";
+import { useAuthStore } from "../stores/authStore";
+import { useRouter } from "vue-router";
 
 const { signup, error, status } = useAuthService();
+const authStore = useAuthStore();
+const router = useRouter();
 
 const signupPayload = reactive({
   userName: "",
@@ -11,6 +15,9 @@ const signupPayload = reactive({
 });
 
 const handleSignup = async () => {
+  if (authStore.getisLoggedin) {
+    await router.push("/");
+  }
   await signup(signupPayload);
 };
 </script>

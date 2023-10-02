@@ -3,10 +3,15 @@ import { RouterLink, useRouter } from "vue-router";
 import { onMounted, reactive } from "vue";
 import { useAuthStore } from "../stores/authStore";
 import useAuthService from "../services/authService";
-const { login, error, status } = useAuthService();
+import useCartService from "../services/cartService";
+import { useCartStore } from "../stores/cartStore";
 
 const router = useRouter();
 const authStore = useAuthStore();
+const cartStore = useCartStore();
+
+const { login, error, status } = useAuthService();
+const cartService = useCartService();
 
 onMounted(async () => {
   if (authStore.getisLoggedin) {
@@ -23,6 +28,10 @@ const handleLogin = async () => {
   await login(loginPayload);
   if (status.value === "ok") {
     authStore.setisLoggedin(true);
+    await cartService.getCart();
+    cartStore.setCartItems(cartService.cart.value.cartItems);
+    cartStore.setCartTotal(cartService.cart.value.cartTotal);
+    cartStore.setTotalItems(cartService.cart.value.totalItems);
     await router.push("/");
   }
 };

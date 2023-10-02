@@ -52,6 +52,8 @@ export const signup = async (req, res, next) => {
     let existingUser = await User.findOne({ email: email });
     const newCart = new Cart({
       userId: existingUser.id,
+      cartTotal: 0,
+      books: [],
     });
     await newCart.save();
   } catch (err) {

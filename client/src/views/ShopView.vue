@@ -2,12 +2,18 @@
 import { onMounted, reactive, ref } from "vue";
 import useBookService from "../services/bookService";
 import { RouterLink, useRoute, useRouter } from "vue-router";
+import { useCartStore } from "../stores/cartStore";
+import useCartService from "../services/cartService";
+import { useAuthStore } from "../stores/authStore";
 
 const route = useRoute();
 const router = useRouter();
 
 const { getAllBooks, error, status, listOfBooks, totalPages } =
   useBookService();
+const authStore = useAuthStore();
+const cartStore = useCartStore();
+const cartService = useCartService();
 
 const shopPayload = ref({
   category: "Romance",
@@ -37,6 +43,14 @@ const handleShop = async () => {
 };
 onMounted(async () => {
   await getAllBooks(currentPage.value, shopPayload.value);
+  if (authStore.getisLoggedin) {
+    await cartService.getCart();
+    if (cartService.status.value === "ok") {
+      cartStore.setCartItems(cartService.cart.value.cartItems);
+      cartStore.setCartTotal(cartService.cart.value.cartTotal);
+      cartStore.setTotalItems(cartService.cart.value.totalItems);
+    }
+  }
 });
 </script>
 <template>

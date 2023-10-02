@@ -26,7 +26,7 @@ import {
 const router = express.Router();
 
 router.post("/signup", signup, sendEmail);
-router.get("/verify/:emailtoken", verifyEmail);
+router.post("/verify/:emailtoken", verifyEmail);
 router.post("/refresh", tokenRefresh);
 router.post("/forgotpassword", sendEmail);
 router.post("/login", login);

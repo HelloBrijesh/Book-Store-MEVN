@@ -5,8 +5,6 @@ import { useCartStore } from "../stores/cartStore";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "../stores/authStore";
 
-let items = ref(null);
-let cartTotal = ref(null);
 const router = useRouter();
 const { getCart, removeCartItems, cart, cartItems, error, status } =
   useCartService();
@@ -26,9 +24,8 @@ onMounted(async () => {
   }
   await getCart();
   cartStore.setCartItems(cartItems.value);
-  items.value = cartStore.getCartItems;
   cartStore.setCartTotal(cart.value.cartTotal);
-  cartTotal.value = cartStore.getCartTotal;
+  cartStore.setTotalItems(cart.value.totalItems);
 });
 </script>
 <template>
@@ -43,7 +40,7 @@ onMounted(async () => {
           </h1>
           <h2 id="cart-heading" class="sr-only">Items in your shopping cart</h2>
           <ul role="list" class="divide-y divide-gray-200 border">
-            <div v-for="item in items" class="">
+            <div v-for="item in cartStore.getCartItems" class="">
               <li class="flex py-6 sm:py-6">
                 <div class="flex-shrink-0">
                   <img
@@ -123,10 +120,10 @@ onMounted(async () => {
             <dl class="space-y-1 px-2 py-4">
               <div class="flex items-center justify-between">
                 <dt class="text-sm text-gray-800">
-                  Price - {{ cart.totalItems }} Items
+                  Price - {{ cartStore.getTotalItems }} Items
                 </dt>
                 <dd class="text-sm font-medium text-gray-900">
-                  $ {{ cartTotal }}
+                  $ {{ cartStore.getCartTotal }}
                 </dd>
               </div>
               <div class="flex items-center justify-between pt-4">
@@ -148,7 +145,7 @@ onMounted(async () => {
                   Total Amount
                 </dt>
                 <dd class="text-base font-medium text-gray-900">
-                  ₹ {{ cartTotal }}
+                  ₹ {{ cartStore.getCartTotal }}
                 </dd>
               </div>
               <div class="pt-10 text-center">

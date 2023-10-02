@@ -3,16 +3,33 @@ import { onMounted, ref } from "vue";
 import { useCartStore } from "../stores/cartStore";
 import { RouterLink, useRouter } from "vue-router";
 import { useAuthStore } from "../stores/authStore";
+import useCartService from "../services/cartService";
 
 let items = ref(null);
 let cartTotal = ref(null);
 const cartStore = useCartStore();
 const authStore = useAuthStore();
 const router = useRouter();
+const { getCart, removeCartItems, cart, cartItems, error, status } =
+  useCartService();
+
+const handleRemoveCartItems = async (bookid, quantity, price) => {
+  await removeCartItems(bookid, quantity, price);
+  if (status.value === "ok") {
+    await getCart();
+    cartStore.setCartItems(cartItems.value);
+    cartStore.setCartTotal(cart.value.cartTotal);
+    cartStore.setTotalItems(cart.value.totalItems);
+    router.go();
+  }
+};
 
 onMounted(async () => {
   if (!authStore.getisLoggedin) {
     await router.push("/login");
+  }
+  if (cartStore.getCartItems.length === 0) {
+    await router.push("/cart");
   }
   items.value = cartStore.getCartItems;
   cartTotal.value = cartStore.getCartTotal;
@@ -45,6 +62,14 @@ onMounted(async () => {
                   <button
                     type="button"
                     class="-m-2 inline-flex rounded p-2 text-gray-400 transition-all duration-200 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
+                    @click="
+                      () =>
+                        handleRemoveCartItems(
+                          item.bookId,
+                          item.quantity,
+                          item.price
+                        )
+                    "
                   >
                     <span class="sr-only">Remove</span>
                     <svg

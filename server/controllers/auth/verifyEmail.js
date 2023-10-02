@@ -95,7 +95,6 @@ export const sendEmail = async (req, res, next) => {
 export const verifyEmail = async (req, res, next) => {
   const emailToken = req.params.emailtoken;
   let verificationDetail;
-
   try {
     verificationDetail = await EmailToken.findOne({
       emailToken: emailToken,
@@ -134,16 +133,17 @@ export const verifyEmail = async (req, res, next) => {
     await EmailToken.deleteOne({
       emailToken: verificationDetail.emailToken,
     });
+
+    // Setting up the cookies
+    res.status(200).cookie("token", refresh_token, {
+      secure: true,
+      sameSite: "lax",
+      path: "/",
+      expires: new Date(Date.now() + 900000000),
+      httpOnly: true,
+    });
+    res.json({ access_token, status: "ok" });
   } catch (error) {
     return next(error);
   }
-
-  // Setting up the cookies
-  res.status(200).cookie("token", refresh_token, {
-    sameSite: "lax",
-    path: "/",
-    expires: new Date(Date.now() + 9000000000),
-    httpOnly: true,
-  });
-  res.json({ access_token });
 };

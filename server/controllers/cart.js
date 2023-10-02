@@ -5,7 +5,6 @@ import { customErrorHandler } from "../services";
 export const getCartItems = async (req, res, next) => {
   //Finding user datails from database
   const userId = req.user.userId;
-
   let cart;
   try {
     const cartExists = await Cart.exists({ userId: userId });

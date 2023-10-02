@@ -3,6 +3,7 @@ import { ACCESS_TOKEN_SECRET } from "../config";
 import { customErrorHandler } from "../services";
 const auth = async (req, res, next) => {
   // Accessing the access token from headers
+
   let authHeader = req.headers.authorization;
   if (!authHeader) {
     return next(customErrorHandler.unAuthorized("accessToken Required"));

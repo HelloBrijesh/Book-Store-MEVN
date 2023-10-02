@@ -26,7 +26,13 @@ export default function useAuthService() {
     error.value = null;
 
     try {
-      const response = await axios.get(url.value);
+      const response = await axios.post(
+        url.value,
+        {},
+        {
+          withCredentials: true,
+        }
+      );
       status.value = response.data.status;
     } catch (err) {
       error.value = err.response.data.message;
@@ -42,7 +48,6 @@ export default function useAuthService() {
         withCredentials: true,
       });
       status.value = response.data.status;
-      console.log(status.value);
     } catch (err) {
       error.value = err.response.data.message;
     }
@@ -64,23 +69,23 @@ export default function useAuthService() {
       error.value = err.response.data.message;
     }
   };
-  // const logout = async () => {
-  //   url.value = "logout";
-  //   status.value = null;
-  //   error.value = null;
+  const logout = async () => {
+    url.value = "logout";
+    status.value = null;
+    error.value = null;
 
-  //   try {
-  //     axios.defaults.headers.common["Authorization"] = "";
-  //     const response = await axios.post(
-  //       url.value,
-  //       {},
-  //       { withCredentials: true }
-  //     );
-  //     status.value = response.data.status;
-  //   } catch (err) {
-  //     error.value = err;
-  //   }
-  // };
+    try {
+      axios.defaults.headers.common["Authorization"] = "";
+      const response = await axios.post(
+        url.value,
+        {},
+        { withCredentials: true }
+      );
+      status.value = response.data.status;
+    } catch (err) {
+      error.value = err.response.data.message;
+    }
+  };
   // const changePassword = async (changePasswordPayload) => {
   //   url.value = "changepassword";
   //   status.value = null;
@@ -99,6 +104,7 @@ export default function useAuthService() {
     login,
     forgotPassword,
     verifyEmail,
+    logout,
     // changePassword,
     error,
     status,

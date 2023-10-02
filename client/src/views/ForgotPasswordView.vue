@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, reactive, ref } from "vue";
+import { reactive } from "vue";
 import useAuthService from "../services/authService";
 
 const { forgotPassword, error, status } = useAuthService();
@@ -28,7 +28,7 @@ const handleForgotPassword = async () => {
         class="w-2/4 flex flex-col gap-6 mx-auto"
       >
         <input
-          class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+          class="flex h-10 w-3/4 md:w-2/4 mx-auto rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
           type="email"
           placeholder="Email"
           v-model="forgotPasswordPayload.email"

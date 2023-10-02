@@ -16,7 +16,7 @@ export default function useCartService() {
     cartItems.value = null;
     try {
       const response = await axios.get(url.value);
-      status.value = response.status;
+      status.value = response.data.status;
       cart.value = response.data.cart;
       cartItems.value = response.data.cart.books;
     } catch (err) {
@@ -36,7 +36,7 @@ export default function useCartService() {
           withCredentials: true,
         }
       );
-      status.value = response.status;
+      status.value = response.data.status;
     } catch (err) {
       error.value = err.response.data.message;
     }

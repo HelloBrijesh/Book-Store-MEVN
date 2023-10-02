@@ -28,13 +28,18 @@ export const placeOrder = async (req, res, next) => {
 
 export const getAllOrders = async (req, res, next) => {
   let userId = req.user.userId;
-
+  let currentPage = req.params.page;
+  let totalOrders;
   let order;
   try {
-    order = await Order.find({ userId: userId });
+    totalOrders = await Order.count({ userId: userId });
+    order = await Order.find({ userId: userId })
+      .limit(1)
+      .skip(currentPage - 1)
+      .exec();
   } catch (error) {
     return next(error);
   }
 
-  res.status(200).json({ order });
+  res.json({ order, totalOrders, status: "ok" });
 };

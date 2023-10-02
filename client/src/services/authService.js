@@ -86,26 +86,26 @@ export default function useAuthService() {
       error.value = err.response.data.message;
     }
   };
-  // const changePassword = async (changePasswordPayload) => {
-  //   url.value = "changepassword";
-  //   status.value = null;
-  //   error.value = null;
-  //   try {
-  //     const response = await axios.post(url.value, changePasswordPayload, {
-  //       withCredentials: true,
-  //     });
-  //     status.value = response.data.status;
-  //   } catch (err) {
-  //     error.value = err.response.data.message;
-  //   }
-  // };
+  const changePassword = async (changePasswordPayload) => {
+    url.value = "changepassword";
+    status.value = null;
+    error.value = null;
+    try {
+      const response = await axios.post(url.value, changePasswordPayload, {
+        withCredentials: true,
+      });
+      status.value = response.data.status;
+    } catch (err) {
+      error.value = err.response.data.message;
+    }
+  };
   return {
     signup,
     login,
     forgotPassword,
     verifyEmail,
     logout,
-    // changePassword,
+    changePassword,
     error,
     status,
   };

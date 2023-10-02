@@ -7,7 +7,11 @@ import { changePassword } from "../controllers/auth/changePassword";
 import { tokenRefresh } from "../controllers/auth/tokenRefresh";
 import { logout } from "../controllers/auth/logout";
 import { contactUs } from "../controllers/contactUs";
-import { getUserById, editUser, deleteUser } from "../controllers/user";
+import {
+  getUserById,
+  updateUserDetails,
+  deleteUser,
+} from "../controllers/user";
 import { getAllOrders, placeOrder } from "../controllers/order";
 import { addSubscriber, removeSubscriber } from "../controllers/subscription";
 import {
@@ -34,9 +38,9 @@ router.post("/changepassword", auth, changePassword);
 router.post("/logout", logout);
 router.post("/contactus", contactUs);
 
-router.get("/user", auth, getUserById);
-router.post("/updateemail", auth, editUser);
-router.get("/deleteuser", auth, deleteUser);
+router.get("/userdetails", auth, getUserById);
+router.post("/updateuser", auth, updateUserDetails);
+router.delete("/deleteuser", auth, deleteUser);
 
 router.get("/book/:bookid", getBookById);
 router.get("/bestsellingbooks", getBestSellingBooks);
@@ -49,7 +53,7 @@ router.get("/getcart", auth, getCartItems);
 router.post("/addcartitem", auth, addItemInCart);
 router.post("/removecartitem", auth, removeItemFromCart);
 
-router.get("/getorders", auth, getAllOrders);
+router.get("/getorders/:page", auth, getAllOrders);
 router.post("/placeorder", auth, placeOrder);
 
 router.post("/addsubscriber", addSubscriber);

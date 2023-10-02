@@ -1,18 +1,38 @@
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
+import useUserService from "../services/userService";
+
+const { status, error, userDetails, getUserDetails, updateUserDetails } =
+  useUserService();
 
 const accountDetails = ref({
-  userName: "abc",
-  firstName: "Abc",
-  lastName: "Xyz",
-  email: "abc@abc.com",
+  userName: "",
+  firstName: "",
+  lastName: "",
+  email: "",
+});
+
+const handleUpdateUser = async () => {
+  await updateUserDetails(accountDetails.value);
+};
+
+onMounted(async () => {
+  await getUserDetails();
+  if (status.value === "ok") {
+    accountDetails.value = {
+      userName: userDetails.value.userName,
+      firstName: userDetails.value.firstName,
+      lastName: userDetails.value.lastName,
+      email: userDetails.value.email,
+    };
+  }
 });
 </script>
 <template>
   <div class="ps-20">
     <h1 class="text-2xl font-semibold">Account Details</h1>
     <div class="flex flex-col gap-5 my-10">
-      <form>
+      <form @submit.prevent="handleUpdateUser">
         <div>
           <label for="username" class="text-base font-medium text-gray-900">
             Username

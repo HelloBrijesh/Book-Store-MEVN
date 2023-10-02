@@ -6,16 +6,19 @@ export default function useOrderService() {
   const status = ref(null);
   const error = ref(null);
   const orders = ref(null);
+  const totalOrders = ref(null);
 
-  const getOrders = async () => {
-    url.value = `getcart`;
+  const getOrders = async (currentPage) => {
+    url.value = `getorders/${currentPage}`;
     status.value = null;
     error.value = null;
     orders.value = null;
+    totalOrders.value = null;
     try {
       const response = await axios.get(url.value);
-      status.value = response.status;
-      orders.value = response.data.cart;
+      status.value = response.data.status;
+      orders.value = response.data.order;
+      totalOrders.value = response.data.totalOrders;
     } catch (err) {
       error.value = err.response.data.message;
     }
@@ -25,6 +28,8 @@ export default function useOrderService() {
     status.value = null;
     error.value = null;
     orders.value = null;
+    totalOrders.value = null;
+
     try {
       const response = await axios.post(
         url.value,
@@ -45,5 +50,6 @@ export default function useOrderService() {
     orders,
     getOrders,
     placeOrder,
+    totalOrders,
   };
 }

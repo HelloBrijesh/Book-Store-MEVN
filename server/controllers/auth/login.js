@@ -67,7 +67,7 @@ export const login = async (req, res, next) => {
       expires: new Date(Date.now() + 900000000),
       httpOnly: true,
     });
-    res.json({ access_token });
+    res.json({ access_token, status: "ok" });
   } catch (err) {
     return next(err);
   }

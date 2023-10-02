@@ -1,5 +1,7 @@
 import Joi from "joi";
 import nodemailer from "nodemailer";
+import { customErrorHandler } from "../services";
+
 import {
   EMAIL_SERVICE,
   EMAIL_PORT,
@@ -11,10 +13,8 @@ import {
 export const contactUs = async (req, res, next) => {
   // Validating the user Input
   const contactUsSchema = Joi.object({
-    firstName: Joi.string().min(3).max(30).required(),
-    lastName: Joi.string().min(3).max(30).required(),
+    name: Joi.string().min(3).max(30).required(),
     email: Joi.string().email().required(),
-    subject: Joi.string().required(),
     message: Joi.string().required(),
   });
 
@@ -23,7 +23,7 @@ export const contactUs = async (req, res, next) => {
     return next(error);
   }
 
-  const { firstName, lastName, email, subject, message } = req.body;
+  const { name, email, message } = req.body;
 
   try {
     const transporter = nodemailer.createTransport({
@@ -38,10 +38,10 @@ export const contactUs = async (req, res, next) => {
 
     const mailConfigurations = {
       from: "techpradhyapak@gmail.com",
-      to: "techpradhyapak@gmail.com",
-      subject: `Contact Us - ${subject}`,
+      to: email,
+      subject: `Contact Us`,
       text: `
-          Name : ${firstName} ${lastName}
+          Name : ${name}
           email: ${email}
           message :${message}
       `,

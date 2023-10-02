@@ -1,20 +1,20 @@
 import Joi from "joi";
 import bcrypt from "bcrypt";
 import { User } from "../../models/user";
+import { Cart } from "../../models/cart";
 import { customErrorHandler } from "../../services";
 
 export const signup = async (req, res, next) => {
   // Validating the user Input
 
   const signupSchema = Joi.object({
-    firstName: Joi.string().min(3).max(30).required(),
-    lastName: Joi.string().min(3).max(30).required(),
+    userName: Joi.string().min(3).max(30).required(),
     email: Joi.string().email().required(),
     password: Joi.string()
       .min(8)
       .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
       .required(),
-    confirmPassword: Joi.ref("password"),
+    // confirmPassword: Joi.ref("password"),
   });
 
   const { error } = signupSchema.validate(req.body);
@@ -22,7 +22,7 @@ export const signup = async (req, res, next) => {
     return next(error);
   }
 
-  const { firstName, lastName, email, password } = req.body;
+  const { userName, email, password } = req.body;
   //Check if the user is already registered
   try {
     const userExist = await User.exists({ email: email });
@@ -42,14 +42,20 @@ export const signup = async (req, res, next) => {
 
   // Preparing the model
   const newUser = new User({
-    firstName,
-    lastName,
+    userName,
     email,
     password: hashedPassword,
   });
 
   try {
     await newUser.save();
+    let existingUser = await User.findOne({ email: email });
+    const newCart = new Cart({
+      userId: existingUser.id,
+      cartTotal: 0,
+      books: [],
+    });
+    await newCart.save();
   } catch (err) {
     return next(err);
   }

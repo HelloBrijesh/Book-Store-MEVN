@@ -3,7 +3,8 @@ dotenv.config();
 
 export const {
   DEV_PORT,
-  DB_URL,
+  DB_URL_ONLINE,
+  DB_URL_LOCAL,
   CLIENT_URL,
   SERVER_URL,
   ACCESS_TOKEN_SECRET,

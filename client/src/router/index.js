@@ -9,12 +9,12 @@ import CheckoutView from "../views/CheckoutView.vue";
 import OrderView from "../views/OrderView.vue";
 import ContactView from "../views/ContactView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
-// import ForgotPasswordView from "../views/ForgotPasswordView.vue";
-// import VerifyEmailView from "../views/VerifyEmailView.vue";
-// import VerifyEmailTokenView from "../views/VerifyEmailTokenView.vue";
-// import ChangePasswordView from "../views/ChangePasswordView.vue";
-// import UserView from "../views/UserView.vue";
-// import AdminView from "../views/AdminView.vue";
+import ForgotPasswordView from "../views/ForgotPasswordView.vue";
+import VerifyEmailView from "../views/VerifyEmailView.vue";
+import ProfileView from "../views/ProfileView.vue";
+import AccountDetails from "../components/AccountDetails.vue";
+import ChangePassword from "../components/ChangePassword.vue";
+import UserOrders from "../components/UserOrders.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -33,6 +33,25 @@ const router = createRouter({
       path: "/signup",
       name: "signup",
       component: SignupView,
+    },
+    {
+      path: "/profile",
+      name: "profile",
+      component: ProfileView,
+      children: [
+        {
+          path: "",
+          component: AccountDetails,
+        },
+        {
+          path: "changepassword",
+          component: ChangePassword,
+        },
+        {
+          path: "userorders",
+          component: UserOrders,
+        },
+      ],
     },
     {
       path: "/book/:bookid",
@@ -73,39 +92,16 @@ const router = createRouter({
       path: "/:pathMatch(.*)*",
       redirect: "/404",
     },
-    // {
-    //   path: "/forgotpassword",
-    //   name: "forgotpassword",
-    //   component: ForgotPasswordView,
-    // },
-    // {
-    //   path: "/changepassword",
-    //   name: "changepassword",
-    //   component: ChangePasswordView,
-    // },
-
-    // {
-    //   path: "/user",
-    //   name: "user",
-    //   component: UserView,
-    // },
-
-    // {
-    //   path: "/admin",
-    //   name: "admin",
-    //   component: AdminView,
-    // },
-    // {
-    //   path: "/verifyemail",
-    //   name: "verifyemail",
-    //   component: VerifyEmailView,
-    // },
-    // {
-    //   path: "/verifyemail/:emailVerificationtoken",
-    //   name: "verifyemailToken",
-    //   component: VerifyEmailTokenView,
-    // },
-
+    {
+      path: "/forgotpassword",
+      name: "forgotpassword",
+      component: ForgotPasswordView,
+    },
+    {
+      path: "/verifyemail/:token",
+      name: "verifyemail",
+      component: VerifyEmailView,
+    },
     {
       // path: '/about',
       // name: 'about',

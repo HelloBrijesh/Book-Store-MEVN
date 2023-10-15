@@ -15,7 +15,7 @@ export default function useBookService() {
     error.value = null;
     book.value = null;
     listOfBooks.value = null;
-
+    totalPages.value = null;
     try {
       const response = await axios.get(url.value);
       status.value = response.data.status;
@@ -29,6 +29,7 @@ export default function useBookService() {
     url.value = `shop?price=${payload.price}&page=${page}&category=${payload.category}`;
     status.value = null;
     error.value = null;
+    book.value = null;
     listOfBooks.value = null;
     totalPages.value = null;
 
@@ -46,12 +47,53 @@ export default function useBookService() {
     url.value = "bestsellingbooks";
     status.value = null;
     error.value = null;
+    book.value = null;
     listOfBooks.value = null;
+    totalPages.value = null;
 
     try {
       const response = await axios.get(url.value);
       status.value = response.status;
       listOfBooks.value = response.data.bestSellingBooks;
+    } catch (err) {
+      error.value = err.response.data.message;
+    }
+  };
+  const updateBook = async (payload, bookid) => {
+    url.value = `updatebook/${bookid}`;
+    status.value = null;
+    error.value = null;
+    book.value = null;
+    listOfBooks.value = null;
+    totalPages.value = null;
+
+    try {
+      const response = await axios.post(url.value, payload, {
+        withCredentials: true,
+      });
+      status.value = response.data.status;
+      book.value = response.data.book;
+    } catch (err) {
+      error.value = err.response.data.message;
+    }
+  };
+  const deleteBook = async (bookid) => {
+    url.value = `deletebook/${bookid}`;
+    status.value = null;
+    error.value = null;
+    book.value = null;
+    listOfBooks.value = null;
+    totalPages.value = null;
+
+    try {
+      const response = await axios.delete(
+        url.value,
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+      status.value = response.data.status;
     } catch (err) {
       error.value = err.response.data.message;
     }
@@ -62,6 +104,8 @@ export default function useBookService() {
     book,
     listOfBooks,
     totalPages,
+    deleteBook,
+    updateBook,
     getBookById,
     getAllBooks,
     getBestSellingBooks,

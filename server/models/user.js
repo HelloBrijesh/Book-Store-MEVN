@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema(
     role: { type: String, default: "customer" },
     verified: { type: Boolean, default: false },
   },
-  { timestamp: true }
+  { timestamps: true }
 );
 
 const virtual = userSchema.virtual("id");

@@ -4,7 +4,7 @@ const subscriberSchema = new mongoose.Schema(
   {
     email: { type: String, required: true },
   },
-  { timestamp: true }
+  { timestamps: true }
 );
 
 const virtual = subscriberSchema.virtual("id");

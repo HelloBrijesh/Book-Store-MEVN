@@ -5,7 +5,7 @@ const emailTokenSchema = new mongoose.Schema(
     emailToken: { type: String, required: true },
     userId: { type: String, required: true },
   },
-  { timestamp: true }
+  { timestamps: true }
 );
 
 const virtual = emailTokenSchema.virtual("id");

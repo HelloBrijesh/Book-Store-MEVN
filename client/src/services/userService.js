@@ -37,10 +37,25 @@ export default function useUserService() {
       error.value = err.response.data.message;
     }
   };
+  const updateProfileImage = async (payload) => {
+    url.value = "updateprofileimage";
+    status.value = null;
+    error.value = null;
+    userDetails.value = null;
+    try {
+      const response = await axios.post(url.value, payload, {
+        withCredentials: true,
+      });
+      status.value = response.data.status;
+    } catch (err) {
+      error.value = err.response.data.message;
+    }
+  };
 
   return {
     getUserDetails,
     updateUserDetails,
+    updateProfileImage,
     error,
     status,
     userDetails,

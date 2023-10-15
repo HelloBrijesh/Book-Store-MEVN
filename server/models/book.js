@@ -19,7 +19,7 @@ const bookSchema = new mongoose.Schema(
     image: { type: String, required: true },
     language: { type: String, required: true },
   },
-  { timestamp: true }
+  { timestamps: true }
 );
 
 const virtual = bookSchema.virtual("id");

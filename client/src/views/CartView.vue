@@ -29,7 +29,7 @@ onMounted(async () => {
 });
 </script>
 <template>
-  <div v-if="cart" class="w-full py-16">
+  <div v-if="status === 'ok'" class="w-full py-16">
     <div class="sm:container sm:mx-auto mx-5">
       <div class="flex flex-col sm:flex-row gap-20">
         <div class="sm:w-2/4">
@@ -149,11 +149,13 @@ onMounted(async () => {
                 </dd>
               </div>
               <div class="pt-10 text-center">
-                <RouterLink
-                  to="/checkout"
-                  class="rounded-md bg-black px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                >
-                  Checkout
+                <RouterLink to="/checkout">
+                  <button
+                    class="rounded-md bg-black px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                    :disabled="!cartStore.getTotalItems"
+                  >
+                    Checkout
+                  </button>
                 </RouterLink>
               </div>
             </dl>

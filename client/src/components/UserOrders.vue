@@ -28,10 +28,10 @@ onMounted(async () => {
 });
 </script>
 <template>
-  <div class="ps-20" v-if="status == 'ok'">
+  <div class="md:ps-20 mt-10 md:mt-0" v-if="status == 'ok'">
     <h1 class="text-2xl font-semibold">Orders</h1>
     <div class="mt-10">
-      <div class="w-3/4 border">
+      <div class="w-full md:w-3/4 border">
         <div class="bg-slate-100 flex justify-between px-5 py-3">
           <h2 class="">OrderNo : {{ orders[0].id }}</h2>
           <h2>Date : 01/10/2023</h2>
@@ -63,7 +63,7 @@ onMounted(async () => {
         </div>
       </div>
     </div>
-    <div class="w-3/4 flex items-center justify-center py-16">
+    <div class="w-full md:w-3/4 flex items-center justify-center py-16">
       <a
         href="#"
         class="mx-1 text-sm font-semibold text-gray-900"

@@ -20,7 +20,7 @@ const handleChangePassword = async () => {
 };
 </script>
 <template>
-  <div class="ps-20">
+  <div class="md:ps-20 mt-10 md:mt-0">
     <h1 class="text-2xl font-semibold">Change Password</h1>
     <div class="mt-10">
       <form @submit.prevent="handleChangePassword">

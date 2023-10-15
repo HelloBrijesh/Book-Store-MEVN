@@ -6,13 +6,9 @@ import { RouterLink } from "vue-router";
     <div class="container sm:mx-auto">
       <div class="text-center mx-5 sm:max-w-2xl sm:mx-auto py-10 sm:py-20">
         <h1 class="text-4xl font-bold text-gray-900 sm:text-6xl">
-          Lorem ipsum dolor sit amet consectetur dicta.
+          Find your next book
         </h1>
-        <p class="mt-6 text-lg text-gray-600">
-          Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem
-          cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat
-          aliqua.
-        </p>
+        <p class="mt-6 text-lg text-gray-600"></p>
         <div class="mt-10 text-center">
           <RouterLink
             to="/shop"

@@ -1,16 +1,17 @@
 <script setup>
-import { reactive } from "vue";
-import useSubscriberService from "../services/subscribeService";
+import { reactive, ref } from "vue";
+import useSubscriberService from "../services/subscriberService";
 
 const { addSubscriber, error, status } = useSubscriberService();
 
-const subscriberPayload = reactive({
+const subscriberPayload = ref({
   email: "",
 });
 
 const handleSubcribe = async () => {
-  await addSubscriber(subscriberPayload);
-  if (status === "ok") {
+  await addSubscriber(subscriberPayload.value);
+  if (status.value === "ok") {
+    console.log(status.value);
     alert("subscribed successfully");
   } else {
     alert(error.value);

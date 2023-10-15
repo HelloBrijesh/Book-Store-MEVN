@@ -2,36 +2,36 @@ import { defineStore } from "pinia";
 import { ref, computed } from "vue";
 export const useAuthStore = defineStore("authStore", () => {
   const isLoggedin = ref(false);
-  // const sessionDetails = ref({});
+  const isAdmin = ref(false);
 
   const getisLoggedin = computed(() => {
     return isLoggedin.value;
   });
 
-  // const getSessionDetails = computed(() => {
-  //   return sessionDetails.value;
-  // });
+  const getisAdmin = computed(() => {
+    return isAdmin.value;
+  });
 
   function setisLoggedin(status) {
     isLoggedin.value = status;
   }
 
-  // function setSessionDetails(data) {
-  //   sessionDetails.value = data;
-  // }
+  function setisAdmin(status) {
+    isAdmin.value = status;
+  }
 
   function $reset() {
     isLoggedin.value = false;
-    // sessionDetails.value = null;
+    isAdmin.value = false;
   }
 
   return {
     isLoggedin,
     getisLoggedin,
     setisLoggedin,
-    // sessionDetails,
-    // getSessionDetails,
-    // setSessionDetails,
+    isAdmin,
+    getisAdmin,
+    setisAdmin,
     $reset,
   };
 });

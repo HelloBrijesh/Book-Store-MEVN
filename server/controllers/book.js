@@ -66,11 +66,15 @@ export const addBook = async (req, res, next) => {
   const bookSchema = Joi.object({
     title: Joi.string().min(4).required(),
     author: Joi.string().min(4).required(),
-    price: Joi.number().min(1).max(10000).required(),
     description: Joi.string(),
-    stock: Joi.number().required(),
+    price: Joi.number().min(1).max(10000).required(),
+    year: Joi.number().min(1).max(10000).required(),
+    pages: Joi.number().min(1).max(10000).required(),
+    stock: Joi.number().min(1).required(),
+    sold: Joi.number().required(),
     category: Joi.string().required(),
     image: Joi.string().required(),
+    language: Joi.string().required(),
   });
 
   const { error } = bookSchema.validate(req.body);
@@ -78,17 +82,32 @@ export const addBook = async (req, res, next) => {
     return next(error);
   }
 
-  const { title, author, price, description, stock, category, image } =
-    req.body;
+  const {
+    title,
+    author,
+    description,
+    price,
+    year,
+    pages,
+    stock,
+    sold,
+    category,
+    image,
+    language,
+  } = req.body;
 
   const newBook = new Book({
     title,
     author,
-    price,
     description,
+    price,
+    year,
+    pages,
     stock,
+    sold,
     category,
     image,
+    language,
   });
 
   try {
@@ -100,16 +119,33 @@ export const addBook = async (req, res, next) => {
   res.status(200).json({ status: "ok" });
 };
 
-export const deleteBook = async (req, res, next) => {
+export const updateBook = async (req, res, next) => {
+  const price = req.body.price;
+  const stock = req.body.stock;
+  const bookId = req.params.bookid;
+
+  let book;
   try {
-    await Book.findByIdAndDelete(req.params.bookid);
+    await Book.findByIdAndUpdate(bookId, {
+      price: price,
+      stock: stock,
+    });
+    book = await Book.findById(bookId);
+  } catch (error) {
+    return next(error);
+  }
+
+  res.json({ status: "ok", book });
+};
+
+export const deleteBook = async (req, res, next) => {
+  const bookId = req.params.bookid;
+
+  try {
+    await Book.findByIdAndDelete(bookId);
   } catch (error) {
     return next(error);
   }
 
   res.status(200).json({ status: "ok" });
-};
-
-const getRandomInteger = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
 };

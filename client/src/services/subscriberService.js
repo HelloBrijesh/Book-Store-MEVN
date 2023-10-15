@@ -1,7 +1,7 @@
 import { ref } from "vue";
 import axios from "axios";
 
-export default function useSubscribeService() {
+export default function useSubscriberService() {
   const url = ref(null);
   const status = ref(null);
   const error = ref(null);
@@ -12,9 +12,7 @@ export default function useSubscribeService() {
     error.value = null;
     try {
       const response = await axios.post(url.value, payload, {});
-      statusCode.value = response.status;
-      books.value = response.data.searchedBooks;
-      totalPages.value = response.data.totalPages;
+      status.value = response.data.status;
     } catch (err) {
       error.value = err.response.data.message;
     }

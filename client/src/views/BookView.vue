@@ -43,8 +43,8 @@ const handleAddtoCart = async (bookid) => {
           <div class="sm:w-1/3 mb-10 sm:mb-0">
             <img
               alt="Nike Air Max 21A"
-              class="h-64 w-full rounded object-cover lg:h-96"
-              :src="`/${book.image}`"
+              class="h-full w-full rounded object-fit lg:h-96"
+              :src="book.image"
             />
           </div>
           <div class="sm:w-2/4 sm:ps-10">
@@ -107,11 +107,7 @@ const handleAddtoCart = async (bookid) => {
             >
               <RouterLink :to="`/book/${book.id}`">
                 <figure class="h-[300px]">
-                  <img
-                    :src="`/${book.image}`"
-                    alt="Laptop"
-                    class="h-full w-full"
-                  />
+                  <img :src="book.image" alt="Laptop" class="h-full w-full" />
                 </figure>
                 <div class="p-4 pb-0">
                   <h1

@@ -10,7 +10,7 @@ const router = useRouter();
 const authStore = useAuthStore();
 const cartStore = useCartStore();
 
-const { login, error, status } = useAuthService();
+const { login, error, status, role } = useAuthService();
 const cartService = useCartService();
 
 onMounted(async () => {
@@ -28,6 +28,9 @@ const handleLogin = async () => {
   await login(loginPayload);
   if (status.value === "ok") {
     authStore.setisLoggedin(true);
+    if (role.value === "admin") {
+      authStore.setisAdmin(true);
+    }
     await cartService.getCart();
     cartStore.setCartItems(cartService.cart.value.cartItems);
     cartStore.setCartTotal(cartService.cart.value.cartTotal);

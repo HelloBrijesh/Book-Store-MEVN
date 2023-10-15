@@ -3,14 +3,17 @@ import { RouterLink } from "vue-router";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { onMounted, ref } from "vue";
 import { useAuthStore } from "../stores/authStore";
 import { useCartStore } from "../stores/cartStore";
 import useAuthService from "../services/authService";
+import useUserService from "../services/userService";
 
-library.add(faCartShopping, faBars);
+library.add(faCartShopping, faBars, faUser);
 const { logout, error, status } = useAuthService();
+const userService = useUserService();
 const authStore = useAuthStore();
 const cartStore = useCartStore();
 
@@ -18,7 +21,9 @@ const isActive = ref(true);
 const isUserActive = ref(true);
 
 onMounted(async () => {
-  // console.log(cartStore.getTotalItems);
+  // if (authStore.getisLoggedin) {
+  //   await userService.getUserDetails();
+  // }
 });
 
 const handleLogout = async () => {
@@ -81,6 +86,18 @@ const handleLogout = async () => {
               >Contact</RouterLink
             >
           </li>
+          <li class="py-3 border-b md:border-0" v-if="authStore.getisAdmin">
+            <RouterLink
+              to="/admin"
+              @click="
+                () => {
+                  isActive = !isActive;
+                }
+              "
+              class="block"
+              >Admin</RouterLink
+            >
+          </li>
         </ul>
         <RouterLink to="/cart" class="block">
           <div class="flex items-center my-4 md:my-0 py-3 border-b md:border-0">
@@ -101,14 +118,20 @@ const handleLogout = async () => {
               }
             "
           >
+            <font-awesome-icon
+              v-if="!authStore.getisLoggedin"
+              icon="fa-solid fa-user"
+              class="h-5 w-5 hover:cursor-pointer"
+            />
             <img
+              v-else="authService.getisLoggedin"
               class="h-10 w-10 rounded-full hover:cursor-pointer"
               src="https://overreacted.io/static/profile-pic-c715447ce38098828758e525a1128b87.jpg"
               alt="Dan_Abromov"
             />
           </span>
           <ul
-            class="absolute left-0 md:left-auto ps-12 md:top-[60px] md:ps-3 flex flex-col w-full md:auto bg-slate-400"
+            class="absolute left-0 md:left-auto ps-12 md:top-[60px] md:px-3 flex flex-col w-full md:w-auto md:auto border hover:text-black"
             :class="{ 'md:hidden': isUserActive }"
           >
             <RouterLink to="/profile" class="block"
@@ -120,7 +143,7 @@ const handleLogout = async () => {
                     isActive = !isActive;
                   }
                 "
-                class="py-3 border-b md:border-0 hover:text-yellow-50"
+                class="py-3 border-b md:border-0 md:hover:text-black hover:text-yellow-50"
               >
                 Profile
               </li></RouterLink
@@ -134,7 +157,7 @@ const handleLogout = async () => {
                     isActive = !isActive;
                   }
                 "
-                class="py-3 border-b md:border-0 hover:text-yellow-50"
+                class="py-3 border-b md:border-0 md:hover:text-black hover:text-yellow-50"
               >
                 Login
               </li></RouterLink
@@ -148,7 +171,7 @@ const handleLogout = async () => {
                     isActive = !isActive;
                   }
                 "
-                class="py-3 border-b md:border-0 hover:text-yellow-50"
+                class="py-3 border-b md:border-0 md:hover:text-black hover:text-yellow-50"
               >
                 Logout
               </li></RouterLink

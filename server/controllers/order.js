@@ -1,3 +1,4 @@
+import { Book } from "../models/book";
 import { Cart } from "../models/cart";
 import { Order } from "../models/order";
 
@@ -14,6 +15,14 @@ export const placeOrder = async (req, res, next) => {
       orderedItems: cart.books,
     });
     savedOrder = await newOrder.save();
+
+    for (let book in cart.books) {
+      await Book.findByIdAndUpdate(
+        cart.books[book].bookId,
+        { $inc: { stock: -cart.books[book].quantity } },
+        { new: true }
+      );
+    }
 
     await Cart.findByIdAndUpdate(cart.id, {
       cartTotal: 0,
@@ -42,4 +51,46 @@ export const getAllOrders = async (req, res, next) => {
   }
 
   res.json({ order, totalOrders, status: "ok" });
+};
+
+export const getSalesData = async (req, res, next) => {
+  try {
+    let { startDate, endDate, page } = req.query;
+    //check that date is not empty
+    if (startDate === "" || endDate === "") {
+      return res.status(400).json({
+        status: "failure",
+        message: "Please ensure you pick two dates",
+      });
+    }
+
+    //check that date is in the right format
+    //expected result: YYY-MMM-DDD
+
+    //Query database using Mongoose
+    let totalData = Math.ceil((await Order.count()) / 10);
+    const salesData = await Order.find({
+      createdAt: {
+        $gte: new Date(new Date(startDate).setHours(0, 0, 0)),
+        $lt: new Date(new Date(endDate).setHours(23, 59, 59)),
+      },
+    })
+      .limit(10)
+      .skip(page - 1)
+      .exec();
+    // console.log(salesData[0]);
+
+    //Handle responses
+    if (!salesData) {
+      return res.json({
+        status: "failure",
+      });
+    }
+
+    console.log(data);
+
+    res.json({ salesData, totalData, status: "ok" });
+  } catch (error) {
+    return next(error);
+  }
 };

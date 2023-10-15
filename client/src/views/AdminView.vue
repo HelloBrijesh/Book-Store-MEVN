@@ -1,7 +1,6 @@
 <script setup>
-import { onMounted, reactive, ref } from "vue";
-
-import { RouterLink, RouterView } from "vue-router";
+import { onMounted, ref } from "vue";
+import { RouterView, RouterLink } from "vue-router";
 import useUserService from "../services/userService";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -49,7 +48,7 @@ onMounted(async () => {
   <div v-if="status === 'ok'" class="w-full my-20">
     <div class="sm:container sm:mx-auto mx-5">
       <div class="flex flex-col md:flex-row">
-        <div class="w-full md:w-1/4">
+        <div class="w-full md:w-1/3">
           <div class="border flex flex-col items-center gap-5 py-10">
             <img
               v-if="userDetails.image !== ''"
@@ -78,22 +77,20 @@ onMounted(async () => {
           </div>
           <ul class="border border-t-0 border-b-0">
             <li>
-              <RouterLink to="/profile" class="block py-2 ps-5 border-b"
-                >Account Details</RouterLink
+              <RouterLink to="/admin" class="block py-2 ps-5 border-b"
+                >Add Book</RouterLink
               >
             </li>
             <li>
               <RouterLink
-                to="/profile/changepassword"
+                to="/admin/existingbooks"
                 class="block py-2 ps-5 border-b"
-                >Change Password</RouterLink
+                >Existing Books</RouterLink
               >
             </li>
             <li>
-              <RouterLink
-                to="/profile/userorders"
-                class="block py-2 ps-5 border-b"
-                >Orders</RouterLink
+              <RouterLink to="/admin/salesdata" class="block py-2 ps-5 border-b"
+                >Sales Data</RouterLink
               >
             </li>
           </ul>
@@ -105,3 +102,4 @@ onMounted(async () => {
     </div>
   </div>
 </template>
+<style scoped></style>

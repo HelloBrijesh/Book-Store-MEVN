@@ -15,6 +15,11 @@ import ProfileView from "../views/ProfileView.vue";
 import AccountDetails from "../components/AccountDetails.vue";
 import ChangePassword from "../components/ChangePassword.vue";
 import UserOrders from "../components/UserOrders.vue";
+import AdminView from "../views/AdminView.vue";
+import AddBook from "../components/AddBook.vue";
+import ExistingBooks from "../components/ExistingBooks.vue";
+import UpdateBook from "../components/UpdateBook.vue";
+import SalesData from "../components/SalesData.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -23,6 +28,33 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: HomeView,
+    },
+    {
+      path: "/admin",
+      name: "admin",
+      component: AdminView,
+      children: [
+        {
+          path: "",
+          name: "addbook",
+          component: AddBook,
+        },
+        {
+          path: "existingbooks",
+          name: "existingbooks",
+          component: ExistingBooks,
+        },
+        {
+          path: "updatebook/:bookid",
+          name: "updatebook",
+          component: UpdateBook,
+        },
+        {
+          path: "salesdata",
+          name: "salesdata",
+          component: SalesData,
+        },
+      ],
     },
     {
       path: "/login",

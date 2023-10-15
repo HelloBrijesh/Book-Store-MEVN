@@ -25,7 +25,7 @@ const orderSchema = new mongoose.Schema(
     //   orderNotes: { type: String },
     // },
   },
-  { timestamp: true }
+  { timestamps: true }
 );
 
 const virtual = orderSchema.virtual("id");

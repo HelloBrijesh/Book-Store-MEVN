@@ -9,9 +9,11 @@ export const addSubscriber = async (req, res, next) => {
     return next(error);
   }
 
+  const { email } = req.body;
+
   try {
     const emailExists = await Subscriber.exists({ email: email });
-    if (emailExists) return res.json({ status: "Already Subscribed" });
+    if (emailExists) return next(error);
 
     const newSubscriber = new Subscriber({ email: email });
     await newSubscriber.save();

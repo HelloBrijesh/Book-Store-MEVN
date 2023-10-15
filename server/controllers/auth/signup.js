@@ -12,7 +12,11 @@ export const signup = async (req, res, next) => {
     email: Joi.string().email().required(),
     password: Joi.string()
       .min(8)
-      .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
+      .pattern(
+        new RegExp(
+          "^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*s).{8,15}$"
+        )
+      )
       .required(),
     // confirmPassword: Joi.ref("password"),
   });

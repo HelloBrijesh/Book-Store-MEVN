@@ -5,12 +5,12 @@ export default function useAuthService() {
   const url = ref(null);
   const status = ref(null);
   const error = ref(null);
-
+  const role = ref(null);
   const signup = async (signUpPayload) => {
     url.value = "signup";
     status.value = null;
     error.value = null;
-
+    role.value = null;
     try {
       const response = await axios.post(url.value, signUpPayload, {
         withCredentials: true,
@@ -24,6 +24,7 @@ export default function useAuthService() {
     url.value = `verify/${payload}`;
     status.value = null;
     error.value = null;
+    role.value = null;
 
     try {
       const response = await axios.post(
@@ -43,6 +44,8 @@ export default function useAuthService() {
     url.value = "forgotpassword";
     status.value = null;
     error.value = null;
+    role.value = null;
+
     try {
       const response = await axios.post(url.value, payload, {
         withCredentials: true,
@@ -56,6 +59,8 @@ export default function useAuthService() {
     url.value = "login";
     status.value = null;
     error.value = null;
+    role.value = null;
+
     try {
       const response = await axios.post(url.value, logInPayload, {
         withCredentials: true,
@@ -63,7 +68,7 @@ export default function useAuthService() {
       axios.defaults.headers.common[
         "Authorization"
       ] = `Bearer ${response.data.access_token}`;
-
+      role.value = response.data.role;
       status.value = response.data.status;
     } catch (err) {
       error.value = err.response.data.message;
@@ -73,6 +78,7 @@ export default function useAuthService() {
     url.value = "logout";
     status.value = null;
     error.value = null;
+    role.value = null;
 
     try {
       axios.defaults.headers.common["Authorization"] = "";
@@ -90,6 +96,8 @@ export default function useAuthService() {
     url.value = "changepassword";
     status.value = null;
     error.value = null;
+    role.value = null;
+
     try {
       const response = await axios.post(url.value, changePasswordPayload, {
         withCredentials: true,
@@ -106,6 +114,7 @@ export default function useAuthService() {
     verifyEmail,
     logout,
     changePassword,
+    role,
     error,
     status,
   };

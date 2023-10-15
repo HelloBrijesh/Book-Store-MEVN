@@ -29,7 +29,7 @@ onMounted(async () => {
 });
 </script>
 <template>
-  <div class="ps-20">
+  <div class="md:ps-20 mt-10 md:mt-0">
     <h1 class="text-2xl font-semibold">Account Details</h1>
     <div class="flex flex-col gap-5 my-10">
       <form @submit.prevent="handleUpdateUser">
@@ -39,7 +39,7 @@ onMounted(async () => {
           </label>
           <div class="mt-2">
             <input
-              class="flex h-10 w-2/4 rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+              class="flex h-10 w-full md:w-2/4 rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
               type="text"
               id="username"
               v-model="accountDetails.userName"
@@ -52,7 +52,7 @@ onMounted(async () => {
           </label>
           <div class="mt-2">
             <input
-              class="flex h-10 w-2/4 rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+              class="flex h-10 w-full md:w-2/4 rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
               type="text"
               id="firstName"
               v-model="accountDetails.firstName"
@@ -65,7 +65,7 @@ onMounted(async () => {
           </label>
           <div class="mt-2">
             <input
-              class="flex h-10 w-2/4 rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+              class="flex h-10 w-full md:w-2/4 rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
               type="text"
               id="lastName"
               v-model="accountDetails.lastName"
@@ -78,7 +78,7 @@ onMounted(async () => {
           </label>
           <div class="mt-2">
             <input
-              class="flex h-10 w-2/4 rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+              class="flex h-10 w-full md:w-2/4 rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
               type="email"
               id="email"
               v-model="accountDetails.email"

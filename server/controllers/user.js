@@ -38,4 +38,19 @@ export const updateUserDetails = async (req, res, next) => {
 
   res.json({ status: "ok" });
 };
+export const updateProfileImage = async (req, res, next) => {
+  const userId = req.user.userId;
+
+  const { image } = req.body;
+
+  try {
+    await User.findByIdAndUpdate(userId, {
+      image: image,
+    });
+  } catch (error) {
+    return next(error);
+  }
+
+  res.json({ status: "ok" });
+};
 export const deleteUser = async (req, res, next) => {};

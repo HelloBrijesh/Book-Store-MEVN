@@ -3,7 +3,7 @@ import { customErrorHandler } from "../services";
 
 const admin = async (req, res, next) => {
   try {
-    const user = await User.findOne({ id: req.user.id });
+    const user = await User.findById(req.user.userId);
     if (user.role === "admin") {
       next();
     } else {

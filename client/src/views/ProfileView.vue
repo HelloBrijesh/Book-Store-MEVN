@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, reactive, ref } from "vue";
+import { onMounted, ref } from "vue";
 
 import { RouterLink, RouterView } from "vue-router";
 import useUserService from "../services/userService";
@@ -14,10 +14,14 @@ import {
 } from "firebase/storage";
 
 library.add(faUser);
-const { status, error, userDetails, getUserDetails, updateProfileImage } =
-  useUserService();
 
-const user = ref({
+const userService = useUserService();
+
+const accountDetails = ref({
+  userName: "",
+  firstName: "",
+  lastName: "",
+  email: "",
   image: "",
 });
 
@@ -29,31 +33,45 @@ const handleProfileImage = async (e) => {
   uploadBytes(storageRef, e.target.files[0]).then((snapshot) => {
     getDownloadURL(storageRef)
       .then((download_url) => {
-        console.log(download_url);
-        user.value.image = download_url;
+        accountDetails.value.image = download_url;
       })
       .then(() => {
-        updateProfileImage(user.value);
+        userService.updateUserDetails(accountDetails.value);
       })
       .then(() => {
-        getUserDetails();
+        userService.getUserDetails();
       });
   });
 };
 
 onMounted(async () => {
-  await getUserDetails();
+  await userService.getUserDetails();
+  if (userService.status.value === "ok") {
+    accountDetails.value = {
+      userName: userService.userDetails.value.userName,
+      firstName: userService.userDetails.value.firstName,
+      lastName: userService.userDetails.value.lastName,
+      email: userService.userDetails.value.email,
+      image: userService.userDetails.value.image,
+    };
+  }
 });
 </script>
 <template>
-  <div v-if="status === 'ok'" class="w-full my-20">
+  <div v-if="userService.status === 'null'">
+    <h1>Loading...</h1>
+  </div>
+  <div v-else-if="userService.error">
+    <h1>{{ userService.error }}</h1>
+  </div>
+  <div v-else-if="userService.status === 'ok'" class="w-full my-20">
     <div class="sm:container sm:mx-auto mx-5">
       <div class="flex flex-col md:flex-row">
         <div class="w-full md:w-1/4">
           <div class="border flex flex-col items-center gap-5 py-10">
             <img
-              v-if="userDetails.image !== ''"
-              :src="userDetails.image"
+              v-if="userService.userDetails.image !== ''"
+              :src="userService.userDetails.image"
               alt=""
               class="rounded-full w-[150px]"
             />

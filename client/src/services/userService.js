@@ -8,7 +8,7 @@ export default function useUserService() {
   const error = ref(null);
 
   const getUserDetails = async () => {
-    url.value = "userdetails";
+    url.value = "user";
     status.value = null;
     error.value = null;
     userDetails.value = null;
@@ -23,12 +23,12 @@ export default function useUserService() {
   };
 
   const updateUserDetails = async (payload) => {
-    url.value = "updateuser";
+    url.value = "user";
     status.value = null;
     error.value = null;
     userDetails.value = null;
     try {
-      const response = await axios.post(url.value, payload, {
+      const response = await axios.put(url.value, payload, {
         withCredentials: true,
       });
       userDetails.value = response.data.userDetails;
@@ -37,25 +37,25 @@ export default function useUserService() {
       error.value = err.response.data.message;
     }
   };
-  const updateProfileImage = async (payload) => {
-    url.value = "updateprofileimage";
-    status.value = null;
-    error.value = null;
-    userDetails.value = null;
-    try {
-      const response = await axios.post(url.value, payload, {
-        withCredentials: true,
-      });
-      status.value = response.data.status;
-    } catch (err) {
-      error.value = err.response.data.message;
-    }
-  };
+  // const updateProfileImage = async (payload) => {
+  //   url.value = "updateprofileimage";
+  //   status.value = null;
+  //   error.value = null;
+  //   userDetails.value = null;
+  //   try {
+  //     const response = await axios.post(url.value, payload, {
+  //       withCredentials: true,
+  //     });
+  //     status.value = response.data.status;
+  //   } catch (err) {
+  //     error.value = err.response.data.message;
+  //   }
+  // };
 
   return {
     getUserDetails,
     updateUserDetails,
-    updateProfileImage,
+    // updateProfileImage,
     error,
     status,
     userDetails,

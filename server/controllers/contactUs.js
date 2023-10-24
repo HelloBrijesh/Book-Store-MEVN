@@ -1,14 +1,6 @@
 import Joi from "joi";
-import nodemailer from "nodemailer";
 import { customErrorHandler } from "../services";
-
-import {
-  EMAIL_SERVICE,
-  EMAIL_PORT,
-  EMAIL_SECURE,
-  EMAIL_USERID,
-  EMAIL_PASSWORD,
-} from "../config";
+import { sendEmail } from "../services/email";
 
 export const contactUs = async (req, res, next) => {
   // Validating the user Input
@@ -26,32 +18,14 @@ export const contactUs = async (req, res, next) => {
   const { name, email, message } = req.body;
 
   try {
-    const transporter = nodemailer.createTransport({
-      service: EMAIL_SERVICE,
-      secure: EMAIL_SECURE,
-      port: EMAIL_PORT,
-      auth: {
-        user: EMAIL_USERID,
-        pass: EMAIL_PASSWORD,
-      },
-    });
+    const emailSubject = "Contact Us";
+    const emailText = `
+                      Name : ${name}
+                      email: ${email}
+                      message :${message}
+                      `;
 
-    const mailConfigurations = {
-      from: "techpradhyapak@gmail.com",
-      to: email,
-      subject: `Contact Us`,
-      text: `
-          Name : ${name}
-          email: ${email}
-          message :${message}
-      `,
-    };
-
-    transporter.sendMail(mailConfigurations, function (error, info) {
-      if (error) {
-        console.log(error);
-      }
-    });
+    await sendEmail(email, emailSubject, emailText);
   } catch (error) {
     return next(error);
   }

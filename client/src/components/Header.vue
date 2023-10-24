@@ -9,26 +9,23 @@ import { onMounted, ref } from "vue";
 import { useAuthStore } from "../stores/authStore";
 import { useCartStore } from "../stores/cartStore";
 import useAuthService from "../services/authService";
-import useUserService from "../services/userService";
 
 library.add(faCartShopping, faBars, faUser);
-const { logout, error, status } = useAuthService();
-const userService = useUserService();
+
 const authStore = useAuthStore();
 const cartStore = useCartStore();
+const authService = useAuthService();
 
 const isActive = ref(true);
 const isUserActive = ref(true);
 
 onMounted(async () => {
-  // if (authStore.getisLoggedin) {
-  //   await userService.getUserDetails();
-  // }
+  
 });
 
 const handleLogout = async () => {
-  await logout();
-  if (status.value === "ok") {
+  await authService.logout();
+  if (authService.status.value === "ok") {
     authStore.$reset();
     cartStore.$reset();
   }

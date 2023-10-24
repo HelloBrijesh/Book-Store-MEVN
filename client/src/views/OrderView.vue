@@ -5,27 +5,33 @@ import { useCartStore } from "../stores/cartStore";
 import { useAuthStore } from "../stores/authStore";
 import { useRouter } from "vue-router";
 
-const { placeOrder, orders, error, status } = useOrderService();
 const authStore = useAuthStore();
 const cartStore = useCartStore();
+const orderService = useOrderService();
 const router = useRouter();
 
 onMounted(async () => {
   if (!authStore.getisLoggedin) {
     await router.push("/login");
   }
-  await placeOrder();
-  if (status.value === "ok") {
+  await orderService.placeOrder();
+  if (orderService.status.value === "ok") {
     cartStore.$reset();
   }
 });
 </script>
 <template>
-  <div v-if="orders" class="w-full my-20">
+  <div v-if="orderService.status === 'null'">
+    <h1>Loading...</h1>
+  </div>
+  <div v-else-if="orderService.error">
+    <h1>{{ orderService.error }}</h1>
+  </div>
+  <div v-else="orderService.orders" class="w-full my-20">
     <div class="sm:container sm:mx-auto mx-5">
       <div class="flex flex-col sm:flex-row border rounded-lg">
         <div class="sm:w-2/4 p-7 border-b-2 border-r-0 sm:border-r-2">
-          <div v-for="item in orders.orderedItems" class="">
+          <div v-for="item in orderService.orders.orderedItems" class="">
             <div class="flex justify-between">
               <div class="flex justify-between w-3/4">
                 <div class="h-20 w-20">
@@ -54,7 +60,7 @@ onMounted(async () => {
             </li>
             <li class="flex items-center justify-between text-gray-900">
               <p class="text-sm font-medium">Total</p>
-              <p class="text-sm font-bold">$ {{ orders.orderTotal }}</p>
+              <p class="text-sm font-bold">$ {{ orderService.orders.orderTotal }}</p>
             </li>
           </ul>
         </div>
@@ -62,7 +68,7 @@ onMounted(async () => {
           <div class="py-6">
             <h2 class="text-base font-bold text-black">Contact Information</h2>
             <p class="fontmedium mt-3 text-xs text-gray-700">
-              Order Number: {{ orders.id }}
+              Order Number: {{ orderService.orders.id }}
             </p>
             <p class="text-xs font-medium text-gray-700">
               Date: March 03, 2023

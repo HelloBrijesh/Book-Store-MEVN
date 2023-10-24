@@ -9,7 +9,7 @@ export default function useOrderService() {
   const totalOrders = ref(null);
 
   const getOrders = async (currentPage) => {
-    url.value = `getorders/${currentPage}`;
+    url.value = `orders/${currentPage}`;
     status.value = null;
     error.value = null;
     orders.value = null;
@@ -24,7 +24,7 @@ export default function useOrderService() {
     }
   };
   const placeOrder = async () => {
-    url.value = `placeorder`;
+    url.value = `orders`;
     status.value = null;
     error.value = null;
     orders.value = null;

@@ -9,7 +9,7 @@ export default function useCartService() {
   const cartItems = ref(null);
 
   const getCart = async () => {
-    url.value = "getcart";
+    url.value = "cart";
     status.value = null;
     error.value = null;
     cart.value = null;
@@ -24,12 +24,12 @@ export default function useCartService() {
     }
   };
   const addCartItems = async (bookid, quantity) => {
-    url.value = `addcartitem?bookid=${bookid}&quantity=${quantity}`;
+    url.value = `cart/item?bookid=${bookid}&quantity=${quantity}`;
     status.value = null;
     error.value = null;
     cart.value = null;
     try {
-      const response = await axios.post(
+      const response = await axios.put(
         url.value,
         {},
         {
@@ -42,12 +42,12 @@ export default function useCartService() {
     }
   };
   const removeCartItems = async (bookid, quantity, price) => {
-    url.value = `removecartitem?bookid=${bookid}&quantity=${quantity}&price=${price}`;
+    url.value = `cart/item?bookid=${bookid}&quantity=${quantity}&price=${price}`;
     status.value = null;
     error.value = null;
     cart.value = null;
     try {
-      const response = await axios.post(
+      const response = await axios.delete(
         url.value,
         {},
         {

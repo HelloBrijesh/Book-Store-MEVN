@@ -2,28 +2,23 @@ import express from "express";
 import { auth, admin } from "../middlewares";
 import { signup } from "../controllers/auth/signup";
 import { login } from "../controllers/auth/login";
-import { verifyEmail, sendEmail } from "../controllers/auth/verifyEmail";
-import { changePassword } from "../controllers/auth/changePassword";
+import { verifyEmail } from "../controllers/auth/verifyEmail";
 import { tokenRefresh } from "../controllers/auth/tokenRefresh";
 import { logout } from "../controllers/auth/logout";
 import { contactUs } from "../controllers/contactUs";
 import {
-  getUserById,
-  updateUserDetails,
+  fetchUser,
+  updateUser,
+  updatePassword,
   deleteUser,
-  updateProfileImage,
 } from "../controllers/user";
-import { getAllOrders, placeOrder, getSalesData } from "../controllers/order";
+import { getOrders, placeOrder, getSalesData } from "../controllers/order";
 import { addSubscriber, removeSubscriber } from "../controllers/subscription";
+import { fetchCart, addItem, removeItem } from "../controllers/cart";
 import {
-  getCartItems,
-  addItemInCart,
-  removeItemFromCart,
-} from "../controllers/cart";
-import {
-  getBookById,
-  getAllBooks,
-  getBestSellingBooks,
+  fetchBookById,
+  fetchBooks,
+  fetchBestSellingBooks,
   addBook,
   deleteBook,
   updateBook,
@@ -31,38 +26,34 @@ import {
 
 const router = express.Router();
 
-router.post("/signup", signup, sendEmail);
-router.post("/verify/:emailtoken", verifyEmail);
-router.post("/refresh", tokenRefresh);
-router.post("/forgotpassword", sendEmail);
+router.post("/signup", signup);
 router.post("/login", login);
-router.post("/changepassword", auth, changePassword);
 router.post("/logout", logout);
-router.post("/contactus", contactUs);
+router.get("/refresh", tokenRefresh);
+router.post("/email", verifyEmail);
 
-router.get("/userdetails", auth, getUserById);
-router.post("/updateuser", auth, updateUserDetails);
-router.post("/updateprofileimage", auth, updateProfileImage);
-router.delete("/deleteuser", auth, deleteUser);
+router.get("/user", auth, fetchUser);
+router.put("/user", auth, updateUser);
+router.put("/user/password", updatePassword);
+router.delete("/user", auth, deleteUser);
 
-router.get("/book/:bookid", getBookById);
-router.get("/bestsellingbooks", getBestSellingBooks);
+router.get("/books", fetchBooks);
+router.get("/books/:id", fetchBookById);
+router.get("/books/best-selling", fetchBestSellingBooks);
+router.post("/books", [auth, admin], addBook);
+router.put("/books/:id", [auth, admin], updateBook);
+router.delete("/books/:id", [auth, admin], deleteBook);
 
-router.post("/addbook", [auth, admin], addBook);
-router.post("/updatebook/:bookid", [auth, admin], updateBook);
-router.get("/getbooks", [auth, admin], getAllBooks);
-router.delete("/deletebook/:bookid", [auth, admin], deleteBook);
-router.get("/shop", getAllBooks);
+router.get("/cart", auth, fetchCart);
+router.put("/cart/item", auth, addItem);
+router.delete("/cart/item", auth, removeItem);
 
-router.get("/getcart", auth, getCartItems);
-router.post("/addcartitem", auth, addItemInCart);
-router.post("/removecartitem", auth, removeItemFromCart);
+router.get("/orders", auth, getOrders);
+router.post("/orders", auth, placeOrder);
+router.get("/orders/sales", [auth, admin], getSalesData);
 
-router.post("/placeorder", auth, placeOrder);
-router.get("/getorders/:page", auth, getAllOrders);
-router.get("/salesdata", getSalesData);
-
-router.post("/addsubscriber", addSubscriber);
-router.delete("/removesubscriber", removeSubscriber);
+router.post("/subscribers", addSubscriber);
+router.delete("/subscribers", removeSubscriber);
+router.post("/contact", contactUs);
 
 export default router;

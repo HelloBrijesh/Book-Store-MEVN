@@ -1,19 +1,17 @@
 <script setup>
-import { onMounted, reactive, ref } from "vue";
+import { onMounted, ref } from "vue";
 import useBookService from "../services/bookService";
 import { RouterLink, useRoute, useRouter } from "vue-router";
 import { useCartStore } from "../stores/cartStore";
 import useCartService from "../services/cartService";
 import { useAuthStore } from "../stores/authStore";
 
-const route = useRoute();
-const router = useRouter();
-
-const { getAllBooks, error, status, listOfBooks, totalPages } =
-  useBookService();
 const authStore = useAuthStore();
 const cartStore = useCartStore();
 const cartService = useCartService();
+const bookService = useBookService();
+const route = useRoute();
+const router = useRouter();
 
 const shopPayload = ref({
   category: "Romance",
@@ -28,21 +26,21 @@ const handlePrevious = async () => {
   }
 };
 const handleNext = async () => {
-  if (currentPage.value < totalPages.value) {
+  if (currentPage.value < bookService.totalPages.value) {
     currentPage.value++;
     handlePagination(currentPage.value);
   }
 };
 const handlePagination = async (page) => {
   currentPage.value = page;
-  await getAllBooks(currentPage.value, shopPayload.value);
+  await bookService.getAllBooks(currentPage.value, shopPayload.value);
 };
 const handleShop = async () => {
   currentPage.value = 1;
-  await getAllBooks(currentPage.value, shopPayload.value);
+  await bookService.getAllBooks(currentPage.value, shopPayload.value);
 };
 onMounted(async () => {
-  await getAllBooks(currentPage.value, shopPayload.value);
+  await bookService.getAllBooks(currentPage.value, shopPayload.value);
   if (authStore.getisLoggedin) {
     await cartService.getCart();
     if (cartService.status.value === "ok") {
@@ -54,7 +52,13 @@ onMounted(async () => {
 });
 </script>
 <template>
-  <div class="w-full">
+  <div v-if="bookService.status === 'null'">
+    <h1>Loading...</h1>
+  </div>
+  <div v-else-if="bookService.error">
+    <h1>{{ bookService.error }}</h1>
+  </div>
+  <div v-else class="w-full">
     <div class="mx-5 sm:container sm:mx-auto">
       <div class="flex justify-between border-b-2 py-6 mb-10 mt-5">
         <div class="">
@@ -156,7 +160,7 @@ onMounted(async () => {
         <div class="w-full px-5">
           <div class="grid sm:grid-cols-4 gap-6 mb-20">
             <div
-              v-for="book in listOfBooks"
+              v-for="book in bookService.listOfBooks"
               class="grow border rounded-lg overflow-hidden"
             >
               <RouterLink :to="`/book/${book.id}`">
@@ -196,7 +200,7 @@ onMounted(async () => {
             <a
               href="#"
               class="mx-1 flex items-center rounded-md border border-gray-400 px-3 py-1 text-gray-900 hover:scale-105"
-              v-for="page in totalPages"
+              v-for="page in bookService.totalPages"
               @click.prevent="(e) => handlePagination(page)"
             >
               <span :class="{ active: page === currentPage }"> {{ page }}</span>

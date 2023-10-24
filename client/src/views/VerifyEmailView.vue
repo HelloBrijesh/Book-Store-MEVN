@@ -2,24 +2,22 @@
 import { onMounted } from "vue";
 import { RouterLink, useRoute } from "vue-router";
 import { useAuthStore } from "../stores/authStore";
-
 import useAuthService from "../services/authService";
 
-const route = useRoute();
 const authStore = useAuthStore();
-
-const { verifyEmail, error, status } = useAuthService();
+const authService = useAuthService();
+const route = useRoute();
 
 onMounted(async () => {
-  await verifyEmail(route.params.token);
-  if (status.value === "ok") {
+  await authService.verifyEmail(route.params.token);
+  if (authService.status.value === "ok") {
     authStore.setisLoggedin(true);
   }
 });
 </script>
 <template>
   <section
-    v-if="status === 'ok'"
+    v-if="authService.status === 'ok'"
     class="h-[500px] flex flex-col gap-10 items-center justify-center"
   >
     <p>Email has been verified successfully</p>
@@ -33,9 +31,9 @@ onMounted(async () => {
     </RouterLink>
   </section>
   <section
-    v-if="error"
+    v-if="authService.error"
     class="h-[500px] flex flex-col gap-10 items-center justify-center"
   >
-    <p>{{ error }}</p>
+    <p>{{ authService.error }}</p>
   </section>
 </template>

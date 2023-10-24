@@ -1,25 +1,15 @@
 import Joi from "joi";
-import { Book } from "../models/book";
+import {
+  getAllBook,
+  getBookById,
+  getRelatedBooks,
+  getBestSellingBooks,
+  createBook,
+  updateBookById,
+  deleteBookById,
+} from "../services/book";
 
-export const getBookById = async (req, res, next) => {
-  let bookById;
-  let relatedBooks;
-  try {
-    bookById = await Book.findById(req.params["bookid"]);
-
-    relatedBooks = await Book.find({
-      category: bookById.category,
-    })
-      .sort({ sold: -1 })
-      .limit(4);
-  } catch (error) {
-    return next(error);
-  }
-
-  res.status(200).json({ bookById, relatedBooks, status: "ok" });
-};
-
-export const getAllBooks = async (req, res, next) => {
+export const fetchBooks = async (req, res, next) => {
   const limit = 12;
   let books;
   let count;
@@ -29,19 +19,7 @@ export const getAllBooks = async (req, res, next) => {
   const page = Number(req.query.page);
 
   try {
-    books = await Book.find({
-      category: category,
-      price: { $lte: price },
-      stock: { $gte: 1 },
-    })
-      .limit(limit * 1)
-      .skip((page - 1) * limit)
-      .exec();
-    count = await Book.count({
-      category: category,
-      price: { $lte: price },
-      stock: { $gte: 1 },
-    });
+    books = await getAllBook(category, price, page, limit);
   } catch (error) {
     return next(error);
   }
@@ -50,10 +28,24 @@ export const getAllBooks = async (req, res, next) => {
   res.status(200).json({ status: "ok", books, totalPages });
 };
 
-export const getBestSellingBooks = async (req, res, next) => {
+export const fetchBookById = async (req, res, next) => {
+  let bookById;
+  let relatedBooks;
+  let bookId = req.params.id;
+  try {
+    bookById = await getBookById(bookId);
+    relatedBooks = await getRelatedBooks(bookById.category);
+  } catch (error) {
+    return next(error);
+  }
+
+  res.status(200).json({ bookById, relatedBooks, status: "ok" });
+};
+
+export const fetchBestSellingBooks = async (req, res, next) => {
   let bestSellingBooks;
   try {
-    bestSellingBooks = await Book.find({}).sort({ sold: -1 }).limit(4);
+    bestSellingBooks = await getBestSellingBooks();
   } catch (error) {
     return next(error);
   }
@@ -81,7 +73,6 @@ export const addBook = async (req, res, next) => {
   if (error) {
     return next(error);
   }
-
   const {
     title,
     author,
@@ -96,22 +87,20 @@ export const addBook = async (req, res, next) => {
     language,
   } = req.body;
 
-  const newBook = new Book({
-    title,
-    author,
-    description,
-    price,
-    year,
-    pages,
-    stock,
-    sold,
-    category,
-    image,
-    language,
-  });
-
   try {
-    await newBook.save();
+    await createBook(
+      title,
+      author,
+      description,
+      price,
+      year,
+      pages,
+      stock,
+      sold,
+      category,
+      image,
+      language
+    );
   } catch (error) {
     return next(error);
   }
@@ -122,27 +111,23 @@ export const addBook = async (req, res, next) => {
 export const updateBook = async (req, res, next) => {
   const price = req.body.price;
   const stock = req.body.stock;
-  const bookId = req.params.bookid;
+  const bookId = req.params.id;
 
   let book;
   try {
-    await Book.findByIdAndUpdate(bookId, {
-      price: price,
-      stock: stock,
-    });
-    book = await Book.findById(bookId);
+    await updateBookById(bookId, price, stock);
+    book = await getBookById(bookId);
   } catch (error) {
     return next(error);
   }
-
   res.json({ status: "ok", book });
 };
 
 export const deleteBook = async (req, res, next) => {
-  const bookId = req.params.bookid;
+  const bookId = req.params.id;
 
   try {
-    await Book.findByIdAndDelete(bookId);
+    await deleteBookById(bookId);
   } catch (error) {
     return next(error);
   }

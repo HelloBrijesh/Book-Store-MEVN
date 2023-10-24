@@ -2,8 +2,7 @@
 import { onMounted, ref } from "vue";
 import useUserService from "../services/userService";
 
-const { status, error, userDetails, getUserDetails, updateUserDetails } =
-  useUserService();
+const userService = useUserService();
 
 const accountDetails = ref({
   userName: "",
@@ -13,17 +12,17 @@ const accountDetails = ref({
 });
 
 const handleUpdateUser = async () => {
-  await updateUserDetails(accountDetails.value);
+  await userService.updateUserDetails(accountDetails.value);
 };
 
 onMounted(async () => {
-  await getUserDetails();
-  if (status.value === "ok") {
+  await userService.getUserDetails();
+  if (userService.status.value === "ok") {
     accountDetails.value = {
-      userName: userDetails.value.userName,
-      firstName: userDetails.value.firstName,
-      lastName: userDetails.value.lastName,
-      email: userDetails.value.email,
+      userName: userService.userDetails.value.userName,
+      firstName: userService.userDetails.value.firstName,
+      lastName: userService.userDetails.value.lastName,
+      email: userService.userDetails.value.email,
     };
   }
 });

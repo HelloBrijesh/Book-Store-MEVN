@@ -2,7 +2,7 @@
 import { onMounted, ref } from "vue";
 import useAdminService from "../services/adminService";
 
-const { getSalesData, salesData, status, error, totalData } = useAdminService();
+const adminService = useAdminService();
 
 let newDate = new Date();
 let year = newDate.getFullYear();
@@ -15,16 +15,16 @@ let salesDataPayload = ref({
 });
 
 const onDateChange = async () => {
-  await getSalesData(salesDataPayload.value, 1);
-  if (status.value === "ok") {
-    console.log(salesData.value);
+  await adminService.getSalesData(salesDataPayload.value, 1);
+  if (adminService.status.value === "ok") {
+    console.log(adminService.salesData.value);
   }
 };
 
 onMounted(async () => {
-  await getSalesData(salesDataPayload.value, 1);
-  if (status.value === "ok") {
-    console.log(salesData.value);
+  await adminService.getSalesData(salesDataPayload.value, 1);
+  if (adminService.status.value === "ok") {
+    console.log(adminService.salesData.value);
   }
 });
 
@@ -33,18 +33,18 @@ const currentPage = ref(1);
 const handlePrevious = async () => {
   if (currentPage.value > 1) {
     currentPage.value--;
-    await getSalesData(salesDataPayload.value, 1);
+    await adminService.getSalesData(salesDataPayload.value, 1);
   }
 };
 const handleNext = async () => {
   if (currentPage.value < totalPages.value) {
     currentPage.value++;
-    await getSalesData(salesDataPayload.value, 1);
+    await adminService.getSalesData(salesDataPayload.value, 1);
   }
 };
 const handlePagination = async (page) => {
   currentPage.value = page;
-  await getSalesData(salesDataPayload.value, 1);
+  await adminService.getSalesData(salesDataPayload.value, 1);
 };
 </script>
 <template>
@@ -106,7 +106,7 @@ const handlePagination = async (page) => {
       <a
         href="#"
         class="mx-1 flex items-center rounded-md border border-gray-400 px-3 py-1 text-gray-900 hover:scale-105"
-        v-for="page in totalData"
+        v-for="page in adminService.totalData"
         @click.prevent="(e) => handlePagination(page)"
       >
         <span :class="{ active: page === currentPage }"> {{ page }}</span>

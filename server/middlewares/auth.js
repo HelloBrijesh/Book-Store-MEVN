@@ -1,6 +1,5 @@
-import jwt from "jsonwebtoken";
-import { ACCESS_TOKEN_SECRET } from "../config";
 import { customErrorHandler } from "../services";
+import { verifyAccessToken } from "../services/tokens";
 const auth = async (req, res, next) => {
   // Accessing the access token from headers
 
@@ -12,7 +11,7 @@ const auth = async (req, res, next) => {
 
   //Verifying the access token
   try {
-    const { userId, role } = jwt.verify(authAccessToken, ACCESS_TOKEN_SECRET);
+    const { userId, role } = await verifyAccessToken(authAccessToken);
     const user = {
       userId,
       role,
@@ -25,3 +24,4 @@ const auth = async (req, res, next) => {
 };
 
 export default auth;
+

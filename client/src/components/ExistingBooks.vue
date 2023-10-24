@@ -1,10 +1,9 @@
 <script setup>
 import { onMounted, ref } from "vue";
-import useBookService from "../services/bookService";
 import { RouterLink, useRoute, useRouter } from "vue-router";
+import useBookService from "../services/bookService";
 
-const { getAllBooks, error, status, listOfBooks, totalPages } =
-  useBookService();
+const bookService = useBookService();
 
 const getBooksPayload = ref({
   category: "Romance",
@@ -19,25 +18,31 @@ const handlePrevious = async () => {
   }
 };
 const handleNext = async () => {
-  if (currentPage.value < totalPages.value) {
+  if (currentPage.value < bookService.totalPages.value) {
     currentPage.value++;
     handlePagination(currentPage.value);
   }
 };
 const handlePagination = async (page) => {
   currentPage.value = page;
-  await getAllBooks(currentPage.value, getBooksPayload.value);
+  await bookService.getAllBooks(currentPage.value, getBooksPayload.value);
 };
 const handleFilter = async () => {
   currentPage.value = 1;
-  await getAllBooks(currentPage.value, getBooksPayload.value);
+  await bookService.getAllBooks(currentPage.value, getBooksPayload.value);
 };
 onMounted(async () => {
-  await getAllBooks(currentPage.value, getBooksPayload.value);
+  await bookService.getAllBooks(currentPage.value, getBooksPayload.value);
 });
 </script>
 <template>
-  <div class="ms-10">
+    <div v-if="bookService.status === 'null'">
+    <h1>Loading...</h1>
+  </div>
+  <div v-else-if="bookService.error">
+    <h1>{{ bookService.error }}</h1>
+  </div>
+  <div v-else class="ms-10">
     <h1 class="text-2xl">Update Book</h1>
     <form @change="handleFilter">
       <div class="flex justify-end gap-10 my-6">
@@ -71,7 +76,7 @@ onMounted(async () => {
     <div class="mt-10">
       <div class="grid sm:grid-cols-3 gap-6 mb-20">
         <div
-          v-for="book in listOfBooks"
+          v-for="book in bookService.listOfBooks"
           class="grow border rounded-lg overflow-hidden"
         >
           <RouterLink :to="`/admin/updatebook/${book.id}`">
@@ -112,7 +117,7 @@ onMounted(async () => {
         <a
           href="#"
           class="mx-1 flex items-center rounded-md border border-gray-400 px-3 py-1 text-gray-900 hover:scale-105"
-          v-for="page in totalPages"
+          v-for="page in bookService.totalPages"
           @click.prevent="(e) => handlePagination(page)"
         >
           <span :class="{ active: page === currentPage }"> {{ page }}</span>

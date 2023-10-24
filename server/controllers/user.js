@@ -1,18 +1,20 @@
-import { User } from "../models/user";
+import Joi from "joi";
+import bcrypt from "bcrypt";
 import { customErrorHandler } from "../services";
+import {
+  getUserById,
+  updateUserById,
+  updatePasswordByUserId,
+} from "../services/user";
 
-export const getUserById = async (req, res, next) => {
-  //Finding user datails from database
+export const fetchUser = async (req, res, next) => {
   const userId = req.user.userId;
   try {
-    const userDetails = await User.findById(userId).select(
-      "-password -verified -_id -role -updatedAt -__V"
-    );
+    const userDetails = await getUserById(userId);
 
     if (!userDetails) {
       return next(customErrorHandler.notFound("User Not Found"));
     }
-
     // sending user Datails
     res.json({ userDetails, status: "ok" });
   } catch (err) {
@@ -20,37 +22,69 @@ export const getUserById = async (req, res, next) => {
   }
 };
 
-export const updateUserDetails = async (req, res, next) => {
+export const updateUser = async (req, res, next) => {
   const userId = req.user.userId;
 
-  const { userName, firstName, lastName, email } = req.body;
+  const { userName, firstName, lastName, email, image } = req.body;
 
   try {
-    await User.findByIdAndUpdate(userId, {
-      userName: userName,
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-    });
+    await updateUserById(userId, userName, firstName, lastName, email, image);
   } catch (error) {
     return next(error);
   }
 
   res.json({ status: "ok" });
 };
-export const updateProfileImage = async (req, res, next) => {
+
+export const updatePassword = async () => {
+  const updatePasswordSchema = Joi.object({
+    currentPassword: Joi.string()
+      .min(8)
+      .pattern(
+        new RegExp(
+          "^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*s).{8,15}$"
+        )
+      )
+      .required(),
+    newPassword: Joi.string()
+      .min(8)
+      .pattern(
+        new RegExp(
+          "^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*s).{8,15}$"
+        )
+      )
+      .required(),
+  });
+
+  const { error } = updatePasswordSchema.validate(req.body);
+  if (error) {
+    return next(error);
+  }
+  const { currentPassword, newPassword } = req.body;
   const userId = req.user.userId;
 
-  const { image } = req.body;
-
   try {
-    await User.findByIdAndUpdate(userId, {
-      image: image,
-    });
+    const existingUser = await getUserById(userId);
+    if (!existingUser) {
+      return next(customErrorHandler.wrongCredentials());
+    }
+    const verifyPassword = await bcrypt.compare(
+      currentPassword,
+      existingUser.password
+    );
+    if (!verifyPassword) return next(customErrorHandler.wrongCredentials());
   } catch (error) {
     return next(error);
   }
 
+  try {
+    const COST_FACTOR = 10;
+    const newHashedPassword = await bcrypt.hash(newPassword, COST_FACTOR);
+    await updatePasswordByUserId(userId, newHashedPassword);
+  } catch (error) {
+    next(error);
+  }
   res.json({ status: "ok" });
 };
+
 export const deleteUser = async (req, res, next) => {};

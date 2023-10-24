@@ -14,11 +14,12 @@ import { faBook } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faBook);
 
+
+const adminService = useAdminService();
 const router = useRouter();
 
-const { addBook, status, error } = useAdminService();
-
 let imageName = ref(null);
+
 const addBookPayload = ref({
   title: "",
   author: "",
@@ -32,6 +33,7 @@ const addBookPayload = ref({
   image: "",
   language: "",
 });
+
 const handleImageUpload = (e) => {
   const storageRef = firebaseRef(storage, `BookStore/Books/${imageName.value}`);
   uploadBytes(storageRef, e.target.files[0]).then((snapshot) => {
@@ -43,8 +45,8 @@ const handleImageUpload = (e) => {
 
 const added = ref(false);
 const handleAddBook = async (e) => {
-  await addBook(addBookPayload.value);
-  if (status.value === "ok") {
+  await adminService.addBook(addBookPayload.value);
+  if (adminService.status.value === "ok") {
     router.go();
   }
   // added.value = true;

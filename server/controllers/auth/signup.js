@@ -1,8 +1,11 @@
 import Joi from "joi";
 import bcrypt from "bcrypt";
-import { User } from "../../models/user";
-import { Cart } from "../../models/cart";
 import { customErrorHandler } from "../../services";
+import { createUser, getUserByEmail } from "../../services/user";
+import { createCartByUserId } from "../../services/cart";
+import { createRefreshToken, saveEmailToken } from "../../services/tokens";
+import { sendEmail } from "../../services/email";
+import { SERVER_URL } from "../../config";
 
 export const signup = async (req, res, next) => {
   // Validating the user Input
@@ -22,22 +25,25 @@ export const signup = async (req, res, next) => {
   });
 
   const { error } = signupSchema.validate(req.body);
+
   if (error) {
     return next(error);
   }
 
   const { userName, email, password } = req.body;
+
   //Check if the user is already registered
+
   try {
-    const userExist = await User.exists({ email: email });
+    const userExist = await getUserByEmail(email);
 
     if (userExist) {
       return next(
         customErrorHandler.alreadyExists("This email is already exists")
       );
     }
-  } catch (err) {
-    return next(err);
+  } catch (error) {
+    return next(error);
   }
 
   // Hashing the password
@@ -45,24 +51,33 @@ export const signup = async (req, res, next) => {
   const hashedPassword = await bcrypt.hash(password, COST_FACTOR);
 
   // Preparing the model
-  const newUser = new User({
-    userName,
-    email,
-    password: hashedPassword,
-  });
 
   try {
-    await newUser.save();
-    let existingUser = await User.findOne({ email: email });
-    const newCart = new Cart({
-      userId: existingUser.id,
-      cartTotal: 0,
-      books: [],
-    });
-    await newCart.save();
+    const createdUser = await createUser(userName, email, hashedPassword);
+
+    await createCartByUserId(createdUser.id);
+
+    const verificationToken = await createRefreshToken(
+      createdUser.id,
+      createdUser.role
+    );
+
+    const tokenForemail = (
+      await bcrypt.hash(verificationToken, COST_FACTOR)
+    ).replace(/[^a-zA-Z0-9 ]/g, "");
+
+    const emailSubject = "Email Verification from Book-Store";
+    const emailText = `Hi! There, You have recently visited 
+    our Bookstore website and entered your email.
+    Please follow the given link to verify your email
+    ${SERVER_URL}/api/verify/${tokenForemail}
+    Thanks`;
+
+    await sendEmail(email, emailSubject, emailText);
+    await saveEmailToken(createdUser.id, tokenForemail);
   } catch (err) {
     return next(err);
   }
-  req.body.email = email;
-  next();
+
+  res.json({ status: "ok" });
 };

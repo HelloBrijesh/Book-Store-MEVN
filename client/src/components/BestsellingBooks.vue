@@ -3,14 +3,21 @@ import { onMounted } from "vue";
 import useBookService from "../services/bookService";
 import { RouterLink } from "vue-router";
 
-const { getBestSellingBooks, error, status, listOfBooks } = useBookService();
+const bookService = useBookService();
 
 onMounted(async () => {
-  await getBestSellingBooks();
+  await bookService.getBestSellingBooks();
 });
+
 </script>
 <template>
-  <div class="w-full mb-16 sm:mb-28">
+  <div v-if="bookService.status === 'null'">
+    <h1>Loading...</h1>
+  </div>
+  <div v-else-if="bookService.error">
+    <h1>{{ bookService.error }}</h1>
+  </div>
+  <div v-else class="w-full mb-16 sm:mb-28">
     <div class="mx-5 sm:container sm:mx-auto">
       <div class="pb-20">
         <h2 class="text-3xl font-bold text-black">Bestselling Books</h2>
@@ -18,7 +25,7 @@ onMounted(async () => {
 
       <div class="grid sm:grid-cols-4 grid-flow-row gap-6">
         <div
-          v-for="book in listOfBooks"
+          v-for="book in bookService.listOfBooks"
           class="grow border rounded-lg overflow-hidden"
         >
           <RouterLink :to="`/book/${book.id}`">

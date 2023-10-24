@@ -20,8 +20,8 @@ export default function useAuthService() {
       error.value = err.response.data.message;
     }
   };
-  const verifyEmail = async (payload) => {
-    url.value = `verify/${payload}`;
+  const verifyEmail = async (token) => {
+    url.value = `email?token=${token}`;
     status.value = null;
     error.value = null;
     role.value = null;
@@ -93,13 +93,13 @@ export default function useAuthService() {
     }
   };
   const changePassword = async (changePasswordPayload) => {
-    url.value = "changepassword";
+    url.value = "user/password";
     status.value = null;
     error.value = null;
     role.value = null;
 
     try {
-      const response = await axios.post(url.value, changePasswordPayload, {
+      const response = await axios.put(url.value, changePasswordPayload, {
         withCredentials: true,
       });
       status.value = response.data.status;

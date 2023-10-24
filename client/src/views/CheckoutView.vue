@@ -5,21 +5,21 @@ import { RouterLink, useRouter } from "vue-router";
 import { useAuthStore } from "../stores/authStore";
 import useCartService from "../services/cartService";
 
-let items = ref(null);
-let cartTotal = ref(null);
+const router = useRouter();
 const cartStore = useCartStore();
 const authStore = useAuthStore();
-const router = useRouter();
-const { getCart, removeCartItems, cart, cartItems, error, status } =
-  useCartService();
+const cartService = useCartService();
+
+let items = ref(null);
+let cartTotal = ref(null);
 
 const handleRemoveCartItems = async (bookid, quantity, price) => {
-  await removeCartItems(bookid, quantity, price);
-  if (status.value === "ok") {
-    await getCart();
-    cartStore.setCartItems(cartItems.value);
-    cartStore.setCartTotal(cart.value.cartTotal);
-    cartStore.setTotalItems(cart.value.totalItems);
+  await cartService.removeCartItems(bookid, quantity, price);
+  if (cartService.status.value === "ok") {
+    await cartService.getCart();
+    cartStore.setCartItems(cartService.cartItems.value);
+    cartStore.setCartTotal(cartService.cart.value.cartTotal);
+    cartStore.setTotalItems(cartService.cart.value.totalItems);
     router.go();
   }
 };

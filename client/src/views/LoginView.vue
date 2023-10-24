@@ -6,12 +6,11 @@ import useAuthService from "../services/authService";
 import useCartService from "../services/cartService";
 import { useCartStore } from "../stores/cartStore";
 
-const router = useRouter();
 const authStore = useAuthStore();
 const cartStore = useCartStore();
-
-const { login, error, status, role } = useAuthService();
 const cartService = useCartService();
+const authService = useAuthService();
+const router = useRouter();
 
 onMounted(async () => {
   if (authStore.getisLoggedin) {
@@ -25,13 +24,13 @@ const loginPayload = reactive({
 });
 
 const handleLogin = async () => {
-  await login(loginPayload);
-  if (status.value === "ok") {
+  await authService.login(loginPayload);
+  if (authService.status.value === "ok") {
     authStore.setisLoggedin(true);
-    if (role.value === "admin") {
+    if (authService.role.value === "admin") {
       authStore.setisAdmin(true);
     }
-    await cartService.getCart();
+    await authService.cartService.getCart();
     cartStore.setCartItems(cartService.cart.value.cartItems);
     cartStore.setCartTotal(cartService.cart.value.cartTotal);
     cartStore.setTotalItems(cartService.cart.value.totalItems);
@@ -49,8 +48,8 @@ const handleLogin = async () => {
           Log in to your account
         </h2>
         <div>
-          <h5 v-if="error" class="mt-5 font-bold text-red-600 text-center">
-            {{ error }}
+          <h5 v-if="authService.error" class="mt-5 font-bold text-red-600 text-center">
+            {{ authService.error }}
           </h5>
         </div>
         <form @submit.prevent="handleLogin" class="mt-10">

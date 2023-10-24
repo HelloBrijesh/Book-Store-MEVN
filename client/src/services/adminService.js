@@ -9,7 +9,7 @@ export default function useAdminService() {
   const totalData = ref(null);
 
   const addBook = async (payload) => {
-    url.value = `addbook`;
+    url.value = `books`;
     status.value = null;
     error.value = null;
     salesData.value = null;
@@ -40,7 +40,7 @@ export default function useAdminService() {
     }
   };
   const getSalesData = async (payload, page) => {
-    url.value = `salesdata?startDate=${payload.startDate}&endDate=${payload.endDate}&page=${page}`;
+    url.value = `orders/sales?startDate=${payload.startDate}&endDate=${payload.endDate}&page=${page}`;
     status.value = null;
     error.value = null;
     salesData.value = null;

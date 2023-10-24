@@ -1,9 +1,9 @@
-import { User } from "../models/user";
 import { customErrorHandler } from "../services";
+import { getUserById } from "../services/user";
 
 const admin = async (req, res, next) => {
   try {
-    const user = await User.findById(req.user.userId);
+    const user = await getUserById(req.user.userId);
     if (user.role === "admin") {
       next();
     } else {
@@ -15,3 +15,4 @@ const admin = async (req, res, next) => {
 };
 
 export default admin;
+

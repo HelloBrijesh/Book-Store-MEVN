@@ -1,10 +1,15 @@
 import Joi from "joi";
-import { Subscriber } from "../models/subscriber";
+import {
+  addSubscriberByEmail,
+  getSubcriberByEmail,
+  removeSubscriberByEmail,
+} from "../services/subscription";
+
 export const addSubscriber = async (req, res, next) => {
-  const loginSchema = Joi.object({
+  const addSubscriberSchema = Joi.object({
     email: Joi.string().email().required(),
   });
-  const { error } = loginSchema.validate(req.body);
+  const { error } = addSubscriberSchema.validate(req.body);
   if (error) {
     return next(error);
   }
@@ -12,11 +17,10 @@ export const addSubscriber = async (req, res, next) => {
   const { email } = req.body;
 
   try {
-    const emailExists = await Subscriber.exists({ email: email });
+    const emailExists = await getSubcriberByEmail(email);
     if (emailExists) return next(error);
 
-    const newSubscriber = new Subscriber({ email: email });
-    await newSubscriber.save();
+    await addSubscriberByEmail(email);
   } catch (error) {
     return next(error);
   }
@@ -25,10 +29,18 @@ export const addSubscriber = async (req, res, next) => {
 };
 
 export const removeSubscriber = async (req, res, next) => {
-  const email = req.params.email;
+  const removeSubscriberSchema = Joi.object({
+    email: Joi.string().email().required(),
+  });
+  const { error } = removeSubscriberSchema.validate(req.body);
+  if (error) {
+    return next(error);
+  }
+
+  const { email } = req.body;
 
   try {
-    await Subscriber.deleteOne({ email: email });
+    await removeSubscriberByEmail(email);
   } catch (error) {
     return next(error);
   }

@@ -7,24 +7,23 @@ import {
 export const placeOrder = async (req, res, next) => {
   const userId = req.user.userId;
 
-  let createdOrder;
   try {
-    createdOrder = await createOrder(userId);
+    const createdOrder = await createOrder(userId);
+    res.status(200).json({ status: "ok", createdOrder });
   } catch (error) {
     next(error);
   }
-  res.status(200).json({ status: "ok", createdOrder });
 };
 
 export const getOrders = async (req, res, next) => {
   let userId = req.user.userId;
   let currentPage = req.query.currentpage;
-
   try {
     const { orders, totalOrders } = await getOrdersByUserId(
       userId,
       currentPage
     );
+
     res.json({ orders, totalOrders, status: "ok" });
   } catch (error) {
     return next(error);

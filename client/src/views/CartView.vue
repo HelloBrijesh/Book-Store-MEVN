@@ -12,8 +12,7 @@ const cartService = useCartService();
 
 const handleRemoveCartItems = async (bookid, quantity, price) => {
   await cartService.removeCartItems(bookid, quantity, price);
-  await cartService.getCart();
-  if (cartService.status.value === "ok") { 
+  if (cartService.status.value === "ok") {
     cartStore.setCartItems(cartService.cartItems.value);
     cartStore.setCartTotal(cartService.cart.value.cartTotal);
     cartStore.setTotalItems(cartService.cart.value.totalItems);
@@ -24,7 +23,6 @@ onMounted(async () => {
   if (!authStore.getisLoggedin) {
     await router.push("/login");
   }
-  
 });
 </script>
 <template>

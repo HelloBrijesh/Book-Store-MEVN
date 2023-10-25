@@ -44,7 +44,7 @@ export default function useBookService() {
   };
 
   const getBestSellingBooks = async () => {
-    url.value = "books/best-selling";
+    url.value = "books/list/best-selling";
     status.value = null;
     error.value = null;
     book.value = null;
@@ -53,7 +53,7 @@ export default function useBookService() {
 
     try {
       const response = await axios.get(url.value);
-      status.value = response.status;
+      status.value = response.data.status;
       listOfBooks.value = response.data.bestSellingBooks;
     } catch (err) {
       error.value = err.response.data.message;

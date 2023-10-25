@@ -64,7 +64,7 @@ export const signup = async (req, res, next) => {
 
     const tokenForemail = (
       await bcrypt.hash(verificationToken, COST_FACTOR)
-    ).replace(/[^a-zA-Z0-9 ]/g, "");
+    ).replace(/[^a-zA-Z0-9]/g, "");
 
     const emailSubject = "Email Verification from Book-Store";
     const emailText = `Hi! There, You have recently visited 

@@ -1,21 +1,20 @@
 <script setup>
 import { onMounted } from "vue";
-import useBookService from "../services/bookService";
 import { RouterLink } from "vue-router";
+import useBookService from "../services/bookService";
 
-const bookService = useBookService();
+const { getBestSellingBooks, error, status, listOfBooks } = useBookService();
 
 onMounted(async () => {
-  await bookService.getBestSellingBooks();
+  await getBestSellingBooks();
 });
-
 </script>
 <template>
-  <div v-if="bookService.status === 'null'">
+  <div v-if="status === null">
     <h1>Loading...</h1>
   </div>
-  <div v-else-if="bookService.error">
-    <h1>{{ bookService.error }}</h1>
+  <div v-else-if="error">
+    <h1>{{ error }}</h1>
   </div>
   <div v-else class="w-full mb-16 sm:mb-28">
     <div class="mx-5 sm:container sm:mx-auto">
@@ -25,7 +24,7 @@ onMounted(async () => {
 
       <div class="grid sm:grid-cols-4 grid-flow-row gap-6">
         <div
-          v-for="book in bookService.listOfBooks"
+          v-for="book in listOfBooks"
           class="grow border rounded-lg overflow-hidden"
         >
           <RouterLink :to="`/book/${book.id}`">
@@ -56,32 +55,4 @@ onMounted(async () => {
       </div>
     </div>
   </div>
-  <!-- <div cass="container mx-auto pb-32">
-    
-    <div class="">
-      <div
-        v-for="book in listOfBooks"
-        class="rounded-md border flex flex-col items-center w-1/4"
-      >
-        <RouterLink :to="`/book/${book.id}`">
-          <img
-            :src="book.image"
-            alt="Laptop"
-            class="aspect-[16/9] w-full rounded-md md:aspect-auto md:h-[300px] lg:h-[200px]"
-          />
-          <div class="p-4">
-            
-            <p class="mt-3 text-sm text-gray-600">{{ book.author }}</p>
-            <p>Price : $ {{ book.price }}</p>
-            <button
-              type="button"
-              class="mt-4 w-full rounded-sm bg-black px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-            >
-              Add to Cart
-            </button>
-          </div>
-        </RouterLink>
-      </div>
-    </div>
-  </div> -->
 </template>

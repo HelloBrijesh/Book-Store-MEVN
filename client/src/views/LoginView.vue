@@ -5,12 +5,14 @@ import { useAuthStore } from "../stores/authStore";
 import useAuthService from "../services/authService";
 import useCartService from "../services/cartService";
 import { useCartStore } from "../stores/cartStore";
+import useUserService from "../services/userService";
 
+const router = useRouter();
 const authStore = useAuthStore();
 const cartStore = useCartStore();
+const userService = useUserService();
 const cartService = useCartService();
-const authService = useAuthService();
-const router = useRouter();
+const { error, status, role, login } = useAuthService();
 
 onMounted(async () => {
   if (authStore.getisLoggedin) {
@@ -24,16 +26,22 @@ const loginPayload = reactive({
 });
 
 const handleLogin = async () => {
-  await authService.login(loginPayload);
-  if (authService.status.value === "ok") {
+  await login(loginPayload);
+  if (status.value === "ok") {
     authStore.setisLoggedin(true);
-    if (authService.role.value === "admin") {
+    if (role.value === "admin") {
       authStore.setisAdmin(true);
     }
-    await authService.cartService.getCart();
-    cartStore.setCartItems(cartService.cart.value.cartItems);
-    cartStore.setCartTotal(cartService.cart.value.cartTotal);
-    cartStore.setTotalItems(cartService.cart.value.totalItems);
+    await cartService.getCart();
+    if (cartService.status.value === "ok") {
+      cartStore.setCartItems(cartService.cart.value.cartItems);
+      cartStore.setCartTotal(cartService.cart.value.cartTotal);
+      cartStore.setTotalItems(cartService.cart.value.totalItems);
+    }
+    await userService.getUserDetails();
+    if (userService.status.value === "ok") {
+      authStore.setUserImage(userService.userDetails.value.image);
+    }
     await router.push("/");
   }
 };
@@ -48,8 +56,8 @@ const handleLogin = async () => {
           Log in to your account
         </h2>
         <div>
-          <h5 v-if="authService.error" class="mt-5 font-bold text-red-600 text-center">
-            {{ authService.error }}
+          <h5 v-if="error" class="mt-5 font-bold text-red-600 text-center">
+            {{ error }}
           </h5>
         </div>
         <form @submit.prevent="handleLogin" class="mt-10">

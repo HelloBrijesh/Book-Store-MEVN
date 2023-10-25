@@ -3,6 +3,8 @@ import { onMounted, ref } from "vue";
 import useOrderService from "../services/orderService";
 
 const orderService = useOrderService();
+const { error, status, getOrders, totalOrders, orders } = useOrderService();
+
 const currentPage = ref(1);
 
 const handlePrevious = async () => {
@@ -19,34 +21,37 @@ const handleNext = async () => {
 };
 const handlePagination = async (page) => {
   currentPage.value = page;
-  await orderService.getOrders(currentPage.value);
+  await getOrders(currentPage.value);
 };
 
 onMounted(async () => {
-  await orderService.getOrders(currentPage.value);
+  await getOrders(currentPage.value);
 });
 </script>
 <template>
-  <div v-if="orderService.status === 'null'">
+  <div v-if="status === null">
     <h1>Loading...</h1>
   </div>
-  <div v-else-if="orderService.error">
-    <h1>{{ orderService.error }}</h1>
+  <div v-else-if="error">
+    <h1>{{ error }}</h1>
   </div>
-  <div class="md:ps-20 mt-10 md:mt-0" v-else>
+  <div v-else-if="totalOrders === 0">
+    <h1 class="flex justify-center items-center">No Orders</h1>
+  </div>
+  <div v-else class="md:ps-20 mt-10 md:mt-0">
     <h1 class="text-2xl font-semibold">Orders</h1>
     <div class="mt-10">
       <div class="w-full md:w-3/4 border">
         <div class="bg-slate-100 flex justify-between px-5 py-3">
-          <h2 class="">OrderNo : {{ orderService.orders[0].id }}</h2>
+          <h2 class="">OrderNo : {{ orders[0].id }}</h2>
           <h2>Date : 01/10/2023</h2>
         </div>
         <div class="">
           <ul class="m-5">
-            <li class="flex" v-for="items in orderService.orders[0].orderedItems">
+            <li class="flex" v-for="items in orders[0].orderedItems">
               <div class="flex-shrink-0">
                 <img
-                  :src="'/' + items.image"
+                  :src="items.image"
                   alt="title"
                   class="sm:h-38 sm:w-38 h-24 w-24 rounded-md object-contain object-center"
                 />
@@ -64,7 +69,7 @@ onMounted(async () => {
           </ul>
         </div>
         <div class="bg-slate-100 flex justify-end px-5 py-3">
-          Total : {{ orderService.orders[0].orderTotal }}
+          Total : {{ orders[0].orderTotal }}
         </div>
       </div>
     </div>
@@ -79,7 +84,7 @@ onMounted(async () => {
       <a
         href="#"
         class="mx-1 flex items-center rounded-md border border-gray-400 px-3 py-1 text-gray-900 hover:scale-105"
-        v-for="page in orderService.totalOrders"
+        v-for="page in totalOrders"
         @click.prevent="(e) => handlePagination(page)"
       >
         <span :class="{ active: page === currentPage }"> {{ page }}</span>

@@ -31,7 +31,7 @@ export default function useUserService() {
       const response = await axios.put(url.value, payload, {
         withCredentials: true,
       });
-      userDetails.value = response.data.userDetails;
+      userDetails.value = response.data.updatedUser;
       status.value = response.data.status;
     } catch (err) {
       error.value = err.response.data.message;

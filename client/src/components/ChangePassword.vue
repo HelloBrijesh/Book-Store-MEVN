@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import useAuthService from "../services/authService";
 
-const authService = useAuthService();
+const { error, status, changePassword } = useAuthService();
 
 const changePasswordPayload = ref({
   currentPassword: "",
@@ -10,8 +10,8 @@ const changePasswordPayload = ref({
 });
 
 const handleChangePassword = async () => {
-  await authService.changePassword(changePasswordPayload.value);
-  if (authService.status.value == "ok") {
+  await changePassword(changePasswordPayload.value);
+  if (status.value == "ok") {
     changePasswordPayload.value = {
       currentPassword: "",
       newPassword: "",
@@ -24,8 +24,8 @@ const handleChangePassword = async () => {
     <h1 class="text-2xl font-semibold">Change Password</h1>
     <div class="mt-10">
       <form @submit.prevent="handleChangePassword">
-        <div v-if="authService.status === 'ok'">Password changed Successfully</div>
-        <div v-else>{{ authService.error }}</div>
+        <div v-if="status === 'ok'">Password changed Successfully</div>
+        <div v-else>{{ error }}</div>
         <table class="border-separate border-spacing-y-5">
           <tr>
             <td>

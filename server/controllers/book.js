@@ -11,46 +11,36 @@ import {
 
 export const fetchBooks = async (req, res, next) => {
   const limit = 12;
-  let books;
-  let count;
-
   const category = req.query.category;
   const price = Number(req.query.price);
   const page = Number(req.query.page);
 
   try {
-    books = await getAllBook(category, price, page, limit);
+    let { books, totalPages } = await getAllBook(category, price, page, limit);
+    res.status(200).json({ status: "ok", books, totalPages });
   } catch (error) {
     return next(error);
   }
-
-  const totalPages = Math.ceil(count / limit);
-  res.status(200).json({ status: "ok", books, totalPages });
 };
 
 export const fetchBookById = async (req, res, next) => {
-  let bookById;
-  let relatedBooks;
   let bookId = req.params.id;
   try {
-    bookById = await getBookById(bookId);
-    relatedBooks = await getRelatedBooks(bookById.category);
+    const bookById = await getBookById(bookId);
+    const relatedBooks = await getRelatedBooks(bookById.category);
+    res.status(200).json({ bookById, relatedBooks, status: "ok" });
   } catch (error) {
     return next(error);
   }
-
-  res.status(200).json({ bookById, relatedBooks, status: "ok" });
 };
 
 export const fetchBestSellingBooks = async (req, res, next) => {
-  let bestSellingBooks;
   try {
-    bestSellingBooks = await getBestSellingBooks();
+    const bestSellingBooks = await getBestSellingBooks();
+    res.status(200).json({ bestSellingBooks });
   } catch (error) {
     return next(error);
   }
-
-  res.status(200).json({ bestSellingBooks });
 };
 
 export const addBook = async (req, res, next) => {
@@ -101,11 +91,10 @@ export const addBook = async (req, res, next) => {
       image,
       language
     );
+    res.status(200).json({ status: "ok" });
   } catch (error) {
     return next(error);
   }
-
-  res.status(200).json({ status: "ok" });
 };
 
 export const updateBook = async (req, res, next) => {
@@ -113,24 +102,20 @@ export const updateBook = async (req, res, next) => {
   const stock = req.body.stock;
   const bookId = req.params.id;
 
-  let book;
   try {
-    await updateBookById(bookId, price, stock);
-    book = await getBookById(bookId);
+    const updatedBook = await updateBookById(bookId, price, stock);
+    res.json({ status: "ok", updatedBook });
   } catch (error) {
     return next(error);
   }
-  res.json({ status: "ok", book });
 };
 
 export const deleteBook = async (req, res, next) => {
   const bookId = req.params.id;
-
   try {
     await deleteBookById(bookId);
+    res.status(200).json({ status: "ok" });
   } catch (error) {
     return next(error);
   }
-
-  res.status(200).json({ status: "ok" });
 };

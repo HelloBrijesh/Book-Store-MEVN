@@ -10,12 +10,13 @@ export const getAllBook = async (category, price, page, limit) => {
       .limit(limit * 1)
       .skip((page - 1) * limit)
       .exec();
-    count = await Book.count({
+    const count = await Book.count({
       category: category,
       price: { $lte: price },
       stock: { $gte: 1 },
     });
-    return books;
+    const totalPages = Math.ceil(count / limit);
+    return { books, totalPages };
   } catch (error) {
     return error;
   }
@@ -66,21 +67,20 @@ export const createBook = async (
   image,
   language
 ) => {
+  const newBook = new Book({
+    title,
+    author,
+    description,
+    price,
+    year,
+    pages,
+    stock,
+    sold,
+    category,
+    image,
+    language,
+  });
   try {
-    const newBook = new Book({
-      title,
-      author,
-      description,
-      price,
-      year,
-      pages,
-      stock,
-      sold,
-      category,
-      image,
-      language,
-    });
-
     await newBook.save();
   } catch (error) {
     return error;
@@ -89,10 +89,15 @@ export const createBook = async (
 
 export const updateBookById = async (bookId, price, stock) => {
   try {
-    await Book.findByIdAndUpdate(bookId, {
-      price: price,
-      stock: stock,
-    });
+    const updatedBook = await Book.findByIdAndUpdate(
+      bookId,
+      {
+        price: price,
+        stock: stock,
+      },
+      { new: true }
+    );
+    return updatedBook;
   } catch (error) {
     return error;
   }

@@ -23,11 +23,12 @@ export default function useCartService() {
       error.value = err.response.data.message;
     }
   };
-  const addCartItems = async (bookid, quantity) => {
+  const addItemsInCart = async (bookid, quantity) => {
     url.value = `cart/item?bookid=${bookid}&quantity=${quantity}`;
     status.value = null;
     error.value = null;
     cart.value = null;
+    cartItems.value = null;
     try {
       const response = await axios.put(
         url.value,
@@ -37,6 +38,8 @@ export default function useCartService() {
         }
       );
       status.value = response.data.status;
+      cart.value = response.data.cart;
+      cartItems.value = response.data.cart.books;
     } catch (err) {
       error.value = err.response.data.message;
     }
@@ -46,6 +49,7 @@ export default function useCartService() {
     status.value = null;
     error.value = null;
     cart.value = null;
+    cartItems.value = null;
     try {
       const response = await axios.delete(
         url.value,
@@ -56,6 +60,7 @@ export default function useCartService() {
       );
       status.value = response.data.status;
       cart.value = response.data.cart;
+      cartItems.value = response.data.cart.books;
     } catch (err) {
       error.value = err.response.data.message;
     }
@@ -65,7 +70,7 @@ export default function useCartService() {
     error,
     cart,
     cartItems,
-    addCartItems,
+    addItemsInCart,
     removeCartItems,
     getCart,
   };

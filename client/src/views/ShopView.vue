@@ -9,9 +9,8 @@ import { useAuthStore } from "../stores/authStore";
 const authStore = useAuthStore();
 const cartStore = useCartStore();
 const cartService = useCartService();
-const bookService = useBookService();
-const route = useRoute();
-const router = useRouter();
+const { error, status, totalPages, listOfBooks, getAllBooks } =
+  useBookService();
 
 const shopPayload = ref({
   category: "Romance",
@@ -26,37 +25,37 @@ const handlePrevious = async () => {
   }
 };
 const handleNext = async () => {
-  if (currentPage.value < bookService.totalPages.value) {
+  if (currentPage.value < totalPages.value) {
     currentPage.value++;
     handlePagination(currentPage.value);
   }
 };
 const handlePagination = async (page) => {
   currentPage.value = page;
-  await bookService.getAllBooks(currentPage.value, shopPayload.value);
+  await getAllBooks(currentPage.value, shopPayload.value);
 };
 const handleShop = async () => {
   currentPage.value = 1;
-  await bookService.getAllBooks(currentPage.value, shopPayload.value);
+  await getAllBooks(currentPage.value, shopPayload.value);
 };
 onMounted(async () => {
-  await bookService.getAllBooks(currentPage.value, shopPayload.value);
-  if (authStore.getisLoggedin) {
-    await cartService.getCart();
-    if (cartService.status.value === "ok") {
-      cartStore.setCartItems(cartService.cart.value.cartItems);
-      cartStore.setCartTotal(cartService.cart.value.cartTotal);
-      cartStore.setTotalItems(cartService.cart.value.totalItems);
-    }
-  }
+  await getAllBooks(currentPage.value, shopPayload.value);
+  // if (authStore.getisLoggedin) {
+  //   await cartService.getCart();
+  //   if (cartService.status.value === "ok") {
+  //     cartStore.setCartItems(cartService.cart.value.cartItems);
+  //     cartStore.setCartTotal(cartService.cart.value.cartTotal);
+  //     cartStore.setTotalItems(cartService.cart.value.totalItems);
+  //   }
+  // }
 });
 </script>
 <template>
-  <div v-if="bookService.status === 'null'">
+  <div v-if="status === null">
     <h1>Loading...</h1>
   </div>
-  <div v-else-if="bookService.error">
-    <h1>{{ bookService.error }}</h1>
+  <div v-else-if="error">
+    <h1>{{ error }}</h1>
   </div>
   <div v-else class="w-full">
     <div class="mx-5 sm:container sm:mx-auto">
@@ -160,7 +159,7 @@ onMounted(async () => {
         <div class="w-full px-5">
           <div class="grid sm:grid-cols-4 gap-6 mb-20">
             <div
-              v-for="book in bookService.listOfBooks"
+              v-for="book in listOfBooks"
               class="grow border rounded-lg overflow-hidden"
             >
               <RouterLink :to="`/book/${book.id}`">
@@ -200,7 +199,7 @@ onMounted(async () => {
             <a
               href="#"
               class="mx-1 flex items-center rounded-md border border-gray-400 px-3 py-1 text-gray-900 hover:scale-105"
-              v-for="page in bookService.totalPages"
+              v-for="page in totalPages"
               @click.prevent="(e) => handlePagination(page)"
             >
               <span :class="{ active: page === currentPage }"> {{ page }}</span>

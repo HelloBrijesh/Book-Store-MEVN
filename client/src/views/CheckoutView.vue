@@ -16,7 +16,6 @@ let cartTotal = ref(null);
 const handleRemoveCartItems = async (bookid, quantity, price) => {
   await cartService.removeCartItems(bookid, quantity, price);
   if (cartService.status.value === "ok") {
-    await cartService.getCart();
     cartStore.setCartItems(cartService.cartItems.value);
     cartStore.setCartTotal(cartService.cart.value.cartTotal);
     cartStore.setTotalItems(cartService.cart.value.totalItems);

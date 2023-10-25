@@ -20,25 +20,30 @@ export const updateUserById = async (
   image
 ) => {
   try {
-    await User.findByIdAndUpdate(userId, {
-      userName: userName,
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      image: image,
-    });
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      {
+        userName: userName,
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        image: image,
+      },
+      { new: true }
+    );
+    return updatedUser;
   } catch (error) {
     return error;
   }
 };
 
 export const createUser = async (userName, email, password) => {
+  const newUser = new User({
+    userName,
+    email,
+    password,
+  });
   try {
-    const newUser = new User({
-      userName,
-      email,
-      password,
-    });
     const createdUser = await newUser.save();
     return createdUser;
   } catch (error) {

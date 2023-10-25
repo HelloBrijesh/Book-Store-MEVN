@@ -14,7 +14,11 @@ import {
 } from "../controllers/user";
 import { getOrders, placeOrder, getSalesData } from "../controllers/order";
 import { addSubscriber, removeSubscriber } from "../controllers/subscription";
-import { fetchCart, addItem, removeItem } from "../controllers/cart";
+import {
+  fetchCart,
+  addItemInCart,
+  deleteItemFromCart,
+} from "../controllers/cart";
 import {
   fetchBookById,
   fetchBooks,
@@ -29,7 +33,7 @@ const router = express.Router();
 router.post("/signup", signup);
 router.post("/login", login);
 router.post("/logout", logout);
-router.get("/refresh", tokenRefresh);
+router.post("/refresh", tokenRefresh);
 router.post("/email", verifyEmail);
 
 router.get("/user", auth, fetchUser);
@@ -39,14 +43,14 @@ router.delete("/user", auth, deleteUser);
 
 router.get("/books", fetchBooks);
 router.get("/books/:id", fetchBookById);
-router.get("/books/best-selling", fetchBestSellingBooks);
+router.get("/books/list/best-selling", fetchBestSellingBooks);
 router.post("/books", [auth, admin], addBook);
 router.put("/books/:id", [auth, admin], updateBook);
 router.delete("/books/:id", [auth, admin], deleteBook);
 
 router.get("/cart", auth, fetchCart);
-router.put("/cart/item", auth, addItem);
-router.delete("/cart/item", auth, removeItem);
+router.put("/cart/item", auth, addItemInCart);
+router.delete("/cart/item", auth, deleteItemFromCart);
 
 router.get("/orders", auth, getOrders);
 router.post("/orders", auth, placeOrder);

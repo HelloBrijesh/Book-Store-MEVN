@@ -2,27 +2,33 @@
 import { onMounted, ref } from "vue";
 import useUserService from "../services/userService";
 
-const userService = useUserService();
+const { error, status, userDetails, updateUserDetails, getUserDetails } =
+  useUserService();
 
 const accountDetails = ref({
   userName: "",
   firstName: "",
   lastName: "",
   email: "",
+  image: "",
 });
 
 const handleUpdateUser = async () => {
-  await userService.updateUserDetails(accountDetails.value);
+  await updateUserDetails(accountDetails.value);
+  if (status.value === "ok") {
+    console.log(userDetails.value);
+  }
 };
 
 onMounted(async () => {
-  await userService.getUserDetails();
-  if (userService.status.value === "ok") {
+  await getUserDetails();
+  if (status.value === "ok") {
     accountDetails.value = {
-      userName: userService.userDetails.value.userName,
-      firstName: userService.userDetails.value.firstName,
-      lastName: userService.userDetails.value.lastName,
-      email: userService.userDetails.value.email,
+      userName: userDetails.value.userName,
+      firstName: userDetails.value.firstName,
+      lastName: userDetails.value.lastName,
+      email: userDetails.value.email,
+      image: userDetails.value.image,
     };
   }
 });

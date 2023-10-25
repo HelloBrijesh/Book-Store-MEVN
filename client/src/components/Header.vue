@@ -14,18 +14,16 @@ library.add(faCartShopping, faBars, faUser);
 
 const authStore = useAuthStore();
 const cartStore = useCartStore();
-const authService = useAuthService();
+const { error, status, logout } = useAuthService();
 
 const isActive = ref(true);
 const isUserActive = ref(true);
 
-onMounted(async () => {
-  
-});
+onMounted(async () => {});
 
 const handleLogout = async () => {
-  await authService.logout();
-  if (authService.status.value === "ok") {
+  await logout();
+  if (status.value === "ok") {
     authStore.$reset();
     cartStore.$reset();
   }
@@ -116,14 +114,14 @@ const handleLogout = async () => {
             "
           >
             <font-awesome-icon
-              v-if="!authStore.getisLoggedin"
+              v-if="authStore.getUserImage === null"
               icon="fa-solid fa-user"
               class="h-5 w-5 hover:cursor-pointer"
             />
             <img
-              v-else="authService.getisLoggedin"
+              v-else
               class="h-10 w-10 rounded-full hover:cursor-pointer"
-              src="https://overreacted.io/static/profile-pic-c715447ce38098828758e525a1128b87.jpg"
+              :src="authStore.getUserImage"
               alt="Dan_Abromov"
             />
           </span>

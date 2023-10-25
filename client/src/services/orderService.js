@@ -9,7 +9,7 @@ export default function useOrderService() {
   const totalOrders = ref(null);
 
   const getOrders = async (currentPage) => {
-    url.value = `orders/${currentPage}`;
+    url.value = `orders?currentpage=${currentPage}`;
     status.value = null;
     error.value = null;
     orders.value = null;
@@ -17,7 +17,7 @@ export default function useOrderService() {
     try {
       const response = await axios.get(url.value);
       status.value = response.data.status;
-      orders.value = response.data.order;
+      orders.value = response.data.orders;
       totalOrders.value = response.data.totalOrders;
     } catch (err) {
       error.value = err.response.data.message;
@@ -39,7 +39,7 @@ export default function useOrderService() {
         }
       );
       status.value = response.data.status;
-      orders.value = response.data.savedOrder;
+      orders.value = response.data.createdOrder;
     } catch (err) {
       error.value = err.response.data.message;
     }

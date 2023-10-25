@@ -1,12 +1,12 @@
 <script setup>
-import { reactive } from "vue";
+import { onMounted, reactive } from "vue";
 import useAuthService from "../services/authService";
 import { useAuthStore } from "../stores/authStore";
 import { useRouter } from "vue-router";
 
-const authStore = useAuthStore();
-const authService = useAuthService();
 const router = useRouter();
+const authStore = useAuthStore();
+const { error, status, signup } = useAuthService();
 
 const signupPayload = reactive({
   userName: "",
@@ -15,21 +15,24 @@ const signupPayload = reactive({
 });
 
 const handleSignup = async () => {
+  await signup(signupPayload);
+};
+
+onMounted(async () => {
   if (authStore.getisLoggedin) {
     await router.push("/");
   }
-  await authService.signup(signupPayload);
-};
+});
 </script>
 <template>
-  <section v-if="authService.status === 'ok'">
+  <section v-if="status === 'ok'">
     <h1 class="h-screen flex justify-center items-center">
       Verification link has been sent to
       <i>{{ signupPayload.email }}</i
       >. Please verify your email
     </h1>
   </section>
-  <section v-else="authService.status === 'null'">
+  <section v-else="status === null">
     <div
       class="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24"
     >
@@ -49,8 +52,8 @@ const handleSignup = async () => {
         </p>
 
         <div>
-          <h5 v-if="authService.error" class="mt-5 font-bold text-red-600 text-center">
-            {{ authService.error }}
+          <h5 v-if="error" class="mt-5 font-bold text-red-600 text-center">
+            {{ error }}
           </h5>
         </div>
 

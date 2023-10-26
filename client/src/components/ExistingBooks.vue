@@ -8,7 +8,7 @@ const { error, status, getAllBooks, totalPages, listOfBooks } =
 
 const getBooksPayload = ref({
   category: "Romance",
-  price: 50,
+  price: 500,
 });
 const currentPage = ref(1);
 

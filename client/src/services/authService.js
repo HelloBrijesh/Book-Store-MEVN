@@ -3,69 +3,56 @@ import axios from "axios";
 
 export default function useAuthService() {
   const url = ref(null);
-  const statusCode = ref(null);
+  const status = ref(null);
   const error = ref(null);
-  const authDetail = ref({});
+  const role = ref(null);
 
-  const signUp = async (signUpPayload) => {
+  const signup = async (signUpPayload) => {
     url.value = "signup";
-    statusCode.value = null;
+    status.value = null;
     error.value = null;
-    authDetail.value = {};
-
+    role.value = null;
     try {
       const response = await axios.post(url.value, signUpPayload, {
         withCredentials: true,
       });
-      statusCode.value = response.data.status;
-    } catch (err) {
-      error.value = err.response.data.message;
-    }
-  };
-  const verifyEmail = async (emailToken) => {
-    url.value = `verifyemail/${emailToken}`;
-    statusCode.value = null;
-    error.value = null;
-    authDetail.value = {};
-
-    try {
-      const response = await axios.get(url.value, {
-        withCredentials: true,
-      });
-      axios.defaults.headers.common[
-        "Authorization"
-      ] = `Bearer ${response.data.access_token}`;
-      statusCode.value = response.data.verificationReason;
-      authDetail.value = response.data.authDetail;
-    } catch (err) {
-      error.value = err.response.data.message;
-    }
-  };
-  const sendVerificationEmail = async (Payload) => {
-    url.value = "sendverificationemail";
-    statusCode.value = null;
-    error.value = null;
-    authDetail.value = {};
-    try {
-      const response = await axios.post(url.value, Payload, {
-        withCredentials: true,
-      });
-      statusCode.value = response.statusText;
+      status.value = response.data.status;
     } catch (err) {
       error.value = err.response.data.message;
     }
   };
 
-  const changePassword = async (changePasswordPayload) => {
-    url.value = "changepassword";
-    statusCode.value = null;
+  const verifyEmail = async (token) => {
+    url.value = `email?token=${token}`;
+    status.value = null;
     error.value = null;
-    authDetail.value = {};
+    role.value = null;
+
     try {
-      const response = await axios.post(url.value, changePasswordPayload, {
+      const response = await axios.post(
+        url.value,
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+      status.value = response.data.status;
+    } catch (err) {
+      error.value = err.response.data.message;
+    }
+  };
+
+  const forgotPassword = async (payload) => {
+    url.value = "forgotpassword";
+    status.value = null;
+    error.value = null;
+    role.value = null;
+
+    try {
+      const response = await axios.post(url.value, payload, {
         withCredentials: true,
       });
-      statusCode.value = response.data.status;
+      status.value = response.data.status;
     } catch (err) {
       error.value = err.response.data.message;
     }
@@ -73,9 +60,10 @@ export default function useAuthService() {
 
   const login = async (logInPayload) => {
     url.value = "login";
-    statusCode.value = null;
+    status.value = null;
     error.value = null;
-    authDetail.value = {};
+    role.value = null;
+
     try {
       const response = await axios.post(url.value, logInPayload, {
         withCredentials: true,
@@ -83,18 +71,18 @@ export default function useAuthService() {
       axios.defaults.headers.common[
         "Authorization"
       ] = `Bearer ${response.data.access_token}`;
-
-      statusCode.value = response.data;
-      authDetail.value = response.data.authDetail;
+      role.value = response.data.role;
+      status.value = response.data.status;
     } catch (err) {
       error.value = err.response.data.message;
     }
   };
+
   const logout = async () => {
     url.value = "logout";
-    statusCode.value = null;
+    status.value = null;
     error.value = null;
-    authDetail.value = {};
+    role.value = null;
 
     try {
       axios.defaults.headers.common["Authorization"] = "";
@@ -103,21 +91,37 @@ export default function useAuthService() {
         {},
         { withCredentials: true }
       );
-      statusCode.value = response.data.status;
+      status.value = response.data.status;
     } catch (err) {
-      error.value = err;
+      error.value = err.response.data.message;
+    }
+  };
+
+  const changePassword = async (changePasswordPayload) => {
+    url.value = "user/password";
+    status.value = null;
+    error.value = null;
+    role.value = null;
+
+    try {
+      const response = await axios.put(url.value, changePasswordPayload, {
+        withCredentials: true,
+      });
+      status.value = response.data.status;
+    } catch (err) {
+      error.value = err.response.data.message;
     }
   };
 
   return {
-    signUp,
+    signup,
     login,
-    logout,
+    forgotPassword,
     verifyEmail,
-    sendVerificationEmail,
+    logout,
     changePassword,
+    role,
     error,
-    authDetail,
-    statusCode,
+    status,
   };
 }

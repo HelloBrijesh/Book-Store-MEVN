@@ -1,171 +1,103 @@
-<template>
-  <div class="site-wrap">
-    <Header></Header>
-    <div class="bg-light py-3">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 mb-0">
-            <RouterLink to="/">Home</RouterLink>
-            <span class="mx-2 mb-0">/</span>
-            <strong class="text-black">Contact</strong>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="site-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h2 class="h3 mb-3 text-black">Get In Touch</h2>
-          </div>
-          <div class="col-md-7">
-            <form @submit.prevent="handleContactUs">
-              <div class="p-3 p-lg-5 border">
-                <div class="form-group row">
-                  <div class="col-md-6">
-                    <label for="firstName" class="text-black"
-                      >First Name <span class="text-danger">*</span></label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="firstName"
-                      name="firstName"
-                      v-model="contactUsPayload.firstName"
-                      required
-                    />
-                  </div>
-                  <div class="col-md-6">
-                    <label for="lastName" class="text-black"
-                      >Last Name <span class="text-danger">*</span></label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="lastName"
-                      name="lastName"
-                      v-model="contactUsPayload.lastName"
-                      required
-                    />
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <div class="col-md-12">
-                    <label for="email" class="text-black"
-                      >Email <span class="text-danger">*</span></label
-                    >
-                    <input
-                      type="email"
-                      class="form-control"
-                      id="email"
-                      name="email"
-                      placeholder=""
-                      v-model="contactUsPayload.email"
-                      required
-                    />
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <div class="col-md-12">
-                    <label for="subject" class="text-black">Subject </label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="subject"
-                      name="subject"
-                      v-model="contactUsPayload.subject"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <div class="col-md-12">
-                    <label for="message" class="text-black">Message </label>
-                    <textarea
-                      name="message"
-                      id="message"
-                      cols="30"
-                      rows="7"
-                      class="form-control"
-                      v-model="contactUsPayload.message"
-                      required
-                    ></textarea>
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <div class="col-lg-12">
-                    <input
-                      type="submit"
-                      class="btn btn-primary btn-lg btn-block"
-                      value="Send Message"
-                    />
-                  </div>
-                </div>
-              </div>
-            </form>
-            <div
-              v-if="error"
-              class="text-danger text-center mt-3 font-weight-bold"
-            >
-              {{ error }}
-            </div>
-          </div>
-          <div class="col-md-5 ml-auto">
-            <div class="p-4 border mb-3">
-              <span class="d-block text-primary h6 text-uppercase"
-                >New York</span
-              >
-              <p class="mb-0">
-                203 Fake St. Mountain View, San Francisco, California, USA
-              </p>
-            </div>
-            <div class="p-4 border mb-3">
-              <span class="d-block text-primary h6 text-uppercase">London</span>
-              <p class="mb-0">
-                203 Fake St. Mountain View, San Francisco, California, USA
-              </p>
-            </div>
-            <div class="p-4 border mb-3">
-              <span class="d-block text-primary h6 text-uppercase">Canada</span>
-              <p class="mb-0">
-                203 Fake St. Mountain View, San Francisco, California, USA
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <Footer></Footer>
-  </div>
-</template>
-
 <script setup>
-import Header from "../components/Header.vue";
-import Footer from "../components/Footer.vue";
-import { RouterLink, useRouter } from "vue-router";
 import { ref } from "vue";
 import useUserService from "../services/userService";
 
-const { contactUs, error, statusCode } = useUserService();
-
-const router = useRouter();
+const { error, status, contactUs } = useUserService();
 const contactUsPayload = ref({
-  firstName: "",
-  lastName: "",
+  name: "",
   email: "",
-  subject: "",
   message: "",
 });
 
 const handleContactUs = async () => {
   await contactUs(contactUsPayload.value);
-  if (statusCode.value === "ok") {
-    alert("Thank You contacting us");
-    window.location.reload();
+  if (status.value === "ok") {
+    alert("Message sent successfully");
   }
 };
 </script>
-
-<style scoped></style>
+<template>
+  <div class="w-full py-20">
+    <div class="sm:container sm:mx-auto mx-5">
+      <div class="pb-10 sm:text-center">
+        <h1 class="text-2xl">Contact</h1>
+      </div>
+      <div class="max-w-2xl mx-auto">
+        <form @submit.prevent="handleContactUs" class="">
+          <div class="space-y-5">
+            <div>
+              <label for="name" class="text-base font-medium text-gray-900">
+                Name
+              </label>
+              <div class="mt-2">
+                <input
+                  class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                  type="text"
+                  placeholder="Name"
+                  id="name"
+                  v-model="contactUsPayload.name"
+                />
+              </div>
+            </div>
+            <div>
+              <label for="email" class="text-base font-medium text-gray-900">
+                Email address
+              </label>
+              <div class="mt-2">
+                <input
+                  class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                  type="email"
+                  placeholder="Email"
+                  id="email"
+                  v-model="contactUsPayload.email"
+                />
+              </div>
+            </div>
+            <div>
+              <div class="flex items-center justify-between">
+                <label
+                  for="password"
+                  class="text-base font-medium text-gray-900"
+                >
+                  Message
+                </label>
+              </div>
+              <div class="mt-2">
+                <textarea
+                  class="w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                  placeholder="Message"
+                  id="message"
+                  rows="9"
+                  cols="33"
+                  v-model="contactUsPayload.message"
+                ></textarea>
+              </div>
+            </div>
+            <div class="text-center pt-8">
+              <button
+                type="submit"
+                class="inline-flex w-2xl items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
+              >
+                Submit
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="ml-2"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>

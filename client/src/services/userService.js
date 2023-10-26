@@ -3,76 +3,62 @@ import axios from "axios";
 
 export default function useUserService() {
   const url = ref(null);
-  const statusCode = ref(null);
+  const userDetails = ref(null);
+  const status = ref(null);
   const error = ref(null);
-  const userDetail = ref({});
 
-  const getUser = async () => {
+  const getUserDetails = async () => {
     url.value = "user";
-    statusCode.value = null;
+    status.value = null;
     error.value = null;
-    userDetail.value = {};
+    userDetails.value = null;
+
     try {
-      const response = await axios.get(url.value, {
-        withCredentials: true,
-      });
-      statusCode.value = response.status;
-      userDetail.value = response.data.userDetail;
-    } catch (err) {
-      error.value = err.response.data.message;
-    }
-  };
-  const updateEmail = async (updateEmailPayload) => {
-    url.value = "updateemail";
-    statusCode.value = null;
-    error.value = null;
-    userDetail.value = {};
-    try {
-      const response = await axios.post(url.value, updateEmailPayload, {
-        withCredentials: true,
-      });
-      statusCode.value = response.data.status;
-    } catch (err) {
-      error.value = err.response.data.message;
-    }
-  };
-  const deleteUser = async () => {
-    url.value = "deleteuser";
-    statusCode.value = null;
-    error.value = null;
-    userDetail.value = {};
-    try {
-      const response = await axios.get(url.value, {
-        withCredentials: true,
-      });
-      statusCode.value = response.data.status;
+      const response = await axios.get(url.value);
+      userDetails.value = response.data.userDetails;
+      status.value = response.data.status;
     } catch (err) {
       error.value = err.response.data.message;
     }
   };
 
-  const contactUs = async (contactUsPayload) => {
-    url.value = "contactus";
-    statusCode.value = null;
+  const updateUserDetails = async (payload) => {
+    url.value = "user";
+    status.value = null;
     error.value = null;
-    userDetail.value = {};
+    userDetails.value = null;
     try {
-      const response = await axios.post(url.value, contactUsPayload, {
+      const response = await axios.put(url.value, payload, {
         withCredentials: true,
       });
-      statusCode.value = response.data.status;
+      userDetails.value = response.data.updatedUser;
+      status.value = response.data.status;
+    } catch (err) {
+      error.value = err.response.data.message;
+    }
+  };
+
+  const contactUs = async (payload) => {
+    url.value = "contact";
+    status.value = null;
+    error.value = null;
+    userDetails.value = null;
+    try {
+      const response = await axios.post(url.value, payload, {
+        withCredentials: true,
+      });
+      status.value = response.data.status;
     } catch (err) {
       error.value = err.response.data.message;
     }
   };
 
   return {
-    getUser,
-    updateEmail,
-    deleteUser,
     contactUs,
+    getUserDetails,
+    updateUserDetails,
     error,
-    userDetail,
-    statusCode,
+    status,
+    userDetails,
   };
 }

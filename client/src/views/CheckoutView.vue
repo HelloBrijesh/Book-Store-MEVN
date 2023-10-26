@@ -1,242 +1,321 @@
-<template>
-  <div class="site-wrap">
-    <Header></Header>
-    <div class="bg-light py-3">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 mb-0">
-            <RouterLink to="/">Home</RouterLink>
-            <span class="mx-2 mb-0">/</span>
-            <RouterLink to="/cart">Cart</RouterLink>
-            <span class="mx-2 mb-0">/</span>
-            <strong class="text-black">Checkout</strong>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="site-section">
-      <div class="container">
-        <form @submit.prevent="handlePlaceOrder">
-          <div class="row">
-            <div class="col-md-6 mb-5 mb-md-0">
-              <h2 class="h3 mb-3 text-black">Billing Details</h2>
-              <div class="p-3 p-lg-5 border">
-                <div class="form-group row">
-                  <div class="col-md-6">
-                    <label for="firstName" class="text-black"
-                      >First Name <span class="text-danger">*</span></label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="firstName"
-                      v-model="billingDetails.firstName"
-                      required
-                    />
-                  </div>
-                  <div class="col-md-6">
-                    <label for="lastName" class="text-black"
-                      >Last Name <span class="text-danger">*</span></label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="lastName"
-                      v-model="billingDetails.lastName"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <div class="col-md-12">
-                    <label for="address" class="text-black"
-                      >Address <span class="text-danger">*</span></label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="address"
-                      v-model="billingDetails.address"
-                      required
-                    />
-                  </div>
-                </div>
-                <div class="form-group row">
-                  <div class="col-md-6">
-                    <label for="state" class="text-black"
-                      >State<span class="text-danger">*</span></label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="state"
-                      v-model="billingDetails.state"
-                      required
-                    />
-                  </div>
-                  <div class="col-md-6">
-                    <label for="postalCode" class="text-black"
-                      >Postal <span class="text-danger">*</span></label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="postalCode"
-                      v-model="billingDetails.postalCode"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div class="form-group row mb-5">
-                  <div class="col-md-6">
-                    <label for="email" class="text-black"
-                      >Email Address <span class="text-danger">*</span></label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="email"
-                      v-model="billingDetails.email"
-                      required
-                    />
-                  </div>
-                  <div class="col-md-6">
-                    <label for="phone" class="text-black"
-                      >Phone <span class="text-danger">*</span></label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="phone"
-                      v-model="billingDetails.phone"
-                      required
-                    />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="orderNotes" class="text-black">Order Notes</label>
-                  <textarea
-                    name="orderNotes"
-                    id="orderNotes"
-                    cols="30"
-                    rows="5"
-                    class="form-control"
-                    placeholder="Write your notes here..."
-                    v-model="billingDetails.orderNotes"
-                  ></textarea>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="row mb-5">
-                <div class="col-md-12">
-                  <h2 class="h3 mb-3 text-black">Your Order</h2>
-                  <div class="p-3 p-lg-5 border">
-                    <table class="table site-block-order-table mb-5">
-                      <thead>
-                        <th>Product</th>
-                        <th>Total</th>
-                      </thead>
-                      <tbody>
-                        <tr v-for="item in cart">
-                          <td>
-                            {{ item.bookName }} <strong class="mx-2">x</strong>
-                            {{ item.quantity }}
-                          </td>
-                          <td>${{ item.price * item.quantity }}</td>
-                        </tr>
-                        <tr>
-                          <td class="text-black font-weight-bold">
-                            <strong>Cart Subtotal</strong>
-                          </td>
-                          <td class="text-black">
-                            ${{ cartStore.getCartTotal }}
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-black font-weight-bold">
-                            <strong>Order Total</strong>
-                          </td>
-                          <td class="text-black font-weight-bold">
-                            <strong>${{ cartStore.getCartTotal }}</strong>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-
-                    <div class="form-group">
-                      <button
-                        type="submit"
-                        class="btn btn-primary btn-lg py-3 btn-block"
-                      >
-                        Place Order
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
-        <!-- </form> -->
-      </div>
-    </div>
-    <Footer></Footer>
-  </div>
-</template>
-
 <script setup>
-import Header from "../components/Header.vue";
-import Footer from "../components/Footer.vue";
 import { onMounted, ref } from "vue";
-import { useRouter, RouterLink } from "vue-router";
-import { useAuthStore } from "../stores/authStore";
 import { useCartStore } from "../stores/cartStore";
-import { useOrderStore } from "../stores/orderStore";
+import { useRouter } from "vue-router";
+import { useAuthStore } from "../stores/authStore";
+import useCartService from "../services/cartService";
 import useOrderService from "../services/orderService";
 
 const router = useRouter();
-const authStore = useAuthStore();
 const cartStore = useCartStore();
-const orderStore = useOrderStore();
-const { placeOrder, error, statusCode, orders } = useOrderService();
+const authStore = useAuthStore();
+const cartService = useCartService();
+const orderService = useOrderService();
 
-const cart = cartStore.getCartItems;
+let items = ref(null);
+let cartTotal = ref(null);
 
-const billingDetails = ref({
-  firstName: "",
-  lastName: "",
-  address: "",
-  state: "",
-  postalCode: "",
-  email: "",
-  phone: "",
-  orderNotes: "",
+const handleRemoveCartItems = async (bookid, quantity, price) => {
+  await cartService.removeCartItems(bookid, quantity, price);
+  if (cartService.status.value === "ok") {
+    cartStore.setCartItems(cartService.cartItems.value);
+    cartStore.setCartTotal(cartService.cart.value.cartTotal);
+    cartStore.setTotalItems(cartService.cart.value.totalItems);
+    router.go();
+  }
+};
+
+const placeOrderPayload = ref({
+  orderTotal: cartStore.getCartTotal,
+  orderedItems: cartStore.getCartItems,
+  shippingAddress: {
+    name: "",
+    streetAddress: "",
+    city: "",
+    state: "",
+    postalCode: "",
+  },
 });
 
-const orderPayLoad = ref({
-  user: authStore.getSessionDetails,
-  cart: cartStore.getCartItems,
-  cartTotal: cartStore.getCartTotal,
-  billingDetails: billingDetails.value,
-});
-
+const orderId = ref(null);
 const handlePlaceOrder = async () => {
-  await placeOrder(orderPayLoad);
-  orderStore.setOrders(orders.value);
-  cartStore.$reset();
-  router.push("/thankyou");
+  placeOrderPayload.value.orderTotal = cartStore.getCartTotal;
+  placeOrderPayload.value.orderedItems = cartStore.getCartItems;
+  await orderService.placeOrder(placeOrderPayload.value);
+  if (orderService.status.value === "ok") {
+    cartStore.$reset();
+    orderId.value = orderService.orders.value;
+    await router.push(`/order/${orderId.value}`);
+  }
 };
 
 onMounted(async () => {
   if (!authStore.getisLoggedin) {
     await router.push("/login");
   }
+  if (cartStore.getCartItems.length === 0) {
+    await router.push("/cart");
+  }
+  items.value = cartStore.getCartItems;
+  cartTotal.value = cartStore.getCartTotal;
 });
 </script>
+<template>
+  <div class="w-full my-20">
+    <div class="sm:container sm:mx-auto mx-5">
+      <div class="flex flex-col sm:flex-row sm:mx-20 border rounded-lg">
+        <div class="sm:w-2/4 bg-gray-100 p-7">
+          <div v-for="item in items" class="">
+            <div class="flex justify-between">
+              <div class="flex justify-between w-3/4">
+                <div class="h-20 w-20">
+                  <img
+                    class="h-full w-full object-contain"
+                    :src="item.imageUrl"
+                    :alt="item.title"
+                  />
+                </div>
+                <div class="ms-5 w-full">
+                  <p class="font-semibold">{{ item.title }}</p>
+                  <p class="">{{ item.author }}</p>
+                  <p class="">x {{ item.quantity }}</p>
+                </div>
+              </div>
+              <div class="flex flex-col items-end justify-between w-1/4 me-5">
+                <p>$ {{ item.price }}</p>
+                <p>
+                  <button
+                    type="button"
+                    class="-m-2 inline-flex rounded p-2 text-gray-400 transition-all duration-200 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
+                    @click="
+                      () =>
+                        handleRemoveCartItems(
+                          item.bookId,
+                          item.quantity,
+                          item.price
+                        )
+                    "
+                  >
+                    <span class="sr-only">Remove</span>
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="h-5 w-5"
+                    >
+                      <line x1="18" y1="6" x2="6" y2="18"></line>
+                      <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                  </button>
+                </p>
+              </div>
+            </div>
+            <hr class="my-5" />
+          </div>
+          <div
+            class="sm:flex sm:space-x-2.5 md:flex-col md:space-x-0 lg:flex-row lg:space-x-2.5"
+          >
+            <div class="flex-grow">
+              <input
+                class="flex w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                type="text"
+                placeholder="Enter coupon code"
+              />
+            </div>
+            <div class="mt-4 sm:mt-0 md:mt-4 lg:mt-0">
+              <button
+                type="button"
+                class="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              >
+                Apply Coupon
+              </button>
+            </div>
+          </div>
+          <ul class="mt-6 space-y-3">
+            <li class="flex items-center justify-between text-gray-600">
+              <p class="text-sm font-medium">Sub total</p>
+              <p class="text-sm font-medium">$ 0</p>
+            </li>
+            <li class="flex items-center justify-between text-gray-900">
+              <p class="text-sm font-medium">Total</p>
+              <p class="text-sm font-bold">$ {{ cartTotal }}</p>
+            </li>
+          </ul>
+        </div>
+        <div class="sm:w-2/4 p-7">
+          <div>
+            <h1 class="font-semibold text-lg">Contact Information</h1>
+            <div class="py-5">
+              <label
+                class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                for="name"
+              >
+                Full Name
+              </label>
+              <input
+                class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                type="text"
+                placeholder="Enter your name"
+                id="name"
+                v-model="placeOrderPayload.shippingAddress.name"
+                required
+              />
+            </div>
+          </div>
+          <!-- <hr class="my-5" />
+          <div class="">
+            <h1 class="font-semibold text-lg">Payment Details</h1>
 
-<style scoped></style>
+            <div class="mt-6 grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4">
+              <div class="col-span-3 sm:col-span-4">
+                <label
+                  for="cardNum"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  Card number
+                </label>
+                <div class="mt-1">
+                  <input
+                    class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                    type="text"
+                    placeholder="4242 4242 4242 4242"
+                    id="cardNum"
+                  />
+                </div>
+              </div>
+              <div class="col-span-2 sm:col-span-3">
+                <label
+                  for="expiration-date"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  Expiration date (MM/YY)
+                </label>
+                <div class="mt-1">
+                  <input
+                    type="date"
+                    name="expiration-date"
+                    id="expiration-date"
+                    autoComplete="cc-exp"
+                    class="block h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  for="cvc"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  CVC
+                </label>
+                <div class="mt-1">
+                  <input
+                    type="text"
+                    name="cvc"
+                    id="cvc"
+                    autoComplete="csc"
+                    class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                  />
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <hr class="my-7" />
+
+          <div>
+            <h3 class="text-lg font-semibold text-gray-900">
+              Shipping address
+            </h3>
+            <div class="mt-6 grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-3">
+              <div class="sm:col-span-3">
+                <label
+                  for="address"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  Address
+                </label>
+                <div class="mt-1">
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    autoComplete="street-address"
+                    class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                    v-model="placeOrderPayload.shippingAddress.streetAddress"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  for="city"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  City
+                </label>
+                <div class="mt-1">
+                  <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    autoComplete="address-level2"
+                    class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                    v-model="placeOrderPayload.shippingAddress.city"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  for="region"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  State / Province
+                </label>
+                <div class="mt-1">
+                  <input
+                    type="text"
+                    id="region"
+                    name="region"
+                    autoComplete="address-level1"
+                    class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                    v-model="placeOrderPayload.shippingAddress.state"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  for="postal-code"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  Postal code
+                </label>
+                <div class="mt-1">
+                  <input
+                    type="text"
+                    id="postal-code"
+                    name="postal-code"
+                    autoComplete="postal-code"
+                    class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                    v-model="placeOrderPayload.shippingAddress.postalCode"
+                  />
+                </div>
+              </div>
+            </div>
+            <hr class="my-8" />
+            <div class="flex justify-end border-gray-200">
+              <button
+                @click="handlePlaceOrder"
+                class="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              >
+                PlaceOrder
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

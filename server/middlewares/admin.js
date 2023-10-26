@@ -1,17 +1,18 @@
-import { User } from "../models";
-import CustomErrorHandler from "../services/CustomErrorHandler";
+import { customErrorHandler } from "../services";
+import { getUserById } from "../services/user";
 
 const admin = async (req, res, next) => {
   try {
-    const user = await User.findOne({ _id: req.user._id });
+    const user = await getUserById(req.user.userId);
     if (user.role === "admin") {
       next();
     } else {
-      return next(CustomErrorHandler.unAuthorized());
+      return next(customErrorHandler.unAuthorized());
     }
   } catch (err) {
-    return next(CustomErrorHandler.serverError(err.message));
+    return next(customErrorHandler.serverError(err.message));
   }
 };
 
 export default admin;
+

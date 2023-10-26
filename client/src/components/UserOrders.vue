@@ -1,58 +1,120 @@
-<template>
-  <h3>No of Orders : {{ totalOrders }}</h3>
-  <hr />
-  <div class="pt-0 p-3 mb-3">
-    <div v-for="order in orders">
-      <div class="font-weight-bold text-right">
-        <span>OrderNo : {{ order._id }}</span>
-      </div>
-      <table class="table site-block-order-table mb-5">
-        <thead>
-          <th>Product</th>
-          <th>Quantity</th>
-          <th>Price</th>
-          <th>Total</th>
-        </thead>
-        <tbody>
-          <tr v-for="item in order.orderedItems">
-            <td>{{ item.bookName }}</td>
-            <td>{{ item.quantity }}</td>
-            <td>${{ item.price }}</td>
-            <td>${{ item.price * item.quantity }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- <div>
-      <h5>List of Items</h5>
-      
-    </div> -->
-    <!-- <div>
-      <h5>Shipping Address</h5>
-      <p class="mb-0">
-        {{ order.billingDetail.firstName }} {{ order.billingDetail.lastName }}
-      </p>
-      <p class="mb-0">
-        {{ order.billingDetail.address }}, {{ order.billingDetail.state }} ,
-        {{ order.billingDetail.postalCode }}
-      </p>
-      <p class="mb-0">E mail : {{ order.billingDetail.email }}</p>
-      <p class="mb-0">Phone : {{ order.billingDetail.phone }}</p>
-    </div> -->
-  </div>
-</template>
-
 <script setup>
 import { onMounted, ref } from "vue";
 import useOrderService from "../services/orderService";
 
-const { getOrders, error, statusCode, orders } = useOrderService();
-let totalOrders = ref(null);
+const { error, status, getOrders, totalOrders, orders } = useOrderService();
+
+const currentPage = ref(1);
+
+const handlePrevious = async () => {
+  if (currentPage.value > 1) {
+    currentPage.value--;
+    handlePagination(currentPage.value);
+  }
+};
+const handleNext = async () => {
+  if (currentPage.value < totalPages.value) {
+    currentPage.value++;
+    handlePagination(currentPage.value);
+  }
+};
+const handlePagination = async (page) => {
+  currentPage.value = page;
+  await getOrders(currentPage.value);
+};
+
 onMounted(async () => {
-  await getOrders();
-  totalOrders.value = orders.value.length;
+  await getOrders(currentPage.value);
 });
 </script>
+<template>
+  <div v-if="status === null">
+    <h1>Loading...</h1>
+  </div>
+  <div v-else-if="error">
+    <h1>{{ error }}</h1>
+  </div>
+  <div v-else-if="totalOrders === 0">
+    <h1 class="flex justify-center items-center">No Orders</h1>
+  </div>
+  <div v-else class="md:ps-20 mt-10 md:mt-0">
+    <h1 class="text-2xl font-semibold">Orders</h1>
+    <div class="mt-10">
+      <div class="w-full md:w-3/4 border">
+        <div class="bg-slate-100 flex justify-between px-5 py-3">
+          <h2 class="">OrderNo : {{ orders[0].id }}</h2>
+          <h2>Date : 01/10/2023</h2>
+        </div>
+        <div class="">
+          <ul class="m-5">
+            <li class="flex mb-5" v-for="items in orders[0].orderedItems">
+              <div class="flex-shrink-0">
+                <img
+                  :src="items.imageUrl"
+                  alt="title"
+                  class="sm:h-38 sm:w-38 h-24 w-24 rounded-md object-contain object-center"
+                />
+              </div>
+              <div class="flex flex-col flex-1 gap-1 ms-4">
+                <p>{{ items.title }}</p>
+                <p>{{ items.author }}</p>
+                <p class="">
+                  <span>{{ items.quantity }} x </span>
+                  <span>{{ items.price }}</span>
+                </p>
+              </div>
+              <div class="">{{ items.quantity * items.price }}</div>
+            </li>
+          </ul>
+          <div class="px-5 py-3">
+            <div class="font-bold mb-3">Shipping Address</div>
+            <p>{{ orders[0].shippingAddress.name }}</p>
+            <p>
+              {{ orders[0].shippingAddress.streetAddress }}&nbsp;{{
+                orders[0].shippingAddress.city
+              }}
+            </p>
+            <p>
+              {{ orders[0].shippingAddress.state }}&nbsp;{{
+                orders[0].shippingAddress.postalCode
+              }}
+            </p>
+          </div>
+        </div>
+        <div class="bg-slate-100 flex justify-end px-5 py-3">
+          Total : {{ orders[0].orderTotal }}
+        </div>
+      </div>
+    </div>
+    <div class="w-full md:w-3/4 flex items-center justify-center py-16">
+      <a
+        href="#"
+        class="mx-1 text-sm font-semibold text-gray-900"
+        @click.prevent="handlePrevious"
+      >
+        ← Previous
+      </a>
+      <a
+        href="#"
+        class="mx-1 flex items-center rounded-md border border-gray-400 px-3 py-1 text-gray-900 hover:scale-105"
+        v-for="page in totalOrders"
+        @click.prevent="(e) => handlePagination(page)"
+      >
+        <span :class="{ active: page === currentPage }"> {{ page }}</span>
+      </a>
 
-<style scoped></style>
+      <a
+        href="#"
+        class="mx-2 text-sm font-semibold text-gray-900"
+        @click.prevent="handleNext"
+      >
+        Next →
+      </a>
+    </div>
+  </div>
+</template>
+<style scoped>
+.active {
+  color: red;
+}
+</style>

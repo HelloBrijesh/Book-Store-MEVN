@@ -1,164 +1,164 @@
-<template>
-  <div class="site-wrap">
-    <Header></Header>
-    <div class="bg-light py-3">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 mb-0">
-            <RouterLink to="/">Home</RouterLink>
-            <span class="mx-2 mb-0">/</span>
-            <strong class="text-black">Cart</strong>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="site-section">
-      <div class="container">
-        <div class="row mb-5">
-          <form class="col-md-12" method="post">
-            <div class="site-blocks-table">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th class="product-thumbnail">Image</th>
-                    <th class="product-name">Product</th>
-                    <th class="product-price">Price</th>
-                    <th class="product-quantity">Quantity</th>
-                    <th class="product-total">Total</th>
-                    <th class="product-remove">Remove</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="item in cart">
-                    <td class="product-thumbnail">
-                      <img
-                        :src="item.imageUrl"
-                        alt="Image"
-                        height="100"
-                        style="object-fit: contain"
-                      />
-                    </td>
-                    <td class="product-name">
-                      <h2 class="h5 text-black">{{ item.bookName }}</h2>
-                    </td>
-                    <td>${{ item.price }}</td>
-                    <td>
-                      {{ item.quantity }}
-                    </td>
-                    <td>$ {{ item.price * item.quantity }}</td>
-                    <td>
-                      <RouterLink
-                        to="#"
-                        class="btn btn-primary btn-sm"
-                        @click="(e) => handleRemoveItem(item)"
-                        >X</RouterLink
-                      >
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </form>
-        </div>
-
-        <div class="row">
-          <div class="col-md-6">
-            <!-- <div class="row">
-              <div class="col-md-12">
-                <label class="text-black h4" for="coupon">Coupon</label>
-                <p>Enter your coupon code if you have one.</p>
-              </div>
-              <div class="col-md-8 mb-3 mb-md-0">
-                <input
-                  type="text"
-                  class="form-control py-3"
-                  id="coupon"
-                  placeholder="Coupon Code"
-                />
-              </div>
-              <div class="col-md-4">
-                <button class="btn btn-primary btn-sm">Apply Coupon</button>
-              </div>
-            </div> -->
-          </div>
-          <div class="col-md-6 pl-5">
-            <div class="row justify-content-end">
-              <div class="col-md-7">
-                <div class="row">
-                  <div class="col-md-12 text-right border-bottom mb-5">
-                    <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <div class="col-md-6">
-                    <span class="text-black">Subtotal</span>
-                  </div>
-                  <div class="col-md-6 text-right">
-                    <strong class="text-black"
-                      >${{ cartStore.getCartTotal }}</strong
-                    >
-                  </div>
-                </div>
-                <div class="row mb-5">
-                  <div class="col-md-6">
-                    <span class="text-black">Total</span>
-                  </div>
-                  <div class="col-md-6 text-right">
-                    <strong class="text-black"
-                      >${{ cartStore.getCartTotal }}</strong
-                    >
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-12">
-                    <button
-                      class="btn btn-primary btn-lg py-3 btn-block"
-                      @click.prevent="handleProceedToCheckout"
-                    >
-                      Proceed To Checkout
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <Footer></Footer>
-  </div>
-</template>
-
 <script setup>
-import Header from "../components/Header.vue";
-import Footer from "../components/Footer.vue";
-import { RouterLink, useRouter } from "vue-router";
+import { onMounted } from "vue";
+import useCartService from "../services/cartService";
 import { useCartStore } from "../stores/cartStore";
-import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { useAuthStore } from "../stores/authStore";
 
 const router = useRouter();
+const authStore = useAuthStore();
 const cartStore = useCartStore();
+const cartService = useCartService();
 
-const cart = cartStore.getCartItems;
-
-const handleRemoveItem = (item) => {
-  const findIndex = (bookId) => {
-    for (let i = 0; i < cart.length; i++) {
-      if (cart[i].bookId === bookId) {
-        return i;
-      }
-    }
-  };
-  const bookIndex = findIndex(item.bookId);
-  cart.splice(bookIndex, 1);
-  router.go();
+const handleRemoveCartItems = async (bookid, quantity, price) => {
+  await cartService.removeCartItems(bookid, quantity, price);
+  if (cartService.status.value === "ok") {
+    cartStore.setCartItems(cartService.cartItems.value);
+    cartStore.setCartTotal(cartService.cart.value.cartTotal);
+    cartStore.setTotalItems(cartService.cart.value.totalItems);
+  }
 };
 
-const handleProceedToCheckout = () => {
-  router.push("/checkout");
-};
+onMounted(async () => {
+  if (!authStore.getisLoggedin) {
+    await router.push("/login");
+  }
+});
 </script>
-
-<style scoped></style>
+<template>
+  <div class="w-full py-16">
+    <div class="sm:container sm:mx-auto mx-5">
+      <div class="flex flex-col sm:flex-row gap-20">
+        <div class="sm:w-2/4">
+          <h1
+            class="mb-10 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+          >
+            Shopping Cart
+          </h1>
+          <h2 id="cart-heading" class="sr-only">Items in your shopping cart</h2>
+          <ul role="list" class="divide-y divide-gray-200 border">
+            <div v-for="item in cartStore.getCartItems" class="">
+              <li class="flex py-6 sm:py-6">
+                <div class="flex-shrink-0">
+                  <img
+                    :src="item.imageUrl"
+                    :alt="item.title"
+                    class="sm:h-38 sm:w-38 h-24 w-24 rounded-md object-contain object-center"
+                  />
+                </div>
+                <div class="ml-4 flex flex-1 flex-col justify-between sm:ml-6">
+                  <div
+                    class="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0"
+                  >
+                    <div>
+                      <div class="flex justify-between">
+                        <h3 class="text-sm">
+                          <a href="#" class="font-semibold text-black">
+                            {{ item.title }}
+                          </a>
+                        </h3>
+                      </div>
+                      <div class="mt-1 flex text-sm">
+                        <p class="text-sm text-gray-500">{{ item.author }}</p>
+                      </div>
+                      <div class="mt-3 flex items-end">
+                        <p class="text-sm font-medium text-gray-900">
+                          <span class="me-5"> {{ item.quantity }} </span> X
+                          <span class="ms-5"> {{ item.price }}</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="me-5">
+                  <button
+                    type="button"
+                    class="flex items-center space-x-1 px-2 py-1 pl-0"
+                    @click="
+                      () =>
+                        handleRemoveCartItems(
+                          item.bookId,
+                          item.quantity,
+                          item.price
+                        )
+                    "
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="text-red-500"
+                    >
+                      <path d="M3 6h18"></path>
+                      <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                      <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                    </svg>
+                    <span class="text-xs font-medium text-red-500">Remove</span>
+                  </button>
+                </div>
+              </li>
+            </div>
+          </ul>
+        </div>
+        <div class="sm:w-1/4">
+          <h2
+            id="summary-heading"
+            class="text-center sm:mt-5 pb-8 border-b border-gray-200 text-lg font-medium text-gray-900"
+          >
+            Price Details
+          </h2>
+          <div>
+            <dl class="space-y-1 px-2 py-4">
+              <div class="flex items-center justify-between">
+                <dt class="text-sm text-gray-800">
+                  Price - {{ cartStore.getTotalItems }} Items
+                </dt>
+                <dd class="text-sm font-medium text-gray-900">
+                  $ {{ cartStore.getCartTotal }}
+                </dd>
+              </div>
+              <div class="flex items-center justify-between pt-4">
+                <dt class="flex items-center text-sm text-gray-800">
+                  <span>Discount</span>
+                </dt>
+                <dd class="text-sm font-medium text-green-700">0</dd>
+              </div>
+              <div class="flex items-center justify-between py-4">
+                <dt class="flex text-sm text-gray-800">
+                  <span>Delivery Charges</span>
+                </dt>
+                <dd class="text-sm font-medium text-green-700">Free</dd>
+              </div>
+              <div
+                class="flex items-center justify-between border-y border-dashed py-4"
+              >
+                <dt class="text-base font-medium text-gray-900">
+                  Total Amount
+                </dt>
+                <dd class="text-base font-medium text-gray-900">
+                  ₹ {{ cartStore.getCartTotal }}
+                </dd>
+              </div>
+              <div class="pt-10 text-center">
+                <RouterLink to="/checkout">
+                  <button
+                    class="rounded-md bg-black px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                    :disabled="!cartStore.getTotalItems"
+                  >
+                    Checkout
+                  </button>
+                </RouterLink>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

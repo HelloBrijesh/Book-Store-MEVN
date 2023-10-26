@@ -2,6 +2,8 @@
 import { onMounted, ref } from "vue";
 import useBookService from "../services/bookService";
 import { useRoute, useRouter } from "vue-router";
+import { storage } from "../../firebase.js";
+import { ref as firebaseRef, getStorage, deleteObject } from "firebase/storage";
 
 const route = useRoute();
 const router = useRouter();
@@ -25,7 +27,18 @@ const handleUpdateBook = async () => {
 };
 
 const handleDeleteBook = async () => {
+  const storage = getStorage();
+  const desertRef = firebaseRef(
+    storage,
+    `BookStore/Books/${book.value.imageName}`
+  );
+  try {
+    await deleteObject(desertRef);
+  } catch (error) {
+    console.log(error);
+  }
   await deleteBook(bookId.value);
+
   if (status.value === "ok") {
     await router.push("/admin/existingbooks");
   }
@@ -33,6 +46,7 @@ const handleDeleteBook = async () => {
 
 onMounted(async () => {
   await getBookById(bookId.value);
+  console.log(book.value.imageName);
   if (status.value === "ok") {
     updateBookPayload.value = {
       price: book.value.price,

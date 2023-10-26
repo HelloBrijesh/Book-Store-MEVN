@@ -47,6 +47,7 @@ export const getOrders = async (req, res, next) => {
 export const getSalesData = async (req, res, next) => {
   try {
     let { startDate, endDate, page } = req.query;
+    let limit = 5;
     //check that date is not empty
     if (startDate === "" || endDate === "") {
       return res.status(400).json({
@@ -61,7 +62,8 @@ export const getSalesData = async (req, res, next) => {
     const { totalData, salesData } = await getSalesDataByDate(
       startDate,
       endDate,
-      page
+      page,
+      limit
     );
     // console.log(salesData[0]);
 

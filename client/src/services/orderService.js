@@ -60,8 +60,8 @@ export default function useOrderService() {
     try {
       const response = await axios.get(url.value);
       salesData.value = response.data.salesData;
-      status.value = response.data.status;
       totalData.value = response.data.totalData;
+      status.value = response.data.status;
     } catch (err) {
       error.value = err.response.data.message;
     }

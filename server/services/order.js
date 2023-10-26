@@ -60,18 +60,25 @@ export const getOrdersByUserId = async (userId, currentPage) => {
   }
 };
 
-export const getSalesDataByDate = async (startDate, endDate, page) => {
+export const getSalesDataByDate = async (startDate, endDate, page, limit) => {
   try {
-    let totalData = Math.ceil((await Order.count()) / 10);
     const salesData = await Order.find({
       createdAt: {
         $gte: new Date(new Date(startDate).setHours(0, 0, 0)),
         $lt: new Date(new Date(endDate).setHours(23, 59, 59)),
       },
     })
-      .limit(10)
-      .skip(page - 1)
+      .limit(limit)
+      .skip((page - 1) * limit)
       .exec();
+    const count = await Order.count({
+      createdAt: {
+        $gte: new Date(new Date(startDate).setHours(0, 0, 0)),
+        $lt: new Date(new Date(endDate).setHours(23, 59, 59)),
+      },
+    });
+
+    let totalData = Math.ceil(count / limit);
     return { totalData, salesData };
   } catch (error) {
     return error;

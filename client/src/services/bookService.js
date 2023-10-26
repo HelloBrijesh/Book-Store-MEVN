@@ -72,7 +72,7 @@ export default function useBookService() {
         withCredentials: true,
       });
       status.value = response.data.status;
-      book.value = response.data.book;
+      book.value = response.data.updatedBook;
     } catch (err) {
       error.value = err.response.data.message;
     }
@@ -98,13 +98,49 @@ export default function useBookService() {
       error.value = err.response.data.message;
     }
   };
+  const searchBook = async (payload) => {
+    url.value = `searchbook`;
+    status.value = null;
+    error.value = null;
+    book.value = null;
+    listOfBooks.value = null;
+    totalPages.value = null;
+
+    try {
+      const response = await axios.post(url.value, payload, {
+        withCredentials: true,
+      });
+      status.value = response.data.status;
+    } catch (err) {
+      error.value = err.response.data.message;
+    }
+  };
+  const addBook = async (payload) => {
+    url.value = `books`;
+    status.value = null;
+    error.value = null;
+    book.value = null;
+    listOfBooks.value = null;
+    totalPages.value = null;
+
+    try {
+      const response = await axios.post(url.value, payload, {
+        withCredentials: true,
+      });
+      status.value = response.data.status;
+    } catch (err) {
+      error.value = err.response.data.message;
+    }
+  };
   return {
     status,
     error,
     book,
     listOfBooks,
     totalPages,
+    addBook,
     deleteBook,
+    searchBook,
     updateBook,
     getBookById,
     getAllBooks,

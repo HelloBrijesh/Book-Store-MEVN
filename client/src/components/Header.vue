@@ -113,16 +113,16 @@ const handleLogout = async () => {
               }
             "
           >
-            <font-awesome-icon
-              v-if="authStore.getUserImage === null"
-              icon="fa-solid fa-user"
-              class="h-5 w-5 hover:cursor-pointer"
-            />
             <img
-              v-else
+              v-if="authStore.getUserImage != ''"
               class="h-10 w-10 rounded-full hover:cursor-pointer"
               :src="authStore.getUserImage"
               alt="Dan_Abromov"
+            />
+            <font-awesome-icon
+              v-else
+              icon="fa-solid fa-user"
+              class="h-5 w-5 hover:cursor-pointer"
             />
           </span>
           <ul

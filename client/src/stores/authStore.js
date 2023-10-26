@@ -3,7 +3,7 @@ import { ref, computed } from "vue";
 export const useAuthStore = defineStore("authStore", () => {
   const isLoggedin = ref(false);
   const isAdmin = ref(false);
-  const userImage = ref(null);
+  const userImage = ref("");
 
   const getisLoggedin = computed(() => {
     return isLoggedin.value;
@@ -31,7 +31,7 @@ export const useAuthStore = defineStore("authStore", () => {
   function $reset() {
     isLoggedin.value = false;
     isAdmin.value = false;
-    userImage.value = null;
+    userImage.value = "";
   }
 
   return {

@@ -6,6 +6,7 @@ export default function useAuthService() {
   const status = ref(null);
   const error = ref(null);
   const role = ref(null);
+
   const signup = async (signUpPayload) => {
     url.value = "signup";
     status.value = null;
@@ -20,6 +21,7 @@ export default function useAuthService() {
       error.value = err.response.data.message;
     }
   };
+
   const verifyEmail = async (token) => {
     url.value = `email?token=${token}`;
     status.value = null;
@@ -55,6 +57,7 @@ export default function useAuthService() {
       error.value = err.response.data.message;
     }
   };
+
   const login = async (logInPayload) => {
     url.value = "login";
     status.value = null;
@@ -74,6 +77,7 @@ export default function useAuthService() {
       error.value = err.response.data.message;
     }
   };
+
   const logout = async () => {
     url.value = "logout";
     status.value = null;
@@ -92,6 +96,7 @@ export default function useAuthService() {
       error.value = err.response.data.message;
     }
   };
+
   const changePassword = async (changePasswordPayload) => {
     url.value = "user/password";
     status.value = null;
@@ -107,6 +112,7 @@ export default function useAuthService() {
       error.value = err.response.data.message;
     }
   };
+
   return {
     signup,
     login,

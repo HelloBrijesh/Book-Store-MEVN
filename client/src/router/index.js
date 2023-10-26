@@ -106,7 +106,7 @@ const router = createRouter({
       component: CheckoutView,
     },
     {
-      path: "/order",
+      path: "/order/:id",
       name: "order",
       component: OrderView,
     },

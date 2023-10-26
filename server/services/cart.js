@@ -31,10 +31,10 @@ export const insertItemInCart = async (userId, bookId, quantity) => {
     let book = await getBookById(bookId);
     const bookForCart = {
       bookId: book.id,
-      quantity: quantity,
       title: book.title,
       author: book.author,
-      image: book.image,
+      imageUrl: book.imageUrl,
+      quantity: quantity,
       price: book.price,
     };
 
@@ -53,32 +53,24 @@ export const insertItemInCart = async (userId, bookId, quantity) => {
         cart.id,
         {
           $push: { books: [bookForCart] },
-          $inc: { totalItems: quantity },
-          $inc: { cartTotal: total },
+          $inc: { totalItems: quantity, cartTotal: total },
         },
         { new: true }
       );
-      // await Cart.findByIdAndUpdate(cart.id, {
-      //   $inc: { cartTotal: total },
-      // });
     } else if (itemExists === true) {
-      updatedCart = await Cart.updateOne(
+      await Cart.updateOne(
         { _id: cart.id, "books.bookId": bookId },
         {
           $inc: {
-            cartTotal: total,
             totalItems: quantity,
             "books.$.quantity": quantity,
           },
-        },
-        { new: true }
+        }
       );
-      // await Cart.findByIdAndUpdate(cart.id, {
-      //   $inc: { cartTotal: total },
-      // });
+      updatedCart = await Cart.findByIdAndUpdate(cart.id, {
+        $inc: { cartTotal: total },
+      });
     }
-
-    // cart = await getCartByUserId(userId);
     return updatedCart;
   } catch (error) {
     return error;
@@ -97,7 +89,6 @@ export const removeItemFromCart = async (userId, bookId, quantity, price) => {
       },
       { new: true }
     );
-    // cart = await getCartByUserId(userId);
     return updatedCart;
   } catch (error) {
     return error;

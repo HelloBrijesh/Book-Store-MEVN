@@ -29,7 +29,7 @@ onMounted(async () => {
         >
           <RouterLink :to="`/book/${book.id}`">
             <figure class="h-[300px]">
-              <img :src="book.image" alt="Laptop" class="h-full w-full" />
+              <img :src="book.imageUrl" alt="Laptop" class="h-full w-full" />
             </figure>
             <div class="p-4 pb-0">
               <h1

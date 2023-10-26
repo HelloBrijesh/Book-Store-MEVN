@@ -41,7 +41,7 @@ onMounted(async () => {
               <li class="flex py-6 sm:py-6">
                 <div class="flex-shrink-0">
                   <img
-                    :src="item.image"
+                    :src="item.imageUrl"
                     :alt="item.title"
                     class="sm:h-38 sm:w-38 h-24 w-24 rounded-md object-contain object-center"
                   />

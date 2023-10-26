@@ -24,21 +24,25 @@ const accountDetails = ref({
   firstName: "",
   lastName: "",
   email: "",
-  image: "",
+  imageUrl: "",
+  imageName: "",
 });
 
-let imageName = ref(null);
-
 const handleProfileImage = async (e) => {
-  imageName.value = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
-  const storageRef = firebaseRef(storage, `BookStore/users/${imageName.value}`);
+  accountDetails.value.imageName = `${Date.now()}-${Math.round(
+    Math.random() * 1e9
+  )}`;
+  const storageRef = firebaseRef(
+    storage,
+    `BookStore/users/${accountDetails.value.imageName}`
+  );
   const snapshot = await uploadBytes(storageRef, e.target.files[0]);
   const download_url = await getDownloadURL(storageRef);
 
-  accountDetails.value.image = download_url;
+  accountDetails.value.imageUrl = download_url;
   await updateUserDetails(accountDetails.value);
   if (status.value === "ok") {
-    authStore.setUserImage(userDetails.value.image);
+    authStore.setUserImage(userDetails.value.imageUrl);
   }
 };
 
@@ -50,7 +54,8 @@ onMounted(async () => {
       firstName: userDetails.value.firstName,
       lastName: userDetails.value.lastName,
       email: userDetails.value.email,
-      image: userDetails.value.image,
+      imageUrl: userDetails.value.imageUrl,
+      imageName: userDetails.value.imageName,
     };
   }
 });
@@ -68,7 +73,7 @@ onMounted(async () => {
         <div class="w-full md:w-1/4">
           <div class="border flex flex-col items-center gap-5 py-10">
             <img
-              v-if="authStore.getUserImage"
+              v-if="authStore.getUserImage !== ''"
               :src="authStore.getUserImage"
               alt=""
               class="rounded-full h-[150px] w-[150px]"

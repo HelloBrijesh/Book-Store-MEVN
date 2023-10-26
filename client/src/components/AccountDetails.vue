@@ -10,14 +10,12 @@ const accountDetails = ref({
   firstName: "",
   lastName: "",
   email: "",
-  image: "",
+  imageUrl: "",
+  imageName: "",
 });
 
 const handleUpdateUser = async () => {
   await updateUserDetails(accountDetails.value);
-  if (status.value === "ok") {
-    console.log(userDetails.value);
-  }
 };
 
 onMounted(async () => {
@@ -28,7 +26,8 @@ onMounted(async () => {
       firstName: userDetails.value.firstName,
       lastName: userDetails.value.lastName,
       email: userDetails.value.email,
-      image: userDetails.value.image,
+      imageUrl: userDetails.value.imageUrl,
+      imageName: userDetails.value.imageName,
     };
   }
 });

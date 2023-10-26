@@ -7,18 +7,14 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { onMounted, ref } from "vue";
-import useAdminService from "../services/adminService.js";
+// import useAdminService from "../services/adminService.js";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
-
 library.add(faBook);
 
-
-const adminService = useAdminService();
+// const adminService = useAdminService();
 const router = useRouter();
-
-let imageName = ref(null);
 
 const addBookPayload = ref({
   title: "",
@@ -30,35 +26,32 @@ const addBookPayload = ref({
   stock: 0,
   sold: 0,
   category: "",
-  image: "",
+  imageUrl: "",
+  imageName: "",
   language: "",
 });
 
-const handleImageUpload = (e) => {
-  const storageRef = firebaseRef(storage, `BookStore/Books/${imageName.value}`);
-  uploadBytes(storageRef, e.target.files[0]).then((snapshot) => {
-    getDownloadURL(storageRef).then((download_url) => {
-      addBookPayload.value.image = download_url;
-    });
-  });
+const handleImageUpload = async (e) => {
+  addBookPayload.value.imageName = `${Date.now()}-${Math.round(
+    Math.random() * 1e9
+  )}`;
+
+  const storageRef = firebaseRef(
+    storage,
+    `BookStore/Books/${addBookPayload.value.imageName}`
+  );
+  const snapshot = await uploadBytes(storageRef, e.target.files[0]);
+  const download_url = await getDownloadURL(storageRef);
+  addBookPayload.value.imageUrl = download_url;
 };
 
-const added = ref(false);
 const handleAddBook = async (e) => {
   await adminService.addBook(addBookPayload.value);
   if (adminService.status.value === "ok") {
     router.go();
   }
-  // added.value = true;
-  // uploaded.value = false;
-  // setTimeout(() => {
-  //   added.value = false;
-  // }, 2000);
 };
-
-onMounted(() => {
-  imageName.value = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
-});
+onMounted(() => {});
 </script>
 <template>
   <div class="px-5 md:ps-20 mt-10 md:mt-0">
@@ -216,13 +209,13 @@ onMounted(() => {
           class="w-full border h-[200px] mb-3 flex items-center justify-center"
         >
           <font-awesome-icon
-            v-if="addBookPayload.image === ''"
+            v-if="addBookPayload.imageUrl === ''"
             icon="fa-solid fa-book"
             class="h-2/4 w-2/4"
           />
           <img
             v-else
-            :src="addBookPayload.image"
+            :src="addBookPayload.imageUrl"
             alt="book image"
             class="h-full w-full"
           />

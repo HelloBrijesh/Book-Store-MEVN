@@ -1,23 +1,42 @@
 <script setup>
 import { onMounted } from "vue";
-import { RouterLink, useRoute } from "vue-router";
+import { RouterLink, useRoute, useRouter } from "vue-router";
 import { useAuthStore } from "../stores/authStore";
+import { useCartStore } from "../stores/cartStore";
 import useAuthService from "../services/authService";
+import useCartService from "../services/cartService";
+import useUserService from "../services/userService";
 
-const authStore = useAuthStore();
-const authService = useAuthService();
 const route = useRoute();
+const router = useRouter();
+const authStore = useAuthStore();
+const cartStore = useCartStore();
+const cartService = useCartService();
+const userService = useUserService();
+const { error, status, verifyEmail } = useAuthService();
 
 onMounted(async () => {
-  await authService.verifyEmail(route.params.token);
-  if (authService.status.value === "ok") {
+  await verifyEmail(route.params.token);
+  if (status.value === "ok") {
+    // authStore.setisLoggedin(true);
     authStore.setisLoggedin(true);
+    await cartService.getCart();
+    if (cartService.status.value === "ok") {
+      cartStore.setCartItems(cartService.cartItems.value);
+      cartStore.setCartTotal(cartService.cart.value.cartTotal);
+      cartStore.setTotalItems(cartService.cart.value.totalItems);
+    }
+    await userService.getUserDetails();
+    if (userService.status.value === "ok") {
+      authStore.setUserImage(userService.userDetails.value.imageUrl);
+    }
+    await router.push("/");
   }
 });
 </script>
 <template>
   <section
-    v-if="authService.status === 'ok'"
+    v-if="status === 'ok'"
     class="h-[500px] flex flex-col gap-10 items-center justify-center"
   >
     <p>Email has been verified successfully</p>
@@ -31,9 +50,9 @@ onMounted(async () => {
     </RouterLink>
   </section>
   <section
-    v-if="authService.error"
+    v-if="error"
     class="h-[500px] flex flex-col gap-10 items-center justify-center"
   >
-    <p>{{ authService.error }}</p>
+    <p>{{ error }}</p>
   </section>
 </template>

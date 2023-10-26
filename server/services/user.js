@@ -17,7 +17,8 @@ export const updateUserById = async (
   firstName,
   lastName,
   email,
-  image
+  imageUrl,
+  imageName
 ) => {
   try {
     const updatedUser = await User.findByIdAndUpdate(
@@ -27,7 +28,8 @@ export const updateUserById = async (
         firstName: firstName,
         lastName: lastName,
         email: email,
-        image: image,
+        imageUrl: imageUrl,
+        imageName: imageName,
       },
       { new: true }
     );

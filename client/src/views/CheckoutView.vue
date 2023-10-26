@@ -1,14 +1,16 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import { useCartStore } from "../stores/cartStore";
-import { RouterLink, useRouter } from "vue-router";
+import { useRouter } from "vue-router";
 import { useAuthStore } from "../stores/authStore";
 import useCartService from "../services/cartService";
+import useOrderService from "../services/orderService";
 
 const router = useRouter();
 const cartStore = useCartStore();
 const authStore = useAuthStore();
 const cartService = useCartService();
+const orderService = useOrderService();
 
 let items = ref(null);
 let cartTotal = ref(null);
@@ -20,6 +22,30 @@ const handleRemoveCartItems = async (bookid, quantity, price) => {
     cartStore.setCartTotal(cartService.cart.value.cartTotal);
     cartStore.setTotalItems(cartService.cart.value.totalItems);
     router.go();
+  }
+};
+
+const placeOrderPayload = ref({
+  orderTotal: cartStore.getCartTotal,
+  orderedItems: cartStore.getCartItems,
+  shippingAddress: {
+    name: "",
+    streetAddress: "",
+    city: "",
+    state: "",
+    postalCode: "",
+  },
+});
+
+const orderId = ref(null);
+const handlePlaceOrder = async () => {
+  placeOrderPayload.value.orderTotal = cartStore.getCartTotal;
+  placeOrderPayload.value.orderedItems = cartStore.getCartItems;
+  await orderService.placeOrder(placeOrderPayload.value);
+  if (orderService.status.value === "ok") {
+    cartStore.$reset();
+    orderId.value = orderService.orders.value;
+    await router.push(`/order/${orderId.value}`);
   }
 };
 
@@ -45,7 +71,7 @@ onMounted(async () => {
                 <div class="h-20 w-20">
                   <img
                     class="h-full w-full object-contain"
-                    :src="item.image"
+                    :src="item.imageUrl"
                     :alt="item.title"
                   />
                 </div>
@@ -136,10 +162,12 @@ onMounted(async () => {
                 type="text"
                 placeholder="Enter your name"
                 id="name"
+                v-model="placeOrderPayload.shippingAddress.name"
+                required
               />
             </div>
           </div>
-          <hr class="my-5" />
+          <!-- <hr class="my-5" />
           <div class="">
             <h1 class="font-semibold text-lg">Payment Details</h1>
 
@@ -195,7 +223,7 @@ onMounted(async () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
           <hr class="my-7" />
 
           <div>
@@ -217,6 +245,7 @@ onMounted(async () => {
                     name="address"
                     autoComplete="street-address"
                     class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                    v-model="placeOrderPayload.shippingAddress.streetAddress"
                   />
                 </div>
               </div>
@@ -234,6 +263,7 @@ onMounted(async () => {
                     name="city"
                     autoComplete="address-level2"
                     class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                    v-model="placeOrderPayload.shippingAddress.city"
                   />
                 </div>
               </div>
@@ -251,6 +281,7 @@ onMounted(async () => {
                     name="region"
                     autoComplete="address-level1"
                     class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                    v-model="placeOrderPayload.shippingAddress.state"
                   />
                 </div>
               </div>
@@ -268,18 +299,19 @@ onMounted(async () => {
                     name="postal-code"
                     autoComplete="postal-code"
                     class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                    v-model="placeOrderPayload.shippingAddress.postalCode"
                   />
                 </div>
               </div>
             </div>
             <hr class="my-8" />
             <div class="flex justify-end border-gray-200">
-              <RouterLink
-                to="/order"
+              <button
+                @click="handlePlaceOrder"
                 class="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
               >
-                Make payment
-              </RouterLink>
+                PlaceOrder
+              </button>
             </div>
           </div>
         </div>

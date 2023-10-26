@@ -3,22 +3,27 @@ import { Book } from "../models/book";
 import { Cart } from "../models/cart";
 import { getCartByUserId } from "./cart";
 
-export const createOrder = async (userId) => {
+export const createOrder = async (
+  userId,
+  orderTotal,
+  orderedItems,
+  address
+) => {
   try {
     const cart = await getCartByUserId(userId);
 
     const newOrder = new Order({
       userId: userId,
-      orderTotal: cart.cartTotal,
-      orderedItems: cart.books,
+      orderTotal: orderTotal,
+      orderedItems: orderedItems,
+      shippingAddress: address,
     });
 
     const createdOrder = await newOrder.save();
-
-    for (let book in cart.books) {
+    for (let book in orderedItems) {
       await Book.findByIdAndUpdate(
-        cart.books[book].bookId,
-        { $inc: { stock: -cart.books[book].quantity } },
+        orderedItems[book].bookId,
+        { $inc: { stock: -orderedItems[book].quantity } },
         { new: true }
       );
     }
@@ -34,6 +39,14 @@ export const createOrder = async (userId) => {
   }
 };
 
+export const getOrdersByOrderId = async (orderId) => {
+  try {
+    let orders = await Order.findById(orderId);
+    return orders;
+  } catch (error) {
+    return error;
+  }
+};
 export const getOrdersByUserId = async (userId, currentPage) => {
   try {
     let totalOrders = await Order.count({ userId: userId });

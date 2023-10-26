@@ -38,8 +38,8 @@ export default function useCartService() {
         }
       );
       status.value = response.data.status;
-      cart.value = response.data.cart;
-      cartItems.value = response.data.cart.books;
+      cart.value = response.data.updatedCart;
+      cartItems.value = response.data.updatedCart.books;
     } catch (err) {
       error.value = err.response.data.message;
     }
@@ -59,8 +59,8 @@ export default function useCartService() {
         }
       );
       status.value = response.data.status;
-      cart.value = response.data.cart;
-      cartItems.value = response.data.cart.books;
+      cart.value = response.data.updatedCart;
+      cartItems.value = response.data.updatedCart.books;
     } catch (err) {
       error.value = err.response.data.message;
     }

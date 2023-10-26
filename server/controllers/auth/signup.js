@@ -5,7 +5,7 @@ import { createUser, getUserByEmail } from "../../services/user";
 import { createCartByUserId } from "../../services/cart";
 import { createRefreshToken, saveEmailToken } from "../../services/tokens";
 import { sendEmail } from "../../services/email";
-import { SERVER_URL } from "../../config";
+import { CLIENT_URL } from "../../config";
 
 export const signup = async (req, res, next) => {
   // Validating the user Input
@@ -17,7 +17,7 @@ export const signup = async (req, res, next) => {
       .min(8)
       .pattern(
         new RegExp(
-          "^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*s).{8,15}$"
+          "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
         )
       )
       .required(),
@@ -70,7 +70,7 @@ export const signup = async (req, res, next) => {
     const emailText = `Hi! There, You have recently visited 
     our Bookstore website and entered your email.
     Please follow the given link to verify your email
-    ${SERVER_URL}/api/verify/${tokenForemail}
+    ${CLIENT_URL}/verifyemail/${tokenForemail}
     Thanks`;
 
     await sendEmail(email, emailSubject, emailText);

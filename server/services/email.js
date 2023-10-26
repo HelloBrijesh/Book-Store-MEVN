@@ -8,7 +8,7 @@ import {
   EMAIL_PASSWORD,
 } from "../config";
 
-export const sendEmail = async (email, subject, text) => {
+export const sendEmail = async (to, subject, text) => {
   const transporter = nodemailer.createTransport({
     service: EMAIL_SERVICE,
     secure: EMAIL_SECURE,
@@ -20,8 +20,7 @@ export const sendEmail = async (email, subject, text) => {
   });
 
   const mailConfigurations = {
-    from: "techpradhyapak@gmail.com",
-    to: email,
+    to: to,
     subject: subject,
     text: text,
   };

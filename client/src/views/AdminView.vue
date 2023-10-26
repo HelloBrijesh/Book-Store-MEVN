@@ -15,7 +15,7 @@ const authStore = useAuthStore();
         <div class="w-full md:w-1/3">
           <div class="border flex flex-col items-center gap-5 py-10">
             <img
-              v-if="authStore.getUserImage"
+              v-if="authStore.getUserImage !== ''"
               :src="authStore.getUserImage"
               alt=""
               class="rounded-full h-[150px] w-[150px]"

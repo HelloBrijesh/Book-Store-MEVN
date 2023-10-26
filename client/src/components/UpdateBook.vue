@@ -3,10 +3,11 @@ import { onMounted, ref } from "vue";
 import useBookService from "../services/bookService";
 import { useRoute, useRouter } from "vue-router";
 
-const bookService = useBookService();
 const route = useRoute();
 const router = useRouter();
 const bookId = ref(route.params.bookid);
+const { error, status, book, updateBook, deleteBook, getBookById } =
+  useBookService();
 
 const updateBookPayload = ref({
   price: 0,
@@ -14,52 +15,52 @@ const updateBookPayload = ref({
 });
 
 const handleUpdateBook = async () => {
-  await bookService.updateBook(updateBookPayload.value, bookId.value);
-  if (bookService.status.value === "ok") {
+  await updateBook(updateBookPayload.value, bookId.value);
+  if (status.value === "ok") {
     updateBookPayload.value = {
-      price: bookService.book.value.price,
-      stock: bookService.book.value.stock,
+      price: book.value.price,
+      stock: book.value.stock,
     };
   }
 };
 
 const handleDeleteBook = async () => {
-  await bookService.deleteBook(bookId.value);
-  if (bookService.status.value === "ok") {
+  await deleteBook(bookId.value);
+  if (status.value === "ok") {
     await router.push("/admin/existingbooks");
   }
 };
 
 onMounted(async () => {
-  await bookService.getBookById(bookId.value);
-  if (bookService.status.value === "ok") {
+  await getBookById(bookId.value);
+  if (status.value === "ok") {
     updateBookPayload.value = {
-      price: bookService.book.value.price,
-      stock: bookService.book.value.stock,
+      price: book.value.price,
+      stock: book.value.stock,
     };
   }
 });
 </script>
 
 <template>
-  <div v-if="bookService.status === 'null'">
+  <div v-if="status === null">
     <h1>Loading...</h1>
   </div>
-  <div v-else-if="bookService.error">
-    <h1>{{ bookService.error }}</h1>
+  <div v-else-if="error">
+    <h1>{{ error }}</h1>
   </div>
-  <div class="ms-10" v-else>
+  <div v-else class="ms-10">
     <h1 class="text-2xl">Update Book</h1>
     <div class="">
       <div class="mt-5">
-        <img :src="bookService.book.image" alt="book image" />
+        <img :src="book.imageUrl" alt="book image" />
       </div>
       <div class="mt-10 flex flex-col gap-3">
-        <p>Title : {{ bookService.book.title }}</p>
-        <p>Author : {{bookService.book.author }}</p>
-        <p>Category : {{ bookService.book.category }}</p>
-        <p>Language: {{ bookService.book.language }}</p>
-        <p>Year: {{ bookService.book.year }}</p>
+        <p>Title : {{ book.title }}</p>
+        <p>Author : {{ book.author }}</p>
+        <p>Category : {{ book.category }}</p>
+        <p>Language: {{ book.language }}</p>
+        <p>Year: {{ book.year }}</p>
       </div>
 
       <div class="mt-5 flex gap-5">

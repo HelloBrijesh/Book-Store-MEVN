@@ -6,7 +6,7 @@ import {
   updateUserById,
   updatePasswordByUserId,
 } from "../services/user";
-
+import { User } from "../models/user";
 export const fetchUser = async (req, res, next) => {
   const userId = req.user.userId;
   try {
@@ -23,7 +23,8 @@ export const fetchUser = async (req, res, next) => {
 export const updateUser = async (req, res, next) => {
   const userId = req.user.userId;
 
-  const { userName, firstName, lastName, email, image } = req.body;
+  const { userName, firstName, lastName, email, imageUrl, imageName } =
+    req.body;
 
   try {
     const updatedUser = await updateUserById(
@@ -32,7 +33,8 @@ export const updateUser = async (req, res, next) => {
       firstName,
       lastName,
       email,
-      image
+      imageUrl,
+      imageName
     );
     res.json({ updatedUser, status: "ok" });
   } catch (error) {
@@ -40,14 +42,15 @@ export const updateUser = async (req, res, next) => {
   }
 };
 
-export const updatePassword = async () => {
+export const updatePassword = async (req, res, next) => {
+  const userId = req.user.userId;
   const updatePasswordSchema = Joi.object({
     currentPassword: Joi.string().min(8).required(),
     newPassword: Joi.string()
       .min(8)
       .pattern(
         new RegExp(
-          "^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*s).{8,15}$"
+          "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
         )
       )
       .required(),
@@ -58,10 +61,8 @@ export const updatePassword = async () => {
     return next(error);
   }
   const { currentPassword, newPassword } = req.body;
-  const userId = req.user.userId;
-
   try {
-    const existingUser = await getUserById(userId);
+    const existingUser = await User.findById(userId);
     if (!existingUser) {
       return next(customErrorHandler.wrongCredentials());
     }

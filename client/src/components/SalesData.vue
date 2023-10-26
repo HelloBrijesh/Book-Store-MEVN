@@ -1,8 +1,8 @@
 <script setup>
 import { onMounted, ref } from "vue";
-import useAdminService from "../services/adminService";
+// import useAdminService from "../services/adminService";
 
-const adminService = useAdminService();
+// const adminService = useAdminService();
 
 let newDate = new Date();
 let year = newDate.getFullYear();

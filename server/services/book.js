@@ -64,7 +64,8 @@ export const createBook = async (
   stock,
   sold,
   category,
-  image,
+  imageUrl,
+  imageName,
   language
 ) => {
   const newBook = new Book({
@@ -77,7 +78,8 @@ export const createBook = async (
     stock,
     sold,
     category,
-    image,
+    imageUrl,
+    imageName,
     language,
   });
   try {

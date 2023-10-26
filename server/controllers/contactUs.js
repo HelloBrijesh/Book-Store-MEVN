@@ -7,7 +7,8 @@ export const contactUs = async (req, res, next) => {
   const contactUsSchema = Joi.object({
     name: Joi.string().min(3).max(30).required(),
     email: Joi.string().email().required(),
-    message: Joi.string().required(),
+    message: Joi.string().min(3).required(),
+    // confirmPassword: Joi.ref("password"),
   });
 
   const { error } = contactUsSchema.validate(req.body);
@@ -25,7 +26,7 @@ export const contactUs = async (req, res, next) => {
                       message :${message}
                       `;
 
-    await sendEmail(email, emailSubject, emailText);
+    await sendEmail("techpradhyapak@gmail.com", emailSubject, emailText);
   } catch (error) {
     return next(error);
   }

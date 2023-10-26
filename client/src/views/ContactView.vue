@@ -1,4 +1,21 @@
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+import useUserService from "../services/userService";
+
+const { error, status, contactUs } = useUserService();
+const contactUsPayload = ref({
+  name: "",
+  email: "",
+  message: "",
+});
+
+const handleContactUs = async () => {
+  await contactUs(contactUsPayload.value);
+  if (status.value === "ok") {
+    alert("Message sent successfully");
+  }
+};
+</script>
 <template>
   <div class="w-full py-20">
     <div class="sm:container sm:mx-auto mx-5">
@@ -6,7 +23,7 @@
         <h1 class="text-2xl">Contact</h1>
       </div>
       <div class="max-w-2xl mx-auto">
-        <form @submit.prevent="" class="">
+        <form @submit.prevent="handleContactUs" class="">
           <div class="space-y-5">
             <div>
               <label for="name" class="text-base font-medium text-gray-900">
@@ -18,6 +35,7 @@
                   type="text"
                   placeholder="Name"
                   id="name"
+                  v-model="contactUsPayload.name"
                 />
               </div>
             </div>
@@ -31,6 +49,7 @@
                   type="email"
                   placeholder="Email"
                   id="email"
+                  v-model="contactUsPayload.email"
                 />
               </div>
             </div>
@@ -50,6 +69,7 @@
                   id="message"
                   rows="9"
                   cols="33"
+                  v-model="contactUsPayload.message"
                 ></textarea>
               </div>
             </div>

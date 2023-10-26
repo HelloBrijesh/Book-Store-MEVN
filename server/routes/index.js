@@ -38,7 +38,7 @@ router.post("/email", verifyEmail);
 
 router.get("/user", auth, fetchUser);
 router.put("/user", auth, updateUser);
-router.put("/user/password", updatePassword);
+router.put("/user/password", auth, updatePassword);
 router.delete("/user", auth, deleteUser);
 
 router.get("/books", fetchBooks);

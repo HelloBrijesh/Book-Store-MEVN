@@ -55,7 +55,8 @@ export const addBook = async (req, res, next) => {
     stock: Joi.number().min(1).required(),
     sold: Joi.number().required(),
     category: Joi.string().required(),
-    image: Joi.string().required(),
+    imageUrl: Joi.string().required(),
+    imageName: Joi.string().required(),
     language: Joi.string().required(),
   });
 
@@ -73,7 +74,8 @@ export const addBook = async (req, res, next) => {
     stock,
     sold,
     category,
-    image,
+    imageUrl,
+    imageName,
     language,
   } = req.body;
 
@@ -88,7 +90,8 @@ export const addBook = async (req, res, next) => {
       stock,
       sold,
       category,
-      image,
+      imageUrl,
+      imageName,
       language
     );
     res.status(200).json({ status: "ok" });

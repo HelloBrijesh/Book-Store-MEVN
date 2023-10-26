@@ -12,6 +12,8 @@ import {
   ref as firebaseRef,
   uploadBytes,
   getDownloadURL,
+  getStorage,
+  deleteObject,
 } from "firebase/storage";
 
 library.add(faUser);
@@ -27,8 +29,10 @@ const accountDetails = ref({
   imageUrl: "",
   imageName: "",
 });
+const oldImage = ref("");
 
 const handleProfileImage = async (e) => {
+  oldImage.value = userDetails.value.imageName;
   accountDetails.value.imageName = `${Date.now()}-${Math.round(
     Math.random() * 1e9
   )}`;
@@ -43,6 +47,15 @@ const handleProfileImage = async (e) => {
   await updateUserDetails(accountDetails.value);
   if (status.value === "ok") {
     authStore.setUserImage(userDetails.value.imageUrl);
+  }
+  if (oldImage.value !== "") {
+    const storage = getStorage();
+    const desertRef = firebaseRef(storage, `BookStore/users/${oldImage.value}`);
+    try {
+      await deleteObject(desertRef);
+    } catch (error) {
+      console.log(error);
+    }
   }
 };
 

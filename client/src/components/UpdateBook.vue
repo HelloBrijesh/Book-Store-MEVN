@@ -1,22 +1,13 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import useBookService from "../services/bookService";
-import { RouterLink, useRoute, useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 const route = useRoute();
 const router = useRouter();
-
 const bookId = ref(route.params.bookid);
-
-const {
-  getBookById,
-  updateBook,
-  deleteBook,
-  book,
-  listOfBooks,
-  error,
-  status,
-} = useBookService();
+const { error, status, book, updateBook, deleteBook, getBookById } =
+  useBookService();
 
 const updateBookPayload = ref({
   price: 0,
@@ -52,11 +43,17 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="ms-10" v-if="status === 'ok'">
+  <div v-if="status === null">
+    <h1>Loading...</h1>
+  </div>
+  <div v-else-if="error">
+    <h1>{{ error }}</h1>
+  </div>
+  <div v-else class="ms-10">
     <h1 class="text-2xl">Update Book</h1>
     <div class="">
       <div class="mt-5">
-        <img :src="book.image" alt="book image" />
+        <img :src="book.imageUrl" alt="book image" />
       </div>
       <div class="mt-10 flex flex-col gap-3">
         <p>Title : {{ book.title }}</p>

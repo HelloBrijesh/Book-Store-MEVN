@@ -1,19 +1,36 @@
 <script setup>
 import { onMounted } from "vue";
-import { RouterLink, useRoute } from "vue-router";
+import { RouterLink, useRoute, useRouter } from "vue-router";
 import { useAuthStore } from "../stores/authStore";
-
+import { useCartStore } from "../stores/cartStore";
 import useAuthService from "../services/authService";
+import useCartService from "../services/cartService";
+import useUserService from "../services/userService";
 
 const route = useRoute();
+const router = useRouter();
 const authStore = useAuthStore();
-
-const { verifyEmail, error, status } = useAuthService();
+const cartStore = useCartStore();
+const cartService = useCartService();
+const userService = useUserService();
+const { error, status, verifyEmail } = useAuthService();
 
 onMounted(async () => {
   await verifyEmail(route.params.token);
   if (status.value === "ok") {
+    // authStore.setisLoggedin(true);
     authStore.setisLoggedin(true);
+    await cartService.getCart();
+    if (cartService.status.value === "ok") {
+      cartStore.setCartItems(cartService.cartItems.value);
+      cartStore.setCartTotal(cartService.cart.value.cartTotal);
+      cartStore.setTotalItems(cartService.cart.value.totalItems);
+    }
+    await userService.getUserDetails();
+    if (userService.status.value === "ok") {
+      authStore.setUserImage(userService.userDetails.value.imageUrl);
+    }
+    await router.push("/");
   }
 });
 </script>

@@ -2,19 +2,19 @@
 import { reactive } from "vue";
 import useAuthService from "../services/authService";
 
-const { forgotPassword, error, status } = useAuthService();
+const authService = useAuthService();
 
 const forgotPasswordPayload = reactive({
   email: "",
 });
 
 const handleForgotPassword = async () => {
-  await forgotPassword(forgotPasswordPayload);
+  await authService.forgotPassword(forgotPasswordPayload);
 };
 </script>
 <template>
   <section class="w-full h-[500px] flex flex-col justify-center">
-    <div v-if="status === 'ok'">
+    <div v-if="authService.status === 'ok'">
       <p class="text-center">
         Verification link has been sent to
         <i>{{ forgotPasswordPayload.email }}</i

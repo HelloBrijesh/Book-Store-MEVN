@@ -2,16 +2,17 @@
 import { RouterLink, useRouter } from "vue-router";
 import { onMounted, reactive } from "vue";
 import { useAuthStore } from "../stores/authStore";
+import { useCartStore } from "../stores/cartStore";
 import useAuthService from "../services/authService";
 import useCartService from "../services/cartService";
-import { useCartStore } from "../stores/cartStore";
+import useUserService from "../services/userService";
 
 const router = useRouter();
 const authStore = useAuthStore();
 const cartStore = useCartStore();
-
-const { login, error, status, role } = useAuthService();
+const userService = useUserService();
 const cartService = useCartService();
+const { error, status, role, login } = useAuthService();
 
 onMounted(async () => {
   if (authStore.getisLoggedin) {
@@ -32,9 +33,15 @@ const handleLogin = async () => {
       authStore.setisAdmin(true);
     }
     await cartService.getCart();
-    cartStore.setCartItems(cartService.cart.value.cartItems);
-    cartStore.setCartTotal(cartService.cart.value.cartTotal);
-    cartStore.setTotalItems(cartService.cart.value.totalItems);
+    if (cartService.status.value === "ok") {
+      cartStore.setCartItems(cartService.cartItems.value);
+      cartStore.setCartTotal(cartService.cart.value.cartTotal);
+      cartStore.setTotalItems(cartService.cart.value.totalItems);
+    }
+    await userService.getUserDetails();
+    if (userService.status.value === "ok") {
+      authStore.setUserImage(userService.userDetails.value.imageUrl);
+    }
     await router.push("/");
   }
 };
@@ -65,6 +72,7 @@ const handleLogin = async () => {
                   type="email"
                   placeholder="Email"
                   v-model="loginPayload.email"
+                  required
                 />
               </div>
             </div>
@@ -87,6 +95,7 @@ const handleLogin = async () => {
                   type="password"
                   placeholder="Password"
                   v-model="loginPayload.password"
+                  required
                 />
               </div>
             </div>

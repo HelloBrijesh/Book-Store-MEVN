@@ -1,20 +1,21 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { onMounted } from "vue";
 import useCartService from "../services/cartService";
 import { useCartStore } from "../stores/cartStore";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "../stores/authStore";
 
 const router = useRouter();
-const { getCart, removeCartItems, cart, cartItems, error, status } =
-  useCartService();
 const authStore = useAuthStore();
 const cartStore = useCartStore();
+const cartService = useCartService();
 
 const handleRemoveCartItems = async (bookid, quantity, price) => {
-  await removeCartItems(bookid, quantity, price);
-  if (status.value === "ok") {
-    router.go();
+  await cartService.removeCartItems(bookid, quantity, price);
+  if (cartService.status.value === "ok") {
+    cartStore.setCartItems(cartService.cartItems.value);
+    cartStore.setCartTotal(cartService.cart.value.cartTotal);
+    cartStore.setTotalItems(cartService.cart.value.totalItems);
   }
 };
 
@@ -22,14 +23,10 @@ onMounted(async () => {
   if (!authStore.getisLoggedin) {
     await router.push("/login");
   }
-  await getCart();
-  cartStore.setCartItems(cartItems.value);
-  cartStore.setCartTotal(cart.value.cartTotal);
-  cartStore.setTotalItems(cart.value.totalItems);
 });
 </script>
 <template>
-  <div v-if="status === 'ok'" class="w-full py-16">
+  <div class="w-full py-16">
     <div class="sm:container sm:mx-auto mx-5">
       <div class="flex flex-col sm:flex-row gap-20">
         <div class="sm:w-2/4">
@@ -44,7 +41,7 @@ onMounted(async () => {
               <li class="flex py-6 sm:py-6">
                 <div class="flex-shrink-0">
                   <img
-                    :src="item.image"
+                    :src="item.imageUrl"
                     :alt="item.title"
                     class="sm:h-38 sm:w-38 h-24 w-24 rounded-md object-contain object-center"
                   />

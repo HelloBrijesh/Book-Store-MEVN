@@ -1,9 +1,9 @@
 <script setup>
 import { onMounted, ref } from "vue";
+import { RouterLink } from "vue-router";
 import useBookService from "../services/bookService";
-import { RouterLink, useRoute, useRouter } from "vue-router";
 
-const { getAllBooks, error, status, listOfBooks, totalPages } =
+const { error, status, getAllBooks, totalPages, listOfBooks } =
   useBookService();
 
 const getBooksPayload = ref({
@@ -37,7 +37,13 @@ onMounted(async () => {
 });
 </script>
 <template>
-  <div class="ms-10">
+  <div v-if="status === null">
+    <h1>Loading...</h1>
+  </div>
+  <div v-else-if="error">
+    <h1>{{ error }}</h1>
+  </div>
+  <div v-else class="ms-10">
     <h1 class="text-2xl">Update Book</h1>
     <form @change="handleFilter">
       <div class="flex justify-end gap-10 my-6">
@@ -76,7 +82,7 @@ onMounted(async () => {
         >
           <RouterLink :to="`/admin/updatebook/${book.id}`">
             <figure class="h-[250px]">
-              <img :src="book.image" alt="Laptop" class="h-full w-full" />
+              <img :src="book.imageUrl" alt="Laptop" class="h-full w-full" />
             </figure>
             <div class="p-4 pb-0">
               <h1

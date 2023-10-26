@@ -1,27 +1,33 @@
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import useOrderService from "../services/orderService";
 import { useCartStore } from "../stores/cartStore";
 import { useAuthStore } from "../stores/authStore";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
-const { placeOrder, orders, error, status } = useOrderService();
+const router = useRouter();
+const route = useRoute();
 const authStore = useAuthStore();
 const cartStore = useCartStore();
-const router = useRouter();
+const { error, status, getOrders, orders } = useOrderService();
+
+const orderId = ref(route.params.id);
 
 onMounted(async () => {
   if (!authStore.getisLoggedin) {
     await router.push("/login");
   }
-  await placeOrder();
-  if (status.value === "ok") {
-    cartStore.$reset();
-  }
+  await getOrders(1, orderId.value);
 });
 </script>
 <template>
-  <div v-if="orders" class="w-full my-20">
+  <div v-if="status === null">
+    <h1>Loading...</h1>
+  </div>
+  <div v-else-if="error">
+    <h1>{{ error }}</h1>
+  </div>
+  <div v-else class="w-full my-20">
     <div class="sm:container sm:mx-auto mx-5">
       <div class="flex flex-col sm:flex-row border rounded-lg">
         <div class="sm:w-2/4 p-7 border-b-2 border-r-0 sm:border-r-2">
@@ -31,7 +37,7 @@ onMounted(async () => {
                 <div class="h-20 w-20">
                   <img
                     class="h-full w-full object-contain"
-                    :src="item.image"
+                    :src="item.imageUrl"
                     :alt="item.title"
                   />
                 </div>
@@ -42,7 +48,7 @@ onMounted(async () => {
                 </div>
               </div>
               <div class="flex flex-col items-end justify-between w-1/4 me-5">
-                <p>$ {{ item.price }}</p>
+                <p>$ {{ item.price * item.quantity }}</p>
               </div>
             </div>
             <hr class="my-5" />
@@ -65,7 +71,7 @@ onMounted(async () => {
               Order Number: {{ orders.id }}
             </p>
             <p class="text-xs font-medium text-gray-700">
-              Date: March 03, 2023
+              Date: {{ orders.createdAt }}
             </p>
             <button
               type="button"
@@ -79,20 +85,28 @@ onMounted(async () => {
             <h2 class="mb-2 text-base font-bold text-black">
               Shipping Information
             </h2>
-            <p class="mt-3 text-xs font-medium text-gray-700">Lem Deluce</p>
-            <p class="text-xs font-medium text-gray-700">
-              1 Ronald Regan Court
+            <p class="mt-3 text-xs font-medium text-gray-700">
+              {{ orders.shippingAddress.name }}
             </p>
-            <p class="text-xs font-medium text-gray-700">102-655-3689</p>
+            <p class="text-xs font-medium text-gray-700">
+              {{ orders.shippingAddress.streetAddress }}&nbsp;{{
+                orders.shippingAddress.city
+              }}
+            </p>
+            <p class="text-xs font-medium text-gray-700">
+              {{ orders.shippingAddress.state }}&nbsp;{{
+                orders.shippingAddress.postalCode
+              }}
+            </p>
           </div>
-          <hr class="my-5" />
-          <div class="py-6">
+          <!-- <hr class="my-5" /> -->
+          <!-- <div class="py-6">
             <h2 class="text-base font-bold text-black">Payment Information</h2>
             <p class="mt-3 text-xs font-medium text-gray-700">
               **** **** **** 6202
             </p>
             <p class="text-xs font-medium text-gray-700">Expires 09/25</p>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

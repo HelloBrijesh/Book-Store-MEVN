@@ -1,23 +1,14 @@
 <script setup>
-import { onMounted, reactive, ref } from "vue";
+import { onMounted, ref } from "vue";
 import useBookService from "../services/bookService";
-import { RouterLink, useRoute, useRouter } from "vue-router";
-import { useCartStore } from "../stores/cartStore";
-import useCartService from "../services/cartService";
-import { useAuthStore } from "../stores/authStore";
+import { RouterLink } from "vue-router";
 
-const route = useRoute();
-const router = useRouter();
-
-const { getAllBooks, error, status, listOfBooks, totalPages } =
+const { error, status, totalPages, listOfBooks, getAllBooks } =
   useBookService();
-const authStore = useAuthStore();
-const cartStore = useCartStore();
-const cartService = useCartService();
 
 const shopPayload = ref({
   category: "Romance",
-  price: 50,
+  price: 500,
 });
 const currentPage = ref(1);
 
@@ -43,18 +34,16 @@ const handleShop = async () => {
 };
 onMounted(async () => {
   await getAllBooks(currentPage.value, shopPayload.value);
-  if (authStore.getisLoggedin) {
-    await cartService.getCart();
-    if (cartService.status.value === "ok") {
-      cartStore.setCartItems(cartService.cart.value.cartItems);
-      cartStore.setCartTotal(cartService.cart.value.cartTotal);
-      cartStore.setTotalItems(cartService.cart.value.totalItems);
-    }
-  }
 });
 </script>
 <template>
-  <div class="w-full">
+  <div v-if="status === null">
+    <h1>Loading...</h1>
+  </div>
+  <div v-else-if="error">
+    <h1>{{ error }}</h1>
+  </div>
+  <div v-else class="w-full">
     <div class="mx-5 sm:container sm:mx-auto">
       <div class="flex justify-between border-b-2 py-6 mb-10 mt-5">
         <div class="">
@@ -97,13 +86,13 @@ onMounted(async () => {
               <div class="pb-2">
                 <input
                   type="radio"
-                  id="health"
+                  id="literature"
                   name="category"
                   class="me-2"
-                  value="Health"
+                  value="Literature"
                   v-model="shopPayload.category"
                 />
-                <label class="" for="health">Health</label>
+                <label class="" for="literature">Literature</label>
               </div>
               <div class="pb-2">
                 <input
@@ -130,13 +119,13 @@ onMounted(async () => {
               <div class="pb-2">
                 <input
                   type="radio"
-                  id="fiction"
+                  id="travel"
                   name="category"
                   class="me-2"
-                  value="Fiction"
+                  value="Travel"
                   v-model="shopPayload.category"
                 />
-                <label class="" for="fiction">Fiction</label>
+                <label class="" for="travel">Travel</label>
               </div>
 
               <div class="py-5">
@@ -161,7 +150,11 @@ onMounted(async () => {
             >
               <RouterLink :to="`/book/${book.id}`">
                 <figure class="h-[250px]">
-                  <img :src="book.image" alt="Laptop" class="h-full w-full" />
+                  <img
+                    :src="book.imageUrl"
+                    alt="Laptop"
+                    class="h-full w-full"
+                  />
                 </figure>
                 <div class="p-4 pb-0">
                   <h1

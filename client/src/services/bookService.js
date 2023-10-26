@@ -10,7 +10,7 @@ export default function useBookService() {
   const totalPages = ref(null);
 
   const getBookById = async (bookid) => {
-    url.value = `book/${bookid}`;
+    url.value = `books/${bookid}`;
     status.value = null;
     error.value = null;
     book.value = null;
@@ -26,7 +26,7 @@ export default function useBookService() {
     }
   };
   const getAllBooks = async (page, payload) => {
-    url.value = `shop?price=${payload.price}&page=${page}&category=${payload.category}`;
+    url.value = `books?price=${payload.price}&page=${page}&category=${payload.category}`;
     status.value = null;
     error.value = null;
     book.value = null;
@@ -44,7 +44,7 @@ export default function useBookService() {
   };
 
   const getBestSellingBooks = async () => {
-    url.value = "bestsellingbooks";
+    url.value = "books/list/best-selling";
     status.value = null;
     error.value = null;
     book.value = null;
@@ -53,14 +53,14 @@ export default function useBookService() {
 
     try {
       const response = await axios.get(url.value);
-      status.value = response.status;
+      status.value = response.data.status;
       listOfBooks.value = response.data.bestSellingBooks;
     } catch (err) {
       error.value = err.response.data.message;
     }
   };
   const updateBook = async (payload, bookid) => {
-    url.value = `updatebook/${bookid}`;
+    url.value = `books/${bookid}`;
     status.value = null;
     error.value = null;
     book.value = null;
@@ -68,17 +68,17 @@ export default function useBookService() {
     totalPages.value = null;
 
     try {
-      const response = await axios.post(url.value, payload, {
+      const response = await axios.put(url.value, payload, {
         withCredentials: true,
       });
       status.value = response.data.status;
-      book.value = response.data.book;
+      book.value = response.data.updatedBook;
     } catch (err) {
       error.value = err.response.data.message;
     }
   };
   const deleteBook = async (bookid) => {
-    url.value = `deletebook/${bookid}`;
+    url.value = `books/${bookid}`;
     status.value = null;
     error.value = null;
     book.value = null;
@@ -98,13 +98,49 @@ export default function useBookService() {
       error.value = err.response.data.message;
     }
   };
+  const searchBook = async (payload) => {
+    url.value = `searchbook`;
+    status.value = null;
+    error.value = null;
+    book.value = null;
+    listOfBooks.value = null;
+    totalPages.value = null;
+
+    try {
+      const response = await axios.post(url.value, payload, {
+        withCredentials: true,
+      });
+      status.value = response.data.status;
+    } catch (err) {
+      error.value = err.response.data.message;
+    }
+  };
+  const addBook = async (payload) => {
+    url.value = `books`;
+    status.value = null;
+    error.value = null;
+    book.value = null;
+    listOfBooks.value = null;
+    totalPages.value = null;
+
+    try {
+      const response = await axios.post(url.value, payload, {
+        withCredentials: true,
+      });
+      status.value = response.data.status;
+    } catch (err) {
+      error.value = err.response.data.message;
+    }
+  };
   return {
     status,
     error,
     book,
     listOfBooks,
     totalPages,
+    addBook,
     deleteBook,
+    searchBook,
     updateBook,
     getBookById,
     getAllBooks,

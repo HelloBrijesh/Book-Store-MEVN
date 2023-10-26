@@ -2,7 +2,7 @@
 import { onMounted, ref } from "vue";
 import useOrderService from "../services/orderService";
 
-const { getOrders, error, status, totalOrders, orders } = useOrderService();
+const { error, status, getOrders, totalOrders, orders } = useOrderService();
 
 const currentPage = ref(1);
 
@@ -28,7 +28,16 @@ onMounted(async () => {
 });
 </script>
 <template>
-  <div class="md:ps-20 mt-10 md:mt-0" v-if="status == 'ok'">
+  <div v-if="status === null">
+    <h1>Loading...</h1>
+  </div>
+  <div v-else-if="error">
+    <h1>{{ error }}</h1>
+  </div>
+  <div v-else-if="totalOrders === 0">
+    <h1 class="flex justify-center items-center">No Orders</h1>
+  </div>
+  <div v-else class="md:ps-20 mt-10 md:mt-0">
     <h1 class="text-2xl font-semibold">Orders</h1>
     <div class="mt-10">
       <div class="w-full md:w-3/4 border">
@@ -38,10 +47,10 @@ onMounted(async () => {
         </div>
         <div class="">
           <ul class="m-5">
-            <li class="flex" v-for="items in orders[0].orderedItems">
+            <li class="flex mb-5" v-for="items in orders[0].orderedItems">
               <div class="flex-shrink-0">
                 <img
-                  :src="'/' + items.image"
+                  :src="items.imageUrl"
                   alt="title"
                   class="sm:h-38 sm:w-38 h-24 w-24 rounded-md object-contain object-center"
                 />
@@ -50,13 +59,27 @@ onMounted(async () => {
                 <p>{{ items.title }}</p>
                 <p>{{ items.author }}</p>
                 <p class="">
-                  <span>{{ items.quantity }} * </span>
+                  <span>{{ items.quantity }} x </span>
                   <span>{{ items.price }}</span>
                 </p>
               </div>
               <div class="">{{ items.quantity * items.price }}</div>
             </li>
           </ul>
+          <div class="px-5 py-3">
+            <div class="font-bold mb-3">Shipping Address</div>
+            <p>{{ orders[0].shippingAddress.name }}</p>
+            <p>
+              {{ orders[0].shippingAddress.streetAddress }}&nbsp;{{
+                orders[0].shippingAddress.city
+              }}
+            </p>
+            <p>
+              {{ orders[0].shippingAddress.state }}&nbsp;{{
+                orders[0].shippingAddress.postalCode
+              }}
+            </p>
+          </div>
         </div>
         <div class="bg-slate-100 flex justify-end px-5 py-3">
           Total : {{ orders[0].orderTotal }}

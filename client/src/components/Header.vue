@@ -9,22 +9,17 @@ import { onMounted, ref } from "vue";
 import { useAuthStore } from "../stores/authStore";
 import { useCartStore } from "../stores/cartStore";
 import useAuthService from "../services/authService";
-import useUserService from "../services/userService";
 
 library.add(faCartShopping, faBars, faUser);
-const { logout, error, status } = useAuthService();
-const userService = useUserService();
+
 const authStore = useAuthStore();
 const cartStore = useCartStore();
+const { error, status, logout } = useAuthService();
 
 const isActive = ref(true);
 const isUserActive = ref(true);
 
-onMounted(async () => {
-  // if (authStore.getisLoggedin) {
-  //   await userService.getUserDetails();
-  // }
-});
+onMounted(async () => {});
 
 const handleLogout = async () => {
   await logout();
@@ -118,16 +113,16 @@ const handleLogout = async () => {
               }
             "
           >
+            <img
+              v-if="authStore.getUserImage != ''"
+              class="h-10 w-10 rounded-full hover:cursor-pointer"
+              :src="authStore.getUserImage"
+              alt="Dan_Abromov"
+            />
             <font-awesome-icon
-              v-if="!authStore.getisLoggedin"
+              v-else
               icon="fa-solid fa-user"
               class="h-5 w-5 hover:cursor-pointer"
-            />
-            <img
-              v-else="authService.getisLoggedin"
-              class="h-10 w-10 rounded-full hover:cursor-pointer"
-              src="https://overreacted.io/static/profile-pic-c715447ce38098828758e525a1128b87.jpg"
-              alt="Dan_Abromov"
             />
           </span>
           <ul

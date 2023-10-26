@@ -1,24 +1,19 @@
 import Joi from "joi";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import {
-  REFRESH_TOKEN_SECRET,
-  REFRESH_TOKEN_EXPIRY,
-  ACCESS_TOKEN_EXPIRY,
-  ACCESS_TOKEN_SECRET,
-} from "../../config";
-import { User } from "../../models/user";
-import { RefreshToken } from "../../models/refreshToken";
 import { customErrorHandler } from "../../services";
+import { getUserByEmail } from "../../services/user";
+import {
+  createAccessToken,
+  createRefreshToken,
+  saveRefreshToken,
+} from "../../services/tokens";
 
 export const login = async (req, res, next) => {
   // Validating the user Input
 
   const loginSchema = Joi.object({
     email: Joi.string().email().required(),
-    password: Joi.string()
-      .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
-      .required(),
+    password: Joi.string().required(),
   });
   const { error } = loginSchema.validate(req.body);
   if (error) {
@@ -28,12 +23,8 @@ export const login = async (req, res, next) => {
   const { email, password } = req.body;
 
   // Finding the user from database
-
-  let access_token;
-  let refresh_token;
-  let existingUser;
   try {
-    existingUser = await User.findOne({ email: email });
+    const existingUser = await getUserByEmail(email);
     if (!existingUser) {
       return next(customErrorHandler.wrongCredentials());
     }
@@ -45,19 +36,17 @@ export const login = async (req, res, next) => {
     if (!verifyPassword) return next(customErrorHandler.wrongCredentials());
     if (!existingUser.verified) return next(customErrorHandler.notVerified());
     // Creating the Tokens
-    access_token = jwt.sign(
-      { userId: existingUser.id, role: existingUser.role },
-      ACCESS_TOKEN_SECRET,
-      { expiresIn: ACCESS_TOKEN_EXPIRY }
+    const access_token = await createAccessToken(
+      existingUser.id,
+      existingUser.role
     );
-    refresh_token = jwt.sign(
-      { userId: existingUser.id, role: existingUser.role },
-      REFRESH_TOKEN_SECRET,
-      { expiresIn: REFRESH_TOKEN_EXPIRY }
+    const refresh_token = await createRefreshToken(
+      existingUser.id,
+      existingUser.role
     );
 
     // Adding refresh token in database
-    await RefreshToken.create({ savedRefreshToken: refresh_token });
+    await saveRefreshToken(refresh_token);
 
     // Setting up the cookies
     res.status(200).cookie("token", refresh_token, {

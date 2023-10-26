@@ -4,13 +4,16 @@ import useBookService from "../services/bookService";
 import useCartService from "../services/cartService";
 import { RouterLink, useRoute, useRouter } from "vue-router";
 import { useAuthStore } from "../stores/authStore";
+import { useCartStore } from "../stores/cartStore";
 
 const route = useRoute();
 const router = useRouter();
 const authStore = useAuthStore();
+const cartStore = useCartStore();
+const cartService = useCartService();
+const { listOfBooks, error, status, book, getBookById } = useBookService();
+
 const bookId = ref(route.params.bookid);
-const { addCartItems } = useCartService();
-const { getBookById, book, listOfBooks, error, status } = useBookService();
 const quantity = ref(1);
 
 onMounted(async () => {
@@ -28,7 +31,12 @@ const handleRemoveQuantity = () => {
 };
 const handleAddtoCart = async (bookid) => {
   if (authStore.getisLoggedin === true) {
-    await addCartItems(bookid, quantity.value);
+    await cartService.addItemsInCart(bookid, quantity.value);
+    if (cartService.status.value === "ok") {
+      cartStore.setCartItems(cartService.cartItems.value);
+      cartStore.setCartTotal(cartService.cart.value.cartTotal);
+      cartStore.setTotalItems(cartService.cart.value.totalItems);
+    }
     router.push("/cart");
   } else {
     router.push("/login");
@@ -36,7 +44,13 @@ const handleAddtoCart = async (bookid) => {
 };
 </script>
 <template>
-  <div v-if="status === 'ok'">
+  <div v-if="status === null">
+    <h1>Loading...</h1>
+  </div>
+  <div v-else-if="error">
+    <h1>{{ error }}</h1>
+  </div>
+  <div v-else="status === 'ok'">
     <div class="w-full my-20">
       <div class="sm:container sm:mx-auto mx-5">
         <div class="flex flex-col sm:flex-row justify-center mb-28">
@@ -44,7 +58,7 @@ const handleAddtoCart = async (bookid) => {
             <img
               alt="Nike Air Max 21A"
               class="h-full w-full rounded object-fit lg:h-96"
-              :src="book.image"
+              :src="book.imageUrl"
             />
           </div>
           <div class="sm:w-2/4 sm:ps-10">
@@ -107,7 +121,11 @@ const handleAddtoCart = async (bookid) => {
             >
               <RouterLink :to="`/book/${book.id}`">
                 <figure class="h-[300px]">
-                  <img :src="book.image" alt="Laptop" class="h-full w-full" />
+                  <img
+                    :src="book.imageUrl"
+                    alt="Laptop"
+                    class="h-full w-full"
+                  />
                 </figure>
                 <div class="p-4 pb-0">
                   <h1
@@ -134,11 +152,5 @@ const handleAddtoCart = async (bookid) => {
         </div>
       </div>
     </div>
-  </div>
-  <div v-else-if="status === 'null'">
-    <h1>Loading...</h1>
-  </div>
-  <div v-else>
-    <h1>{{ error }}</h1>
   </div>
 </template>

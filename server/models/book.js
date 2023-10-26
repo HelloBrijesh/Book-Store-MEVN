@@ -16,7 +16,8 @@ const bookSchema = new mongoose.Schema(
     stock: { type: Number, default: 0 },
     sold: { type: Number, required: true, default: 0 },
     category: { type: String, required: true },
-    image: { type: String, required: true },
+    imageUrl: { type: String, required: true },
+    imageName: { type: String, required: true },
     language: { type: String, required: true },
   },
   { timestamps: true }

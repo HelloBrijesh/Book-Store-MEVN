@@ -4,7 +4,7 @@ const bookSchema = new mongoose.Schema({
   bookId: { type: String, required: true },
   title: { type: String, required: true },
   author: { type: String, required: true },
-  image: { type: String, required: true },
+  imageUrl: { type: String, required: true },
   quantity: { type: Number, default: 1 },
   price: { type: Number, required: true },
 });

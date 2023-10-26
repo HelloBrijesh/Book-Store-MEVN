@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import useAuthService from "../services/authService";
 
-const { changePassword, error, status } = useAuthService();
+const { error, status, changePassword } = useAuthService();
 
 const changePasswordPayload = ref({
   currentPassword: "",

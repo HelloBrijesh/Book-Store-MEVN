@@ -1,12 +1,12 @@
 <script setup>
-import { reactive } from "vue";
+import { onMounted, reactive } from "vue";
 import useAuthService from "../services/authService";
 import { useAuthStore } from "../stores/authStore";
 import { useRouter } from "vue-router";
 
-const { signup, error, status } = useAuthService();
-const authStore = useAuthStore();
 const router = useRouter();
+const authStore = useAuthStore();
+const { error, status, signup } = useAuthService();
 
 const signupPayload = reactive({
   userName: "",
@@ -15,11 +15,14 @@ const signupPayload = reactive({
 });
 
 const handleSignup = async () => {
+  await signup(signupPayload);
+};
+
+onMounted(async () => {
   if (authStore.getisLoggedin) {
     await router.push("/");
   }
-  await signup(signupPayload);
-};
+});
 </script>
 <template>
   <section v-if="status === 'ok'">
@@ -29,7 +32,7 @@ const handleSignup = async () => {
       >. Please verify your email
     </h1>
   </section>
-  <section v-else="status === 'null'">
+  <section v-else="status === null">
     <div
       class="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24"
     >

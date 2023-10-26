@@ -1,8 +1,9 @@
 <script setup>
-import { onMounted, reactive, ref } from "vue";
+import { onMounted, ref } from "vue";
 
 import { RouterLink, RouterView } from "vue-router";
 import useUserService from "../services/userService";
+import { useAuthStore } from "../stores/authStore";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
@@ -14,53 +15,73 @@ import {
 } from "firebase/storage";
 
 library.add(faUser);
-const { status, error, userDetails, getUserDetails, updateProfileImage } =
+const authStore = useAuthStore();
+const { error, status, userDetails, updateUserDetails, getUserDetails } =
   useUserService();
 
-const user = ref({
-  image: "",
+const accountDetails = ref({
+  userName: "",
+  firstName: "",
+  lastName: "",
+  email: "",
+  imageUrl: "",
+  imageName: "",
 });
 
-let imageName = ref(null);
-
 const handleProfileImage = async (e) => {
-  imageName.value = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
-  const storageRef = firebaseRef(storage, `BookStore/users/${imageName.value}`);
-  uploadBytes(storageRef, e.target.files[0]).then((snapshot) => {
-    getDownloadURL(storageRef)
-      .then((download_url) => {
-        console.log(download_url);
-        user.value.image = download_url;
-      })
-      .then(() => {
-        updateProfileImage(user.value);
-      })
-      .then(() => {
-        getUserDetails();
-      });
-  });
+  accountDetails.value.imageName = `${Date.now()}-${Math.round(
+    Math.random() * 1e9
+  )}`;
+  const storageRef = firebaseRef(
+    storage,
+    `BookStore/users/${accountDetails.value.imageName}`
+  );
+  const snapshot = await uploadBytes(storageRef, e.target.files[0]);
+  const download_url = await getDownloadURL(storageRef);
+
+  accountDetails.value.imageUrl = download_url;
+  await updateUserDetails(accountDetails.value);
+  if (status.value === "ok") {
+    authStore.setUserImage(userDetails.value.imageUrl);
+  }
 };
 
 onMounted(async () => {
   await getUserDetails();
+  if (status.value === "ok") {
+    accountDetails.value = {
+      userName: userDetails.value.userName,
+      firstName: userDetails.value.firstName,
+      lastName: userDetails.value.lastName,
+      email: userDetails.value.email,
+      imageUrl: userDetails.value.imageUrl,
+      imageName: userDetails.value.imageName,
+    };
+  }
 });
 </script>
 <template>
-  <div v-if="status === 'ok'" class="w-full my-20">
+  <div v-if="status === 'null'">
+    <h1>Loading...</h1>
+  </div>
+  <div v-else-if="error">
+    <h1>{{ error }}</h1>
+  </div>
+  <div v-else-if="status === 'ok'" class="w-full my-20">
     <div class="sm:container sm:mx-auto mx-5">
       <div class="flex flex-col md:flex-row">
         <div class="w-full md:w-1/4">
           <div class="border flex flex-col items-center gap-5 py-10">
             <img
-              v-if="userDetails.image !== ''"
-              :src="userDetails.image"
+              v-if="authStore.getUserImage !== ''"
+              :src="authStore.getUserImage"
               alt=""
-              class="rounded-full w-[150px]"
+              class="rounded-full h-[150px] w-[150px]"
             />
             <font-awesome-icon
               v-else
               icon="fa-solid fa-user"
-              class="rounded-full h-80 w-[150px]"
+              class="rounded-full h-[100px] max-w-[100px]"
             />
             <input
               id="file-input"

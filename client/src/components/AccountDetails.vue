@@ -2,7 +2,7 @@
 import { onMounted, ref } from "vue";
 import useUserService from "../services/userService";
 
-const { status, error, userDetails, getUserDetails, updateUserDetails } =
+const { error, status, userDetails, updateUserDetails, getUserDetails } =
   useUserService();
 
 const accountDetails = ref({
@@ -10,6 +10,8 @@ const accountDetails = ref({
   firstName: "",
   lastName: "",
   email: "",
+  imageUrl: "",
+  imageName: "",
 });
 
 const handleUpdateUser = async () => {
@@ -24,6 +26,8 @@ onMounted(async () => {
       firstName: userDetails.value.firstName,
       lastName: userDetails.value.lastName,
       email: userDetails.value.email,
+      imageUrl: userDetails.value.imageUrl,
+      imageName: userDetails.value.imageName,
     };
   }
 });

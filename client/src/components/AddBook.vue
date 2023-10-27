@@ -69,6 +69,7 @@ onMounted(() => {});
                 type="text"
                 id="title"
                 v-model="addBookPayload.title"
+                required
               />
             </div>
           </div>
@@ -82,6 +83,7 @@ onMounted(() => {});
                 type="text"
                 id="author"
                 v-model="addBookPayload.author"
+                required
               />
             </div>
           </div>
@@ -95,6 +97,7 @@ onMounted(() => {});
                   id="category"
                   class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                   v-model="addBookPayload.category"
+                  required
                 >
                   <option disabled value="">Please select one</option>
                   <option>Romance</option>
@@ -114,6 +117,7 @@ onMounted(() => {});
                   id="language"
                   class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                   v-model="addBookPayload.language"
+                  required
                 >
                   <option disabled value="">Please select one</option>
                   <option>English</option>
@@ -136,6 +140,7 @@ onMounted(() => {});
                   type="number"
                   id="year"
                   v-model="addBookPayload.year"
+                  required
                 />
               </div>
             </div>
@@ -149,6 +154,7 @@ onMounted(() => {});
                   type="number"
                   id="pages"
                   v-model="addBookPayload.pages"
+                  required
                 />
               </div>
             </div>
@@ -164,6 +170,7 @@ onMounted(() => {});
                   type="number"
                   id="price"
                   v-model="addBookPayload.price"
+                  required
                 />
               </div>
             </div>
@@ -177,6 +184,7 @@ onMounted(() => {});
                   type="number"
                   id="stock"
                   v-model="addBookPayload.stock"
+                  required
                 />
               </div>
             </div>
@@ -194,6 +202,7 @@ onMounted(() => {});
                 id="description"
                 class="w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                 v-model="addBookPayload.description"
+                required
               ></textarea>
             </div>
           </div>

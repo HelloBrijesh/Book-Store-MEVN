@@ -23,6 +23,21 @@ export const fetchUser = async (req, res, next) => {
 export const updateUser = async (req, res, next) => {
   const userId = req.user.userId;
 
+  const userSchema = Joi.object({
+    userName: Joi.string().min(3).max(30).required(),
+    firstName: Joi.string().allow(""),
+    lastName: Joi.string().allow(""),
+    email: Joi.string().email().required(),
+    imageUrl: Joi.string().allow(""),
+    imageName: Joi.string().allow(""),
+  });
+
+  const { error } = userSchema.validate(req.body);
+  if (error) {
+    console.log(error.message);
+    return next(error);
+  }
+
   const { userName, firstName, lastName, email, imageUrl, imageName } =
     req.body;
 

@@ -7,7 +7,7 @@ export const contactUs = async (req, res, next) => {
   const contactUsSchema = Joi.object({
     name: Joi.string().min(3).max(30).required(),
     email: Joi.string().email().required(),
-    message: Joi.string().min(3).required(),
+    message: Joi.string().min(10).required(),
     // confirmPassword: Joi.ref("password"),
   });
 

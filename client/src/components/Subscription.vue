@@ -38,6 +38,7 @@ const handleSubcribe = async () => {
                 type="email"
                 placeholder="Email"
                 v-model="subscriberPayload.email"
+                required
               />
               <button
                 type="submit"

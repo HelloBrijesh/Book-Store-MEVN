@@ -36,6 +36,7 @@ const handleContactUs = async () => {
                   placeholder="Name"
                   id="name"
                   v-model="contactUsPayload.name"
+                  required
                 />
               </div>
             </div>
@@ -50,6 +51,7 @@ const handleContactUs = async () => {
                   placeholder="Email"
                   id="email"
                   v-model="contactUsPayload.email"
+                  required
                 />
               </div>
             </div>
@@ -70,6 +72,7 @@ const handleContactUs = async () => {
                   rows="9"
                   cols="33"
                   v-model="contactUsPayload.message"
+                  required
                 ></textarea>
               </div>
             </div>

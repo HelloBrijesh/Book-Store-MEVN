@@ -47,6 +47,7 @@ onMounted(async () => {
               type="text"
               id="username"
               v-model="accountDetails.userName"
+              required
             />
           </div>
         </div>
@@ -86,6 +87,7 @@ onMounted(async () => {
               type="email"
               id="email"
               v-model="accountDetails.email"
+              required
             />
           </div>
         </div>

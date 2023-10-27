@@ -148,172 +148,122 @@ onMounted(async () => {
           </ul>
         </div>
         <div class="sm:w-2/4 p-7">
-          <div>
-            <h1 class="font-semibold text-lg">Contact Information</h1>
-            <div class="py-5">
-              <label
-                class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                for="name"
-              >
-                Full Name
-              </label>
-              <input
-                class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                type="text"
-                placeholder="Enter your name"
-                id="name"
-                v-model="placeOrderPayload.shippingAddress.name"
-                required
-              />
+          <form @submit.prevent="handlePlaceOrder">
+            <div>
+              <h1 class="font-semibold text-lg">Contact Information</h1>
+              <div class="py-5">
+                <label
+                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  for="name"
+                >
+                  Full Name
+                </label>
+                <input
+                  class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                  type="text"
+                  placeholder="Enter your name"
+                  id="name"
+                  v-model="placeOrderPayload.shippingAddress.name"
+                  required
+                />
+              </div>
             </div>
-          </div>
-          <!-- <hr class="my-5" />
-          <div class="">
-            <h1 class="font-semibold text-lg">Payment Details</h1>
 
-            <div class="mt-6 grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4">
-              <div class="col-span-3 sm:col-span-4">
-                <label
-                  for="cardNum"
-                  class="block text-sm font-medium text-gray-700"
-                >
-                  Card number
-                </label>
-                <div class="mt-1">
-                  <input
-                    class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                    type="text"
-                    placeholder="4242 4242 4242 4242"
-                    id="cardNum"
-                  />
-                </div>
-              </div>
-              <div class="col-span-2 sm:col-span-3">
-                <label
-                  for="expiration-date"
-                  class="block text-sm font-medium text-gray-700"
-                >
-                  Expiration date (MM/YY)
-                </label>
-                <div class="mt-1">
-                  <input
-                    type="date"
-                    name="expiration-date"
-                    id="expiration-date"
-                    autoComplete="cc-exp"
-                    class="block h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                  />
-                </div>
-              </div>
-              <div>
-                <label
-                  for="cvc"
-                  class="block text-sm font-medium text-gray-700"
-                >
-                  CVC
-                </label>
-                <div class="mt-1">
-                  <input
-                    type="text"
-                    name="cvc"
-                    id="cvc"
-                    autoComplete="csc"
-                    class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                  />
-                </div>
-              </div>
-            </div>
-          </div> -->
-          <hr class="my-7" />
+            <hr class="my-7" />
 
-          <div>
-            <h3 class="text-lg font-semibold text-gray-900">
-              Shipping address
-            </h3>
-            <div class="mt-6 grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-3">
-              <div class="sm:col-span-3">
-                <label
-                  for="address"
-                  class="block text-sm font-medium text-gray-700"
-                >
-                  Address
-                </label>
-                <div class="mt-1">
-                  <input
-                    type="text"
-                    id="address"
-                    name="address"
-                    autoComplete="street-address"
-                    class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                    v-model="placeOrderPayload.shippingAddress.streetAddress"
-                  />
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900">
+                Shipping address
+              </h3>
+              <div class="mt-6 grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-3">
+                <div class="sm:col-span-3">
+                  <label
+                    for="address"
+                    class="block text-sm font-medium text-gray-700"
+                  >
+                    Address
+                  </label>
+                  <div class="mt-1">
+                    <input
+                      type="text"
+                      id="address"
+                      name="address"
+                      autoComplete="street-address"
+                      class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                      v-model="placeOrderPayload.shippingAddress.streetAddress"
+                      required
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label
+                    for="city"
+                    class="block text-sm font-medium text-gray-700"
+                  >
+                    City
+                  </label>
+                  <div class="mt-1">
+                    <input
+                      type="text"
+                      id="city"
+                      name="city"
+                      autoComplete="address-level2"
+                      class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                      v-model="placeOrderPayload.shippingAddress.city"
+                      required
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label
+                    for="region"
+                    class="block text-sm font-medium text-gray-700"
+                  >
+                    State / Province
+                  </label>
+                  <div class="mt-1">
+                    <input
+                      type="text"
+                      id="region"
+                      name="region"
+                      autoComplete="address-level1"
+                      class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                      v-model="placeOrderPayload.shippingAddress.state"
+                      required
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label
+                    for="postal-code"
+                    class="block text-sm font-medium text-gray-700"
+                  >
+                    Postal code
+                  </label>
+                  <div class="mt-1">
+                    <input
+                      type="text"
+                      id="postal-code"
+                      name="postal-code"
+                      autoComplete="postal-code"
+                      class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                      v-model="placeOrderPayload.shippingAddress.postalCode"
+                      required
+                    />
+                  </div>
                 </div>
               </div>
-              <div>
-                <label
-                  for="city"
-                  class="block text-sm font-medium text-gray-700"
+              <hr class="my-8" />
+              <div class="flex justify-end border-gray-200">
+                <button
+                  type="submit"
+                  class="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                 >
-                  City
-                </label>
-                <div class="mt-1">
-                  <input
-                    type="text"
-                    id="city"
-                    name="city"
-                    autoComplete="address-level2"
-                    class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                    v-model="placeOrderPayload.shippingAddress.city"
-                  />
-                </div>
-              </div>
-              <div>
-                <label
-                  for="region"
-                  class="block text-sm font-medium text-gray-700"
-                >
-                  State / Province
-                </label>
-                <div class="mt-1">
-                  <input
-                    type="text"
-                    id="region"
-                    name="region"
-                    autoComplete="address-level1"
-                    class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                    v-model="placeOrderPayload.shippingAddress.state"
-                  />
-                </div>
-              </div>
-              <div>
-                <label
-                  for="postal-code"
-                  class="block text-sm font-medium text-gray-700"
-                >
-                  Postal code
-                </label>
-                <div class="mt-1">
-                  <input
-                    type="text"
-                    id="postal-code"
-                    name="postal-code"
-                    autoComplete="postal-code"
-                    class="flex h-10 w-full rounded-md border border-black/30 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
-                    v-model="placeOrderPayload.shippingAddress.postalCode"
-                  />
-                </div>
+                  PlaceOrder
+                </button>
               </div>
             </div>
-            <hr class="my-8" />
-            <div class="flex justify-end border-gray-200">
-              <button
-                @click="handlePlaceOrder"
-                class="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-              >
-                PlaceOrder
-              </button>
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>

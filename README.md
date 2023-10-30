@@ -4,6 +4,16 @@ This is an online bookstore project built using the MEVN stack, which stands for
 
 The project aims to provide a platform for users to browse and purchase books online. It includes features such as user authentication, book search, book details, shopping cart, and order management.
 
+## Test Users
+
+- Live Project link - https://book-store-client-six.vercel.app/
+- customer
+  - User Name: test@bookstore.com
+  - Password : Abcd@1234
+- Admin
+  - User Name: admin@bookstore.com
+  - Password : Abcd@1234
+
 ## Table of Contents
 
 - [Features](#features)

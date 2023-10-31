@@ -8,7 +8,7 @@ export default function useUserService() {
   const error = ref(null);
 
   const getUserDetails = async () => {
-    url.value = "user";
+    url.value = "/api/user";
     status.value = null;
     error.value = null;
     userDetails.value = null;
@@ -23,7 +23,7 @@ export default function useUserService() {
   };
 
   const updateUserDetails = async (payload) => {
-    url.value = "user";
+    url.value = "/api/user";
     status.value = null;
     error.value = null;
     userDetails.value = null;
@@ -39,7 +39,7 @@ export default function useUserService() {
   };
 
   const contactUs = async (payload) => {
-    url.value = "contact";
+    url.value = "/api/contact";
     status.value = null;
     error.value = null;
     userDetails.value = null;

@@ -9,7 +9,7 @@ export default function useCartService() {
   const cartItems = ref(null);
 
   const getCart = async () => {
-    url.value = "cart";
+    url.value = "/api/cart";
     status.value = null;
     error.value = null;
     cart.value = null;
@@ -24,7 +24,7 @@ export default function useCartService() {
     }
   };
   const addItemsInCart = async (bookid, quantity) => {
-    url.value = `cart/item?bookid=${bookid}&quantity=${quantity}`;
+    url.value = `/api/cart/item?bookid=${bookid}&quantity=${quantity}`;
     status.value = null;
     error.value = null;
     cart.value = null;
@@ -45,7 +45,7 @@ export default function useCartService() {
     }
   };
   const removeCartItems = async (bookid, quantity, price) => {
-    url.value = `cart/item?bookid=${bookid}&quantity=${quantity}&price=${price}`;
+    url.value = `/api/cart/item?bookid=${bookid}&quantity=${quantity}&price=${price}`;
     status.value = null;
     error.value = null;
     cart.value = null;

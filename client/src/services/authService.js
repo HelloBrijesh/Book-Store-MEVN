@@ -8,7 +8,7 @@ export default function useAuthService() {
   const role = ref(null);
 
   const signup = async (signUpPayload) => {
-    url.value = "signup";
+    url.value = "/api/signup";
     status.value = null;
     error.value = null;
     role.value = null;
@@ -23,7 +23,7 @@ export default function useAuthService() {
   };
 
   const verifyEmail = async (token) => {
-    url.value = `email?token=${token}`;
+    url.value = `/api/email?token=${token}`;
     status.value = null;
     error.value = null;
     role.value = null;
@@ -43,7 +43,7 @@ export default function useAuthService() {
   };
 
   const forgotPassword = async (payload) => {
-    url.value = "forgotpassword";
+    url.value = "/api/forgotpassword";
     status.value = null;
     error.value = null;
     role.value = null;
@@ -59,7 +59,7 @@ export default function useAuthService() {
   };
 
   const login = async (logInPayload) => {
-    url.value = "login";
+    url.value = "/api/login";
     status.value = null;
     error.value = null;
     role.value = null;
@@ -79,7 +79,7 @@ export default function useAuthService() {
   };
 
   const logout = async () => {
-    url.value = "logout";
+    url.value = "/api/logout";
     status.value = null;
     error.value = null;
     role.value = null;
@@ -98,7 +98,7 @@ export default function useAuthService() {
   };
 
   const changePassword = async (changePasswordPayload) => {
-    url.value = "user/password";
+    url.value = "/api/user/password";
     status.value = null;
     error.value = null;
     role.value = null;

@@ -9,7 +9,7 @@ import mongoose from "mongoose";
 const app = express();
 // app.use(cors({ origin: CLIENT_URL, credentials: true }));
 // app.use(cookieParser());
-
+app.use(express.static("dist"));
 // Database connection
 
 mongoose

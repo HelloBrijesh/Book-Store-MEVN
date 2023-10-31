@@ -65,7 +65,6 @@ export const getSalesData = async (req, res, next) => {
       page,
       limit
     );
-    // console.log(salesData[0]);
 
     //Handle responses
     if (!salesData) {

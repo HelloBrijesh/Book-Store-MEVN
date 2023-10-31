@@ -26,15 +26,16 @@ export const login = async (req, res, next) => {
   try {
     const existingUser = await getUserByEmail(email);
     if (!existingUser) {
-      return next(customErrorHandler.wrongCredentials());
+      return next(customErrorHandler.unAuthorized(""));
     }
     //comparing the password
     const verifyPassword = await bcrypt.compare(
       password,
       existingUser.password
     );
-    if (!verifyPassword) return next(customErrorHandler.wrongCredentials());
-    if (!existingUser.verified) return next(customErrorHandler.notVerified());
+    if (!verifyPassword) return next(customErrorHandler.unAuthorized());
+    if (!existingUser.verified)
+      return next(customErrorHandler.unAuthorized("Not Verified"));
     // Creating the Tokens
     const access_token = await createAccessToken(
       existingUser.id,

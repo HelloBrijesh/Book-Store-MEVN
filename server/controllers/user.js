@@ -34,7 +34,6 @@ export const updateUser = async (req, res, next) => {
 
   const { error } = userSchema.validate(req.body);
   if (error) {
-    console.log(error.message);
     return next(error);
   }
 
@@ -51,7 +50,7 @@ export const updateUser = async (req, res, next) => {
       imageUrl,
       imageName
     );
-    res.json({ updatedUser, status: "ok" });
+    res.status(200).json({ updatedUser, status: "ok" });
   } catch (error) {
     return next(error);
   }
@@ -94,7 +93,7 @@ export const updatePassword = async (req, res, next) => {
     const COST_FACTOR = 10;
     const newHashedPassword = await bcrypt.hash(newPassword, COST_FACTOR);
     await updatePasswordByUserId(userId, newHashedPassword);
-    res.json({ status: "ok" });
+    res.status(200).json({ status: "ok" });
   } catch (error) {
     next(error);
   }

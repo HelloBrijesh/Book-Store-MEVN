@@ -29,7 +29,7 @@ export const getOrders = async (req, res, next) => {
 
   if (req.query.orderId !== "") {
     const orders = await getOrdersByOrderId(req.query.orderId);
-    res.json({ orders, status: "ok" });
+    res.status(200).json({ orders, status: "ok" });
   } else {
     try {
       const { orders, totalOrders } = await getOrdersByUserId(
@@ -37,7 +37,7 @@ export const getOrders = async (req, res, next) => {
         currentPage
       );
 
-      res.json({ orders, totalOrders, status: "ok" });
+      res.status(200).json({ orders, totalOrders, status: "ok" });
     } catch (error) {
       return next(error);
     }
@@ -74,7 +74,7 @@ export const getSalesData = async (req, res, next) => {
       });
     }
 
-    res.json({ salesData, totalData, status: "ok" });
+    res.status(200).json({ salesData, totalData, status: "ok" });
   } catch (error) {
     return next(error);
   }

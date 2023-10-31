@@ -7,7 +7,7 @@ import cors from "cors";
 // import cookieParser from "cookie-parser";
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: CLIENT_URL, credentials: true }));
 // app.use(cookieParser());
 
 // Database connection

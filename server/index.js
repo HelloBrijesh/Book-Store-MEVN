@@ -3,15 +3,13 @@ import { DEV_PORT, DB_URL_ONLINE, CLIENT_URL } from "./config";
 import { errorHandler } from "./middlewares";
 import routes from "./routes";
 import mongoose from "mongoose";
+import path from "path";
 // import cors from "cors";
-// import cookieParser from "cookie-parser";
 
 const app = express();
 // app.use(cors({ origin: CLIENT_URL, credentials: true }));
-// app.use(cookieParser());
-app.use(express.static("dist"));
-// Database connection
 
+// Database connection
 mongoose
   .connect(DB_URL_ONLINE)
   .then(() => {
@@ -23,8 +21,13 @@ mongoose
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 app.use("/api", routes);
+
+app.use(express.static("dist"));
+app.get("*", (req, res) =>
+  res.sendFile(path.resolve(__dirname, "dist", "index.html"))
+);
+
 app.use(errorHandler);
 
 const PORT = process.env.PORT || DEV_PORT;

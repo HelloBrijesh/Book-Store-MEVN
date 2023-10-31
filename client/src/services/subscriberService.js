@@ -7,7 +7,7 @@ export default function useSubscriberService() {
   const error = ref(null);
 
   const addSubscriber = async (payload) => {
-    url.value = `subscribers`;
+    url.value = `/api/subscribers`;
     status.value = null;
     error.value = null;
     try {

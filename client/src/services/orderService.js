@@ -11,7 +11,7 @@ export default function useOrderService() {
   const totalData = ref(null);
 
   const getOrders = async (currentPage, orderId = "") => {
-    url.value = `orders?currentpage=${currentPage}&orderId=${orderId}`;
+    url.value = `/api/orders?currentpage=${currentPage}&orderId=${orderId}`;
     status.value = null;
     error.value = null;
     orders.value = null;
@@ -29,7 +29,7 @@ export default function useOrderService() {
     }
   };
   const placeOrder = async (payload) => {
-    url.value = `orders`;
+    url.value = `/api/orders`;
     status.value = null;
     error.value = null;
     orders.value = null;
@@ -49,7 +49,7 @@ export default function useOrderService() {
   };
 
   const getSalesData = async (payload, page) => {
-    url.value = `orders/sales?startDate=${payload.startDate}&endDate=${payload.endDate}&page=${page}`;
+    url.value = `/api/orders/sales?startDate=${payload.startDate}&endDate=${payload.endDate}&page=${page}`;
     status.value = null;
     error.value = null;
     orders.value = null;

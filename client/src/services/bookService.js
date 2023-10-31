@@ -10,7 +10,7 @@ export default function useBookService() {
   const totalPages = ref(null);
 
   const getBookById = async (bookid) => {
-    url.value = `books/${bookid}`;
+    url.value = `/api/books/${bookid}`;
     status.value = null;
     error.value = null;
     book.value = null;
@@ -26,7 +26,7 @@ export default function useBookService() {
     }
   };
   const getAllBooks = async (page, payload) => {
-    url.value = `books?price=${payload.price}&page=${page}&category=${payload.category}`;
+    url.value = `/api/books?price=${payload.price}&page=${page}&category=${payload.category}`;
     status.value = null;
     error.value = null;
     book.value = null;
@@ -44,7 +44,7 @@ export default function useBookService() {
   };
 
   const getBestSellingBooks = async () => {
-    url.value = "books/list/best-selling";
+    url.value = "/api/books/list/best-selling";
     status.value = null;
     error.value = null;
     book.value = null;
@@ -60,7 +60,7 @@ export default function useBookService() {
     }
   };
   const updateBook = async (payload, bookid) => {
-    url.value = `books/${bookid}`;
+    url.value = `/api/books/${bookid}`;
     status.value = null;
     error.value = null;
     book.value = null;
@@ -78,7 +78,7 @@ export default function useBookService() {
     }
   };
   const deleteBook = async (bookid) => {
-    url.value = `books/${bookid}`;
+    url.value = `/api/books/${bookid}`;
     status.value = null;
     error.value = null;
     book.value = null;
@@ -99,7 +99,7 @@ export default function useBookService() {
     }
   };
   const searchBook = async (payload) => {
-    url.value = `searchbook`;
+    url.value = `/api/searchbook`;
     status.value = null;
     error.value = null;
     book.value = null;
@@ -116,7 +116,7 @@ export default function useBookService() {
     }
   };
   const addBook = async (payload) => {
-    url.value = `books`;
+    url.value = `/api/books`;
     status.value = null;
     error.value = null;
     book.value = null;

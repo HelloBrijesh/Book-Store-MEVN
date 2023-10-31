@@ -53,9 +53,7 @@ const handleProfileImage = async (e) => {
     const desertRef = firebaseRef(storage, `BookStore/users/${oldImage.value}`);
     try {
       await deleteObject(desertRef);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   }
 };
 

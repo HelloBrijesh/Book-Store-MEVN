@@ -34,9 +34,7 @@ const handleDeleteBook = async () => {
   );
   try {
     await deleteObject(desertRef);
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
   await deleteBook(bookId.value);
 
   if (status.value === "ok") {
@@ -46,7 +44,6 @@ const handleDeleteBook = async () => {
 
 onMounted(async () => {
   await getBookById(bookId.value);
-  console.log(book.value.imageName);
   if (status.value === "ok") {
     updateBookPayload.value = {
       price: book.value.price,

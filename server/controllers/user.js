@@ -78,13 +78,13 @@ export const updatePassword = async (req, res, next) => {
   try {
     const existingUser = await User.findById(userId);
     if (!existingUser) {
-      return next(customErrorHandler.wrongCredentials());
+      return next(customErrorHandler.unAuthorized());
     }
     const verifyPassword = await bcrypt.compare(
       currentPassword,
       existingUser.password
     );
-    if (!verifyPassword) return next(customErrorHandler.wrongCredentials());
+    if (!verifyPassword) return next(customErrorHandler.unAuthorized());
   } catch (error) {
     return next(error);
   }

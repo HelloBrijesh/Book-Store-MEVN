@@ -6,7 +6,7 @@ The project aims to provide a platform for users to browse and purchase books on
 
 ## Test Users
 
-- Live Project link - https://book-store-client-six.vercel.app/
+- Live Project link - https://book-store-th3g.onrender.com
 - customer
   - User Name: test@bookstore.com
   - Password : Abcd@1234

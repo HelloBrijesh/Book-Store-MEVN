@@ -36,7 +36,7 @@ export const tokenRefresh = async (req, res, next) => {
     // Finding the user from database
     const existingUser = await getUserById(userId);
     if (!existingUser) {
-      return next(customErrorHandler.unAuthorized("No user found!"));
+      return next(customErrorHandler.notFound("User Not found!"));
     }
 
     // Creating new Tokens

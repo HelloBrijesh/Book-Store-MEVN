@@ -31,5 +31,5 @@ export const contactUs = async (req, res, next) => {
     return next(error);
   }
 
-  res.json({ status: "ok" });
+  res.status(200).json({ status: "ok" });
 };

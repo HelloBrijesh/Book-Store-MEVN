@@ -15,7 +15,7 @@ export const fetchCart = async (req, res, next) => {
     if (!cart) {
       cart = await createCartByUserId(userId);
     }
-    res.json({ cart, status: "ok" });
+    res.status(200).json({ cart, status: "ok" });
   } catch (err) {
     return next(err);
   }
@@ -28,7 +28,7 @@ export const addItemInCart = async (req, res, next) => {
 
   try {
     const updatedCart = await insertItemInCart(userId, bookId, quantity);
-    res.json({ updatedCart, status: "ok" });
+    res.status(200).json({ updatedCart, status: "ok" });
   } catch (err) {
     return next(err);
   }
@@ -46,7 +46,7 @@ export const deleteItemFromCart = async (req, res, next) => {
       quantity,
       price
     );
-    res.json({ updatedCart, status: "ok" });
+    res.status(200).json({ updatedCart, status: "ok" });
   } catch (err) {
     return next(err);
   }

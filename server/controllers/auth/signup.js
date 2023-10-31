@@ -38,9 +38,7 @@ export const signup = async (req, res, next) => {
     const userExist = await getUserByEmail(email);
 
     if (userExist) {
-      return next(
-        customErrorHandler.alreadyExists("This email is already exists")
-      );
+      return next(customErrorHandler.conflict("This email is already exists"));
     }
   } catch (error) {
     return next(error);

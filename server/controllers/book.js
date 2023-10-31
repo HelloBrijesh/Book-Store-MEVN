@@ -107,7 +107,7 @@ export const updateBook = async (req, res, next) => {
 
   try {
     const updatedBook = await updateBookById(bookId, price, stock);
-    res.json({ status: "ok", updatedBook });
+    res.status(200).json({ status: "ok", updatedBook });
   } catch (error) {
     return next(error);
   }

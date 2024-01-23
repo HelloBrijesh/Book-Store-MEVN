@@ -4,10 +4,10 @@ import { errorHandler } from "./middlewares";
 import routes from "./routes";
 import mongoose from "mongoose";
 import path from "path";
-import cors from "cors";
+// import cors from "cors";
 
 const app = express();
-app.use(cors({ origin: CLIENT_URL, credentials: true }));
+// app.use(cors({ origin: CLIENT_URL, credentials: true }));
 
 // Database connection
 mongoose
@@ -23,10 +23,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api", routes);
 
-// app.use(express.static("dist"));
-// app.get("*", (req, res) =>
-//   res.sendFile(path.resolve(__dirname, "dist", "index.html"))
-// );
+app.use(express.static("dist"));
+app.get("*", (req, res) =>
+  res.sendFile(path.resolve(__dirname, "dist", "index.html"))
+);
 
 app.use(errorHandler);
 

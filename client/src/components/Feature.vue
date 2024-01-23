@@ -102,7 +102,7 @@
             </svg>
           </div>
           <h3 class="mt-8 text-lg font-semibold text-black text-center">
-            Light &amp; Dark Version
+            Free Shipping
           </h3>
         </div>
       </div>

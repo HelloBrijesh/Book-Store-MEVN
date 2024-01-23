@@ -72,11 +72,11 @@ onMounted(async () => {
 });
 </script>
 <template>
-  <div v-if="status === 'null'">
-    <h1>Loading...</h1>
+  <div v-if="status === 'null'" class="h-96 flex justify-center items-center">
+    <h1 class="font-semibold">Loading...</h1>
   </div>
-  <div v-else-if="error">
-    <h1>{{ error }}</h1>
+  <div v-else-if="error" class="h-96 flex justify-center items-center">
+    <h1 class="font-semibold text-red-500">{{ error }}</h1>
   </div>
   <div v-else-if="status === 'ok'" class="w-full my-20">
     <div class="sm:container sm:mx-auto mx-5">

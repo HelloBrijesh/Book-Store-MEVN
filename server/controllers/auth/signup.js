@@ -21,7 +21,6 @@ export const signup = async (req, res, next) => {
         )
       )
       .required(),
-    // confirmPassword: Joi.ref("password"),
   });
 
   const { error } = signupSchema.validate(req.body);
@@ -73,9 +72,8 @@ export const signup = async (req, res, next) => {
 
     await sendEmail(email, emailSubject, emailText);
     await saveEmailToken(createdUser.id, tokenForemail);
+    return res.json({ status: "ok" });
   } catch (err) {
     return next(err);
   }
-
-  res.json({ status: "ok" });
 };

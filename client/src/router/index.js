@@ -20,7 +20,7 @@ import AddBook from "../components/AddBook.vue";
 import ExistingBooks from "../components/ExistingBooks.vue";
 import UpdateBook from "../components/UpdateBook.vue";
 import SalesData from "../components/SalesData.vue";
-
+import CancelPaymentView from "../views/CancelPaymentView.vue";
 const router = createRouter({
   history: createWebHistory(),
   routes: [
@@ -109,6 +109,11 @@ const router = createRouter({
       path: "/order/:id",
       name: "order",
       component: OrderView,
+    },
+    {
+      path: "/cancel-Payment",
+      name: "cancelPayment",
+      component: CancelPaymentView,
     },
     {
       path: "/contact",

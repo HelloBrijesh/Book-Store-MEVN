@@ -44,11 +44,11 @@ const handleAddtoCart = async (bookid) => {
 };
 </script>
 <template>
-  <div v-if="status === null">
-    <h1>Loading...</h1>
+  <div v-if="status === null" class="h-96 flex items-center justify-center">
+    <h1 class="font-semibold">Loading...</h1>
   </div>
-  <div v-else-if="error">
-    <h1>{{ error }}</h1>
+  <div v-else-if="error" class="h-96 flex items-center justify-center">
+    <h1 class="text-red-500 font-semibold">{{ error }}</h1>
   </div>
   <div v-else="status === 'ok'">
     <div class="w-full my-20">

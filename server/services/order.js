@@ -39,6 +39,16 @@ export const createOrder = async (
   }
 };
 
+export const paymentStatus = async (orderId, status) => {
+  try {
+    await Order.findByIdAndUpdate(orderId, {
+      paymentStatus: status,
+    });
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
 export const getOrdersByOrderId = async (orderId) => {
   try {
     let orders = await Order.findById(orderId);

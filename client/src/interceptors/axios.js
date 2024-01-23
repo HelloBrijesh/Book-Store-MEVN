@@ -1,48 +1,142 @@
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
-// axios.defaults.baseURL = import.meta.env.VITE_SERVER_URL;
+axios.defaults.baseURL = import.meta.env.VITE_SERVER_URL;
 
-let accessToken;
-async function refreshAccessToken() {
-  try {
-    const response = await axios.post(
-      "refresh",
-      {},
-      {
-        withCredentials: true,
+export const axiosAuthInstance = axios.create({
+  baseURL: `${import.meta.env.VITE_SERVER_URL}`,
+});
+
+axiosAuthInstance.interceptors.request.use(
+  async (request) => {
+    if (!request.headers.Authorization) {
+      try {
+        const response = await axios.get(`/api/refresh`, {
+          withCredentials: true,
+        });
+        request.headers["Authorization"] =
+          "Bearer " + response.data.access_token;
+        axiosAuthInstance.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${response.data.access_token}`;
+        return request;
+      } catch (error) {
+        if (error.response.data.message === "Invalid Refresh Token") {
+          try {
+            const response = await axios.put(
+              `/api/logout`,
+              {},
+              {
+                withCredentials: true,
+              }
+            );
+          } catch (err) {
+            console.log(err);
+          }
+          delete axiosAuthInstance.defaults.headers.common["Authorization"];
+          let currentState = JSON.parse(localStorage.getItem("state"));
+          currentState.authStore = {
+            isAdmin: false,
+            isLoggedin: false,
+            userImage: "",
+          };
+          currentState.cartStore = {
+            cartItems: [],
+            cartTotal: 0,
+            totalItems: 0,
+          };
+          localStorage.setItem("state", JSON.stringify(currentState));
+          window.location = "/";
+        }
       }
-    );
-    accessToken = response.data.access_token;
-  } catch (err) {
-    console.error(err);
-    throw err;
-  }
-}
+      return request;
+    }
+    if (request.headers.Authorization) {
+      const accessToken = request.headers.Authorization.split(" ")[1];
+      const decodedToken = jwtDecode(accessToken);
+      let currentDate = new Date();
 
-axios.interceptors.response.use(
+      if (decodedToken.exp * 1000 < currentDate.getTime()) {
+        try {
+          const response = await axios.get(`/api/refresh`, {
+            withCredentials: true,
+          });
+          request.headers["Authorization"] =
+            "Bearer " + response.data.access_token;
+          axiosAuthInstance.defaults.headers.common[
+            "Authorization"
+          ] = `Bearer ${response.data.access_token}`;
+          return request;
+        } catch (error) {
+          if (error.response.data.message === "Invalid Refresh Token") {
+            try {
+              const response = await axios.put(
+                `/api/logout`,
+                {},
+                {
+                  withCredentials: true,
+                }
+              );
+            } catch (err) {
+              console.log(err);
+            }
+
+            delete axiosAuthInstance.defaults.headers.common["Authorization"];
+            let currentState = JSON.parse(localStorage.getItem("state"));
+            currentState.authStore = {
+              isAdmin: false,
+              isLoggedin: false,
+              userImage: "",
+            };
+            currentState.cartStore = {
+              cartItems: [],
+              cartTotal: 0,
+              totalItems: 0,
+            };
+            localStorage.setItem("state", JSON.stringify(currentState));
+            window.location = "/";
+          }
+        }
+      }
+      return request;
+    }
+    return request;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+axiosAuthInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
-    const originalRequest = error.config;
-    if (
-      error.response.status === 401 &&
-      !originalRequest._retry &&
-      (error.response.data.message === "jwt expired" ||
-        error.response.data.message === "accessToken Required")
-    ) {
-      originalRequest._retry = true;
-      return refreshAccessToken().then(() => {
-        axios.defaults.headers.common[
-          "Authorization"
-        ] = `Bearer ${accessToken}`;
-        originalRequest.headers.Authorization = `Bearer ${accessToken}`;
-        return axios(originalRequest);
-      });
+    if (error.response.data.message === "Invalid Access Token") {
+      try {
+        const response = await axios.put(
+          `/api/logout`,
+          {},
+          {
+            withCredentials: true,
+          }
+        );
+      } catch (err) {
+        console.log(err);
+      }
+      delete axiosAuthInstance.defaults.headers.common["Authorization"];
+      let currentState = JSON.parse(localStorage.getItem("state"));
+      currentState.authStore = {
+        isAdmin: false,
+        isLoggedin: false,
+        userImage: "",
+      };
+      currentState.cartStore = {
+        cartItems: [],
+        cartTotal: 0,
+        totalItems: 0,
+      };
+      localStorage.setItem("state", JSON.stringify(currentState));
+      window.location = "/";
     }
-
-    if (error.response.data.message === "Invalid Refresh Token") {
-      window.location.href = "/login";
-    }
-
     return Promise.reject(error);
   }
 );

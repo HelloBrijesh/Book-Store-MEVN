@@ -16,6 +16,19 @@ let salesDataPayload = ref({
   endDate: `${year}-${month}-${day}`,
 });
 
+const getFormatedDate = (date) => {
+  const originalDate = new Date(date);
+  const options = { day: "numeric", month: "short", year: "numeric" };
+  const formattedDate = originalDate.toLocaleDateString("en-US", options);
+  const formattedTime = originalDate.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    hour12: true,
+  });
+  return `${formattedDate} ${formattedTime}`;
+};
+
 const onDateChange = async () => {
   await getSalesData(salesDataPayload.value, 1);
   if (status.value === "ok") {
@@ -117,7 +130,7 @@ const handlePagination = async (page) => {
               {{ book.title }}
             </th>
             <td class="px-6 py-4">{{ book.author }}</td>
-            <td class="px-6 py-4">{{ data.createdAt }}</td>
+            <td class="px-6 py-4">{{ getFormatedDate(data.createdAt) }}</td>
             <td class="px-6 py-4">{{ book.price }}</td>
             <td class="px-6 py-4">{{ book.quantity }}</td>
             <td class="px-6 py-4">{{ book.price * book.quantity }}</td>

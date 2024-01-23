@@ -5,6 +5,19 @@ import useOrderService from "../services/orderService";
 const { error, status, getOrders, totalOrders, orders } = useOrderService();
 
 const currentPage = ref(1);
+const orderDate = ref("");
+const getFormatedDate = (date) => {
+  const originalDate = new Date(date);
+  const options = { day: "numeric", month: "short", year: "numeric" };
+  const formattedDate = originalDate.toLocaleDateString("en-US", options);
+  const formattedTime = originalDate.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+    hour12: true,
+  });
+  return `${formattedDate} ${formattedTime}`;
+};
 
 const handlePrevious = async () => {
   if (currentPage.value > 1) {
@@ -13,7 +26,7 @@ const handlePrevious = async () => {
   }
 };
 const handleNext = async () => {
-  if (currentPage.value < totalPages.value) {
+  if (currentPage.value < totalOrders.value) {
     currentPage.value++;
     handlePagination(currentPage.value);
   }
@@ -21,29 +34,35 @@ const handleNext = async () => {
 const handlePagination = async (page) => {
   currentPage.value = page;
   await getOrders(currentPage.value);
+  if (orders !== null) {
+    orderDate.value = getFormatedDate(orders.value[0].createdAt);
+  }
 };
 
 onMounted(async () => {
   await getOrders(currentPage.value);
+  if (orders !== null) {
+    orderDate.value = getFormatedDate(orders.value[0].createdAt);
+  }
 });
 </script>
 <template>
-  <div v-if="status === null">
-    <h1>Loading...</h1>
+  <h1 class="md:ps-20 mt-10 md:mt-0 text-2xl font-semibold">Orders</h1>
+  <div v-if="status === null" class="h-96 flex justify-center items-center">
+    <h1 class="font-semibold">Loading...</h1>
   </div>
-  <div v-else-if="error">
-    <h1>{{ error }}</h1>
+  <div v-else-if="error" class="h-96 flex justify-center items-center">
+    <h1 class="font-semibold text-red-500">{{ error }}</h1>
   </div>
   <div v-else-if="totalOrders === 0">
     <h1 class="flex justify-center items-center">No Orders</h1>
   </div>
   <div v-else class="md:ps-20 mt-10 md:mt-0">
-    <h1 class="text-2xl font-semibold">Orders</h1>
     <div class="mt-10">
       <div class="w-full md:w-3/4 border">
         <div class="bg-slate-100 flex justify-between px-5 py-3">
           <h2 class="">OrderNo : {{ orders[0].id }}</h2>
-          <h2>Date : 01/10/2023</h2>
+          <h2>Date : {{ orderDate }}</h2>
         </div>
         <div class="">
           <ul class="m-5">

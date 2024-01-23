@@ -12,7 +12,6 @@ import { getUserById } from "../../services/user";
 
 export const tokenRefresh = async (req, res, next) => {
   // Accessing the refresh token from cookie
-
   let cookie = req.headers.cookie;
   if (!cookie) {
     return next(customErrorHandler.unAuthorized("Invalid Refresh Token"));
@@ -36,7 +35,7 @@ export const tokenRefresh = async (req, res, next) => {
     // Finding the user from database
     const existingUser = await getUserById(userId);
     if (!existingUser) {
-      return next(customErrorHandler.notFound("User Not found!"));
+      return next(customErrorHandler.notFound("Invalid Refresh Token"));
     }
 
     // Creating new Tokens

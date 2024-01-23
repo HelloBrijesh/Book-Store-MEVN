@@ -42,10 +42,9 @@ const handlePlaceOrder = async () => {
   placeOrderPayload.value.orderTotal = cartStore.getCartTotal;
   placeOrderPayload.value.orderedItems = cartStore.getCartItems;
   await orderService.placeOrder(placeOrderPayload.value);
-  if (orderService.status.value === "ok") {
+  if (orderService.status.value === "ok" && orderService.checkOutUrl) {
     cartStore.$reset();
-    orderId.value = orderService.orders.value;
-    await router.push(`/order/${orderId.value}`);
+    window.location = orderService.checkOutUrl.value;
   }
 };
 
@@ -60,6 +59,7 @@ onMounted(async () => {
   cartTotal.value = cartStore.getCartTotal;
 });
 </script>
+
 <template>
   <div class="w-full my-20">
     <div class="sm:container sm:mx-auto mx-5">

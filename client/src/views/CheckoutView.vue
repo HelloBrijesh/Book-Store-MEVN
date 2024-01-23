@@ -44,7 +44,7 @@ const handlePlaceOrder = async () => {
   await orderService.placeOrder(placeOrderPayload.value);
   if (orderService.status.value === "ok" && orderService.checkOutUrl) {
     cartStore.$reset();
-    window.location = orderService.checkOutUrl.value;
+    window.location.href = orderService.checkOutUrl.value;
   }
 };
 

@@ -54,14 +54,14 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div v-if="status === null">
-    <h1>Loading...</h1>
+  <h1 class="ms-10 text-2xl">Update Book</h1>
+  <div v-if="status === null" class="h-96 flex justify-center items-center">
+    <h1 class="font-semibold">Loading...</h1>
   </div>
-  <div v-else-if="error">
-    <h1>{{ error }}</h1>
+  <div v-else-if="error" class="h-96 flex justify-center items-center">
+    <h1 class="font-semibold text-red-500">{{ error }}</h1>
   </div>
   <div v-else class="ms-10">
-    <h1 class="text-2xl">Update Book</h1>
     <div class="">
       <div class="mt-5">
         <img :src="book.imageUrl" alt="book image" />

@@ -1,5 +1,6 @@
 import { ref } from "vue";
 import axios from "axios";
+import { axiosAuthInstance } from "../interceptors/axios";
 
 export default function useAuthService() {
   const url = ref(null);
@@ -13,9 +14,7 @@ export default function useAuthService() {
     error.value = null;
     role.value = null;
     try {
-      const response = await axios.post(url.value, signUpPayload, {
-        withCredentials: true,
-      });
+      const response = await axios.post(url.value, signUpPayload);
       status.value = response.data.status;
     } catch (err) {
       error.value = err.response.data.message;
@@ -36,6 +35,9 @@ export default function useAuthService() {
           withCredentials: true,
         }
       );
+      axiosAuthInstance.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${response.data.access_token}`;
       status.value = response.data.status;
     } catch (err) {
       error.value = err.response.data.message;
@@ -49,9 +51,7 @@ export default function useAuthService() {
     role.value = null;
 
     try {
-      const response = await axios.post(url.value, payload, {
-        withCredentials: true,
-      });
+      const response = await axiosAuthInstance.post(url.value, payload);
       status.value = response.data.status;
     } catch (err) {
       error.value = err.response.data.message;
@@ -68,7 +68,7 @@ export default function useAuthService() {
       const response = await axios.post(url.value, logInPayload, {
         withCredentials: true,
       });
-      axios.defaults.headers.common[
+      axiosAuthInstance.defaults.headers.common[
         "Authorization"
       ] = `Bearer ${response.data.access_token}`;
       role.value = response.data.role;
@@ -85,8 +85,8 @@ export default function useAuthService() {
     role.value = null;
 
     try {
-      axios.defaults.headers.common["Authorization"] = "";
-      const response = await axios.post(
+      axiosAuthInstance.defaults.headers.common["Authorization"] = "";
+      const response = await axios.put(
         url.value,
         {},
         { withCredentials: true }
@@ -104,9 +104,10 @@ export default function useAuthService() {
     role.value = null;
 
     try {
-      const response = await axios.put(url.value, changePasswordPayload, {
-        withCredentials: true,
-      });
+      const response = await axiosAuthInstance.put(
+        url.value,
+        changePasswordPayload
+      );
       status.value = response.data.status;
     } catch (err) {
       error.value = err.response.data.message;

@@ -1,5 +1,6 @@
 import { ref } from "vue";
 import axios from "axios";
+import { axiosAuthInstance } from "../interceptors/axios";
 
 export default function useUserService() {
   const url = ref(null);
@@ -14,7 +15,7 @@ export default function useUserService() {
     userDetails.value = null;
 
     try {
-      const response = await axios.get(url.value);
+      const response = await axiosAuthInstance.get(url.value);
       userDetails.value = response.data.userDetails;
       status.value = response.data.status;
     } catch (err) {
@@ -28,9 +29,7 @@ export default function useUserService() {
     error.value = null;
     userDetails.value = null;
     try {
-      const response = await axios.put(url.value, payload, {
-        withCredentials: true,
-      });
+      const response = await axiosAuthInstance.put(url.value, payload);
       userDetails.value = response.data.updatedUser;
       status.value = response.data.status;
     } catch (err) {
@@ -44,9 +43,7 @@ export default function useUserService() {
     error.value = null;
     userDetails.value = null;
     try {
-      const response = await axios.post(url.value, payload, {
-        withCredentials: true,
-      });
+      const response = await axios.post(url.value, payload);
       status.value = response.data.status;
     } catch (err) {
       error.value = err.response.data.message;

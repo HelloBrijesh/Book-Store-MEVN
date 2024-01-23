@@ -10,19 +10,18 @@ onMounted(async () => {
 });
 </script>
 <template>
-  <div v-if="status === null">
-    <h1>Loading...</h1>
-  </div>
-  <div v-else-if="error">
-    <h1>{{ error }}</h1>
-  </div>
-  <div v-else class="w-full mb-16 sm:mb-28">
+  <div class="w-full mb-16 sm:mb-28">
     <div class="mx-5 sm:container sm:mx-auto">
       <div class="pb-20">
         <h2 class="text-3xl font-bold text-black">Bestselling Books</h2>
       </div>
-
-      <div class="grid sm:grid-cols-4 grid-flow-row gap-6">
+      <div v-if="status === null">
+        <h1 class="text-center font-semibold">Loading...</h1>
+      </div>
+      <div v-else-if="error">
+        <h1 class="text-center text-red-500">Error</h1>
+      </div>
+      <div v-else class="grid sm:grid-cols-4 grid-flow-row gap-6">
         <div
           v-for="book in listOfBooks"
           class="grow border rounded-lg overflow-hidden"

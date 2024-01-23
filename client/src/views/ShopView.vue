@@ -37,13 +37,7 @@ onMounted(async () => {
 });
 </script>
 <template>
-  <div v-if="status === null">
-    <h1>Loading...</h1>
-  </div>
-  <div v-else-if="error">
-    <h1>{{ error }}</h1>
-  </div>
-  <div v-else class="w-full">
+  <div class="w-full">
     <div class="mx-5 sm:container sm:mx-auto">
       <div class="flex justify-between border-b-2 py-6 mb-10 mt-5">
         <div class="">
@@ -143,65 +137,75 @@ onMounted(async () => {
           </div>
         </div>
         <div class="w-full px-5">
-          <div class="grid sm:grid-cols-4 gap-6 mb-20">
-            <div
-              v-for="book in listOfBooks"
-              class="grow border rounded-lg overflow-hidden"
-            >
-              <RouterLink :to="`/book/${book.id}`">
-                <figure class="h-[250px]">
-                  <img
-                    :src="book.imageUrl"
-                    alt="Laptop"
-                    class="h-full w-full"
-                  />
-                </figure>
-                <div class="p-4 pb-0">
-                  <h1
-                    class="font-semibold text-ellipsis overflow-hidden whitespace-nowrap"
-                  >
-                    {{ book.title }}
-                  </h1>
-                  <p
-                    class="text-sm text-gray-600 text-ellipsis overflow-hidden whitespace-nowrap"
-                  >
-                    {{ book.author }}
-                  </p>
-                  <p>Price : $ {{ book.price }}</p>
-                </div>
-                <button
-                  type="button"
-                  class="mt-4 w-full rounded-sm bg-black px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                >
-                  Add to Cart
-                </button>
-              </RouterLink>
-            </div>
+          <div v-if="status === null">
+            <h1 class="text-center font-semibold">Loading...</h1>
           </div>
-          <div class="flex items-center justify-center pb-16">
-            <a
-              href="#"
-              class="mx-1 text-sm font-semibold text-gray-900"
-              @click.prevent="handlePrevious"
-            >
-              ← Previous
-            </a>
-            <a
-              href="#"
-              class="mx-1 flex items-center rounded-md border border-gray-400 px-3 py-1 text-gray-900 hover:scale-105"
-              v-for="page in totalPages"
-              @click.prevent="(e) => handlePagination(page)"
-            >
-              <span :class="{ active: page === currentPage }"> {{ page }}</span>
-            </a>
+          <div v-else-if="error">
+            <h1 class="text-red-500 font-semibold">Error</h1>
+          </div>
+          <div v-else>
+            <div class="grid sm:grid-cols-4 gap-6 mb-20">
+              <div
+                v-for="book in listOfBooks"
+                class="grow border rounded-lg overflow-hidden"
+              >
+                <RouterLink :to="`/book/${book.id}`">
+                  <figure class="h-[250px]">
+                    <img
+                      :src="book.imageUrl"
+                      alt="Laptop"
+                      class="h-full w-full"
+                    />
+                  </figure>
+                  <div class="p-4 pb-0">
+                    <h1
+                      class="font-semibold text-ellipsis overflow-hidden whitespace-nowrap"
+                    >
+                      {{ book.title }}
+                    </h1>
+                    <p
+                      class="text-sm text-gray-600 text-ellipsis overflow-hidden whitespace-nowrap"
+                    >
+                      {{ book.author }}
+                    </p>
+                    <p>Price : $ {{ book.price }}</p>
+                  </div>
+                  <button
+                    type="button"
+                    class="mt-4 w-full rounded-sm bg-black px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                  >
+                    Add to Cart
+                  </button>
+                </RouterLink>
+              </div>
+            </div>
+            <div class="flex items-center justify-center pb-16">
+              <a
+                href="#"
+                class="mx-1 text-sm font-semibold text-gray-900"
+                @click.prevent="handlePrevious"
+              >
+                ← Previous
+              </a>
+              <a
+                href="#"
+                class="mx-1 flex items-center rounded-md border border-gray-400 px-3 py-1 text-gray-900 hover:scale-105"
+                v-for="page in totalPages"
+                @click.prevent="(e) => handlePagination(page)"
+              >
+                <span :class="{ active: page === currentPage }">
+                  {{ page }}</span
+                >
+              </a>
 
-            <a
-              href="#"
-              class="mx-2 text-sm font-semibold text-gray-900"
-              @click.prevent="handleNext"
-            >
-              Next →
-            </a>
+              <a
+                href="#"
+                class="mx-2 text-sm font-semibold text-gray-900"
+                @click.prevent="handleNext"
+              >
+                Next →
+              </a>
+            </div>
           </div>
         </div>
       </div>

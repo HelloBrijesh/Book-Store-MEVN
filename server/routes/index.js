@@ -12,7 +12,12 @@ import {
   updatePassword,
   deleteUser,
 } from "../controllers/user";
-import { getOrders, placeOrder, getSalesData } from "../controllers/order";
+import {
+  getOrders,
+  placeOrder,
+  getSalesData,
+  updatePaymentStatus,
+} from "../controllers/order";
 import { addSubscriber, removeSubscriber } from "../controllers/subscription";
 import {
   fetchCart,
@@ -32,8 +37,8 @@ const router = express.Router();
 
 router.post("/signup", signup);
 router.post("/login", login);
-router.post("/logout", logout);
-router.post("/refresh", tokenRefresh);
+router.put("/logout", logout);
+router.get("/refresh", tokenRefresh);
 router.post("/email", verifyEmail);
 
 router.get("/user", auth, fetchUser);
@@ -55,7 +60,12 @@ router.delete("/cart/item", auth, deleteItemFromCart);
 router.get("/orders", auth, getOrders);
 router.post("/orders", auth, placeOrder);
 router.get("/orders/sales", [auth, admin], getSalesData);
-
+router.post("/orders/create-checkout-session", auth, placeOrder);
+router.post(
+  "/orders/webhook",
+  express.raw({ type: "application/json" }),
+  updatePaymentStatus
+);
 router.post("/subscribers", addSubscriber);
 router.delete("/subscribers", removeSubscriber);
 router.post("/contact", contactUs);

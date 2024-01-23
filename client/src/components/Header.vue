@@ -126,7 +126,7 @@ const handleLogout = async () => {
             />
           </span>
           <ul
-            class="absolute left-0 md:left-auto ps-12 md:top-[60px] md:px-3 flex flex-col w-full md:w-auto md:auto border hover:text-black"
+            class="absolute bg-white z-20 left-0 md:left-auto ps-12 md:top-[60px] md:px-3 flex flex-col w-full md:w-auto md:auto border hover:text-black"
             :class="{ 'md:hidden': isUserActive }"
           >
             <RouterLink to="/profile" class="block"
@@ -138,7 +138,7 @@ const handleLogout = async () => {
                     isActive = !isActive;
                   }
                 "
-                class="py-3 border-b md:border-0 md:hover:text-black hover:text-yellow-50"
+                class="py-3 border-b md:border-0 hover:text-blue-500"
               >
                 Profile
               </li></RouterLink
@@ -152,7 +152,7 @@ const handleLogout = async () => {
                     isActive = !isActive;
                   }
                 "
-                class="py-3 border-b md:border-0 md:hover:text-black hover:text-yellow-50"
+                class="py-3 border-b md:border-0 hover:text-blue-500"
               >
                 Login
               </li></RouterLink
@@ -166,7 +166,7 @@ const handleLogout = async () => {
                     isActive = !isActive;
                   }
                 "
-                class="py-3 border-b md:border-0 md:hover:text-black hover:text-yellow-50"
+                class="py-3 border-b md:border-0 hover:text-blue-500"
               >
                 Logout
               </li></RouterLink

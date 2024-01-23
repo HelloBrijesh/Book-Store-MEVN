@@ -1,5 +1,5 @@
 import { ref } from "vue";
-import axios from "axios";
+import { axiosAuthInstance } from "../interceptors/axios";
 
 export default function useOrderService() {
   const url = ref(null);
@@ -20,7 +20,7 @@ export default function useOrderService() {
     totalData.value = null;
 
     try {
-      const response = await axios.get(url.value);
+      const response = await axiosAuthInstance.get(url.value);
       status.value = response.data.status;
       orders.value = response.data.orders;
       totalOrders.value = response.data.totalOrders;
@@ -38,9 +38,7 @@ export default function useOrderService() {
     totalData.value = null;
 
     try {
-      const response = await axios.post(url.value, payload, {
-        withCredentials: true,
-      });
+      const response = await axiosAuthInstance.post(url.value, payload);
       status.value = response.data.status;
       orders.value = response.data.createdOrder.id;
     } catch (err) {
@@ -58,7 +56,7 @@ export default function useOrderService() {
     totalData.value = null;
 
     try {
-      const response = await axios.get(url.value);
+      const response = await axiosAuthInstance.get(url.value);
       salesData.value = response.data.salesData;
       totalData.value = response.data.totalData;
       status.value = response.data.status;

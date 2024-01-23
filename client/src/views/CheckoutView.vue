@@ -60,6 +60,7 @@ onMounted(async () => {
   cartTotal.value = cartStore.getCartTotal;
 });
 </script>
+
 <template>
   <div class="w-full my-20">
     <div class="sm:container sm:mx-auto mx-5">

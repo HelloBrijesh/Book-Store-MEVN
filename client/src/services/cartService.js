@@ -1,5 +1,5 @@
 import { ref } from "vue";
-import axios from "axios";
+import { axiosAuthInstance } from "../interceptors/axios";
 
 export default function useCartService() {
   const url = ref(null);
@@ -15,7 +15,7 @@ export default function useCartService() {
     cart.value = null;
     cartItems.value = null;
     try {
-      const response = await axios.get(url.value);
+      const response = await axiosAuthInstance.get(url.value);
       status.value = response.data.status;
       cart.value = response.data.cart;
       cartItems.value = response.data.cart.books;
@@ -30,13 +30,7 @@ export default function useCartService() {
     cart.value = null;
     cartItems.value = null;
     try {
-      const response = await axios.put(
-        url.value,
-        {},
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axiosAuthInstance.put(url.value, {});
       status.value = response.data.status;
       cart.value = response.data.updatedCart;
       cartItems.value = response.data.updatedCart.books;
@@ -51,13 +45,7 @@ export default function useCartService() {
     cart.value = null;
     cartItems.value = null;
     try {
-      const response = await axios.delete(
-        url.value,
-        {},
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axiosAuthInstance.delete(url.value, {});
       status.value = response.data.status;
       cart.value = response.data.updatedCart;
       cartItems.value = response.data.updatedCart.books;

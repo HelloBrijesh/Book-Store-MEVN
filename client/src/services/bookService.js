@@ -1,5 +1,6 @@
 import { ref } from "vue";
 import axios from "axios";
+import { axiosAuthInstance } from "../interceptors/axios";
 
 export default function useBookService() {
   const url = ref(null);
@@ -68,9 +69,7 @@ export default function useBookService() {
     totalPages.value = null;
 
     try {
-      const response = await axios.put(url.value, payload, {
-        withCredentials: true,
-      });
+      const response = await axiosAuthInstance.put(url.value, payload);
       status.value = response.data.status;
       book.value = response.data.updatedBook;
     } catch (err) {
@@ -86,13 +85,7 @@ export default function useBookService() {
     totalPages.value = null;
 
     try {
-      const response = await axios.delete(
-        url.value,
-        {},
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axiosAuthInstance.delete(url.value, {});
       status.value = response.data.status;
     } catch (err) {
       error.value = err.response.data.message;
@@ -107,9 +100,7 @@ export default function useBookService() {
     totalPages.value = null;
 
     try {
-      const response = await axios.post(url.value, payload, {
-        withCredentials: true,
-      });
+      const response = await axios.post(url.value, payload);
       status.value = response.data.status;
     } catch (err) {
       error.value = err.response.data.message;
@@ -124,9 +115,7 @@ export default function useBookService() {
     totalPages.value = null;
 
     try {
-      const response = await axios.post(url.value, payload, {
-        withCredentials: true,
-      });
+      const response = await axiosAuthInstance.post(url.value, payload);
       status.value = response.data.status;
     } catch (err) {
       error.value = err.response.data.message;

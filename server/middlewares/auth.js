@@ -2,10 +2,9 @@ import { customErrorHandler } from "../services";
 import { verifyAccessToken } from "../services/tokens";
 const auth = async (req, res, next) => {
   // Accessing the access token from headers
-
-  let authHeader = req.headers.authorization;
+  let authHeader = req.headers.authorization || req.headers.Authorization;
   if (!authHeader) {
-    return next(customErrorHandler.unAuthorized("accessToken Required"));
+    return next(customErrorHandler.unAuthorized("Invalid Access Token"));
   }
   const authAccessToken = authHeader.split(" ")[1];
 
@@ -19,9 +18,8 @@ const auth = async (req, res, next) => {
     req.user = user;
     next();
   } catch (err) {
-    return next(customErrorHandler.unAuthorized(err.message));
+    return next(customErrorHandler.unAuthorized("Invalid Access Token"));
   }
 };
 
 export default auth;
-

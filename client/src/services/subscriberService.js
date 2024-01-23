@@ -11,7 +11,7 @@ export default function useSubscriberService() {
     status.value = null;
     error.value = null;
     try {
-      const response = await axios.post(url.value, payload, {});
+      const response = await axios.post(url.value, payload);
       status.value = response.data.status;
     } catch (err) {
       error.value = err.response.data.message;

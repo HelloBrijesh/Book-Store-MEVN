@@ -43,6 +43,7 @@ const handlePlaceOrder = async () => {
   placeOrderPayload.value.orderedItems = cartStore.getCartItems;
   await orderService.placeOrder(placeOrderPayload.value);
   if (orderService.status.value === "ok" && orderService.checkOutUrl) {
+    cartStore.$reset();
     window.location = orderService.checkOutUrl.value;
   }
 };

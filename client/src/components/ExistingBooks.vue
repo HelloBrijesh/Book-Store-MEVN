@@ -37,14 +37,14 @@ onMounted(async () => {
 });
 </script>
 <template>
-  <div v-if="status === null">
-    <h1>Loading...</h1>
+  <h1 class="ms-10 text-2xl">Existing Books</h1>
+  <div v-if="status === null" class="h-96 flex justify-center items-center">
+    <h1 class="font-semibold">Loading...</h1>
   </div>
-  <div v-else-if="error">
-    <h1>{{ error }}</h1>
+  <div v-else-if="error" class="h-96 flex justify-center items-center">
+    <h1 class="font-semibold text-red-500">{{ error }}</h1>
   </div>
   <div v-else class="ms-10">
-    <h1 class="text-2xl">Update Book</h1>
     <form @change="handleFilter">
       <div class="flex justify-end gap-10 my-6">
         <div class="mt-2">

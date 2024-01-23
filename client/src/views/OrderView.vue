@@ -1,14 +1,12 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import useOrderService from "../services/orderService";
-import { useCartStore } from "../stores/cartStore";
 import { useAuthStore } from "../stores/authStore";
 import { useRoute, useRouter } from "vue-router";
 
 const router = useRouter();
 const route = useRoute();
 const authStore = useAuthStore();
-const cartStore = useCartStore();
 const { error, status, getOrders, orders } = useOrderService();
 
 const orderId = ref(route.params.id);
@@ -17,16 +15,15 @@ onMounted(async () => {
   if (!authStore.getisLoggedin) {
     await router.push("/login");
   }
-  cartStore.$reset();
   await getOrders(1, orderId.value);
 });
 </script>
 <template>
-  <div v-if="status === null">
-    <h1>Loading...</h1>
+  <div v-if="status === null" class="h-96 flex justify-center items-center">
+    <h1 class="font-semibold">Loading...</h1>
   </div>
-  <div v-else-if="error">
-    <h1>{{ error }}</h1>
+  <div v-else-if="error" class="h-96 flex justify-center items-center">
+    <h1 class="text-red-500 font-semibold">{{ error }}</h1>
   </div>
   <div v-else class="w-full my-20">
     <div class="sm:container sm:mx-auto mx-5">

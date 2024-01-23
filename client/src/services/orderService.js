@@ -9,6 +9,7 @@ export default function useOrderService() {
   const totalOrders = ref(null);
   const salesData = ref(null);
   const totalData = ref(null);
+  const checkOutUrl = ref(null);
 
   const getOrders = async (currentPage, orderId = "") => {
     url.value = `/api/orders?currentpage=${currentPage}&orderId=${orderId}`;
@@ -18,6 +19,7 @@ export default function useOrderService() {
     totalOrders.value = null;
     salesData.value = null;
     totalData.value = null;
+    checkOutUrl.value = null;
 
     try {
       const response = await axiosAuthInstance.get(url.value);
@@ -36,11 +38,13 @@ export default function useOrderService() {
     totalOrders.value = null;
     salesData.value = null;
     totalData.value = null;
+    checkOutUrl.value = null;
 
     try {
       const response = await axiosAuthInstance.post(url.value, payload);
       status.value = response.data.status;
       orders.value = response.data.createdOrder.id;
+      checkOutUrl.value = response.data.url;
     } catch (err) {
       error.value = err.response.data.message;
     }
@@ -54,6 +58,7 @@ export default function useOrderService() {
     totalOrders.value = null;
     salesData.value = null;
     totalData.value = null;
+    checkOutUrl.value = null;
 
     try {
       const response = await axiosAuthInstance.get(url.value);
@@ -71,6 +76,7 @@ export default function useOrderService() {
     totalOrders,
     salesData,
     totalData,
+    checkOutUrl,
     getSalesData,
     getOrders,
     placeOrder,

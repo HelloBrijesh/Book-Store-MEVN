@@ -12,7 +12,12 @@ import {
   updatePassword,
   deleteUser,
 } from "../controllers/user";
-import { getOrders, placeOrder, getSalesData } from "../controllers/order";
+import {
+  getOrders,
+  placeOrder,
+  getSalesData,
+  updatePaymentStatus,
+} from "../controllers/order";
 import { addSubscriber, removeSubscriber } from "../controllers/subscription";
 import {
   fetchCart,
@@ -55,7 +60,12 @@ router.delete("/cart/item", auth, deleteItemFromCart);
 router.get("/orders", auth, getOrders);
 router.post("/orders", auth, placeOrder);
 router.get("/orders/sales", [auth, admin], getSalesData);
-
+router.post("/orders/create-checkout-session", auth, placeOrder);
+router.post(
+  "/orders/webhook",
+  express.raw({ type: "application/json" }),
+  updatePaymentStatus
+);
 router.post("/subscribers", addSubscriber);
 router.delete("/subscribers", removeSubscriber);
 router.post("/contact", contactUs);

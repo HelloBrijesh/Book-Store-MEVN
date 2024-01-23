@@ -42,10 +42,8 @@ const handlePlaceOrder = async () => {
   placeOrderPayload.value.orderTotal = cartStore.getCartTotal;
   placeOrderPayload.value.orderedItems = cartStore.getCartItems;
   await orderService.placeOrder(placeOrderPayload.value);
-  if (orderService.status.value === "ok") {
-    cartStore.$reset();
-    orderId.value = orderService.orders.value;
-    await router.push(`/order/${orderId.value}`);
+  if (orderService.status.value === "ok" && orderService.checkOutUrl) {
+    window.location = orderService.checkOutUrl.value;
   }
 };
 

@@ -17,6 +17,7 @@ onMounted(async () => {
   if (!authStore.getisLoggedin) {
     await router.push("/login");
   }
+  cartStore.$reset();
   await getOrders(1, orderId.value);
 });
 </script>

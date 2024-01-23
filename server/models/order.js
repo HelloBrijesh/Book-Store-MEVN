@@ -21,6 +21,7 @@ const orderSchema = new mongoose.Schema(
       state: { type: String, required: true },
       postalCode: { type: String, required: true },
     },
+    paymentStatus: { type: String, default: "Not Paid" },
   },
   { timestamps: true }
 );

@@ -2,7 +2,7 @@
 
 This is an online bookstore project built using the MEVN stack, which stands for MongoDB (database), Express.js (back-end framework), Vue.js (front-end framework), and Node.js (runtime environment).
 
-The project aims to provide a platform for users to browse and purchase books online. It includes features such as user authentication, book search, book details, shopping cart, and order management.
+The project aims to provide a platform for users to browse and purchase books online. It includes features such as user authentication, book search, book details, shopping cart, payment gateway and order management.
 
 ## Test Users
 
@@ -13,6 +13,15 @@ The project aims to provide a platform for users to browse and purchase books on
 - Admin
   - User Name: admin@bookstore.com
   - Password : Abcd@1234
+
+### Test Stripe Card Details:
+
+To test the payment functionality, you can use the following test card details provided by Stripe:
+
+- Card Number: `4242 4242 4242 4242`
+- Expiry Date: Any future date
+- CVC: Any 3-digit number
+- ZIP: Any 5-digit ZIP code
 
 ## Table of Contents
 
@@ -47,7 +56,13 @@ The project aims to provide a platform for users to browse and purchase books on
    - Update the quantity of books in the cart.
    - Calculate the total price of items in the cart.
 
-5. Order Management:
+5. Payment Gateway Integration with Stripe:
+
+   - Secure and seamless payments through the Stripe payment gateway.
+   - Test payments using Stripe's provided test card details.
+   - Handling of payment confirmation, creating charges, and updating order status on the server.
+
+6. Order Management:
    - Place orders for the books in the cart.
    - View order history.
    - Track order status
@@ -86,12 +101,18 @@ cd ../server && npm install
    - https://www.mongodb.com/try/download/community
    - Add books and users data from the test.books.json and test.users.json file in mongodb
 
-6. Start the development server:
+6. Setup Strip Payment Gateway
+
+   - Create a Stripe Account: https://stripe.com/
+   - Get API Keys : Obtain your Stripe API keys from the Stripe Dashboard.
+   - Set Environment Variables: In the server's `.env` file, add the Stripe-related environment variables
+
+7. Start the development server:
 
    - In the server directory, run npm run dev to start the Express.js server.
    - In the client directory, run npm run dev to start the Vue.js development server.
 
-7. Access the application in your browser
+8. Access the application in your browser
 
 ## Usage
 

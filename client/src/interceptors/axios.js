@@ -10,7 +10,6 @@ export const axiosAuthInstance = axios.create({
 axiosAuthInstance.interceptors.request.use(
   async (request) => {
     if (!request.headers.Authorization) {
-      console.log("!Authorization");
       try {
         const response = await axios.get(`/api/refresh`, {
           withCredentials: true,
@@ -53,7 +52,6 @@ axiosAuthInstance.interceptors.request.use(
       return request;
     }
     if (request.headers.Authorization) {
-      console.log("Expired Token");
       const accessToken = request.headers.Authorization.split(" ")[1];
       const decodedToken = jwtDecode(accessToken);
       let currentDate = new Date();
@@ -112,9 +110,7 @@ axiosAuthInstance.interceptors.request.use(
 axiosAuthInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
-    console.log("Inside Error if", error.response.data.message);
     if (error.response.data.message === "Invalid Access Token") {
-      console.log("Inside Error if", error.response.data.message);
       try {
         const response = await axios.put(
           `/api/logout`,

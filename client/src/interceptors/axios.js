@@ -15,6 +15,7 @@ axiosAuthInstance.interceptors.request.use(
         const response = await axios.get(`/api/refresh`, {
           withCredentials: true,
         });
+
         request.headers["Authorization"] =
           "Bearer " + response.data.access_token;
         axiosAuthInstance.defaults.headers.common[
@@ -50,7 +51,6 @@ axiosAuthInstance.interceptors.request.use(
           window.location = "/";
         }
       }
-      return request;
     }
     if (request.headers.Authorization) {
       const accessToken = request.headers.Authorization.split(" ")[1];
@@ -62,6 +62,7 @@ axiosAuthInstance.interceptors.request.use(
           const response = await axios.get(`/api/refresh`, {
             withCredentials: true,
           });
+
           request.headers["Authorization"] =
             "Bearer " + response.data.access_token;
           axiosAuthInstance.defaults.headers.common[
@@ -99,7 +100,6 @@ axiosAuthInstance.interceptors.request.use(
           }
         }
       }
-      return request;
     }
     return request;
   },

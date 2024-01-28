@@ -4,7 +4,6 @@ import {
   createRefreshToken,
   deleteEmailToken,
   getEmailToken,
-  saveRefreshToken,
 } from "../../services/tokens";
 import { getUserById, updateUserVerified } from "../../services/user";
 
@@ -33,9 +32,6 @@ export const verifyEmail = async (req, res, next) => {
       existingUser.id,
       existingUser.role
     );
-
-    // Adding refresh_token in Database
-    await saveRefreshToken(refresh_token);
 
     await deleteEmailToken(emailTokenDetails.emailToken);
 

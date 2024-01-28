@@ -2,11 +2,7 @@ import Joi from "joi";
 import bcrypt from "bcrypt";
 import { customErrorHandler } from "../../services";
 import { getUserByEmail } from "../../services/user";
-import {
-  createAccessToken,
-  createRefreshToken,
-  saveRefreshToken,
-} from "../../services/tokens";
+import { createAccessToken, createRefreshToken } from "../../services/tokens";
 
 export const login = async (req, res, next) => {
   // Validating the user Input
@@ -45,9 +41,6 @@ export const login = async (req, res, next) => {
       existingUser.id,
       existingUser.role
     );
-
-    // Adding refresh token in database
-    await saveRefreshToken(refresh_token);
 
     // Setting up the cookies
     res.status(200).cookie("token", refresh_token, {
